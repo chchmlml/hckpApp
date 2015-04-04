@@ -25,169 +25,139 @@ import com.haven.hckp.fragment.AnimFragment.OnFragmentDismissListener;
 public class CategoryFragment extends BaseFragment implements
         OnItemClickListener, OnClickListener, OnFragmentDismissListener {
 
-	private static final String TAG = "CategoryFragment";
-	private Activity mActivity;
-	private TextView mTitleTv;
-	private ListView mCateListView;
-	private CateListAdapter mCateListAdapter;
-	private String[] mCategories;
-	private ImageView mCateIndicatorImg;
-	private int mFromY = 0;
-	private ImageButton mImageBtn;
+    private static final String TAG = "CategoryFragment";
+    private Activity mActivity;
+    private TextView mTitleTv;
+    private ListView mCateListView;
+    private CateListAdapter mCateListAdapter;
+    private String[] mCategories;
+    private ImageView mCateIndicatorImg;
+    private int mFromY = 0;
+    private ImageButton mImageBtn;
 
-	public static CategoryFragment newInstance() {
-		CategoryFragment categoryFragment = new CategoryFragment();
+    public static CategoryFragment newInstance() {
+        CategoryFragment categoryFragment = new CategoryFragment();
+        return categoryFragment;
+    }
 
-		return categoryFragment;
-	}
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mActivity = activity;
+    }
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		this.mActivity = activity;
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_category, container,
+                false);
+        return view;
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_category, container,
-				false);
-		return view;
-	}
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews(view);
+    }
 
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		mCategories = mActivity.getResources()
-				.getStringArray(R.array.cate_list);
+    }
 
-		mCateListAdapter = new CateListAdapter(mActivity, mCategories);
-		mCateListView.setAdapter(mCateListAdapter);
+    private void initViews(View view) {
 
-		int itemHeight = calculateListViewItemHeight();
-		int w = View.MeasureSpec.makeMeasureSpec(0,
-				View.MeasureSpec.UNSPECIFIED);
-		int h = View.MeasureSpec.makeMeasureSpec(0,
-				View.MeasureSpec.UNSPECIFIED);
-		mCateIndicatorImg.measure(w, h);
+        mTitleTv = (TextView) view.findViewById(R.id.title_tv);
+        mTitleTv.setText(R.string.category);
 
-		doAnimation(itemHeight / 2 - mCateIndicatorImg.getMeasuredHeight());
-	}
+    }
 
-	private void initViews(View view) {
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
-		mTitleTv = (TextView) view.findViewById(R.id.title_tv);
-		mTitleTv.setText(R.string.category);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-		mCateListView = (ListView) view.findViewById(R.id.cate_listview);
-		mCateListView.setOnItemClickListener(this);
-		mCateIndicatorImg = (ImageView) view
-				.findViewById(R.id.cate_indicator_img);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position,
+                            long id) {
+        if (null != mCateListAdapter) {
+            mCateListAdapter.setSelectedPos(position);
+        }
+        int toY = view.getTop() + view.getHeight() / 2;
+        doAnimation(toY);
+    }
 
-		mImageBtn = (ImageButton) view.findViewById(R.id.image_btn);
-		mImageBtn.setOnClickListener(this);
-	}
+    private void doAnimation(int toY) {
+        int cateIndicatorY = mCateIndicatorImg.getTop()
+                + mCateIndicatorImg.getMeasuredHeight() / 2;
+        TranslateAnimation animation = new TranslateAnimation(0, 0, mFromY
+                - cateIndicatorY, toY - cateIndicatorY);
+        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+        animation.setFillAfter(true);
+        animation.setDuration(400);
+        mCateIndicatorImg.startAnimation(animation);
+        mFromY = toY;
+    }
 
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-	}
+    private int calculateListViewItemHeight() {
+        ListAdapter listAdapter = mCateListView.getAdapter();
+        if (listAdapter == null) {
+            return 0;
+        }
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
+        int totalHeight = 0;
+        int count = listAdapter.getCount();
+        for (int i = 0; i < count; i++) {
+            View listItem = listAdapter.getView(i, null, mCateListView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        return totalHeight / count;
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		if (null != mCateListAdapter) {
-			mCateListAdapter.setSelectedPos(position);
-		}
-		int toY = view.getTop() + view.getHeight() / 2;
-		doAnimation(toY);
-	}
+    @Override
+    public String getFragmentName() {
+        return TAG;
+    }
 
-	private void doAnimation(int toY) {
-		int cateIndicatorY = mCateIndicatorImg.getTop()
-				+ mCateIndicatorImg.getMeasuredHeight() / 2;
-		TranslateAnimation animation = new TranslateAnimation(0, 0, mFromY
-				- cateIndicatorY, toY - cateIndicatorY);
-		animation.setInterpolator(new AccelerateDecelerateInterpolator());
-		animation.setFillAfter(true);
-		animation.setDuration(400);
-		mCateIndicatorImg.startAnimation(animation);
-		mFromY = toY;
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.image_btn:
+                showAnimFragment();
+                break;
 
-	private int calculateListViewItemHeight() {
-		ListAdapter listAdapter = mCateListView.getAdapter();
-		if (listAdapter == null) {
-			return 0;
-		}
+            default:
+                break;
+        }
+    }
 
-		int totalHeight = 0;
-		int count = listAdapter.getCount();
-		for (int i = 0; i < count; i++) {
-			View listItem = listAdapter.getView(i, null, mCateListView);
-			listItem.measure(0, 0);
-			totalHeight += listItem.getMeasuredHeight();
-		}
-		return totalHeight / count;
-	}
+    /**
+     */
+    private void showAnimFragment() {
 
-	@Override
-	public String getFragmentName() {
-		return TAG;
-	}
+    }
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.image_btn:
-			showAnimFragment();
-			break;
+    /**
+     */
+    private void dismissAnimFragment() {
+        getFragmentManager().popBackStack();
+    }
 
-		default:
-			break;
-		}
-	}
-
-	/**
-	 */
-	private void showAnimFragment() {
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		 ft.setCustomAnimations(R.anim.left_in, R.anim.right_out);
-		Fragment prev = getFragmentManager().findFragmentByTag("anim_fragment");
-		if (prev != null) {
-			ft.remove(prev);
-		}
-		AnimFragment animFragment = new AnimFragment(this);
-		ft.addToBackStack(null);
-		ft.add(R.id.anim_fragment_layout, animFragment, "anim_fragment")
-				.commitAllowingStateLoss();
-	}
-
-	/**
-	 */
-	private void dismissAnimFragment() {
-		getFragmentManager().popBackStack();
-	}
-
-	@Override
-	public void onFragmentDismiss() {
-		dismissAnimFragment();
-	}
+    @Override
+    public void onFragmentDismiss() {
+        dismissAnimFragment();
+    }
 
 }

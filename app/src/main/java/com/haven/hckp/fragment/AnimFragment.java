@@ -20,14 +20,25 @@ public class AnimFragment extends Fragment implements OnClickListener {
     private View mWholeView;
     private ImageView mCancelImg;
 
+    public OnFragmentDismissListener getmListener() {
+        return mListener;
+    }
+
+    public void setmListener(OnFragmentDismissListener mListener) {
+        this.mListener = mListener;
+    }
+
     private OnFragmentDismissListener mListener;
 
     public interface OnFragmentDismissListener {
         public void onFragmentDismiss();
     }
 
-    public AnimFragment(Fragment listener) {
-        this.mListener = (OnFragmentDismissListener) listener;
+    public static AnimFragment newInstance(Fragment listener) {
+        AnimFragment newFragment = new AnimFragment();
+        newFragment.setmListener((OnFragmentDismissListener)listener);
+        return newFragment;
+
     }
 
     @Override

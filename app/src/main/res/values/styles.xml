@@ -18,18 +18,30 @@
     </style>
     
     <style name="title_bar_style">
-        <item name="android:background">@drawable/title_bg</item>
+        <item name="android:background">@drawable/titlebg</item>
         <item name="android:paddingLeft">0.0dip</item>
         <item name="android:paddingRight">0.0dip</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    
+
+    <style name="loading_small" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@anim/loading</item>
+        <item name="android:layout_width">21dip</item>
+        <item name="android:layout_height">21dip</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
     <style name="title_text_style">
         <item name="android:textSize">20.0dip</item>
         <item name="android:textColor">@color/title_text_color</item>
     </style>
-    
+
+    <style name="h1_style">
+        <item name="android:textSize">20.0dip</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="setting_text_style">
         <item name="android:textSize">16.0dip</item>
         <item name="android:textColor">@color/black</item>

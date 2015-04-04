@@ -62,19 +62,19 @@ public class MainActivity extends FragmentActivity implements
         hideFragments(transaction);
         switch (index) {
             case ConstantValues.HOME_FRAGMENT_INDEX:
-                if (null == mHomeFragment) {
-                    mHomeFragment = new HomeFragment();
-                    transaction.add(R.id.center_layout, mHomeFragment);
-                } else {
-                    transaction.show(mHomeFragment);
-                }
-                break;
-            case ConstantValues.CATEGORY_FRAGMENT_INDEX:
                 if (null == mCategoryFragment) {
                     mCategoryFragment = new CategoryFragment();
                     transaction.add(R.id.center_layout, mCategoryFragment);
                 } else {
                     transaction.show(mCategoryFragment);
+                }
+                break;
+            case ConstantValues.CATEGORY_FRAGMENT_INDEX:
+                if (null == mHomeFragment) {
+                    mHomeFragment = new HomeFragment();
+                    transaction.add(R.id.center_layout, mHomeFragment);
+                } else {
+                    transaction.show(mHomeFragment);
                 }
                 break;
             case ConstantValues.COLLECT_FRAGMENT_INDEX:

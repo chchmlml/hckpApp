@@ -1,68 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical" >
-
+    android:orientation="vertical">
     <!-- title bar -->
-
     <include
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
+    <!--<com.haven.hckp.widght.PullToRefreshListView-->
+    <!--android:id="@+id/listview_order"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"/>-->
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/title_bar"
-        android:orientation="horizontal" >
-
-        <RelativeLayout
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1.0" >
-
-            <ListView
-                android:id="@+id/cate_listview"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/category_tabs_ly"
-                android:cacheColorHint="#00000000"
-                android:divider="@null"
-                android:listSelector="@android:color/transparent"
-                android:scrollbars="none" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--图-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/cate_indicator_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dip"
-                android:src="@drawable/category_tab_select_indicator" />
-        </RelativeLayout>
-
+                android:src="@drawable/geren"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+        <!--信息-->
         <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="3.0"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:id="@+id/image_btn"
-                android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--信息-->
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/image_layout_shape"
-                android:gravity="center"
-                android:padding="20dip"
-                android:src="@drawable/ic_launcher" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title_tv"
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="笔记本电脑（3箱/E3）"
+                        android:layout_centerInParent="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★★★★☆"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(256)"
+                        android:layout_centerInParent="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="重量：100kg"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="种类：电子产品"
+                        android:layout_centerInParent="true" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--目的地-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/qi"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            style="@style/h1_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="上海-上海货运"
+                            android:layout_centerInParent="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/zhong"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            style="@style/h1_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="北京-大兴区"
+                            android:layout_centerInParent="true" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ditu"
+                        android:layout_margin="10dp" />
+                    <TextView
+                        style="@style/h1_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1342km"
+                        android:layout_centerInParent="true" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/anim_fragment_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </FrameLayout>
-
-</RelativeLayout>
+</LinearLayout>
