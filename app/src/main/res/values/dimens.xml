@@ -8,4 +8,8 @@
     <dimen name="dimen_120px">53.28dp</dimen>
     <dimen name="dimen_30px">13.33dp</dimen>
 
+    <dimen name="padding_3px">3dp</dimen>
+    <dimen name="padding_5px">5dp</dimen>
+    <dimen name="padding_10px">10dp</dimen>
+
 </resources>

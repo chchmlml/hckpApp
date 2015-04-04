@@ -8,7 +8,7 @@
         android:id="@+id/mark_layout"
         android:layout_width="@dimen/dimen_120px"
         android:layout_height="match_parent"
-        android:background="@color/fuxk_settle_black_mark" />
+        android:background="@color/gray" />
 
     <com.haven.hckp.view.CustomRelativeLayout
         android:layout_width="0dip"
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_alignParentBottom="true"
-                android:background="@color/fuxk_base_divide_line_color" />
+                android:background="@color/gray" />
         </RelativeLayout>
 
         <ImageButton

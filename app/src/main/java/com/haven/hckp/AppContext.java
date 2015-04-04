@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.bean.OrderList;
 import com.haven.hckp.common.StringUtils;
 
 import java.io.File;
@@ -379,6 +380,31 @@ public class AppContext extends Application {
 			list = (NewsList) readObject(key);
 			if (list == null)
 				list = new NewsList();
+		}
+		return list;
+	}
+	public OrderList getOrderList() throws AppException {
+        OrderList list = null;
+		String key = "newslist_"+"_" + PAGE_SIZE;
+		if (isNetworkConnected() && (!isReadDataCache(key))) {
+			try {
+				list = ApiClient.getOrderList(this);
+				if (list != null ) {
+					Notice notice = list.getNotice();
+					list.setNotice(null);
+					list.setCacheKey(key);
+					saveObject(list, key);
+					list.setNotice(notice);
+				}
+			} catch (AppException e) {
+				list = (OrderList) readObject(key);
+				if (list == null)
+					throw e;
+			}
+		} else {
+			list = (OrderList) readObject(key);
+			if (list == null)
+				list = new OrderList();
 		}
 		return list;
 	}

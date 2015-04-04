@@ -2,12 +2,15 @@ package com.haven.hckp.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.haven.hckp.adapter.OrderAdapter;
 import com.haven.hckp.utils.LogUtils;
+import com.haven.hckp.widght.PullToRefreshListView;
 
 /**
  *
@@ -90,6 +93,5 @@ public abstract class BaseFragment extends Fragment {
 	/**
 	 * fragment name
 	 */
-	public abstract String getFragmentName();
-
+	public abstract String getFragmentName();;
 }

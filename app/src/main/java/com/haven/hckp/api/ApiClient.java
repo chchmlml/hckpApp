@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.bean.NewsList;
+import com.haven.hckp.bean.OrderList;
 import com.haven.hckp.bean.Result;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.bean.Update;
@@ -630,6 +631,21 @@ public class ApiClient {
 
         try{
             return NewsList.parse(http_get(appContext, newUrl));
+        }catch(Exception e){
+            if(e instanceof AppException)
+                throw (AppException)e;
+            throw AppException.network(e);
+        }
+    }
+    public static OrderList getOrderList(AppContext appContext) throws AppException {
+        String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
+            put("catalog", 1);
+            put("pageIndex", 1);
+            put("pageSize", 1);
+        }});
+
+        try{
+            return OrderList.parse(http_get(appContext, newUrl));
         }catch(Exception e){
             if(e instanceof AppException)
                 throw (AppException)e;
