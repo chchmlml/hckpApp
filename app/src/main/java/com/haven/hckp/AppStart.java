@@ -3,12 +3,11 @@ package com.haven.hckp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.activity.MainActivity;
 
 /**
  * 启动界面
@@ -21,7 +20,7 @@ public class AppStart extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final View view = View.inflate(this, R.layout.start, null);
+        final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
 
         //渐变展示启动屏
@@ -44,17 +43,17 @@ public class AppStart extends Activity {
 
         });
 
-        AppContext appContext = (AppContext) getApplication();
-        String cookie = appContext.getProperty("cookie");
-        if (StringUtils.isEmpty(cookie)) {
-            String cookie_name = appContext.getProperty("cookie_name");
-            String cookie_value = appContext.getProperty("cookie_value");
-            if (!StringUtils.isEmpty(cookie_name) && !StringUtils.isEmpty(cookie_value)) {
-                cookie = cookie_name + "=" + cookie_value;
-                appContext.setProperty("cookie", cookie);
-            }
-            Log.i(TAG, "cookie = " + cookie);
-        }
+        //AppContext appContext = (AppContext) getApplication();
+//        String cookie = appContext.getProperty("cookie");
+//        if (StringUtils.isEmpty(cookie)) {
+//            String cookie_name = appContext.getProperty("cookie_name");
+//            String cookie_value = appContext.getProperty("cookie_value");
+//            if (!StringUtils.isEmpty(cookie_name) && !StringUtils.isEmpty(cookie_value)) {
+//                cookie = cookie_name + "=" + cookie_value;
+//                appContext.setProperty("cookie", cookie);
+//            }
+//            Log.i(TAG, "cookie = " + cookie);
+//        }
     }
 
     /**
@@ -63,28 +62,28 @@ public class AppStart extends Activity {
      * @param time
      * @return
      */
-//    private long[] getTime(String time) {
-//        long res[] = new long[2];
-//        try {
-//            time = time.substring(0, time.indexOf("."));
-//            String t[] = time.split("-");
-//            res[0] = Long.parseLong(t[0]);
-//            if (t.length >= 2) {
-//                res[1] = Long.parseLong(t[1]);
-//            } else {
-//                res[1] = Long.parseLong(t[0]);
-//            }
-//        } catch (Exception e) {
-//        }
-//        return res;
-//    }
+    private long[] getTime(String time) {
+        long res[] = new long[2];
+        try {
+            time = time.substring(0, time.indexOf("."));
+            String t[] = time.split("-");
+            res[0] = Long.parseLong(t[0]);
+            if (t.length >= 2) {
+                res[1] = Long.parseLong(t[1]);
+            } else {
+                res[1] = Long.parseLong(t[0]);
+            }
+        } catch (Exception e) {
+        }
+        return res;
+    }
 
     /**
      * 跳转到...
      */
     private void redirectTo() {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

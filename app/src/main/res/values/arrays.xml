@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 首页导航 -->
+    <string-array name="bottom_bar_labels">
+        <item>@string/home</item>
+        <item>@string/category</item>
+        <item>@string/collect</item>
+        <item>@string/setting</item>
+    </string-array>
+    <!-- 分类 -->
+    <string-array name="cate_list">
+        <item>@string/recommend</item>
+        <item>@string/jacket</item>
+        <item>@string/skirt</item>
+        <item>@string/trousers</item>
+        <item>@string/shoes</item>
+        <item>@string/bag</item>
+        <item>@string/accessories</item>
+    </string-array>
+
+</resources>
