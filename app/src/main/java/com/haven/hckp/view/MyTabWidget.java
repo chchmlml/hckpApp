@@ -151,7 +151,7 @@ public class MyTabWidget extends LinearLayout {
             if ((Integer) (checkedTextView.getTag()) == index) {
                 LogUtils.i(TAG, mLabels[index] + " is selected...");
                 checkedTextView.setChecked(true);
-                checkedTextView.setTextColor(Color.rgb(247, 88, 123));
+                checkedTextView.setTextColor(Color.parseColor("#3a5182"));
                 mViewList.get(i).setBackgroundColor(Color.rgb(240, 241, 242));
             } else {
                 checkedTextView.setChecked(false);

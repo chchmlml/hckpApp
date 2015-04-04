@@ -34,7 +34,7 @@
 
     <style name="title_text_style">
         <item name="android:textSize">20.0dip</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/listitem_white</item>
     </style>
 
     <style name="h1_style">

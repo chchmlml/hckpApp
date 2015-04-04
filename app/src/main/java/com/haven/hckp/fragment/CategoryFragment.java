@@ -86,7 +86,7 @@ public class CategoryFragment extends BaseFragment implements
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container,
                 false);
-        appContext = (AppContext) view.getContext();
+        appContext = (AppContext) this.mActivity.getApplicationContext();
         return view;
     }
 
@@ -109,7 +109,7 @@ public class CategoryFragment extends BaseFragment implements
     private void initViews(View view) {
 
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
-        mTitleTv.setText(R.string.category);
+        mTitleTv.setText(R.string.home);
 
         listView = (PullToRefreshListView) view.findViewById(R.id.listview_order);
         orderHandler = this.getLvHandler(listView, orderAdapter);

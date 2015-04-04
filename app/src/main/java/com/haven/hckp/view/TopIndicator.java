@@ -110,7 +110,7 @@ public class TopIndicator extends LinearLayout {
 
             if (i == 0) {
                 itemName.setChecked(true);
-                itemName.setTextColor(Color.rgb(247, 88, 123));
+                itemName.setTextColor(Color.parseColor("#3a5182"));
             } else {
                 itemName.setChecked(false);
                 itemName.setTextColor(Color.rgb(19, 12, 14));
@@ -130,7 +130,7 @@ public class TopIndicator extends LinearLayout {
             if ((Integer) (checkedTextView.getTag()) == index) {
                 LogUtils.i(TAG, mLabels[index] + " is selected...");
                 checkedTextView.setChecked(true);
-                checkedTextView.setTextColor(Color.rgb(247, 88, 123));
+                checkedTextView.setTextColor(Color.parseColor("#3a5182"));
             } else {
                 checkedTextView.setChecked(false);
                 checkedTextView.setTextColor(Color.rgb(19, 12, 14));
