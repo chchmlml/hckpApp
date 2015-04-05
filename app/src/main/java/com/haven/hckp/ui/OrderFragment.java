@@ -13,18 +13,13 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
-import com.haven.hckp.adapter.CateListAdapter;
 import com.haven.hckp.adapter.ListViewNewsAdapter;
-import com.haven.hckp.adapter.OrderAdapter;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
@@ -39,27 +34,30 @@ import java.util.Date;
 import java.util.List;
 
 
-public class CategoryFragment extends BaseFragment implements
+public class OrderFragment extends BaseFragment implements
         OnItemClickListener, OnClickListener, OnFragmentDismissListener {
 
     private static final String TAG = "CategoryFragment";
     private Activity mActivity;
     private TextView mTitleTv;
-    private ListView mCateListView;
-    private CateListAdapter mCateListAdapter;
-    private String[] mCategories;
-    private ImageView mCateIndicatorImg;
-    private int mFromY = 0;
-    private ImageButton mImageBtn;
-
-    private PullToRefreshListView listView;
-    private OrderAdapter orderAdapter;
-
     private AppContext appContext;
 
-    public static CategoryFragment newInstance() {
-        CategoryFragment categoryFragment = new CategoryFragment();
-        return categoryFragment;
+    private Handler lvNewsHandler;
+
+    private List<News> lvNewsData = new ArrayList<News>();
+    private int lvNewsSumData;
+    private ListViewNewsAdapter lvNewsAdapter;
+    private TextView lvNews_foot_more;
+    private ProgressBar lvNews_foot_progress;
+    private PullToRefreshListView lvNews;
+    private int curNewsCatalog = NewsList.CATALOG_ALL;
+    private View lvNews_footer;
+    private View mView;
+    private LayoutInflater inflater;
+
+    public static OrderFragment newInstance() {
+        OrderFragment OrderFragment = new OrderFragment();
+        return OrderFragment;
     }
 
     @Override
@@ -77,7 +75,7 @@ public class CategoryFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.inflater = inflater;
-        mView = this.inflater.inflate(R.layout.fragment_category, container,false);
+        mView = this.inflater.inflate(R.layout.order_fragment, container,false);
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
     }
@@ -93,19 +91,6 @@ public class CategoryFragment extends BaseFragment implements
         super.onActivityCreated(savedInstanceState);
 
     }
-
-    private Handler lvNewsHandler;
-
-    private List<News> lvNewsData = new ArrayList<News>();
-    private int lvNewsSumData;
-    private ListViewNewsAdapter lvNewsAdapter;
-    private TextView lvNews_foot_more;
-    private ProgressBar lvNews_foot_progress;
-    private PullToRefreshListView lvNews;
-    private int curNewsCatalog = NewsList.CATALOG_ALL;
-    private View lvNews_footer;
-    private View mView;
-    private LayoutInflater inflater;
 
     private void initViews(View view) {
 
@@ -280,29 +265,29 @@ public class CategoryFragment extends BaseFragment implements
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
 
-        // lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        // public void onItemClick(AdapterView<?> parent, View view,
-        // int position, long id) {
-        // // 点击头部、底部栏无效
-        // if (position == 0 || view == lvNews_footer)
-        // return;
-        //
-        // News news = null;
-        // // 判断是否是TextView
-        // if (view instanceof TextView) {
-        // news = (News) view.getTag();
-        // } else {
-        // TextView tv = (TextView) view
-        // .findViewById(R.id.news_listitem_title);
-        // news = (News) tv.getTag();
-        // }
-        // if (news == null)
-        // return;
-        //
-        // // 跳转到新闻详情
-        // UIHelper.showNewsRedirect(view.getContext(), news);
-        // }
-        // });
+        lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                //点击头部、底部栏无效
+                if (position == 0 || view == lvNews_footer)
+                    return;
+
+                News news = null;
+                // 判断是否是TextView
+//                if (view instanceof TextView) {
+//                    news = (News) view.getTag();
+//                } else {
+//                    TextView tv = (TextView) view
+//                            .findViewById(R.id.news_listitem_title);
+//                    news = (News) tv.getTag();
+//                }
+//                if (news == null)
+//                    return;
+
+                // 跳转到新闻详情
+                UIHelper.showNewsRedirect(appContext, news);
+            }
+        });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
             public void onScrollStateChanged(AbsListView view, int scrollState) {
                 lvNews.onScrollStateChanged(view, scrollState);

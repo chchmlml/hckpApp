@@ -81,7 +81,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
             listItemView.orderStart = (TextView) convertView.findViewById(R.id.order_start);
             listItemView.orderEnd = (TextView) convertView.findViewById(R.id.order_end);
             listItemView.orderLength = (TextView) convertView.findViewById(R.id.order_length);
-			listItemView.orderThumd = (ImageView) convertView.findViewById(R.id.order_thumd);
 
 			// 设置控件集到convertView
 			convertView.setTag(listItemView);

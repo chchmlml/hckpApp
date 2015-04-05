@@ -19,7 +19,7 @@ public class MainActivity extends FragmentActivity implements
     private static final String TAG = "MainActivity";
     private MyTabWidget mTabWidget;
     private HomeFragment mHomeFragment;
-    private CategoryFragment mCategoryFragment;
+    private OrderFragment mOrderFragment;
     private CollectFragment mCollectFragment;
     private SettingFragment mSettingFragment;
     private int mIndex = ConstantValues.HOME_FRAGMENT_INDEX;
@@ -58,11 +58,11 @@ public class MainActivity extends FragmentActivity implements
         hideFragments(transaction);
         switch (index) {
             case ConstantValues.HOME_FRAGMENT_INDEX:
-                if (null == mCategoryFragment) {
-                    mCategoryFragment = new CategoryFragment();
-                    transaction.add(R.id.center_layout, mCategoryFragment);
+                if (null == mOrderFragment) {
+                    mOrderFragment = new OrderFragment();
+                    transaction.add(R.id.center_layout, mOrderFragment);
                 } else {
-                    transaction.show(mCategoryFragment);
+                    transaction.show(mOrderFragment);
                 }
                 break;
             case ConstantValues.CATEGORY_FRAGMENT_INDEX:
@@ -101,8 +101,8 @@ public class MainActivity extends FragmentActivity implements
         if (null != mHomeFragment) {
             transaction.hide(mHomeFragment);
         }
-        if (null != mCategoryFragment) {
-            transaction.hide(mCategoryFragment);
+        if (null != mOrderFragment) {
+            transaction.hide(mOrderFragment);
         }
         if (null != mCollectFragment) {
             transaction.hide(mCollectFragment);

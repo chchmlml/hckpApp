@@ -4,14 +4,29 @@
     <string name="app_name">货车快跑</string>
 
     <string name="home">首页</string>
-    <string name="category">我的订单</string>
+    <string name="order">我的订单</string>
     <string name="collect">我的调度</string>
     <string name="setting">我的快跑</string>
-    
+    <string name="order_detail">订单详情</string>
+
+    <!--订单详情-->
+    <string name="order_detail_tag1">订单状态：</string>
+    <string name="order_detail_tag2">商品总价：</string>
+    <string name="order_detail_tag3">应付总额：</string>
+    <string name="order_detail_tag4">物流信息：</string>
+    <string name="order_detail_tag5">运单号：</string>
+    <string name="order_detail_tag6">下单日期：</string>
+    <string name="order_detail_tag7">订单编号：</string>
+    <string name="order_detail_tag8">收货地址：</string>
+    <string name="order_detail_tag9">收货时间：</string>
+    <string name="order_detail_tag10">发票类型：</string>
+    <string name="order_detail_tag11">发票抬头：</string>
+
     <!-- 设置 -->
     <string name="carteam">我的车队</string>
     <string name="personal">个人信息</string>
     <string name="other">其他高级设置</string>
+    <string name="report_price">我要报价</string>
 
     <string name="main_menu_login">用户登录</string>
     <string name="main_menu_logout">注销登录</string>

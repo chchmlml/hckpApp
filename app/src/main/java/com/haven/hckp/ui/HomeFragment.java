@@ -63,7 +63,7 @@ public class HomeFragment extends BaseFragment implements OnTopIndicatorListener
 
     private void initViews(View view) {
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
-        mTitleTv.setText(R.string.category);
+        mTitleTv.setText(R.string.order);
 
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
         mPagerAdapter = new TabPagerAdapter(getFragmentManager());

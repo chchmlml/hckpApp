@@ -11,5 +11,6 @@
     <dimen name="padding_3px">3dp</dimen>
     <dimen name="padding_5px">5dp</dimen>
     <dimen name="padding_10px">10dp</dimen>
+    <dimen name="padding_20px">20dp</dimen>
 
 </resources>

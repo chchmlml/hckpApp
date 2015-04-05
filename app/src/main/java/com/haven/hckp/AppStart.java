@@ -52,7 +52,7 @@ public class AppStart extends Activity {
                 redirectTo();
                 finish();
             }
-        }, 3000);
+        }, 500);
 
         //AppContext appContext = (AppContext) getApplication();
 //        String cookie = appContext.getProperty("cookie");

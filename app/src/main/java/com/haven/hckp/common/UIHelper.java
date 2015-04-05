@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.ui.OrderDetailActivity;
 
 /**
  * 应用程序UI工具包：封装UI相关的一些操作
@@ -84,17 +86,7 @@ public class UIHelper {
 	// context.startActivity(intent);
 	// }
 	//
-	// /**
-	// * 显示新闻详情
-	// *
-	// * @param context
-	// * @param newsId
-	// */
-	// public static void showNewsDetail(Context context, int newsId) {
-	// Intent intent = new Intent(context, NewsDetail.class);
-	// intent.putExtra("news_id", newsId);
-	// context.startActivity(intent);
-	// }
+
 	//
 	// /**
 	// * 显示帖子详情
@@ -184,40 +176,29 @@ public class UIHelper {
 	// context.startActivity(intent);
 	// }
 	//
-	// /**
-	// * 新闻超链接点击跳转
-	// *
-	// * @param context
-	// * @param newsId
-	// * @param newsType
-	// * @param objId
-	// */
-	// public static void showNewsRedirect(Context context, News news) {
-	// String url = news.getUrl();
-	// // url为空-旧方法
-	// if (StringUtils.isEmpty(url)) {
-	// int newsId = news.getId();
-	// int newsType = news.getNewType().type;
-	// String objId = news.getNewType().attachment;
-	// switch (newsType) {
-	// case News.NEWSTYPE_NEWS:
-	// showNewsDetail(context, newsId);
-	// break;
-	// case News.NEWSTYPE_SOFTWARE:
-	// showSoftwareDetail(context, objId);
-	// break;
-	// case News.NEWSTYPE_POST:
-	// showQuestionDetail(context, StringUtils.toInt(objId));
-	// break;
-	// case News.NEWSTYPE_BLOG:
-	// showBlogDetail(context, StringUtils.toInt(objId));
-	// break;
-	// }
-	// } else {
-	// showUrlRedirect(context, url);
-	// }
-	// }
-	//
+
+    /**
+     * 新闻超链接点击跳转
+     */
+    public static void showNewsRedirect(Context context, News news) {
+        Intent intent = new Intent(context, OrderDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("news_id", 111);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 显示新闻详情
+     *
+     * @param context
+     * @param newsId
+     */
+    public static void showNewsDetail(Context context, int newsId) {
+//        Intent intent = new Intent(context, NewsDetail.class);
+//        intent.putExtra("news_id", newsId);
+//        context.startActivity(intent);
+    }
+
 	// /**
 	// * 动态点击跳转到相关新闻、帖子等
 	// *
