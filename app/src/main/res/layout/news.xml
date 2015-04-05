@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- <com.haven.logisticapp.widget.ScrollLayout
+        android:id="@+id/main_scrolllayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+        
+    </com.haven.logisticapp.widget.ScrollLayout> -->
+
+     
+	<com.haven.hckp.widght.PullToRefreshListView
+	  	android:id="@+id/frame_listview_news"
+	    style="@style/widget_listview"/>
+
+</LinearLayout>

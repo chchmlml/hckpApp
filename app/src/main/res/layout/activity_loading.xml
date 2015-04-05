@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom"
+    android:background="#e1e1e1">
+
+    <com.haven.hckp.widght.LoadingView
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_imageview"
+        android:src="@drawable/loader_frame_1"
+        android:layout_width="wrap_content"></com.haven.hckp.widght.LoadingView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动中..."
+        android:layout_marginTop="10dip"
+        android:textColor="#666666"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp" />
+</LinearLayout>

@@ -29,8 +29,8 @@ public class TopIndicator extends LinearLayout {
             R.drawable.bg_setting};
     private List<CheckedTextView> mCheckedList = new ArrayList<CheckedTextView>();
     private List<View> mViewList = new ArrayList<View>();
-    private CharSequence[] mLabels = new CharSequence[]{"精选", "发现", "团购",
-            "榜单"};
+    private CharSequence[] mLabels = new CharSequence[]{"全部订单", "执行中", "未执行",
+            "已完成"};
     private int mScreenWidth;
     private int mUnderLineWidth;
     private View mUnderLine;
@@ -85,9 +85,9 @@ public class TopIndicator extends LinearLayout {
 
             final CheckedTextView itemName = (CheckedTextView) view
                     .findViewById(R.id.item_name);
-            itemName.setCompoundDrawablesWithIntrinsicBounds(context
-                            .getResources().getDrawable(mDrawableIds[i]), null, null,
-                    null);
+//            itemName.setCompoundDrawablesWithIntrinsicBounds(context
+//                            .getResources().getDrawable(mDrawableIds[i]), null, null,
+//                    null);
             itemName.setCompoundDrawablePadding(10);
             itemName.setText(mLabels[i]);
 

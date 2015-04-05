@@ -8,8 +8,8 @@
         android:color="@color/dim_foreground_light_inverse_disabled" />
 
     <padding
-        android:bottom="1dp"
-        android:left="1dp"
-        android:right="1dp"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
         android:top="0dp" />
 </shape>

@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <!-- 推荐给微信好友 -->
+            <!-- 头像 -->
 
             <RelativeLayout
-                android:id="@+id/recommond_to_weixin_layout"
+                android:id="@+id/clear_cache_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
@@ -36,7 +36,7 @@
                     style="@style/setting_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommend_to_weixin_friend" />
+                    android:text="@string/clear_cache" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -132,30 +132,6 @@
                         android:src="@drawable/setting_arrow" />
                 </RelativeLayout>
             </LinearLayout>
-            
-            <!-- 清除缓存 -->
-
-            <RelativeLayout
-                android:id="@+id/clear_cache_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:background="@drawable/setting_bg" >
-
-                <TextView
-                    style="@style/setting_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/clear_cache" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dip"
-                    android:src="@drawable/setting_arrow" />
-            </RelativeLayout>
             
         </LinearLayout>
     </ScrollView>
