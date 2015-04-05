@@ -24,6 +24,7 @@ public class URLs implements Serializable {
 	
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
 	public final static String NEWS_LIST = URL_API_HOST+"?apikey=app_driver&entrance=offerPrice";
+	public final static String NEWS_DETAIL = URL_API_HOST+"?apikey=app_driver&entrance=inquiryDetail";
 
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 

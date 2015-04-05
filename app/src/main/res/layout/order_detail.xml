@@ -10,106 +10,132 @@
         layout="@layout/title_bar" />
 
     <LinearLayout
+        android:id="@+id/linear_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_20px"
+        android:layout_marginTop="50dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/listview_foot_progress"
+            style="@style/loading_small" />
+
+        <TextView
+            android:id="@+id/listview_foot_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/listitem_black"
+            android:text="@string/load_ing" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_20px"
         android:layout_marginTop="50dip"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag1" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/order_detail_tag1" />-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_weight="1">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="已收货" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag2" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/order_detail_tag2" />-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_weight="1">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="已收货" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag3" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/order_detail_tag3" />-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_weight="1">-->
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/order_detail_style"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="已收货" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_20px"
+            android:padding="@dimen/padding_5px"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -130,16 +156,20 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/location_info"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已收货" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="1dip"
+            android:padding="@dimen/padding_5px"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -160,10 +190,11 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/tean_car_name"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已收货" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
@@ -171,6 +202,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_20px"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -191,16 +224,20 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/start_time"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已收货" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_20px"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -221,16 +258,19 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/end_time"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已收货" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -251,133 +291,46 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/desc"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag9" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag10" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag11" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已收货" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/order_border"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal|center_vertical"
         android:padding="@dimen/padding_10px"
+        android:visibility="gone"
         android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="120dip"
-                android:layout_height="35dip"
-                android:background="@drawable/bg_edittext"
-                android:textColor="@color/black"
-                android:layout_marginRight="10dip"
-                android:paddingLeft="2dip"
-                android:inputType="numberDecimal"
-                android:singleLine="true"/>
+        <EditText
+            android:layout_width="120dip"
+            android:layout_height="35dip"
+            android:background="@drawable/bg_edittext"
+            android:textColor="@color/black"
+            android:layout_marginRight="10dip"
+            android:paddingLeft="2dip"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
 
-            <Button
-                android:layout_width="120dip"
-                android:layout_height="35dip"
-                android:layout_marginTop="5dip"
-                android:layout_marginRight="10dip"
-                android:layout_margin="0dip"
-                android:background="@drawable/btn_selector"
-                android:text="@string/report_price"
-                android:id="@+id/button" />
+        <Button
+            android:layout_width="120dip"
+            android:layout_height="35dip"
+            android:layout_marginTop="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_margin="0dip"
+            android:background="@drawable/btn_selector"
+            android:text="@string/report_price"
+            android:id="@+id/button" />
     </LinearLayout>
 
 </RelativeLayout>

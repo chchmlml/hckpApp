@@ -183,7 +183,7 @@ public class UIHelper {
     public static void showNewsRedirect(Context context, News news) {
         Intent intent = new Intent(context, OrderDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("news_id", 111);
+        intent.putExtra("news_id", news.getTp_diy_id());
         context.startActivity(intent);
     }
 

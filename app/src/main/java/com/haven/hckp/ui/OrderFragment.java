@@ -28,11 +28,6 @@ import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -273,15 +268,15 @@ public class OrderFragment extends BaseFragment implements
 
                 News news = null;
                 // 判断是否是TextView
-//                if (view instanceof TextView) {
-//                    news = (News) view.getTag();
-//                } else {
-//                    TextView tv = (TextView) view
-//                            .findViewById(R.id.news_listitem_title);
-//                    news = (News) tv.getTag();
-//                }
-//                if (news == null)
-//                    return;
+                if (view instanceof TextView) {
+                    news = (News) view.getTag();
+                } else {
+                    TextView tv = (TextView) view
+                            .findViewById(R.id.order_title);
+                    news = (News) tv.getTag();
+                }
+                if (news == null)
+                    return;
 
                 // 跳转到新闻详情
                 UIHelper.showNewsRedirect(appContext, news);

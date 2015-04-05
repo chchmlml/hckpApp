@@ -121,7 +121,7 @@ public class ApiClient {
         return httpPost;
     }
 
-    private static String _MakeURL(String p_url, Map<String, Object> params) {
+    public static String _MakeURL(String p_url, Map<String, Object> params) {
         StringBuilder url = new StringBuilder(p_url);
         if(url.indexOf("?")<0)
             url.append('?');
