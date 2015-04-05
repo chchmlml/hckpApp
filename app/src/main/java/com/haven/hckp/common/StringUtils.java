@@ -54,6 +54,26 @@ public class StringUtils {
 		}
 	}
 
+    public static String inputStreamToStr(InputStream inputStream){
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
+    }
+
 	/**
 	 * 以友好的方式显示时间
 	 * 

@@ -15,7 +15,7 @@ import java.net.URLEncoder;
  */
 public class URLs implements Serializable {
 	
-	public final static String HOST = "www.oschina.net";//192.168.1.213  www.oschina.net
+	public final static String HOST = "182.92.219.85";
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
 	
@@ -23,10 +23,11 @@ public class URLs implements Serializable {
 	private final static String URL_UNDERLINE = "_";
 	
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
-	public final static String NEWS_LIST = URL_API_HOST+"action/api/news_list";
+	public final static String NEWS_LIST = URL_API_HOST+"?apikey=app_driver&entrance=offerPrice";
+
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 
-	private final static String URL_HOST = "oschina.net";
+	private final static String URL_HOST = "182.92.219.85";
 	private final static String URL_WWW_HOST = "www."+URL_HOST;
 	private final static String URL_MY_HOST = "my."+URL_HOST;
 	

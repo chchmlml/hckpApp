@@ -22,14 +22,11 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
 	static class ListItemView { // 自定义控件集合
 		public TextView orderTitle;
-		public TextView orderRank;
-        public TextView orderScore;
-        public TextView orderAttr_1;
-        public TextView orderAttr_2;
-        public TextView orderStart;
-        public TextView orderEnd;
+		public TextView orderTitle2;
+        public TextView orderDesc;
+        public TextView orderStarttime;
+        public TextView orderEndtime;
         public TextView orderLength;
-		public ImageView orderThumd;
 	}
 
 	/**
@@ -74,12 +71,10 @@ public class ListViewNewsAdapter extends BaseAdapter {
 			listItemView = new ListItemView();
 			// 获取控件对象
             listItemView.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
-            listItemView.orderRank = (TextView) convertView.findViewById(R.id.order_rank);
-            listItemView.orderScore = (TextView) convertView.findViewById(R.id.order_score);
-            listItemView.orderAttr_1 = (TextView) convertView.findViewById(R.id.order_attr_2);
-            listItemView.orderAttr_2 = (TextView) convertView.findViewById(R.id.order_attr_2);
-            listItemView.orderStart = (TextView) convertView.findViewById(R.id.order_start);
-            listItemView.orderEnd = (TextView) convertView.findViewById(R.id.order_end);
+            listItemView.orderTitle2 = (TextView) convertView.findViewById(R.id.order_title2);
+            listItemView.orderDesc = (TextView) convertView.findViewById(R.id.order_desc);
+            listItemView.orderStarttime = (TextView) convertView.findViewById(R.id.order_starttime);
+            listItemView.orderEndtime = (TextView) convertView.findViewById(R.id.order_endtime);
             listItemView.orderLength = (TextView) convertView.findViewById(R.id.order_length);
 
 			// 设置控件集到convertView
@@ -91,14 +86,13 @@ public class ListViewNewsAdapter extends BaseAdapter {
 		// 设置文字和图片
 		News news = listItems.get(position);
 
-		listItemView.orderTitle.setText(news.getTitle());
-		listItemView.orderRank.setTag(news);
-        listItemView.orderScore.setText(news.getAuthor());
-        listItemView.orderAttr_1.setText(StringUtils.friendly_time(news.getPubDate()));
-        listItemView.orderAttr_2.setText(news.getCommentCount() + "");
-        listItemView.orderStart.setText(news.getAuthor());
-        listItemView.orderEnd.setText(StringUtils.friendly_time(news.getPubDate()));
-        listItemView.orderLength.setText(news.getCommentCount() + "");
+		listItemView.orderTitle.setText(news.getTp_diy_start_city() + "-" + news.getTp_diy_end_city());
+		listItemView.orderTitle.setTag(news);
+        listItemView.orderDesc.setText(news.getTp_diy_desc());
+        listItemView.orderStarttime.setText(news.getTp_diy_startdate());
+        listItemView.orderEndtime.setText(news.getTp_diy_enddate());
+        listItemView.orderLength.setText(news.getTp_diy_kms());
+        listItemView.orderTitle2.setText(news.getTp_tc_name());
 
 		return convertView;
 	}

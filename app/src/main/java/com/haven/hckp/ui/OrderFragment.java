@@ -28,6 +28,11 @@ import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,7 +42,7 @@ import java.util.List;
 public class OrderFragment extends BaseFragment implements
         OnItemClickListener, OnClickListener, OnFragmentDismissListener {
 
-    private static final String TAG = "CategoryFragment";
+    private static final String TAG = "OrderFragment";
     private Activity mActivity;
     private TextView mTitleTv;
     private AppContext appContext;
@@ -75,7 +80,7 @@ public class OrderFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.inflater = inflater;
-        mView = this.inflater.inflate(R.layout.order_fragment, container,false);
+        mView = this.inflater.inflate(R.layout.order_fragment, container, false);
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
     }
@@ -96,9 +101,7 @@ public class OrderFragment extends BaseFragment implements
 
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.home);
-
-        Log.i(TAG, "--->initViews");
-        // 初始化部件，数据
+//        // 初始化部件，数据
         this.initFrameButton();
         this.initFrameListView();
 
@@ -175,14 +178,10 @@ public class OrderFragment extends BaseFragment implements
     /**
      * listview数据处理
      *
-     * @param what
-     *            数量
-     * @param obj
-     *            数据
-     * @param objtype
-     *            数据类型
-     * @param actiontype
-     *            操作类型
+     * @param what       数量
+     * @param obj        数据
+     * @param objtype    数据类型
+     * @param actiontype 操作类型
      * @return notice 通知信息
      */
     private Notice handleLvData(int what, Object obj, int objtype, int actiontype) {

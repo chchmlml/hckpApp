@@ -7,7 +7,9 @@ import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
@@ -32,7 +34,7 @@ import java.util.UUID;
  */
 public class AppContext extends Application {
 
-	public static final int PAGE_SIZE = 20;// 默认分页大小
+	public static final int PAGE_SIZE = 10;// 默认分页大小
 	private static final int CACHE_TIME = 60 * 60000;// 缓存失效时间
 
 	private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
@@ -351,17 +353,12 @@ public class AppContext extends Application {
 
 	/**
 	 * 新闻列表
-	 * 
-	 * @param catalog
-	 * @param pageIndex
-	 * @param pageSize
-	 * @return
-	 * @throws ApiException
 	 */
 	public NewsList getNewsList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
 		NewsList list = null;
-		String key = "newslist_" + catalog + "_" + pageIndex + "_" + PAGE_SIZE;
-		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+		String key = "orderlist_" + catalog + "_" + pageIndex + "_" + PAGE_SIZE;
+		//if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+		if (isNetworkConnected()) {
 			try {
 				list = ApiClient.getNewsList(this, catalog, pageIndex, PAGE_SIZE);
 				if (list != null && pageIndex == 0) {
@@ -383,31 +380,31 @@ public class AppContext extends Application {
 		}
 		return list;
 	}
-	public OrderList getOrderList() throws AppException {
-        OrderList list = null;
-		String key = "newslist_"+"_" + PAGE_SIZE;
-		if (isNetworkConnected() && (!isReadDataCache(key))) {
-			try {
-				list = ApiClient.getOrderList(this);
-				if (list != null ) {
-					Notice notice = list.getNotice();
-					list.setNotice(null);
-					list.setCacheKey(key);
-					saveObject(list, key);
-					list.setNotice(notice);
-				}
-			} catch (AppException e) {
-				list = (OrderList) readObject(key);
-				if (list == null)
-					throw e;
-			}
-		} else {
-			list = (OrderList) readObject(key);
-			if (list == null)
-				list = new OrderList();
-		}
-		return list;
-	}
+//	public OrderList getOrderList() throws AppException {
+//        OrderList list = null;
+//		String key = "newslist_"+"_" + PAGE_SIZE;
+//		if (isNetworkConnected() && (!isReadDataCache(key))) {
+//			try {
+//				list = ApiClient.getOrderList(this);
+//				if (list != null ) {
+//					Notice notice = list.getNotice();
+//					list.setNotice(null);
+//					list.setCacheKey(key);
+//					saveObject(list, key);
+//					list.setNotice(notice);
+//				}
+//			} catch (AppException e) {
+//				list = (OrderList) readObject(key);
+//				if (list == null)
+//					throw e;
+//			}
+//		} else {
+//			list = (OrderList) readObject(key);
+//			if (list == null)
+//				list = new OrderList();
+//		}
+//		return list;
+//	}
 
 	/**
 	 * 检测网络是否可用

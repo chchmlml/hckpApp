@@ -2,7 +2,9 @@ package com.haven.hckp.api;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.bean.NewsList;
@@ -14,6 +16,10 @@ import com.haven.hckp.bean.WellcomeImage;
 import com.haven.hckp.common.FileUtils;
 import com.haven.hckp.common.ImageUtils;
 import com.haven.hckp.common.StringUtils;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
@@ -132,6 +138,26 @@ public class ApiClient {
         return url.toString().replace("?&", "?");
     }
 
+//    private static String http_get_new(String newUrl)
+//    {
+//        HttpUtils http = new HttpUtils();
+//        http.send(
+//                HttpRequest.HttpMethod.GET,
+//                newUrl,
+//                new RequestCallBack<Object>() {
+//                    @Override
+//                    public void onSuccess(ResponseInfo<Object> objectResponseInfo) {
+//                        return objectResponseInfo.result;
+//                    }
+//
+//                    @Override
+//                    public void onFailure(com.lidroid.xutils.exception.HttpException e, String s) {
+//
+//                    }
+//                }
+//        );
+//    }
+
     /**
      * get请求URL
      * @param url
@@ -179,7 +205,9 @@ public class ApiClient {
                 // 发生网络异常
                 e.printStackTrace();
                 throw AppException.network(e);
-            } finally {
+            }  catch (Exception e)
+            {
+            }finally {
                 // 释放连接
                 httpGet.releaseConnection();
                 httpClient = null;
@@ -614,20 +642,18 @@ public class ApiClient {
 //	}
 //
     /**
-     * 获取资讯列表
-     * @param url
-     * @param catalog
-     * @param pageIndex
-     * @param pageSize
-     * @return
+     * 获取报价单列表
      * @throws AppException
      */
     public static NewsList getNewsList(AppContext appContext, final int catalog, final int pageIndex, final int pageSize) throws AppException {
         String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
-            put("catalog", catalog);
-            put("pageIndex", pageIndex);
-            put("pageSize", pageSize);
+            put("start", pageIndex);
+            put("len", pageSize);
         }});
+
+        Log.i("haven","--->" + newUrl);
+
+        //return NewsList.parse(http_get_new(newUrl));
 
         try{
             return NewsList.parse(http_get(appContext, newUrl));
@@ -637,21 +663,21 @@ public class ApiClient {
             throw AppException.network(e);
         }
     }
-    public static OrderList getOrderList(AppContext appContext) throws AppException {
-        String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
-            put("catalog", 1);
-            put("pageIndex", 1);
-            put("pageSize", 1);
-        }});
-
-        try{
-            return OrderList.parse(http_get(appContext, newUrl));
-        }catch(Exception e){
-            if(e instanceof AppException)
-                throw (AppException)e;
-            throw AppException.network(e);
-        }
-    }
+//    public static OrderList getOrderList(AppContext appContext) throws AppException {
+//        String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
+//            put("catalog", 1);
+//            put("pageIndex", 1);
+//            put("pageSize", 1);
+//        }});
+//
+//        try{
+//            return OrderList.parse(http_get(appContext, newUrl));
+//        }catch(Exception e){
+//            if(e instanceof AppException)
+//                throw (AppException)e;
+//            throw AppException.network(e);
+//        }
+//    }
 
 
     /**
