@@ -28,23 +28,19 @@
             <RelativeLayout
                 android:id="@+id/clear_cache_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginBottom="20dip"
                 android:background="@drawable/setting_bg" >
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     style="@style/setting_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/clear_cache" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="15dip"
-                    android:src="@drawable/setting_arrow" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:text="头像" />
+
             </RelativeLayout>
 
             <!-- 反馈意见  关于我们  应用推荐 -->
@@ -63,11 +59,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" >
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dip"
+                        android:src="@drawable/che" />
+
                     <TextView
                         style="@style/setting_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/feedback" />
+                        android:layout_marginLeft="40dip"
+                        android:text="@string/carteam" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -90,11 +95,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" >
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dip"
+                        android:src="@drawable/geren" />
+
                     <TextView
                         style="@style/setting_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/about_us" />
+                        android:layout_marginLeft="40dip"
+                        android:text="@string/personal" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -117,11 +131,20 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" >
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dip"
+                        android:src="@drawable/shezhi" />
+
                     <TextView
                         style="@style/setting_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_recommend" />
+                        android:layout_marginLeft="40dip"
+                        android:text="@string/other" />
 
                     <ImageView
                         android:layout_width="wrap_content"

@@ -8,25 +8,10 @@
     <string name="collect">我的调度</string>
     <string name="setting">我的快跑</string>
     
-    <!-- 分类列表 -->
-    <string name="recommend">推荐</string>
-    <string name="jacket">上衣</string>
-    <string name="skirt">裙子</string>
-    <string name="trousers">裤子</string>
-    <string name="shoes">鞋子</string>
-    <string name="bag">包包</string>
-    <string name="accessories">配饰</string>
-    
     <!-- 设置 -->
-    <string name="recommend_to_weixin_friend">推荐给微信好友</string>
-    <string name="feedback">意见反馈</string>
-    <string name="about_us">关于我们</string>
-    <string name="app_recommend">应用推荐</string>
-    <string name="clear_cache">清除缓存</string>
-    <string name="mobile_number">手机号</string>
-    <string name="mobile_number_hint">方便我们尽快反馈</string>
-    <string name="content_edit_hint">欢迎在这儿发表宝贵的意见哦~</string>
-    <string name="title_activity_start">start</string>
+    <string name="carteam">我的车队</string>
+    <string name="personal">个人信息</string>
+    <string name="other">其他高级设置</string>
 
     <string name="main_menu_login">用户登录</string>
     <string name="main_menu_logout">注销登录</string>
