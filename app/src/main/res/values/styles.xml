@@ -64,6 +64,12 @@
         <item name="android:padding">3dip</item>
     </style>
 
+    <style name="order_start_style">
+        <item name="android:textSize">12.0dip</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:padding">3dip</item>
+    </style>
+
     <style name="order_title_style">
         <item name="android:textSize">14.0dip</item>
         <item name="android:textColor">@color/black</item>

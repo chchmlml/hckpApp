@@ -1,4 +1,4 @@
-package com.haven.hckp.view;
+package com.haven.hckp.widght;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import com.haven.hckp.R;
 import com.haven.hckp.exception.CustomException;
-import com.haven.hckp.utils.LogUtils;
+import com.haven.hckp.common.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

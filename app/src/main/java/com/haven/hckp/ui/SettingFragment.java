@@ -1,4 +1,4 @@
-package com.haven.hckp.fragment;
+package com.haven.hckp.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.haven.hckp.R;
-import com.haven.hckp.activity.FeedBackActivity;
-import com.haven.hckp.utils.CommonUtils;
 
 /**
  *
@@ -68,7 +66,6 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		mTitleTv = (TextView) view.findViewById(R.id.title_tv);
 		mTitleTv.setText(R.string.setting);
 		
-		mRecommondToWeixinLayout = (RelativeLayout) view.findViewById(R.id.recommond_to_weixin_layout);
 		mFeedbackLayout = (RelativeLayout) view.findViewById(R.id.feedback_layout);
 		mAboutUsLayout = (RelativeLayout) view.findViewById(R.id.about_us_layout);
 		mAppRecommendLayout = (RelativeLayout) view.findViewById(R.id.app_recommend_layout);
@@ -76,11 +73,10 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 	}
 	
 	private void initEvents() {
-		mRecommondToWeixinLayout.setOnClickListener(this);
-		mFeedbackLayout.setOnClickListener(this);
-		mAboutUsLayout.setOnClickListener(this);
-		mAppRecommendLayout.setOnClickListener(this);
-		mClearCacheLayout.setOnClickListener(this);
+//		mFeedbackLayout.setOnClickListener(this);
+//		mAboutUsLayout.setOnClickListener(this);
+//		mAppRecommendLayout.setOnClickListener(this);
+//		mClearCacheLayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -101,10 +97,7 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.recommond_to_weixin_layout:
-			break;
 		case R.id.feedback_layout:
-			CommonUtils.launchActivity(mActivity, FeedBackActivity.class);
 			break;
 		case R.id.about_us_layout:
 			break;

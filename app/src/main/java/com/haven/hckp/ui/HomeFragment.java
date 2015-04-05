@@ -1,4 +1,4 @@
-package com.haven.hckp.fragment;
+package com.haven.hckp.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.haven.hckp.R;
-import com.haven.hckp.view.TopIndicator;
-import com.haven.hckp.view.TopIndicator.OnTopIndicatorListener;
+import com.haven.hckp.widght.TopIndicator;
+import com.haven.hckp.widght.TopIndicator.OnTopIndicatorListener;
 
 public class HomeFragment extends BaseFragment implements OnTopIndicatorListener {
 
@@ -103,8 +103,7 @@ public class HomeFragment extends BaseFragment implements OnTopIndicatorListener
 
         @Override
         public Fragment getItem(int position) {
-            HomeTabFragment fragment = (HomeTabFragment) Fragment
-                    .instantiate(mActivity,
+            HomeTabFragment fragment = (HomeTabFragment) instantiate(mActivity,
                             HomeTabFragment.class.getName());
             fragment.setMsgName("message name " + position);
             return fragment;

@@ -1,4 +1,4 @@
-package com.haven.hckp.fragment;
+package com.haven.hckp.ui;
 
 import android.app.Activity;
 import android.os.Bundle;

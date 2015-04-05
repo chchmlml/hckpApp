@@ -1,4 +1,4 @@
-package com.haven.hckp.utils;
+package com.haven.hckp.common;
 
 import android.app.Activity;
 

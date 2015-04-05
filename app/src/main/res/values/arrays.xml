@@ -8,15 +8,5 @@
         <item>@string/collect</item>
         <item>@string/setting</item>
     </string-array>
-    <!-- 分类 -->
-    <string-array name="cate_list">
-        <item>@string/recommend</item>
-        <item>@string/jacket</item>
-        <item>@string/skirt</item>
-        <item>@string/trousers</item>
-        <item>@string/shoes</item>
-        <item>@string/bag</item>
-        <item>@string/accessories</item>
-    </string-array>
 
 </resources>

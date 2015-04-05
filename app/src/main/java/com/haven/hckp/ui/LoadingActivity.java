@@ -1,4 +1,4 @@
-package com.haven.hckp.activity;
+package com.haven.hckp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;

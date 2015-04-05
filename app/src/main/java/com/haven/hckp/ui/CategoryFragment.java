@@ -1,29 +1,20 @@
-package com.haven.hckp.fragment;
+package com.haven.hckp.ui;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,19 +28,14 @@ import com.haven.hckp.adapter.OrderAdapter;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
-import com.haven.hckp.bean.Order;
-import com.haven.hckp.bean.OrderList;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
-import com.haven.hckp.fragment.AnimFragment.OnFragmentDismissListener;
+import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
-import com.haven.hckp.widght.PullToRefreshListView.OnRefreshListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 

@@ -1,4 +1,4 @@
-package com.haven.hckp.activity;
+package com.haven.hckp.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -6,13 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.haven.hckp.R;
-import com.haven.hckp.fragment.CategoryFragment;
-import com.haven.hckp.fragment.CollectFragment;
-import com.haven.hckp.fragment.HomeFragment;
-import com.haven.hckp.fragment.SettingFragment;
-import com.haven.hckp.utils.ConstantValues;
-import com.haven.hckp.view.MyTabWidget;
-import com.haven.hckp.view.MyTabWidget.OnTabSelectedListener;
+import com.haven.hckp.common.ConstantValues;
+import com.haven.hckp.widght.MyTabWidget;
+import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
 
 /**
  *
