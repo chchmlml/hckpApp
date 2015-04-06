@@ -31,7 +31,6 @@ import com.haven.hckp.bean.Notice;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
-import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.ViewUtils;

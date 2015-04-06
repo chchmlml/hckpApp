@@ -56,10 +56,6 @@ public class HomeTabFragment extends BaseFragment {
     private View lvNews_footer;
     private View mView;
 	
-	public void setMsgName(String msgName) {
-		//this.mMsgName = msgName;
-	}
-	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -84,7 +80,7 @@ public class HomeTabFragment extends BaseFragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		initViews(view);
+		initViews();
 	}
 	
 	@Override
@@ -93,7 +89,7 @@ public class HomeTabFragment extends BaseFragment {
 		initDisplay();
 	}
 	
-	private void initViews(View view) {
+	public void initViews() {
         this.initFrameButton();
         this.initFrameListView();
 	}

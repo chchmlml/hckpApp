@@ -25,15 +25,15 @@ public class NewDataToast extends Toast{
 	public NewDataToast(Context context, boolean isSound) {
 		super(context);
 		
-//		this.isSound = isSound;
-//
-//        mPlayer = MediaPlayer.create(context, R.raw.newdatatoast);
-//        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-//			@Override
-//			public void onCompletion(MediaPlayer mp) {
-//				mp.release();
-//			}        	
-//        });
+		this.isSound = isSound;
+
+        mPlayer = MediaPlayer.create(context, R.raw.newdatatoast);
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+			}
+        });
 
     }
 

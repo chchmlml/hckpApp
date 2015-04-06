@@ -8,7 +8,6 @@ import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
-import com.haven.hckp.widght.CustomDialog;
 
 import android.content.DialogInterface;
 
@@ -189,27 +188,6 @@ public class UIHelper {
         Intent intent = new Intent(context, OrderFilterActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-    }
-
-
-    public static void showDailog(Context context) {
-
-        CustomDialog.Builder builder = new CustomDialog.Builder(context);
-        builder.setMessage("测试框");
-        builder.setTitle("提示");
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builder.setNegativeButton("取消",
-                new android.content.DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.create().show();
     }
 
     /**

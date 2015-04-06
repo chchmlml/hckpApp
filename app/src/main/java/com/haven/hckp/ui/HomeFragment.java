@@ -105,7 +105,7 @@ public class HomeFragment extends BaseFragment implements OnTopIndicatorListener
         public Fragment getItem(int position) {
             HomeTabFragment fragment = (HomeTabFragment) instantiate(mActivity,
                             HomeTabFragment.class.getName());
-            fragment.setMsgName("message name " + position);
+            //fragment.initViews();
             return fragment;
         }
 
