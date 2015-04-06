@@ -20,10 +20,6 @@ import java.util.Properties;
 public class AppConfig {
 
 	private final static String APP_CONFIG = "config";
-	// 导航
-//	public final static Class PAGES_ACTIVITY[] = { NewsFragment.class, MapFragment.class, FragmentPage3.class, FragmentPage4.class, FragmentPage5.class };
-//	public final static int PAGES_ICONS[] = { R.drawable.tab_home_btn, R.drawable.tab_home_btn, R.drawable.tab_home_btn, R.drawable.tab_home_btn, R.drawable.tab_home_btn };
-//	public final static String PAGES_TXT[] = { "新闻", "地图", "ceshi3", "ceshi4", "ceshi5" };
 
 	public final static String TEMP_TWEET = "temp_tweet";
 	public final static String TEMP_TWEET_IMAGE = "temp_tweet_image";

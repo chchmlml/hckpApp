@@ -1,6 +1,9 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +16,8 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,8 +31,11 @@ import com.haven.hckp.bean.Notice;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
+import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,22 +46,27 @@ public class OrderFragment extends BaseFragment implements
         OnItemClickListener, OnClickListener, OnFragmentDismissListener {
 
     private static final String TAG = "OrderFragment";
+
     private Activity mActivity;
     private TextView mTitleTv;
     private AppContext appContext;
+    private LayoutInflater inflater;
 
     private Handler lvNewsHandler;
-
     private List<News> lvNewsData = new ArrayList<News>();
     private int lvNewsSumData;
     private ListViewNewsAdapter lvNewsAdapter;
+
     private TextView lvNews_foot_more;
     private ProgressBar lvNews_foot_progress;
     private PullToRefreshListView lvNews;
+
     private int curNewsCatalog = NewsList.CATALOG_ALL;
     private View lvNews_footer;
     private View mView;
-    private LayoutInflater inflater;
+
+    @ViewInject(R.id.right_img)
+    private ImageView rightBtn;
 
     public static OrderFragment newInstance() {
         OrderFragment OrderFragment = new OrderFragment();
@@ -76,6 +89,7 @@ public class OrderFragment extends BaseFragment implements
                              Bundle savedInstanceState) {
         this.inflater = inflater;
         mView = this.inflater.inflate(R.layout.order_fragment, container, false);
+        ViewUtils.inject(this, mView); //注入view和事件
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
     }
@@ -154,7 +168,7 @@ public class OrderFragment extends BaseFragment implements
                 } else if (msg.what == -1) {
                     // 有异常--显示加载出错 & 弹出错误消息
                     lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
-                    if(!notice.getCode().equals("1")){
+                    if (!notice.getCode().equals("1")) {
                         NewDataToast.makeText(mActivity, notice.getMsg(), appContext.isAppSound()).show();
                     }
                 }
@@ -309,7 +323,7 @@ public class OrderFragment extends BaseFragment implements
                     lvNews_foot_progress.setVisibility(View.VISIBLE);
                     // 当前pageIndex
                     int pageIndex = lvNewsSumData / AppContext.PAGE_SIZE;
-                    loadLvNewsData( pageIndex, lvNewsHandler, UIHelper.LISTVIEW_ACTION_SCROLL);
+                    loadLvNewsData(pageIndex, lvNewsHandler, UIHelper.LISTVIEW_ACTION_SCROLL);
                 }
             }
 
@@ -319,13 +333,13 @@ public class OrderFragment extends BaseFragment implements
         });
         lvNews.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
             public void onRefresh() {
-                loadLvNewsData( 0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_REFRESH);
+                loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_REFRESH);
             }
         });
     }
 
 
-    private void loadLvNewsData( final int pageIndex, final Handler handler, final int action) {
+    private void loadLvNewsData(final int pageIndex, final Handler handler, final int action) {
         new Thread() {
             public void run() {
                 Message msg = new Message();
@@ -353,6 +367,16 @@ public class OrderFragment extends BaseFragment implements
      * 初始化各个按钮
      */
     private void initFrameButton() {
+        rightBtn = (ImageView) mView.findViewById(R.id.right_img);
+//        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.more);
+//        rightBtn.setImageBitmap(bm);
+        rightBtn.setVisibility(View.VISIBLE);
+        rightBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UIHelper.showFilterRedirect(appContext);
+            }
+        });
     }
 
 

@@ -4,10 +4,11 @@
     <string name="app_name">货车快跑</string>
 
     <string name="home">首页</string>
-    <string name="order">我的订单</string>
-    <string name="collect">我的调度</string>
-    <string name="setting">我的快跑</string>
+    <string name="order">我的调度</string>
+    <string name="collect">车队</string>
+    <string name="setting">个人设置</string>
     <string name="order_detail">订单详情</string>
+    <string name="order_filter">订单检索</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
@@ -21,6 +22,21 @@
     <string name="order_detail_tag9">收货时间：</string>
     <string name="order_detail_tag10">发票类型：</string>
     <string name="order_detail_tag11">发票抬头：</string>
+
+    <!--订单筛选-->
+    <string name="order_filter_tag1">货物属性</string>
+    <string name="order_filter_tag2">起始地</string>
+    <string name="order_filter_tag3">目的地</string>
+    <string name="order_filter_tag4">货物重量</string>
+    <string name="order_filter_tag5">货物面积</string>
+    <string name="order_filter_tag6">货物金额</string>
+    <string name="goods_attr1">易碎品</string>
+    <string name="goods_attr2">其他</string>
+    <string name="btn_filter">检索</string>
+
+    <string name="title_alert">提示</string>
+    <string name="alert_ok">确定</string>
+    <string name="alert_cancel">取消</string>
 
     <!-- 设置 -->
     <string name="carteam">我的车队</string>

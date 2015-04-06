@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * 启动界面
@@ -16,13 +18,17 @@ public class AppStart extends Activity {
 
     private static final String TAG = "AppStart";
 
+    @ViewInject(R.id.main_imageview)
     private LoadingView mainImageview;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
+        ViewUtils.inject(this); //注入view和事件
 
         //渐变展示启动屏
 //        AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
@@ -68,7 +74,7 @@ public class AppStart extends Activity {
     }
 
     private void initLoadingImages() {
-        mainImageview = (LoadingView) findViewById(R.id.main_imageview);
+        //mainImageview = (LoadingView) findViewById(R.id.main_imageview);
         int[] imageIds = new int[6];
         imageIds[0] = R.drawable.loader_frame_1;
         imageIds[1] = R.drawable.loader_frame_2;

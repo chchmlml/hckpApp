@@ -1,17 +1,12 @@
 package com.haven.hckp.bean;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppException;
 import com.haven.hckp.common.StringUtils;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 数据操作结果实体类

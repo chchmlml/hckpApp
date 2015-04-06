@@ -168,7 +168,7 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/tean_car_name"
+                    android:id="@+id/carteam_name"
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

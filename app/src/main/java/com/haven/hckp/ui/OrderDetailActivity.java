@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,10 +21,13 @@ import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,68 +36,81 @@ import java.util.Objects;
 public class OrderDetailActivity extends ActionBarActivity {
 
     private static final String TAG = "OrderDetailActivity";
-    private TextView mTitleTv;
+
     private AppContext appContext;
 
+    @ViewInject(R.id.title_tv)
+    private TextView mTitleTv;
+
+    @ViewInject(R.id.linear_load)
     private LinearLayout linearLoad;
+
+    @ViewInject(R.id.linear_desc)
     private LinearLayout linearDesc;
+
+    @ViewInject(R.id.linear_form)
     private LinearLayout linearForm;
 
+    @ViewInject(R.id.location_info)
     private TextView locationInfo;
+
+    @ViewInject(R.id.carteam_name)
     private TextView carTeam;
+
+    @ViewInject(R.id.start_time)
     private TextView startTime;
+
+    @ViewInject(R.id.end_time)
     private TextView endTime;
+
+    @ViewInject(R.id.desc)
     private TextView desc;
 
+    @ViewInject(R.id.button)
     private Button button;
+
+    @ViewInject(R.id.edit_input)
     private EditText priceInput;
+
+    @ViewInject(R.id.back_img)
+    private ImageView backBtn;
 
     private Intent intent;
     private Bundle bundle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
+        ViewUtils.inject(this);
+        appContext = (AppContext) getApplicationContext();
+
         intent = this.getIntent();
         bundle = intent.getExtras();
 
-        linearLoad = (LinearLayout) findViewById(R.id.linear_load);
-        linearDesc = (LinearLayout) findViewById(R.id.linear_desc);
-        linearForm = (LinearLayout) findViewById(R.id.linear_form);
-
-        locationInfo = (TextView) findViewById(R.id.location_info);
-        carTeam = (TextView) findViewById(R.id.tean_car_name);
-        startTime = (TextView) findViewById(R.id.start_time);
-        endTime = (TextView) findViewById(R.id.end_time);
-        desc = (TextView) findViewById(R.id.desc);
-        button = (Button) findViewById(R.id.button);
-        priceInput = (EditText) findViewById(R.id.edit_input);
-
-        mTitleTv = (TextView) findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.order_detail);
-        appContext = (AppContext) getApplicationContext();
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                linearLoad.setVisibility(View.VISIBLE);
-                String priceStr = priceInput.getText().toString();
-                if(!StringUtils.isEmpty(priceStr)){
-                    Double price = Double.parseDouble(priceStr);
-                    Log.i(TAG, "价格:" + price);
-                    getPricePort(price);
-                }else{
-                    linearLoad.setVisibility(View.GONE);
-                    NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
-                }
-            }
-        });
+        //显示返回按钮
+        backBtn.setVisibility(View.VISIBLE);
         initDataView();
+    }
 
-
+    @OnClick({R.id.button, R.id.back_img})
+    public void buttonClick(View v) {
+        if (v.getId() == R.id.button) {
+            linearLoad.setVisibility(View.VISIBLE);
+            String priceStr = priceInput.getText().toString();
+            if (!StringUtils.isEmpty(priceStr)) {
+                Double price = Double.parseDouble(priceStr);
+                Log.i(TAG, "价格:" + price);
+                getPricePort(price);
+            } else {
+                linearLoad.setVisibility(View.GONE);
+                NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
+            }
+        } else if (v.getId() == R.id.back_img) {
+            OrderDetailActivity.this.finish();
+        }
     }
 
     private void getPricePort(Double price) {

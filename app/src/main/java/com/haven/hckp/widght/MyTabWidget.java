@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.haven.hckp.R;
-import com.haven.hckp.exception.CustomException;
 import com.haven.hckp.common.LogUtils;
 
 import java.util.ArrayList;
@@ -42,18 +41,6 @@ public class MyTabWidget extends LinearLayout {
                 R.styleable.TabWidget, defStyle, 0);
 
         mLabels = a.getTextArray(R.styleable.TabWidget_bottom_labels);
-
-        if (null == mLabels || mLabels.length <= 0) {
-            try {
-                throw new CustomException("...");
-            } catch (CustomException e) {
-                e.printStackTrace();
-            } finally {
-                LogUtils.i(TAG, MyTabWidget.class.getSimpleName() + "");
-            }
-            a.recycle();
-            return;
-        }
 
         a.recycle();
 
@@ -95,15 +82,15 @@ public class MyTabWidget extends LinearLayout {
                     .getResources().getDrawable(mDrawableIds[i]), null, null);
             itemName.setText(mLabels[i]);
 
-            final ImageView indicateImg = (ImageView) view
-                    .findViewById(R.id.indicate_img);
+//            final ImageView indicateImg = (ImageView) view
+//                    .findViewById(R.id.indicate_img);
 
             this.addView(view, params);
 
             itemName.setTag(index);
 
             mCheckedList.add(itemName);
-            mIndicateImgs.add(indicateImg);
+            //mIndicateImgs.add(indicateImg);
             mViewList.add(view);
 
             view.setOnClickListener(new OnClickListener() {

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.haven.hckp.R;
 import com.haven.hckp.common.ConstantValues;
+import com.haven.hckp.common.DoubleClickExitHelper;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
 
@@ -25,10 +26,14 @@ public class MainActivity extends FragmentActivity implements
     private int mIndex = ConstantValues.HOME_FRAGMENT_INDEX;
     private FragmentManager mFragmentManager;
 
+    private DoubleClickExitHelper mDoubleClickExitHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //mDoubleClickExitHelper = new DoubleClickExitHelper(this);
 
         //初始化页面
         init();
