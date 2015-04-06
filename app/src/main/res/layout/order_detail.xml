@@ -10,34 +10,12 @@
         layout="@layout/title_bar" />
 
     <LinearLayout
-        android:id="@+id/linear_load"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_20px"
-        android:layout_marginTop="50dip"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <ProgressBar
-            android:id="@+id/listview_foot_progress"
-            style="@style/loading_small" />
-
-        <TextView
-            android:id="@+id/listview_foot_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="@color/listitem_black"
-            android:text="@string/load_ing" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linear_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_20px"
         android:layout_marginTop="50dip"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <!--<LinearLayout-->
@@ -313,12 +291,15 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/edit_input"
             android:layout_width="120dip"
             android:layout_height="35dip"
             android:background="@drawable/bg_edittext"
             android:textColor="@color/black"
             android:layout_marginRight="10dip"
             android:paddingLeft="2dip"
+            android:textColorHint="@color/gray"
+            android:hint="@string/input_hint"
             android:inputType="numberDecimal"
             android:singleLine="true" />
 
@@ -331,6 +312,22 @@
             android:background="@drawable/btn_selector"
             android:text="@string/report_price"
             android:id="@+id/button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_20px"
+        android:layout_marginTop="50dip"
+        android:background="@color/viewfinder_mask"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
     </LinearLayout>
 
 </RelativeLayout>

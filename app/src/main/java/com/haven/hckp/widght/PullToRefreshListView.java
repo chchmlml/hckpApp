@@ -91,9 +91,9 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         inflater = LayoutInflater.from(context);  
         headView = (LinearLayout) inflater.inflate(R.layout.pull_to_refresh_head, null);
   
-        arrowImageView = (ImageView) headView.findViewById(R.id.head_arrowImageView);  
-        arrowImageView.setMinimumWidth(50);  
-        arrowImageView.setMinimumHeight(50);  
+        arrowImageView = (ImageView) headView.findViewById(R.id.head_arrowImageView);
+        arrowImageView.setMinimumWidth(50);
+        arrowImageView.setMinimumHeight(50);
         progressBar = (ProgressBar) headView.findViewById(R.id.head_progressBar);  
         tipsTextview = (TextView) headView.findViewById(R.id.head_tipsTextView);  
         lastUpdatedTextView = (TextView) headView.findViewById(R.id.head_lastUpdatedTextView);  
@@ -237,13 +237,13 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         switch (state) {  
         case RELEASE_To_REFRESH:  
         	
-            arrowImageView.setVisibility(View.VISIBLE);  
+            arrowImageView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.GONE);  
             tipsTextview.setVisibility(View.VISIBLE);  
             lastUpdatedTextView.setVisibility(View.VISIBLE);  
   
-            arrowImageView.clearAnimation();  
-            arrowImageView.startAnimation(animation);  
+            arrowImageView.clearAnimation();
+            arrowImageView.startAnimation(animation);
   
             tipsTextview.setText(R.string.pull_to_refresh_release_label);  
   
@@ -254,12 +254,12 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
             progressBar.setVisibility(View.GONE);  
             tipsTextview.setVisibility(View.VISIBLE);  
             lastUpdatedTextView.setVisibility(View.VISIBLE);  
-            arrowImageView.clearAnimation();  
-            arrowImageView.setVisibility(View.VISIBLE);  
+            arrowImageView.clearAnimation();
+            arrowImageView.setVisibility(View.VISIBLE);
             if (isBack) {  
                 isBack = false;  
-                arrowImageView.clearAnimation();  
-                arrowImageView.startAnimation(reverseAnimation);  
+                arrowImageView.clearAnimation();
+                arrowImageView.startAnimation(reverseAnimation);
             } 
             tipsTextview.setText(R.string.pull_to_refresh_pull_label);  
 
@@ -272,8 +272,8 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
             headView.invalidate();  
   
             progressBar.setVisibility(View.VISIBLE);  
-            arrowImageView.clearAnimation();  
-            arrowImageView.setVisibility(View.GONE);  
+            arrowImageView.clearAnimation();
+            arrowImageView.setVisibility(View.GONE);
             tipsTextview.setText(R.string.pull_to_refresh_refreshing_label);  
             lastUpdatedTextView.setVisibility(View.GONE);  
   
@@ -285,9 +285,9 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
             headView.invalidate();  
   
             progressBar.setVisibility(View.GONE);  
-            arrowImageView.clearAnimation();  
+            arrowImageView.clearAnimation();
             // 此处更换图标   
-            arrowImageView.setImageResource(R.drawable.ic_pulltorefresh_arrow);  
+            arrowImageView.setImageResource(R.drawable.ic_pulltorefresh_arrow);
   
             tipsTextview.setText(R.string.pull_to_refresh_pull_label);  
             lastUpdatedTextView.setVisibility(View.VISIBLE);  

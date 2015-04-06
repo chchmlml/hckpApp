@@ -276,6 +276,11 @@ public class StringUtils {
         return res.toString();
     }
 
+    /**
+     * ipustream 转化 str
+     * @param obj
+     * @return
+     */
     public static String inputStreamToStr(InputStream obj) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(obj));
         StringBuilder sb = new StringBuilder();

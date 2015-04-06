@@ -14,24 +14,25 @@ import java.net.URLEncoder;
  * @created 2012-3-21
  */
 public class URLs implements Serializable {
-	
+
 	public final static String HOST = "182.92.219.85";
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
-	
+
 	private final static String URL_SPLITTER = "/";
 	private final static String URL_UNDERLINE = "_";
-	
+
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
 	public final static String NEWS_LIST = URL_API_HOST+"?apikey=app_driver&entrance=offerPrice";
 	public final static String NEWS_DETAIL = URL_API_HOST+"?apikey=app_driver&entrance=inquiryDetail";
+	public final static String NEWS_DETAIL_POST = URL_API_HOST+"?apikey=app_driver&entrance=InInquiryPrice";
 
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 
 	private final static String URL_HOST = "182.92.219.85";
 	private final static String URL_WWW_HOST = "www."+URL_HOST;
 	private final static String URL_MY_HOST = "my."+URL_HOST;
-	
+
 	private final static String URL_TYPE_NEWS = URL_WWW_HOST + URL_SPLITTER + "news" + URL_SPLITTER;
 	private final static String URL_TYPE_SOFTWARE = URL_WWW_HOST + URL_SPLITTER + "p" + URL_SPLITTER;
 	private final static String URL_TYPE_QUESTION = URL_WWW_HOST + URL_SPLITTER + "question" + URL_SPLITTER;
@@ -39,7 +40,7 @@ public class URLs implements Serializable {
 	private final static String URL_TYPE_TWEET = URL_SPLITTER + "tweet" + URL_SPLITTER;
 	private final static String URL_TYPE_ZONE = URL_MY_HOST + URL_SPLITTER + "u" + URL_SPLITTER;
 	private final static String URL_TYPE_QUESTION_TAG = URL_TYPE_QUESTION + "tag" + URL_SPLITTER;
-	
+
 	public final static int URL_OBJ_TYPE_OTHER = 0x000;
 	public final static int URL_OBJ_TYPE_NEWS = 0x001;
 	public final static int URL_OBJ_TYPE_SOFTWARE = 0x002;
@@ -48,11 +49,11 @@ public class URLs implements Serializable {
 	public final static int URL_OBJ_TYPE_BLOG = 0x005;
 	public final static int URL_OBJ_TYPE_TWEET = 0x006;
 	public final static int URL_OBJ_TYPE_QUESTION_TAG = 0x007;
-	
+
 	private int objId;
 	private String objKey = "";
 	private int objType;
-	
+
 	public int getObjId() {
 		return objId;
 	}
@@ -71,7 +72,7 @@ public class URLs implements Serializable {
 	public void setObjType(int objType) {
 		this.objType = objType;
 	}
-	
+
 	/**
 	 * 转化URL为URLs实体
 	 * @param path
@@ -122,7 +123,7 @@ public class URLs implements Serializable {
 					}
 				}
 				//my
-				else if(path.contains(URL_MY_HOST)){					
+				else if(path.contains(URL_MY_HOST)){
 					//博客  my.oschina.net/szpengvictor/blog/50879
 					if(path.contains(URL_TYPE_BLOG)){
 						objId = parseObjId(path, URL_TYPE_BLOG);
@@ -190,7 +191,7 @@ public class URLs implements Serializable {
 		}
 		return objId;
 	}
-	
+
 	/**
 	 * 解析url获得objKey
 	 * @param path
@@ -213,7 +214,7 @@ public class URLs implements Serializable {
 		}
 		return objKey;
 	}
-	
+
 	/**
 	 * 对URL进行格式处理
 	 * @param path
@@ -223,5 +224,5 @@ public class URLs implements Serializable {
 		if(path.startsWith("http://") || path.startsWith("https://"))
 			return path;
 		return "http://" + URLEncoder.encode(path);
-	}	
+	}
 }

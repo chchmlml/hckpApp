@@ -8,7 +8,6 @@ import com.alibaba.fastjson.JSON;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.bean.NewsList;
-import com.haven.hckp.bean.OrderList;
 import com.haven.hckp.bean.Result;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.bean.Update;
@@ -218,10 +217,6 @@ public class ApiClient {
         if(responseBody.contains("result") && responseBody.contains("errorCode") && appContext.containsProperty("user.uid")){
             try {
                 Result res = Result.parse(new ByteArrayInputStream(responseBody.getBytes()));
-                if(res.getErrorCode() == 0){
-                    //appContext.Logout();
-                    //appContext.getUnLoginHandler().sendEmptyMessage(1);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -325,10 +320,10 @@ public class ApiClient {
         if(responseBody.contains("result") && responseBody.contains("errorCode") && appContext.containsProperty("user.uid")){
             try {
                 Result res = Result.parse(new ByteArrayInputStream(responseBody.getBytes()));
-                if(res.getErrorCode() == 0){
-                    //appContext.Logout();
-                    //appContext.getUnLoginHandler().sendEmptyMessage(1);
-                }
+//                if(res.getErrorCode() == 0){
+//                    //appContext.Logout();
+//                    //appContext.getUnLoginHandler().sendEmptyMessage(1);
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -645,15 +640,11 @@ public class ApiClient {
      * 获取报价单列表
      * @throws AppException
      */
-    public static NewsList getNewsList(AppContext appContext, final int catalog, final int pageIndex, final int pageSize) throws AppException {
+    public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
         String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
             put("start", pageIndex);
             put("len", pageSize);
         }});
-
-        Log.i("haven","--->" + newUrl);
-
-        //return NewsList.parse(http_get_new(newUrl));
 
         try{
             return NewsList.parse(http_get(appContext, newUrl));
@@ -663,21 +654,6 @@ public class ApiClient {
             throw AppException.network(e);
         }
     }
-//    public static OrderList getOrderList(AppContext appContext) throws AppException {
-//        String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>(){{
-//            put("catalog", 1);
-//            put("pageIndex", 1);
-//            put("pageSize", 1);
-//        }});
-//
-//        try{
-//            return OrderList.parse(http_get(appContext, newUrl));
-//        }catch(Exception e){
-//            if(e instanceof AppException)
-//                throw (AppException)e;
-//            throw AppException.network(e);
-//        }
-//    }
 
 
     /**

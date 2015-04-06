@@ -10,7 +10,6 @@ import com.haven.hckp.common.StringUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +49,12 @@ public class NewsList extends Entity {
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");
+        Notice notice = new Notice();
+        notice.setMsg(code);
+        notice.setMsg(msg);
+        newslist.setNotice(notice);
         List<Map<String, Object>> data = (List<Map<String, Object>>) jsonStr.get("data");
-        if (code.equals("1")) {
+        if (data != null) {
             News news = null;
             for (Map<String, Object> d : data) {
                 news = new News();

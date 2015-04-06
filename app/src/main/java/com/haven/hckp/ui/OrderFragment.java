@@ -123,7 +123,7 @@ public class OrderFragment extends BaseFragment implements
 
         // 加载资讯数据
         if (lvNewsData.isEmpty()) {
-            loadLvNewsData(curNewsCatalog, 0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
+            loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
         }
     }
 
@@ -138,13 +138,13 @@ public class OrderFragment extends BaseFragment implements
         return new Handler() {
 
             public void handleMessage(Message msg) {
+                Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                 if (msg.what >= 0) {
-                    // listview数据处理
-                    Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                     Log.i(TAG, "数据加载完成");
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();
+//                        more.setText(R.string.load_full);
                         more.setText(R.string.load_full);
                     } else if (msg.what == pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
@@ -154,13 +154,16 @@ public class OrderFragment extends BaseFragment implements
                 } else if (msg.what == -1) {
                     // 有异常--显示加载出错 & 弹出错误消息
                     lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
+                    if(!notice.getCode().equals("1")){
+                        NewDataToast.makeText(mActivity, notice.getMsg(), appContext.isAppSound()).show();
+                    }
                 }
                 if (adapter.getCount() == 0) {
                     lv.setTag(UIHelper.LISTVIEW_DATA_EMPTY);
                 }
                 progress.setVisibility(ProgressBar.GONE);
                 if (msg.arg1 == UIHelper.LISTVIEW_ACTION_REFRESH) {
-                    lv.onRefreshComplete(getString(R.string.pull_to_refresh_update) + new Date().toLocaleString());
+                    lv.onRefreshComplete();
                     lv.setSelection(0);
                 } else if (msg.arg1 == UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG) {
                     lv.onRefreshComplete();
@@ -214,7 +217,7 @@ public class OrderFragment extends BaseFragment implements
                     if (newdata > 0) {
                         NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_message, newdata), appContext.isAppSound()).show();
                     } else {
-                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_none), false).show();
+                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_none, false), appContext.isAppSound()).show();
                     }
                 }
                 break;
@@ -254,7 +257,6 @@ public class OrderFragment extends BaseFragment implements
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNewsAdapter = new ListViewNewsAdapter(mActivity, lvNewsData, R.layout.order_list_item);
-        //mView = this.inflater.inflate(R.layout.news, null);
         lvNews = (PullToRefreshListView) mView.findViewById(R.id.listview_order);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
@@ -307,7 +309,7 @@ public class OrderFragment extends BaseFragment implements
                     lvNews_foot_progress.setVisibility(View.VISIBLE);
                     // 当前pageIndex
                     int pageIndex = lvNewsSumData / AppContext.PAGE_SIZE;
-                    loadLvNewsData(curNewsCatalog, pageIndex, lvNewsHandler, UIHelper.LISTVIEW_ACTION_SCROLL);
+                    loadLvNewsData( pageIndex, lvNewsHandler, UIHelper.LISTVIEW_ACTION_SCROLL);
                 }
             }
 
@@ -317,13 +319,13 @@ public class OrderFragment extends BaseFragment implements
         });
         lvNews.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
             public void onRefresh() {
-                loadLvNewsData(curNewsCatalog, 0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_REFRESH);
+                loadLvNewsData( 0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_REFRESH);
             }
         });
     }
 
 
-    private void loadLvNewsData(final int catalog, final int pageIndex, final Handler handler, final int action) {
+    private void loadLvNewsData( final int pageIndex, final Handler handler, final int action) {
         new Thread() {
             public void run() {
                 Message msg = new Message();
@@ -331,8 +333,8 @@ public class OrderFragment extends BaseFragment implements
                 if (action == UIHelper.LISTVIEW_ACTION_REFRESH || action == UIHelper.LISTVIEW_ACTION_SCROLL)
                     isRefresh = true;
                 try {
-                    NewsList list = appContext.getNewsList(catalog, pageIndex, isRefresh);
-                    msg.what = list.getPageSize();
+                    NewsList list = appContext.getNewsList(pageIndex, isRefresh);
+                    msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {
                     e.printStackTrace();
@@ -341,10 +343,8 @@ public class OrderFragment extends BaseFragment implements
                 }
                 msg.arg1 = action;
                 msg.arg2 = UIHelper.LISTVIEW_DATATYPE_NEWS;
-                if (curNewsCatalog == catalog) {
-                    handler.sendMessage(msg);
-                    Log.i(TAG, "数据加载中了--->");
-                }
+                handler.sendMessage(msg);
+                Log.i(TAG, "数据加载中了--->");
             }
         }.start();
     }
@@ -353,9 +353,6 @@ public class OrderFragment extends BaseFragment implements
      * 初始化各个按钮
      */
     private void initFrameButton() {
-        // TODO Auto-generated method stub
-
-        Log.i(TAG, "--->initFrameButton");
     }
 
 

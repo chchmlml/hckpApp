@@ -13,7 +13,6 @@ import com.alibaba.fastjson.JSON;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
-import com.haven.hckp.bean.OrderList;
 import com.haven.hckp.common.StringUtils;
 
 import java.io.File;
@@ -354,13 +353,13 @@ public class AppContext extends Application {
 	/**
 	 * 新闻列表
 	 */
-	public NewsList getNewsList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
+	public NewsList getNewsList(int pageIndex, boolean isRefresh) throws AppException {
 		NewsList list = null;
-		String key = "orderlist_" + catalog + "_" + pageIndex + "_" + PAGE_SIZE;
-		//if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-		if (isNetworkConnected()) {
+		String key = "orderlist_" +  "_" + pageIndex + "_" + PAGE_SIZE;
+		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+		//if (isNetworkConnected()) {
 			try {
-				list = ApiClient.getNewsList(this, catalog, pageIndex, PAGE_SIZE);
+				list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE);
 				if (list != null && pageIndex == 0) {
 					Notice notice = list.getNotice();
 					list.setNotice(null);

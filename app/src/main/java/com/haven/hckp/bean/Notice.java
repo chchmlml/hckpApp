@@ -28,7 +28,26 @@ public class Notice implements Serializable {
 	public final static int	TYPE_COMMENT = 3;
 	public final static int	TYPE_NEWFAN = 4;
 
-	private int atmeCount;
+    public String code;
+    public String msg;
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    private int atmeCount;
 	private int msgCount;
 	private int reviewCount;
 	private int newFansCount;

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -42,12 +45,20 @@ public class OrderDetailActivity extends ActionBarActivity {
     private TextView endTime;
     private TextView desc;
 
+    private Button button;
+    private EditText priceInput;
+
+    private Intent intent;
+    private Bundle bundle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
+        intent = this.getIntent();
+        bundle = intent.getExtras();
 
         linearLoad = (LinearLayout) findViewById(R.id.linear_load);
         linearDesc = (LinearLayout) findViewById(R.id.linear_desc);
@@ -58,18 +69,60 @@ public class OrderDetailActivity extends ActionBarActivity {
         startTime = (TextView) findViewById(R.id.start_time);
         endTime = (TextView) findViewById(R.id.end_time);
         desc = (TextView) findViewById(R.id.desc);
+        button = (Button) findViewById(R.id.button);
+        priceInput = (EditText) findViewById(R.id.edit_input);
 
         mTitleTv = (TextView) findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.order_detail);
         appContext = (AppContext) getApplicationContext();
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLoad.setVisibility(View.VISIBLE);
+                String priceStr = priceInput.getText().toString();
+                if(!StringUtils.isEmpty(priceStr)){
+                    Double price = Double.parseDouble(priceStr);
+                    Log.i(TAG, "价格:" + price);
+                    getPricePort(price);
+                }else{
+                    linearLoad.setVisibility(View.GONE);
+                    NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
+                }
+            }
+        });
         initDataView();
+
 
     }
 
+    private void getPricePort(Double price) {
+        String newsId = bundle.getString("news_id");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("diy_id", newsId);
+        params.put("diy_price", price);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params);
+        HttpUtils http = new HttpUtils();
+        Log.i(TAG, "newUrl：" + newUrl);
+        http.send(HttpRequest.HttpMethod.GET,
+                newUrl,
+                new RequestCallBack<String>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                        Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
+                        JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                        linearLoad.setVisibility(View.GONE);
+                        NewDataToast.makeText(appContext, getString(R.string.success_input, false), false).show();
+                    }
+
+                    @Override
+                    public void onFailure(HttpException e, String s) {
+
+                    }
+                });
+    }
+
     private void initDataView() {
-        Intent intent = this.getIntent();        //获取已有的intent对象
-        Bundle bundle = intent.getExtras();    //获取intent里面的bundle对象
         String newsId = bundle.getString("news_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);

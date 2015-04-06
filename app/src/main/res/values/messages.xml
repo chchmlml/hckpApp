@@ -25,7 +25,11 @@
     
     <string name="new_data_toast_message">有 %d 条更新</string>
     <string name="new_data_toast_none">没有新更新</string>
-    
+
+    <string name="error_input">您的输入不合法</string>
+    <string name="success_input">报价成功</string>
+    <string name="input_hint">￥0.0</string>
+
     <string name="select">选择</string>
     <string name="share">分享</string>
     <string name="sharing">分享中...</string>

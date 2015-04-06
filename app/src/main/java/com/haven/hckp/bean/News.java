@@ -1,19 +1,12 @@
 package com.haven.hckp.bean;
 
-import android.util.Xml;
 
 import com.alibaba.fastjson.JSON;
 import com.haven.hckp.AppException;
 import com.haven.hckp.common.StringUtils;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 新闻实体类
@@ -180,94 +173,10 @@ public class News extends Entity {
         this.tp_tc_name = tp_tc_name;
     }
 
-//
-//    public static News parse(InputStream inputStream) throws IOException, AppException {
-//        News news = null;
-//        String toStrJson = inputStream.toString();
-//        List newsList = JSON.parseObject(toStrJson, ArrayList.class);
-//        //获得XmlPullParser解析器
-//        XmlPullParser xmlParser = Xml.newPullParser();
-//        try {
-//            xmlParser.setInput(inputStream, UTF8);
-//            //获得解析到的事件类别，这里有开始文档，结束文档，开始标签，结束标签，文本等等事件。
-//            int evtType = xmlParser.getEventType();
-//            //一直循环，直到文档结束
-//            while (evtType != XmlPullParser.END_DOCUMENT) {
-//                String tag = xmlParser.getName();
-//                switch (evtType) {
-//                    case XmlPullParser.START_TAG:
-//                        if (tag.equalsIgnoreCase(NODE_START)) {
-//                            news = new News();
-//                        } else if (news != null) {
-//                            if (tag.equalsIgnoreCase(NODE_ID)) {
-//                                news.id = StringUtils.toInt(xmlParser.nextText(), 0);
-//                            } else if (tag.equalsIgnoreCase(NODE_TITLE)) {
-//                                news.setTitle(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_URL)) {
-//                                news.setUrl(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_BODY)) {
-//                                news.setBody(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_AUTHOR)) {
-//                                news.setAuthor(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_AUTHORID)) {
-//                                news.setAuthorId(StringUtils.toInt(xmlParser.nextText(), 0));
-//                            } else if (tag.equalsIgnoreCase(NODE_COMMENTCOUNT)) {
-//                                news.setCommentCount(StringUtils.toInt(xmlParser.nextText(), 0));
-//                            } else if (tag.equalsIgnoreCase(NODE_PUBDATE)) {
-//                                news.setPubDate(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_SOFTWARELINK)) {
-//                                news.setSoftwareLink(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_SOFTWARENAME)) {
-//                                news.setSoftwareName(xmlParser.nextText());
-//                            } else if (tag.equalsIgnoreCase(NODE_FAVORITE)) {
-//                                news.setFavorite(StringUtils.toInt(xmlParser.nextText(), 0));
-//                            } else if (tag.equalsIgnoreCase(NODE_TYPE)) {
-//                                news.getNewType().type = StringUtils.toInt(xmlParser.nextText(), 0);
-//                            } else if (tag.equalsIgnoreCase(NODE_ATTACHMENT)) {
-//                                news.getNewType().attachment = xmlParser.nextText();
-//                            } else if (tag.equalsIgnoreCase(NODE_AUTHORUID2)) {
-//                                news.getNewType().authoruid2 = StringUtils.toInt(xmlParser.nextText(), 0);
-//                            } else if (tag.equalsIgnoreCase("relative")) {
-//                                relative = new Relative();
-//                            } else if (relative != null) {
-//                                if (tag.equalsIgnoreCase("rtitle")) {
-//                                    relative.title = xmlParser.nextText();
-//                                } else if (tag.equalsIgnoreCase("rurl")) {
-//                                    relative.url = xmlParser.nextText();
-//                                }
-//                            }
-//                            //通知信息
-//                            else if (tag.equalsIgnoreCase("notice")) {
-//                                news.setNotice(new Notice());
-//                            } else if (news.getNotice() != null) {
-//                                if (tag.equalsIgnoreCase("atmeCount")) {
-//                                    news.getNotice().setAtmeCount(StringUtils.toInt(xmlParser.nextText(), 0));
-//                                } else if (tag.equalsIgnoreCase("msgCount")) {
-//                                    news.getNotice().setMsgCount(StringUtils.toInt(xmlParser.nextText(), 0));
-//                                } else if (tag.equalsIgnoreCase("reviewCount")) {
-//                                    news.getNotice().setReviewCount(StringUtils.toInt(xmlParser.nextText(), 0));
-//                                } else if (tag.equalsIgnoreCase("newFansCount")) {
-//                                    news.getNotice().setNewFansCount(StringUtils.toInt(xmlParser.nextText(), 0));
-//                                }
-//                            }
-//                        }
-//                        break;
-//                    case XmlPullParser.END_TAG:
-//                        //如果遇到标签结束，则把对象添加进集合中
-//                        if (tag.equalsIgnoreCase("relative") && news != null && relative != null) {
-//                            news.getRelatives().add(relative);
-//                            relative = null;
-//                        }
-//                        break;
-//                }
-//                //如果xml没有结束，则导航到下一个节点
-//                evtType = xmlParser.next();
-//            }
-//        } catch (XmlPullParserException e) {
-//            throw AppException.xml(e);
-//        } finally {
-//            inputStream.close();
-//        }
-//        return news;
-//    }
+
+    public static News parse(InputStream inputStream) throws IOException, AppException {
+        String str = StringUtils.inputStreamToStr(inputStream);
+        News resultObj = JSON.parseObject(str, News.class);
+        return resultObj;
+    }
 }

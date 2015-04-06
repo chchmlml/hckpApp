@@ -25,15 +25,6 @@ public class UIHelper {
 	public final static int LISTVIEW_DATA_EMPTY = 0x04;
 
 	public final static int LISTVIEW_DATATYPE_NEWS = 0x01;
-	public final static int LISTVIEW_DATATYPE_BLOG = 0x02;
-	public final static int LISTVIEW_DATATYPE_POST = 0x03;
-	public final static int LISTVIEW_DATATYPE_TWEET = 0x04;
-	public final static int LISTVIEW_DATATYPE_ACTIVE = 0x05;
-	public final static int LISTVIEW_DATATYPE_MESSAGE = 0x06;
-	public final static int LISTVIEW_DATATYPE_COMMENT = 0x07;
-
-	public final static int REQUEST_CODE_FOR_RESULT = 0x01;
-	public final static int REQUEST_CODE_FOR_REPLY = 0x02;
 
 	//
 	// /** 表情图片匹配 */
