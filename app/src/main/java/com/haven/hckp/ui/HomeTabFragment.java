@@ -39,7 +39,6 @@ public class HomeTabFragment extends BaseFragment {
 	private static final String TAG = "HomeTabFragment";
 
     private Activity mActivity;
-    private TextView mTitleTv;
     private AppContext appContext;
     private LayoutInflater inflater;
 
@@ -52,12 +51,12 @@ public class HomeTabFragment extends BaseFragment {
     private ProgressBar lvNews_foot_progress;
     private PullToRefreshListView lvNews;
 
-    private int curNewsCatalog = NewsList.CATALOG_ALL;
     private View lvNews_footer;
     private View mView;
 	
 	@Override
 	public void onAttach(Activity activity) {
+        Log.i(TAG, "--->onAttach");
 		super.onAttach(activity);
 		this.mActivity = activity;
 	}
@@ -70,6 +69,7 @@ public class HomeTabFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+        Log.i(TAG, "--->onCreateView");
         this.inflater = inflater;
         mView = this.inflater.inflate(R.layout.home_tab_fragment, container, false);
         ViewUtils.inject(this, mView); //注入view和事件
@@ -79,14 +79,15 @@ public class HomeTabFragment extends BaseFragment {
 	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
+        Log.i(TAG, "--->onViewCreated");
 		super.onViewCreated(view, savedInstanceState);
 		initViews();
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+        Log.i(TAG, "--->onActivityCreated");
 		super.onActivityCreated(savedInstanceState);
-		initDisplay();
 	}
 	
 	public void initViews() {
@@ -343,14 +344,11 @@ public class HomeTabFragment extends BaseFragment {
 
     private void initFrameButton() {
     }
-	
-	private void initDisplay() {
-		//mMsgTv.setText(mMsgName + "");
-	}
 
 
 	@Override
 	public String getFragmentName() {
+        Log.i(TAG, "--->getFragmentName");
 		return TAG;
 	}
 

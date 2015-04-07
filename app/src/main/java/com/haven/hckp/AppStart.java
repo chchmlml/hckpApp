@@ -1,11 +1,16 @@
 package com.haven.hckp;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.View;
 
+import com.haven.hckp.service.MyService;
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
@@ -72,6 +77,35 @@ public class AppStart extends Activity {
 //            Log.i(TAG, "cookie = " + cookie);
 //        }
     }
+
+    private void bindService(){
+        Intent intent = new Intent(this,MyService.class);
+        bindService(intent, conn, Context.BIND_AUTO_CREATE);
+    }
+
+//    private void unBind(){
+//        if(flag == true){
+//            unbindService(conn);
+//            flag = false;
+//        }
+//    }
+
+    private ServiceConnection conn = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // TODO Auto-generated method stub
+            MyService.MyBinder binder = (MyService.MyBinder)service;
+            MyService bindService = binder.getService();
+            bindService.MyMethod();
+        }
+    };
 
     private void initLoadingImages() {
         //mainImageview = (LoadingView) findViewById(R.id.main_imageview);

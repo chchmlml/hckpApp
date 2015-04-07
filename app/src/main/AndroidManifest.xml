@@ -32,6 +32,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name="com.haven.hckp.service.MyService">
+            <intent-filter>
+                <action android:name="com.haven.hckp.service.MyService"/>
+            </intent-filter>
+        </service>
         <!-- 首页 -->
         <activity
             android:name=".ui.MainActivity"
