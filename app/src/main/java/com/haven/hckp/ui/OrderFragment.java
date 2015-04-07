@@ -50,6 +50,7 @@ public class OrderFragment extends BaseFragment implements
     private TextView mTitleTv;
     private AppContext appContext;
     private LayoutInflater inflater;
+    private View mView;
 
     private Handler lvNewsHandler;
     private List<News> lvNewsData = new ArrayList<News>();
@@ -62,7 +63,6 @@ public class OrderFragment extends BaseFragment implements
 
     private int curNewsCatalog = NewsList.CATALOG_ALL;
     private View lvNews_footer;
-    private View mView;
 
     @ViewInject(R.id.right_img)
     private ImageView rightBtn;

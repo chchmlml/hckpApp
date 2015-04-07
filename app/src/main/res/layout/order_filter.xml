@@ -280,7 +280,8 @@
                 android:layout_marginTop="5dip"
                 android:layout_marginRight="10dip"
                 android:layout_margin="0dip"
-                android:background="@drawable/btn_selector"
+                android:onClick="showAlertDialog"
+                android:background="@drawable/btn_ok_selector"
                 android:text="@string/btn_filter"
                 android:id="@+id/button" />
         </LinearLayout>

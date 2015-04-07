@@ -18,7 +18,10 @@ import android.widget.TextView;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
+import com.haven.hckp.adapter.DispathViewAdapter;
 import com.haven.hckp.adapter.ListViewNewsAdapter;
+import com.haven.hckp.bean.Dispath;
+import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
@@ -43,9 +46,9 @@ public class HomeTabFragment extends BaseFragment {
     private LayoutInflater inflater;
 
     private Handler lvNewsHandler;
-    private List<News> lvNewsData = new ArrayList<News>();
+    private List<Dispath> lvNewsData = new ArrayList<Dispath>();
     private int lvNewsSumData;
-    private ListViewNewsAdapter lvNewsAdapter;
+    private DispathViewAdapter lvNewsAdapter;
 
     private TextView lvNews_foot_more;
     private ProgressBar lvNews_foot_progress;
@@ -71,7 +74,7 @@ public class HomeTabFragment extends BaseFragment {
 			Bundle savedInstanceState) {
         Log.i(TAG, "--->onCreateView");
         this.inflater = inflater;
-        mView = this.inflater.inflate(R.layout.home_tab_fragment, container, false);
+        mView = this.inflater.inflate(R.layout.dispath_tab_fragment, container, false);
         ViewUtils.inject(this, mView); //注入view和事件
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
@@ -135,14 +138,14 @@ public class HomeTabFragment extends BaseFragment {
             case UIHelper.LISTVIEW_ACTION_REFRESH:
             case UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG:
                 int newdata = 0;// 新加载数据-只有刷新动作才会使用到
-                NewsList nlist = (NewsList) obj;
+                DispathList nlist = (DispathList) obj;
                 notice = nlist.getNotice();
                 lvNewsSumData = what;
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     if (lvNewsData.size() > 0) {
-                        for (News news1 : nlist.getNewslist()) {
+                        for (Dispath news1 : nlist.getNewslist()) {
                             boolean b = false;
-                            for (News news2 : lvNewsData) {
+                            for (Dispath news2 : lvNewsData) {
                                 if (news1.getId() == news2.getId()) {
                                     b = true;
                                     break;
@@ -168,13 +171,13 @@ public class HomeTabFragment extends BaseFragment {
                 }
                 break;
             case UIHelper.LISTVIEW_ACTION_SCROLL:
-                NewsList list = (NewsList) obj;
+                DispathList list = (DispathList) obj;
                 notice = list.getNotice();
                 lvNewsSumData += what;
                 if (lvNewsData.size() > 0) {
-                    for (News news1 : list.getNewslist()) {
+                    for (Dispath news1 : list.getNewslist()) {
                         boolean b = false;
-                        for (News news2 : lvNewsData) {
+                        for (Dispath news2 : lvNewsData) {
                             if (news1.getId() == news2.getId()) {
                                 b = true;
                                 break;
@@ -202,8 +205,10 @@ public class HomeTabFragment extends BaseFragment {
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
-        lvNewsAdapter = new ListViewNewsAdapter(mActivity, lvNewsData, R.layout.order_list_item);
-        lvNews = (PullToRefreshListView) mView.findViewById(R.id.listview_order);
+
+        lvNewsAdapter = new DispathViewAdapter(mActivity, lvNewsData, R.layout.dispath_list_item);
+
+        lvNews = (PullToRefreshListView) mView.findViewById(R.id.listview_dispatch);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
 
@@ -279,7 +284,7 @@ public class HomeTabFragment extends BaseFragment {
                 if (action == UIHelper.LISTVIEW_ACTION_REFRESH || action == UIHelper.LISTVIEW_ACTION_SCROLL)
                     isRefresh = true;
                 try {
-                    NewsList list = appContext.getNewsList(pageIndex, isRefresh);
+                    DispathList list = appContext.getDispathList(pageIndex, isRefresh);
                     msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center">
-   	<TextView 
+   	<TextView
    	    android:id="@+id/new_data_toast_message"
         android:layout_width="fill_parent"
     	android:layout_height="wrap_content"

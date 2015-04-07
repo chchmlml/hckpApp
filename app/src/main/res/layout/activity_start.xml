@@ -3,8 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="bottom"
-    android:background="#e1e1e1">
+    android:gravity="center_vertical"
+    android:background="@drawable/splash">
 
     <com.haven.hckp.widght.LoadingView
         android:layout_gravity="center_horizontal"
@@ -13,4 +13,5 @@
         android:layout_marginBottom="50dp"
         android:src="@drawable/loader_frame_1"
         android:layout_width="wrap_content"></com.haven.hckp.widght.LoadingView>
+
 </LinearLayout>

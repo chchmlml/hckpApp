@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.haven.hckp.api.ApiClient;
+import com.haven.hckp.bean.Dispath;
+import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.common.StringUtils;
@@ -376,6 +378,35 @@ public class AppContext extends Application {
 			list = (NewsList) readObject(key);
 			if (list == null)
 				list = new NewsList();
+		}
+		return list;
+	}
+	/**
+	 * 运单列表
+	 */
+	public DispathList getDispathList(int pageIndex, boolean isRefresh) throws AppException {
+        DispathList list = null;
+		String key = "dispathList_" +  "_" + pageIndex + "_" + PAGE_SIZE;
+		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+		//if (isNetworkConnected()) {
+			try {
+				list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE);
+				if (list != null && pageIndex == 0) {
+					Notice notice = list.getNotice();
+					list.setNotice(null);
+					list.setCacheKey(key);
+					saveObject(list, key);
+					list.setNotice(notice);
+				}
+			} catch (AppException e) {
+				list = (DispathList) readObject(key);
+				if (list == null)
+					throw e;
+			}
+		} else {
+			list = (DispathList) readObject(key);
+			if (list == null)
+				list = new DispathList();
 		}
 		return list;
 	}

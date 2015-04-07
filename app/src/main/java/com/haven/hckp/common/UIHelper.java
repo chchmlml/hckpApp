@@ -8,6 +8,7 @@ import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
+import com.haven.hckp.ui.loginActivity;
 
 import android.content.DialogInterface;
 
@@ -194,12 +195,11 @@ public class UIHelper {
      * 显示新闻详情
      *
      * @param context
-     * @param newsId
      */
-    public static void showNewsDetail(Context context, int newsId) {
-//        Intent intent = new Intent(context, NewsDetail.class);
-//        intent.putExtra("news_id", newsId);
-//        context.startActivity(intent);
+    public static void showLoginRedirect(Context context) {
+        Intent intent = new Intent(context, loginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
     // /**

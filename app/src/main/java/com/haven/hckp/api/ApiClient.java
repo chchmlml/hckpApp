@@ -7,6 +7,7 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
+import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Result;
 import com.haven.hckp.bean.URLs;
@@ -648,6 +649,24 @@ public class ApiClient {
 
         try{
             return NewsList.parse(http_get(appContext, newUrl));
+        }catch(Exception e){
+            if(e instanceof AppException)
+                throw (AppException)e;
+            throw AppException.network(e);
+        }
+    }
+    /**
+     * 获取报价单列表
+     * @throws AppException
+     */
+    public static DispathList getDispathList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
+        String newUrl = _MakeURL(URLs.DISPARH_LIST, new HashMap<String, Object>(){{
+            put("start", pageIndex);
+            put("len", pageSize);
+        }});
+
+        try{
+            return DispathList.parse(http_get(appContext, newUrl));
         }catch(Exception e){
             if(e instanceof AppException)
                 throw (AppException)e;

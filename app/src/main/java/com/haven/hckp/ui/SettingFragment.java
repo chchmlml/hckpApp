@@ -2,6 +2,7 @@ package com.haven.hckp.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,16 +10,27 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.haven.hckp.AppContext;
 import com.haven.hckp.R;
+import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.widght.NewDataToast;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  *
  */
 public class SettingFragment extends BaseFragment implements OnClickListener {
 
-	private static final String TAG = "SettingFragment";
-	private Activity mActivity;
-	private TextView mTitleTv;
+    private static final String TAG = "SettingFragment";
+    private Activity mActivity;
+    private TextView mTitleTv;
+    private AppContext appContext;
+    private LayoutInflater inflater;
+    private View mView;
+
 	private RelativeLayout mRecommondToWeixinLayout;
 	private RelativeLayout mFeedbackLayout;
 	private RelativeLayout mAboutUsLayout;
@@ -41,14 +53,25 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
+    @ViewInject(R.id.clear_cache_layout)
+    private RelativeLayout relativeLayout;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_setting, container,
-				false);
-		return view;
+        this.inflater = inflater;
+        mView = this.inflater.inflate(R.layout.fragment_setting, container, false);
+        ViewUtils.inject(this, mView); //注入view和事件
+        appContext = (AppContext) this.mActivity.getApplicationContext();
+        return mView;
 	}
+
+    @OnClick({R.id.clear_cache_layout})
+    public void buttonClick(View v) {
+        if (v.getId() == R.id.clear_cache_layout) {
+            UIHelper.showLoginRedirect(appContext);
+        }
+    }
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -65,7 +88,7 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 	private void initViews(View view) {
 		mTitleTv = (TextView) view.findViewById(R.id.title_tv);
 		mTitleTv.setText(R.string.setting);
-		
+
 		mFeedbackLayout = (RelativeLayout) view.findViewById(R.id.feedback_layout);
 		mAboutUsLayout = (RelativeLayout) view.findViewById(R.id.about_us_layout);
 		mAppRecommendLayout = (RelativeLayout) view.findViewById(R.id.app_recommend_layout);

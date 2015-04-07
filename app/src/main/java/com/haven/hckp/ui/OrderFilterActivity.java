@@ -1,5 +1,6 @@
 package com.haven.hckp.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -18,6 +19,7 @@ import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -63,6 +65,29 @@ public class OrderFilterActivity extends ActionBarActivity {
         if (v.getId() == R.id.back_img) {
             OrderFilterActivity.this.finish();
         }
+    }
+
+
+    public void showAlertDialog(View view) {
+
+        CustomDialog.Builder builder = new CustomDialog.Builder(this);
+        builder.setMessage("确认搜索");
+        builder.setTitle("提示");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("取消",
+                new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        builder.create().show();
+
     }
 
 }

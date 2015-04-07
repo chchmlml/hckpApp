@@ -6,21 +6,6 @@
     android:background="#ffffff"
     android:orientation="horizontal">
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="100dip"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:orientation="vertical"-->
-        <!--android:padding="@dimen/padding_5px"-->
-        <!--android:gravity="center_horizontal|top">-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/order_thumd"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/geren"-->
-            <!--android:padding="@dimen/padding_5px" />-->
-    <!--</LinearLayout>-->
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,27 +40,27 @@
             </LinearLayout>
 
             <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="left"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="left"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/order_rank"-->
-                    <!--style="@style/order_start_style"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="★★★★☆"-->
-                    <!--android:layout_centerInParent="true" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/order_rank"-->
+            <!--style="@style/order_start_style"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="★★★★☆"-->
+            <!--android:layout_centerInParent="true" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/order_score"-->
-                    <!--style="@style/order_text_style"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="5dip"-->
-                    <!--android:text="(256)"-->
-                    <!--android:layout_centerInParent="true" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/order_score"-->
+            <!--style="@style/order_text_style"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dip"-->
+            <!--android:text="(256)"-->
+            <!--android:layout_centerInParent="true" />-->
             <!--</LinearLayout>-->
 
             <LinearLayout
@@ -93,19 +78,19 @@
                     android:layout_centerInParent="true" />
 
                 <!--<TextView-->
-                    <!--style="@style/order_text_style"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="/"-->
-                    <!--android:layout_centerInParent="true" />-->
+                <!--style="@style/order_text_style"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="/"-->
+                <!--android:layout_centerInParent="true" />-->
 
                 <!--<TextView-->
-                    <!--android:id="@+id/order_attr_2"-->
-                    <!--style="@style/order_text_style"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="种类：电子产品"-->
-                    <!--android:layout_centerInParent="true" />-->
+                <!--android:id="@+id/order_attr_2"-->
+                <!--style="@style/order_text_style"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="种类：电子产品"-->
+                <!--android:layout_centerInParent="true" />-->
             </LinearLayout>
         </LinearLayout>
 

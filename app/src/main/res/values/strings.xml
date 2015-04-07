@@ -4,7 +4,7 @@
     <string name="app_name">货车快跑</string>
 
     <string name="home">首页</string>
-    <string name="order">运单</string>
+    <string name="order">调度单</string>
     <string name="collect">车队</string>
     <string name="setting">个人设置</string>
     <string name="order_detail">订单详情</string>
@@ -53,5 +53,9 @@
 
     <string name="setting_head_title">系统设置</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
+    <string name="title_activity_login">loginActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

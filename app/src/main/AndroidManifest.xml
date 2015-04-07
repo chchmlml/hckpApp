@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.haven.hckp">
+    package="com.haven.hckp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,25 +16,26 @@
         android:name=".AppContext"
         android:allowBackup="true"
         android:configChanges="orientation|keyboardHidden|screenSize"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/hckp_icon"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
 
         <!-- 启动页 -->
         <activity
             android:name=".AppStart"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.haven.hckp.service.MyService">
+
+        <service android:name=".service.MyService" >
             <intent-filter>
-                <action android:name="com.haven.hckp.service.MyService"/>
+                <action android:name="com.haven.hckp.service.MyService" />
             </intent-filter>
         </service>
         <!-- 首页 -->
@@ -58,7 +59,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
+        <activity
+            android:name=".ui.loginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
     </application>
 
 </manifest>
