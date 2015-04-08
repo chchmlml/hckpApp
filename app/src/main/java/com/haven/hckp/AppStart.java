@@ -15,6 +15,7 @@ import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.pgyersdk.update.PgyUpdateManager;
 
 /**
  * 启动界面
@@ -34,6 +35,8 @@ public class AppStart extends Activity {
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
         ViewUtils.inject(this); //注入view和事件
+
+        PgyUpdateManager.register(this, AppConfig.APP_ID);
 
         //渐变展示启动屏
 //        AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);

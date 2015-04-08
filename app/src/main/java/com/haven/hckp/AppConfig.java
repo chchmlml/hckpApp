@@ -21,9 +21,11 @@ public class AppConfig {
 
 	private final static String APP_CONFIG = "config";
 
-	public final static String TEMP_TWEET = "temp_tweet";
-	public final static String TEMP_TWEET_IMAGE = "temp_tweet_image";
-	public final static String TEMP_MESSAGE = "temp_message";
+    public final static String APP_ID = "5e33a32b9b1a20586cd8b78270461371";
+
+    public final static String TEMP_TWEET = "temp_tweet";
+    public final static String TEMP_TWEET_IMAGE = "temp_tweet_image";
+    public final static String TEMP_MESSAGE = "temp_message";
 	public final static String TEMP_COMMENT = "temp_comment";
 	public final static String TEMP_POST_TITLE = "temp_post_title";
 	public final static String TEMP_POST_CATALOG = "temp_post_catalog";

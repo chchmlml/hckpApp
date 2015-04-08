@@ -19,6 +19,7 @@ import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -153,7 +154,13 @@ public class OrderDetailActivity extends ActionBarActivity {
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                         Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                        renderView((Map<String, Object>) obj.get("data"));
+                        String code = obj.get("code").toString();
+                        if (code.equals("1")) {
+                            renderView((Map<String, Object>) obj.get("data"));
+                        } else {
+                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                            finish();
+                        }
                         linearLoad.setVisibility(View.GONE);
                         linearDesc.setVisibility(View.VISIBLE);
                         linearForm.setVisibility(View.VISIBLE);

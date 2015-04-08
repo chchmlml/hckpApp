@@ -9,6 +9,8 @@
     <string name="setting">个人设置</string>
     <string name="order_detail">订单详情</string>
     <string name="order_filter">订单检索</string>
+    <string name="login_page">用户登录</string>
+    <string name="register_page">用户注册</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
@@ -43,6 +45,20 @@
     <string name="personal">个人信息</string>
     <string name="other">其他高级设置</string>
     <string name="report_price">我要报价</string>
+
+    <string name="login_phone">手机号</string>
+    <string name="login_email">账号/手机/电子邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_password2">确认密码</string>
+    <string name="register_btn_yan">验证码</string>
+    <string name="register">注册</string>
+
+    <string name="login_param_is_null">用户名或者密码为空</string>
+
+    <string name="register_edit_yan">验证码</string>
+    <string name="login_btn">登录</string>
+    <string name="login_register">免费注册</string>
+    <string name="login_forget">忘记密码</string>
 
     <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
     <string name="pull_to_refresh_release_label">松开可以刷新</string>

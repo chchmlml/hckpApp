@@ -16,6 +16,7 @@ import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.common.StringUtils;
+import com.pgyersdk.crash.PgyCrashManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,6 +44,7 @@ public class AppContext extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+        PgyCrashManager.register(this, AppConfig.APP_ID);
 		// 注册App异常崩溃处理器
 		// Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
 	}

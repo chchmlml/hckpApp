@@ -1,93 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/graywhite"
-    android:orientation="vertical" >
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include layout="@layout/title_bar" />
 
     <LinearLayout
+        android:gravity="center"
+        android:background="@drawable/general_img_inputbox"
+        android:padding="5.0dip"
+        android:layout_marginTop="@dimen/padding_10px"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_height="50.0dip"
+        android:layout_margin="10.0dip">
 
-        <ScrollView
+        <TextView
+            android:gravity="center"
+            android:background="@drawable/username_icon"
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_marginRight="5.0dip" />
+
+        <EditText
+            android:id="@+id/btn_email"
+            android:background="@null"
             android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1" >
+            android:layout_height="fill_parent"
+            android:hint="@string/login_email"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/grayslate"
+            android:maxLines="1"
+            android:inputType="textEmailAddress">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:paddingTop="15dip" >
-
-                <EditText
-                    android:id="@+id/login_et_account"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dip"
-                    android:background="@drawable/edittext_default"
-                    android:hint="手机号码/邮箱地址/陌陌号"
-                    android:inputType="text"
-                    android:singleLine="true" />
-
-                <EditText
-                    android:id="@+id/login_et_pwd"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dip"
-                    android:background="@drawable/edittext_default"
-                    android:hint="输入密码"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:singleLine="true" />
-
-            </LinearLayout>
-        </ScrollView>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_unlogin_bar"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="4dip"
-            android:paddingLeft="8dip"
-            android:paddingRight="8dip"
-            android:paddingTop="4dip" >
-
-            <Button
-                android:id="@+id/login_btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="42dip"
-                android:layout_marginRight="9dip"
-                android:layout_weight="1"
-                android:background="@drawable/btn_bottombar"
-                android:gravity="center"
-                android:text="返    回"
-                android:textColor="@color/author_text"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/login_btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="42dip"
-                android:layout_marginLeft="9dip"
-                android:layout_weight="1"
-                android:background="@drawable/btn_bottombar"
-                android:gravity="center"
-                android:text="登    录"
-                android:textColor="@color/contents_text"
-                android:textSize="14sp" />
-        </LinearLayout>
+            <requestFocus />
+        </EditText>
     </LinearLayout>
 
-    <ImageView
+    <LinearLayout
+        android:gravity="center"
+        android:background="@drawable/general_img_inputbox"
+        android:padding="5.0dip"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_topbar_shadow"
-        android:focusable="false" />
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="5.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginBottom="10.0dip">
 
-</RelativeLayout>
+        <TextView
+            android:gravity="center"
+            android:background="@drawable/password_icon"
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_marginRight="5.0dip" />
+
+        <EditText
+            android:id="@+id/btn_pwd"
+            android:background="@null"
+            android:textColor="@color/gray"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textColorHint="@color/grayslate"
+            android:hint="@string/login_password"
+            android:maxLines="1"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:textSize="18.0dip"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_ok_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:layout_margin="5.0dip"
+        android:layout_marginTop="10.0dip"
+        android:text="@string/login_btn"
+        android:onClick="viewClick" />
+
+    <RelativeLayout
+        android:paddingLeft="5.0dip"
+        android:paddingTop="5.0dip"
+        android:paddingRight="5.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:textSize="16.0dip"
+            android:textColor="@color/gray"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_register"
+            android:onClick="viewClick" />
+
+        <!--<Button-->
+            <!--android:textSize="16.0dip"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:background="@null"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/login_forget"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:onClick="viewClick" />-->
+    </RelativeLayout>
+
+
+    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+</LinearLayout>
