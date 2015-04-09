@@ -10,6 +10,7 @@ import com.haven.hckp.AppException;
 import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Result;
+import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.bean.Update;
 import com.haven.hckp.bean.WellcomeImage;
@@ -649,6 +650,25 @@ public class ApiClient {
 
         try{
             return NewsList.parse(http_get(appContext, newUrl));
+        }catch(Exception e){
+            if(e instanceof AppException)
+                throw (AppException)e;
+            throw AppException.network(e);
+        }
+    }
+//
+    /**
+     * 获取报价单列表
+     * @throws AppException
+     */
+    public static TeamList getTeamsList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
+        String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>(){{
+            put("start", pageIndex);
+            put("len", pageSize);
+        }});
+
+        try{
+            return TeamList.parse(http_get(appContext, newUrl));
         }catch(Exception e){
             if(e instanceof AppException)
                 throw (AppException)e;

@@ -107,7 +107,8 @@ public class OrderDetailActivity extends ActionBarActivity {
                 getPricePort(price);
             } else {
                 linearLoad.setVisibility(View.GONE);
-                NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
+                UIHelper.ToastMessage(appContext,R.string.error_input);
+                //NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
             }
         } else if (v.getId() == R.id.back_img) {
             OrderDetailActivity.this.finish();
@@ -130,7 +131,9 @@ public class OrderDetailActivity extends ActionBarActivity {
                         Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         linearLoad.setVisibility(View.GONE);
-                        NewDataToast.makeText(appContext, getString(R.string.success_input, false), false).show();
+                        //NewDataToast.makeText(appContext, getString(R.string.success_input, false), false).show();
+                        UIHelper.ToastMessage(appContext,R.string.success_input);
+                        OrderDetailActivity.this.finish();
                     }
 
                     @Override

@@ -5,7 +5,7 @@
     <string-array name="bottom_bar_labels">
         <item>@string/home</item>
         <item>@string/order</item>
-        <item>@string/collect</item>
+        <item>@string/team</item>
         <item>@string/setting</item>
     </string-array>
 

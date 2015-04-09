@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graywhite"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <!-- title bar -->
 
@@ -16,32 +16,42 @@
         android:paddingBottom="20dip"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:paddingTop="20dip" >
+        android:paddingTop="20dip">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <!-- 头像 -->
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/clear_cache_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="20dip"
-                android:background="@drawable/setting_bg" >
+                android:orientation="vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/bg_usercenter_head">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/user_thumb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/setting_text_style"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerInParent="true"
-                    android:text="头像" />
+                    android:layout_marginTop="20dip"
+                    android:src="@drawable/icon_defult_userimage" />
 
-            </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding_5px"
+                    android:textColor="@color/graywhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="点击登录" />
+
+            </LinearLayout>
 
             <!-- 反馈意见  关于我们  应用推荐 -->
 
@@ -50,14 +60,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/setting_bg"
                 android:layout_marginBottom="20dip"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <!-- 反馈意见 -->
 
                 <RelativeLayout
                     android:id="@+id/feedback_layout"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -93,7 +103,7 @@
                 <RelativeLayout
                     android:id="@+id/about_us_layout"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -129,7 +139,7 @@
                 <RelativeLayout
                     android:id="@+id/app_recommend_layout"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -155,7 +165,7 @@
                         android:src="@drawable/setting_arrow" />
                 </RelativeLayout>
             </LinearLayout>
-            
+
         </LinearLayout>
     </ScrollView>
 

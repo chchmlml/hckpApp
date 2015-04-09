@@ -1,22 +1,16 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,27 +19,25 @@ import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
 import com.haven.hckp.adapter.ListViewNewsAdapter;
+import com.haven.hckp.adapter.TeamViewNewsAdapter;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.bean.Team;
+import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
-import com.haven.hckp.ui.AnimFragment.OnFragmentDismissListener;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+public class TeamFragment extends BaseFragment {
 
-public class OrderFragment extends BaseFragment implements
-        OnItemClickListener, OnClickListener, OnFragmentDismissListener {
-
-    private static final String TAG = "OrderFragment";
-
+    private static final String TAG = "TeamFragment";
     private Activity mActivity;
     private TextView mTitleTv;
     private AppContext appContext;
@@ -53,9 +45,9 @@ public class OrderFragment extends BaseFragment implements
     private View mView;
 
     private Handler lvNewsHandler;
-    private List<News> lvNewsData = new ArrayList<News>();
+    private List<Team> lvNewsData = new ArrayList<Team>();
     private int lvNewsSumData;
-    private ListViewNewsAdapter lvNewsAdapter;
+    private TeamViewNewsAdapter lvNewsAdapter;
 
     private TextView lvNews_foot_more;
     private ProgressBar lvNews_foot_progress;
@@ -67,8 +59,8 @@ public class OrderFragment extends BaseFragment implements
     @ViewInject(R.id.right_img)
     private ImageView rightBtn;
 
-    public static OrderFragment newInstance() {
-        OrderFragment OrderFragment = new OrderFragment();
+    public static TeamFragment newInstance() {
+        TeamFragment OrderFragment = new TeamFragment();
         return OrderFragment;
     }
 
@@ -87,7 +79,7 @@ public class OrderFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.inflater = inflater;
-        mView = this.inflater.inflate(R.layout.fragment_order, container, false);
+        mView = this.inflater.inflate(R.layout.fragment_team, container, false);
         ViewUtils.inject(this, mView); //注入view和事件
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
@@ -108,7 +100,7 @@ public class OrderFragment extends BaseFragment implements
     private void initViews(View view) {
 
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
-        mTitleTv.setText(R.string.home);
+        mTitleTv.setText(R.string.team);
 //        // 初始化部件，数据
         this.initFrameButton();
         this.initFrameListView();
@@ -202,14 +194,14 @@ public class OrderFragment extends BaseFragment implements
             case UIHelper.LISTVIEW_ACTION_REFRESH:
             case UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG:
                 int newdata = 0;// 新加载数据-只有刷新动作才会使用到
-                NewsList nlist = (NewsList) obj;
+                TeamList nlist = (TeamList) obj;
                 notice = nlist.getNotice();
                 lvNewsSumData = what;
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     if (lvNewsData.size() > 0) {
-                        for (News news1 : nlist.getNewslist()) {
+                        for (Team news1 : nlist.getNewslist()) {
                             boolean b = false;
-                            for (News news2 : lvNewsData) {
+                            for (Team news2 : lvNewsData) {
                                 if (news1.getId() == news2.getId()) {
                                     b = true;
                                     break;
@@ -235,13 +227,13 @@ public class OrderFragment extends BaseFragment implements
                 }
                 break;
             case UIHelper.LISTVIEW_ACTION_SCROLL:
-                NewsList list = (NewsList) obj;
+                TeamList list = (TeamList) obj;
                 notice = list.getNotice();
                 lvNewsSumData += what;
                 if (lvNewsData.size() > 0) {
-                    for (News news1 : list.getNewslist()) {
+                    for (Team news1 : list.getNewslist()) {
                         boolean b = false;
-                        for (News news2 : lvNewsData) {
+                        for (Team news2 : lvNewsData) {
                             if (news1.getId() == news2.getId()) {
                                 b = true;
                                 break;
@@ -269,7 +261,8 @@ public class OrderFragment extends BaseFragment implements
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
-        lvNewsAdapter = new ListViewNewsAdapter(mActivity, lvNewsData, R.layout.order_list_item);
+        lvNewsAdapter = new TeamViewNewsAdapter(mActivity, lvNewsData, R.layout.team_list_item);
+
         lvNews = (PullToRefreshListView) mView.findViewById(R.id.listview_order);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
@@ -277,24 +270,28 @@ public class OrderFragment extends BaseFragment implements
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                //点击头部、底部栏无效
-                if (position == 0 || view == lvNews_footer)
-                    return;
 
-                News news = null;
-                // 判断是否是TextView
-                if (view instanceof TextView) {
-                    news = (News) view.getTag();
-                } else {
-                    TextView tv = (TextView) view
-                            .findViewById(R.id.order_title);
-                    news = (News) tv.getTag();
-                }
-                if (news == null)
-                    return;
+                UIHelper.ToastMessage(appContext, "敬请期待");
+                return;
 
-                // 跳转到新闻详情
-                UIHelper.showNewsRedirect(appContext, news);
+//                //点击头部、底部栏无效
+//                if (position == 0 || view == lvNews_footer)
+//                    return;
+//
+//                News news = null;
+//                // 判断是否是TextView
+//                if (view instanceof TextView) {
+//                    news = (News) view.getTag();
+//                } else {
+//                    TextView tv = (TextView) view
+//                            .findViewById(R.id.order_title);
+//                    news = (News) tv.getTag();
+//                }
+//                if (news == null)
+//                    return;
+//
+//                // 跳转到新闻详情
+//                UIHelper.showNewsRedirect(appContext, news);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -346,7 +343,7 @@ public class OrderFragment extends BaseFragment implements
                 if (action == UIHelper.LISTVIEW_ACTION_REFRESH || action == UIHelper.LISTVIEW_ACTION_SCROLL)
                     isRefresh = true;
                 try {
-                    NewsList list = appContext.getNewsList(pageIndex, isRefresh);
+                    TeamList list = appContext.getTeamList(pageIndex, isRefresh);
                     msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {
@@ -370,7 +367,7 @@ public class OrderFragment extends BaseFragment implements
 //        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.more);
 //        rightBtn.setImageBitmap(bm);
         rightBtn.setVisibility(View.VISIBLE);
-        rightBtn.setOnClickListener(new OnClickListener() {
+        rightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UIHelper.showFilterRedirect(appContext);
@@ -390,21 +387,8 @@ public class OrderFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    }
-
-    @Override
     public String getFragmentName() {
         return TAG;
-    }
-
-    @Override
-    public void onClick(View v) {
-    }
-
-    @Override
-    public void onFragmentDismiss() {
-
     }
 
 }

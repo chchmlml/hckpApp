@@ -5,7 +5,7 @@
 
     <string name="home">首页</string>
     <string name="order">调度单</string>
-    <string name="collect">车队</string>
+    <string name="team">车队</string>
     <string name="setting">个人设置</string>
     <string name="order_detail">订单详情</string>
     <string name="order_filter">订单检索</string>

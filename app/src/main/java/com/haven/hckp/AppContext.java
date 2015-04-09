@@ -15,6 +15,7 @@ import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.common.StringUtils;
 import com.pgyersdk.crash.PgyCrashManager;
 
@@ -354,35 +355,65 @@ public class AppContext extends Application {
 		return failure;
 	}
 
-	/**
-	 * 新闻列表
-	 */
-	public NewsList getNewsList(int pageIndex, boolean isRefresh) throws AppException {
-		NewsList list = null;
-		String key = "orderlist_" +  "_" + pageIndex + "_" + PAGE_SIZE;
-		if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-		//if (isNetworkConnected()) {
-			try {
-				list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE);
-				if (list != null && pageIndex == 0) {
-					Notice notice = list.getNotice();
-					list.setNotice(null);
-					list.setCacheKey(key);
-					saveObject(list, key);
-					list.setNotice(notice);
-				}
-			} catch (AppException e) {
-				list = (NewsList) readObject(key);
-				if (list == null)
-					throw e;
-			}
-		} else {
-			list = (NewsList) readObject(key);
-			if (list == null)
-				list = new NewsList();
-		}
-		return list;
-	}
+    /**
+     * 新闻列表
+     */
+    public NewsList getNewsList(int pageIndex, boolean isRefresh) throws AppException {
+        NewsList list = null;
+        String key = "orderlist_" +  "_" + pageIndex + "_" + PAGE_SIZE;
+        if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+            //if (isNetworkConnected()) {
+            try {
+                list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE);
+                if (list != null && pageIndex == 0) {
+                    Notice notice = list.getNotice();
+                    list.setNotice(null);
+                    list.setCacheKey(key);
+                    saveObject(list, key);
+                    list.setNotice(notice);
+                }
+            } catch (AppException e) {
+                list = (NewsList) readObject(key);
+                if (list == null)
+                    throw e;
+            }
+        } else {
+            list = (NewsList) readObject(key);
+            if (list == null)
+                list = new NewsList();
+        }
+        return list;
+    }
+
+    /**
+     * 车队
+     */
+    public TeamList getTeamList(int pageIndex, boolean isRefresh) throws AppException {
+        TeamList list = null;
+        String key = "teamlist_" +  "_" + pageIndex + "_" + PAGE_SIZE;
+        if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+            //if (isNetworkConnected()) {
+            try {
+                list = ApiClient.getTeamsList(this, pageIndex, PAGE_SIZE);
+                if (list != null && pageIndex == 0) {
+                    Notice notice = list.getNotice();
+                    list.setNotice(null);
+                    list.setCacheKey(key);
+                    saveObject(list, key);
+                    list.setNotice(notice);
+                }
+            } catch (AppException e) {
+                list = (TeamList) readObject(key);
+                if (list == null)
+                    throw e;
+            }
+        } else {
+            list = (TeamList) readObject(key);
+            if (list == null)
+                list = new TeamList();
+        }
+        return list;
+    }
 	/**
 	 * 运单列表
 	 */

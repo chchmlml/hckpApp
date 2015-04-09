@@ -215,24 +215,28 @@ public class HomeTabFragment extends BaseFragment {
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                //点击头部、底部栏无效
-                if (position == 0 || view == lvNews_footer)
-                    return;
 
-                News news = null;
-                // 判断是否是TextView
-                if (view instanceof TextView) {
-                    news = (News) view.getTag();
-                } else {
-                    TextView tv = (TextView) view
-                            .findViewById(R.id.order_title);
-                    news = (News) tv.getTag();
-                }
-                if (news == null)
-                    return;
-
-                // 跳转到新闻详情
-                UIHelper.showNewsRedirect(appContext, news);
+                UIHelper.ToastMessage(appContext, "敬请期待");
+                return;
+//
+//                //点击头部、底部栏无效
+//                if (position == 0 || view == lvNews_footer)
+//                    return;
+//
+//                News news = null;
+//                // 判断是否是TextView
+//                if (view instanceof TextView) {
+//                    news = (News) view.getTag();
+//                } else {
+//                    TextView tv = (TextView) view
+//                            .findViewById(R.id.order_title);
+//                    news = (News) tv.getTag();
+//                }
+//                if (news == null)
+//                    return;
+//
+//                // 跳转到新闻详情
+//                UIHelper.showNewsRedirect(appContext, news);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {

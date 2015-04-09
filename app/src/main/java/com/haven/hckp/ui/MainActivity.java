@@ -1,5 +1,7 @@
 package com.haven.hckp.ui;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -22,7 +24,7 @@ public class MainActivity extends FragmentActivity implements
     private MyTabWidget mTabWidget;
     private HomeFragment mHomeFragment;
     private OrderFragment mOrderFragment;
-    private CollectFragment mCollectFragment;
+    private TeamFragment mTeamFragment;
     private SettingFragment mSettingFragment;
     private int mIndex = ConstantValues.HOME_FRAGMENT_INDEX;
     private FragmentManager mFragmentManager;
@@ -35,7 +37,6 @@ public class MainActivity extends FragmentActivity implements
         setContentView(R.layout.activity_main);
 
         //mDoubleClickExitHelper = new DoubleClickExitHelper(this);
-
         //初始化页面
         init();
         initEvents();
@@ -80,11 +81,11 @@ public class MainActivity extends FragmentActivity implements
                 }
                 break;
             case ConstantValues.COLLECT_FRAGMENT_INDEX:
-                if (null == mCollectFragment) {
-                    mCollectFragment = new CollectFragment();
-                    transaction.add(R.id.center_layout, mCollectFragment);
+                if (null == mTeamFragment) {
+                    mTeamFragment = new TeamFragment();
+                    transaction.add(R.id.center_layout, mTeamFragment);
                 } else {
-                    transaction.show(mCollectFragment);
+                    transaction.show(mTeamFragment);
                 }
                 break;
             case ConstantValues.SETTING_FRAGMENT_INDEX:
@@ -110,8 +111,8 @@ public class MainActivity extends FragmentActivity implements
         if (null != mOrderFragment) {
             transaction.hide(mOrderFragment);
         }
-        if (null != mCollectFragment) {
-            transaction.hide(mCollectFragment);
+        if (null != mTeamFragment) {
+            transaction.hide(mTeamFragment);
         }
         if (null != mSettingFragment) {
             transaction.hide(mSettingFragment);

@@ -36,7 +36,7 @@ public class AppStart extends Activity {
         setContentView(view);
         ViewUtils.inject(this); //注入view和事件
 
-        PgyUpdateManager.register(this, AppConfig.APP_ID);
+        //PgyUpdateManager.register(this, AppConfig.APP_ID);
 
         //渐变展示启动屏
 //        AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
