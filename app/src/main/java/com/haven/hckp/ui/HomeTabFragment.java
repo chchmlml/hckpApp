@@ -30,6 +30,7 @@ import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +60,6 @@ public class HomeTabFragment extends BaseFragment {
 	
 	@Override
 	public void onAttach(Activity activity) {
-        Log.i(TAG, "--->onAttach");
 		super.onAttach(activity);
 		this.mActivity = activity;
 	}
@@ -72,7 +72,6 @@ public class HomeTabFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-        Log.i(TAG, "--->onCreateView");
         this.inflater = inflater;
         mView = this.inflater.inflate(R.layout.dispath_tab_fragment, container, false);
         ViewUtils.inject(this, mView); //注入view和事件
@@ -82,14 +81,12 @@ public class HomeTabFragment extends BaseFragment {
 	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-        Log.i(TAG, "--->onViewCreated");
 		super.onViewCreated(view, savedInstanceState);
 		initViews();
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-        Log.i(TAG, "--->onActivityCreated");
 		super.onActivityCreated(savedInstanceState);
 	}
 	
@@ -102,7 +99,7 @@ public class HomeTabFragment extends BaseFragment {
      * 初始化所有ListView
      */
     private void initFrameListView() {
-        Log.i(TAG, "--->initFrameListView");
+        LogUtils.i("--->initFrameListView");
         // 初始化listview控件
         this.initNewsListView();
         // 加载listview数据
@@ -199,8 +196,6 @@ public class HomeTabFragment extends BaseFragment {
      * 初始化新闻列表
      */
     private void initNewsListView() {
-        Log.i(TAG, "--->initNewsListViews");
-
         lvNews_footer = this.inflater.inflate(R.layout.listview_footer, null);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
@@ -255,10 +250,10 @@ public class HomeTabFragment extends BaseFragment {
                 } catch (Exception e) {
                     scrollEnd = false;
                 }
-                Log.i(TAG, "scroll 到底了 = " + scrollEnd);
+                LogUtils.i( "scroll 到底了 = " + scrollEnd);
                 int lvDataState = StringUtils.toInt(lvNews.getTag());
                 if (scrollEnd && lvDataState == UIHelper.LISTVIEW_DATA_MORE) {
-                    Log.i(TAG, "scroll 到底了...加载数据");
+                    LogUtils.i( "scroll 到底了...加载数据");
                     lvNews.setTag(UIHelper.LISTVIEW_DATA_LOADING);
                     lvNews_foot_more.setText(R.string.load_ing);
                     lvNews_foot_progress.setVisibility(View.VISIBLE);
@@ -299,7 +294,7 @@ public class HomeTabFragment extends BaseFragment {
                 msg.arg1 = action;
                 msg.arg2 = UIHelper.LISTVIEW_DATATYPE_NEWS;
                 handler.sendMessage(msg);
-                Log.i(TAG, "数据加载中了--->");
+                LogUtils.i( "数据加载中了--->");
             }
         }.start();
     }
@@ -318,7 +313,7 @@ public class HomeTabFragment extends BaseFragment {
             public void handleMessage(Message msg) {
                 Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                 if (msg.what >= 0) {
-                    Log.i(TAG, "数据加载完成");
+                    LogUtils.i("数据加载完成");
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();
@@ -357,7 +352,7 @@ public class HomeTabFragment extends BaseFragment {
 
 	@Override
 	public String getFragmentName() {
-        Log.i(TAG, "--->getFragmentName");
+        LogUtils.i("--->getFragmentName");
 		return TAG;
 	}
 

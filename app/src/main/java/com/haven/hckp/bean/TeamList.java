@@ -42,10 +42,8 @@ public class TeamList extends Entity {
     }
 
     public static TeamList parse(InputStream obj) throws IOException, AppException {
-        Log.i("haven", "cui-->NewsList");
         TeamList newslist = new TeamList();
         String str = StringUtils.inputStreamToStr(obj);
-        Log.i("havenCui", "cui-->" + str);
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");

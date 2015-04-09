@@ -112,7 +112,6 @@ public class TeamFragment extends BaseFragment {
      * 初始化所有ListView
      */
     private void initFrameListView() {
-        Log.i(TAG, "--->initFrameListView");
         // 初始化listview控件
         this.initNewsListView();
         // 加载listview数据
@@ -145,7 +144,6 @@ public class TeamFragment extends BaseFragment {
             public void handleMessage(Message msg) {
                 Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                 if (msg.what >= 0) {
-                    Log.i(TAG, "数据加载完成");
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();
@@ -255,7 +253,6 @@ public class TeamFragment extends BaseFragment {
      * 初始化新闻列表
      */
     private void initNewsListView() {
-        Log.i(TAG, "--->initNewsListViews");
 
         lvNews_footer = this.inflater.inflate(R.layout.listview_footer, null);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
@@ -310,10 +307,8 @@ public class TeamFragment extends BaseFragment {
                 } catch (Exception e) {
                     scrollEnd = false;
                 }
-                Log.i(TAG, "scroll 到底了 = " + scrollEnd);
                 int lvDataState = StringUtils.toInt(lvNews.getTag());
                 if (scrollEnd && lvDataState == UIHelper.LISTVIEW_DATA_MORE) {
-                    Log.i(TAG, "scroll 到底了...加载数据");
                     lvNews.setTag(UIHelper.LISTVIEW_DATA_LOADING);
                     lvNews_foot_more.setText(R.string.load_ing);
                     lvNews_foot_progress.setVisibility(View.VISIBLE);
@@ -354,7 +349,6 @@ public class TeamFragment extends BaseFragment {
                 msg.arg1 = action;
                 msg.arg2 = UIHelper.LISTVIEW_DATATYPE_NEWS;
                 handler.sendMessage(msg);
-                Log.i(TAG, "数据加载中了--->");
             }
         }.start();
     }

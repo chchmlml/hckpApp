@@ -103,7 +103,7 @@ public class UpdateManager {
 				break;
 			case DOWN_NOSDCARD:
 				downloadDialog.dismiss();
-				Toast.makeText(mContext, "无法下载安装文件，请检查SD卡是否挂载", 3000).show();
+				Toast.makeText(mContext, "无法下载安装文件，请检查SD卡是否挂载", Toast.LENGTH_SHORT).show();
 				break;
 			}
     	};
@@ -128,15 +128,15 @@ public class UpdateManager {
 		if(isShowMsg){
 			if(mProDialog == null)
 				mProDialog = ProgressDialog.show(mContext, null, "正在检测，请稍后...", true, true);
-			else if(mProDialog.isShowing() || (latestOrFailDialog!=null && latestOrFailDialog.isShowing()))
-				return;
+//			else if(mProDiaLogUtils.isShowing() || (latestOrFailDialog!=null && latestOrFailDiaLogUtils.isShowing()))
+//				return;
 		}
 		final Handler handler = new Handler(){
 			public void handleMessage(Message msg) {
 				//进度条对话框不显示 - 检测结果也不显示
-				if(mProDialog != null && !mProDialog.isShowing()){
-					return;
-				}
+//				if(mProDialog != null && !mProDiaLogUtils.isShowing()){
+//					return;
+//				}
 				//关闭并释放释放进度条对话框
 				if(isShowMsg && mProDialog != null){
 					mProDialog.dismiss();
@@ -350,8 +350,7 @@ public class UpdateManager {
 	
 	/**
 	* 下载apk
-	* @param url
-	*/	
+	*/
 	private void downloadApk(){
 		downLoadThread = new Thread(mdownApkRunnable);
 		downLoadThread.start();
@@ -359,7 +358,6 @@ public class UpdateManager {
 	
 	/**
     * 安装apk
-    * @param url
     */
 	private void installApk(){
 		File apkfile = new File(apkFilePath);

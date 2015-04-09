@@ -14,7 +14,6 @@ import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
 
 import com.haven.hckp.R;
-import com.haven.hckp.common.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,7 +127,6 @@ public class TopIndicator extends LinearLayout {
         for (int i = 0; i < size; i++) {
             CheckedTextView checkedTextView = mCheckedList.get(i);
             if ((Integer) (checkedTextView.getTag()) == index) {
-                LogUtils.i(TAG, mLabels[index] + " is selected...");
                 checkedTextView.setChecked(true);
                 checkedTextView.setTextColor(Color.parseColor("#3a5182"));
             } else {

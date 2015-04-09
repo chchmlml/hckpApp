@@ -8,12 +8,15 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 
+import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.service.MyService;
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.pgyersdk.update.PgyUpdateManager;
 
@@ -34,84 +37,26 @@ public class AppStart extends Activity {
 
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
-        ViewUtils.inject(this); //注入view和事件
-
-        //PgyUpdateManager.register(this, AppConfig.APP_ID);
-
-        //渐变展示启动屏
-//        AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
-//        aa.setDuration(2000);
-//        view.startAnimation(aa);
-//        aa.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationEnd(Animation arg0) {
-//                redirectTo();
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//            }
-//
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//            }
-//
-//        });
+        ViewUtils.inject(this);
         initLoadingImages();
 
         new Handler().postDelayed(new Runnable() {
-
             @Override
             public void run() {
                 redirectTo();
                 finish();
             }
-        }, 500);
+        }, 1000);
 
-        //AppContext appContext = (AppContext) getApplication();
-//        String cookie = appContext.getProperty("cookie");
-//        if (StringUtils.isEmpty(cookie)) {
-//            String cookie_name = appContext.getProperty("cookie_name");
-//            String cookie_value = appContext.getProperty("cookie_value");
-//            if (!StringUtils.isEmpty(cookie_name) && !StringUtils.isEmpty(cookie_value)) {
-//                cookie = cookie_name + "=" + cookie_value;
-//                appContext.setProperty("cookie", cookie);
-//            }
-//            Log.i(TAG, "cookie = " + cookie);
-//        }
+        AppContext appContext = (AppContext) getApplication();
+        String cookie = appContext.getProperty("cookies");
+        if (StringUtils.isEmpty(cookie)) {
+        }
+        LogUtils.i("cookie = " + cookie);
     }
 
-    private void bindService(){
-        Intent intent = new Intent(this,MyService.class);
-        bindService(intent, conn, Context.BIND_AUTO_CREATE);
-    }
-
-//    private void unBind(){
-//        if(flag == true){
-//            unbindService(conn);
-//            flag = false;
-//        }
-//    }
-
-    private ServiceConnection conn = new ServiceConnection() {
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            // TODO Auto-generated method stub
-            MyService.MyBinder binder = (MyService.MyBinder)service;
-            MyService bindService = binder.getService();
-            bindService.MyMethod();
-        }
-    };
 
     private void initLoadingImages() {
-        //mainImageview = (LoadingView) findViewById(R.id.main_imageview);
         int[] imageIds = new int[6];
         imageIds[0] = R.drawable.loader_frame_1;
         imageIds[1] = R.drawable.loader_frame_2;
@@ -127,27 +72,6 @@ public class AppStart extends Activity {
                 mainImageview.startAnim();
             }
         }.start();
-    }
-    /**
-     * 分析显示的时间
-     *
-     * @param time
-     * @return
-     */
-    private long[] getTime(String time) {
-        long res[] = new long[2];
-        try {
-            time = time.substring(0, time.indexOf("."));
-            String t[] = time.split("-");
-            res[0] = Long.parseLong(t[0]);
-            if (t.length >= 2) {
-                res[1] = Long.parseLong(t[1]);
-            } else {
-                res[1] = Long.parseLong(t[0]);
-            }
-        } catch (Exception e) {
-        }
-        return res;
     }
 
     /**

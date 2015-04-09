@@ -45,11 +45,12 @@
 
 
                 <TextView
+                    android:id="@+id/user_name"
                     android:layout_marginTop="@dimen/padding_5px"
                     android:textColor="@color/graywhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="点击登录" />
+                    android:text="@string/click_to_login" />
 
             </LinearLayout>
 
@@ -164,7 +165,20 @@
                         android:layout_marginRight="15dip"
                         android:src="@drawable/setting_arrow" />
                 </RelativeLayout>
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:textSize="18.0dip"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_ok_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_margin="5.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="@string/logout_btn"
+                android:onClick="viewClick" />
 
         </LinearLayout>
     </ScrollView>

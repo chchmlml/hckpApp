@@ -13,9 +13,11 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
+import com.haven.hckp.AppException;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
+import com.haven.hckp.bean.User;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.NewDataToast;
@@ -26,11 +28,13 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class loginActivity extends ActionBarActivity {
 
@@ -68,6 +72,7 @@ public class loginActivity extends ActionBarActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
+
     }
 
     @OnClick({R.id.btn_login, R.id.btn_register, R.id.back_img})
@@ -96,18 +101,22 @@ public class loginActivity extends ActionBarActivity {
         }
         String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>());
         RequestParams params = new RequestParams();
-        params.addBodyParameter("email",emailStr);
-        params.addBodyParameter("pwd",pwdStr);
+        params.addBodyParameter("email", emailStr);
+        params.addBodyParameter("pwd", pwdStr);
         HttpUtils http = new HttpUtils();
         progressBar.setVisibility(View.VISIBLE);
         http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 progressBar.setVisibility(View.GONE);
-                Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
+                    Map<String,Object> userObj = (Map<String, Object>) obj.get("data");
+                    appContext.setProperty("userId", StringUtils.toString(userObj.get("user_id")));
+                    appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
+                    appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
+                    appContext.setProperty("sessionId",  StringUtils.toString(userObj.get("session_id")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                     finish();
                 } else {
@@ -118,7 +127,6 @@ public class loginActivity extends ActionBarActivity {
             @Override
             public void onFailure(HttpException e, String s) {
                 progressBar.setVisibility(View.GONE);
-                Log.i(TAG, "加载数据失败" + e.getMessage());
             }
         });
 

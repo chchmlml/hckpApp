@@ -1590,7 +1590,7 @@ public class UIHelper {
     // int id = v.getId();
     // switch (id) {
     // case R.id.question_option_share:
-    // Log.i(TAG, postDetail.getBody());
+    // LogUtils.i(TAG, postDetail.getBody());
     // showShareDialog(context, postDetail.getTitle(), postDetail.getUrl());
     // break;
     // case R.id.question_option_report:

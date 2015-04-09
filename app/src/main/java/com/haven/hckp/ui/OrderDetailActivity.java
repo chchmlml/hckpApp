@@ -103,7 +103,6 @@ public class OrderDetailActivity extends ActionBarActivity {
             String priceStr = priceInput.getText().toString();
             if (!StringUtils.isEmpty(priceStr)) {
                 Double price = Double.parseDouble(priceStr);
-                Log.i(TAG, "价格:" + price);
                 getPricePort(price);
             } else {
                 linearLoad.setVisibility(View.GONE);
@@ -122,13 +121,11 @@ public class OrderDetailActivity extends ActionBarActivity {
         params.put("diy_price", price);
         String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params);
         HttpUtils http = new HttpUtils();
-        Log.i(TAG, "newUrl：" + newUrl);
         http.send(HttpRequest.HttpMethod.GET,
                 newUrl,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                        Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         linearLoad.setVisibility(View.GONE);
                         //NewDataToast.makeText(appContext, getString(R.string.success_input, false), false).show();
@@ -149,13 +146,11 @@ public class OrderDetailActivity extends ActionBarActivity {
         params.put("diy_id", newsId);
         String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL, params);
         HttpUtils http = new HttpUtils();
-        Log.i(TAG, "newUrl：" + newUrl);
         http.send(HttpRequest.HttpMethod.GET,
                 newUrl,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                        Log.i(TAG, "加载数据成功" + JSON.toJSONString(objectResponseInfo.result));
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         String code = obj.get("code").toString();
                         if (code.equals("1")) {

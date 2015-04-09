@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.haven.hckp.R;
-import com.haven.hckp.common.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,7 +135,6 @@ public class MyTabWidget extends LinearLayout {
         for (int i = 0; i < size; i++) {
             CheckedTextView checkedTextView = mCheckedList.get(i);
             if ((Integer) (checkedTextView.getTag()) == index) {
-                LogUtils.i(TAG, mLabels[index] + " is selected...");
                 checkedTextView.setChecked(true);
                 checkedTextView.setTextColor(Color.parseColor("#3a5182"));
                 mViewList.get(i).setBackgroundColor(Color.rgb(240, 241, 242));

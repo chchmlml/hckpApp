@@ -47,8 +47,6 @@ public class ActivitiesManager {
 	public void popActivity() {
 		Activity activity = mActivityStack.lastElement();
 		if (null != activity) {
-			LogUtils.i(TAG, "popActivity-->"
-					+ activity.getClass().getSimpleName());
 			activity.finish();
 			mActivityStack.remove(activity);
 			activity = null;
@@ -57,8 +55,6 @@ public class ActivitiesManager {
 
 	public void popActivity(Activity activity) {
 		if (null != activity) {
-			LogUtils.i(TAG, "popActivity-->"
-					+ activity.getClass().getSimpleName());
 			// activity.finish();
 			mActivityStack.remove(activity);
 			activity = null;
@@ -67,7 +63,6 @@ public class ActivitiesManager {
 
 	public void pushActivity(Activity activity) {
 		mActivityStack.add(activity);
-		LogUtils.i(TAG, "pushActivity-->" + activity.getClass().getSimpleName());
 	}
 
 	public void popAllActivities() {
@@ -103,8 +98,6 @@ public class ActivitiesManager {
 			if (null == activity) {
 				break;
 			}
-			LogUtils.i(TAG, "peekActivity()-->"
-					+ activity.getClass().getSimpleName());
 		}
 	}
 

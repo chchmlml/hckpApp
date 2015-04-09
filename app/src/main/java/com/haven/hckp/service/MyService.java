@@ -6,6 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.lidroid.xutils.util.LogUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,7 +25,7 @@ public class MyService extends Service {
     public void MyMethod() {
         Timer timer = new Timer();
         timer.schedule(new RemindTask(), 1000, 1000);
-        Log.i(TAG, "BindService-->MyMethod()");
+        LogUtils.i("BindService-->MyMethod()");
     }
 
     @Override

@@ -52,11 +52,13 @@
     <string name="login_password2">确认密码</string>
     <string name="register_btn_yan">验证码</string>
     <string name="register">注册</string>
+    <string name="click_to_login">点击登录</string>
 
     <string name="login_param_is_null">用户名或者密码为空</string>
 
     <string name="register_edit_yan">验证码</string>
     <string name="login_btn">登录</string>
+    <string name="logout_btn">注销登录</string>
     <string name="login_register">免费注册</string>
     <string name="login_forget">忘记密码</string>
 

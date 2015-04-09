@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppException;
 import com.haven.hckp.common.StringUtils;
+import com.lidroid.xutils.util.LogUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,10 +43,10 @@ public class DispathList extends Entity {
     }
 
     public static DispathList parse(InputStream obj) throws IOException, AppException {
-        Log.i("haven", "cui-->NewsList");
+        LogUtils.i( "cui-->NewsList");
         DispathList newslist = new DispathList();
         String str = StringUtils.inputStreamToStr(obj);
-        Log.i("havenCui", "cui-->" + str);
+        LogUtils.i("cui-->" + str);
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");

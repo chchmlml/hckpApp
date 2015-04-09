@@ -3,7 +3,8 @@ package com.haven.hckp.common;
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
-import android.util.Log;
+
+import com.lidroid.xutils.util.LogUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,7 +24,6 @@ public class FileUtils {
 	 * 写文本文件 在Android系统中，文件保存在 /data/data/PACKAGE_NAME/files 目录下
 	 * 
 	 * @param context
-	 * @param msg
 	 */
 	public static void write(Context context, String fileName, String content) {
 		if (content == null)
@@ -70,7 +70,7 @@ public class FileUtils {
 			inStream.close();
 			return outStream.toString();
 		} catch (IOException e) {
-			Log.i("FileTest", e.getMessage());
+			LogUtils.i(e.getMessage());
 		}
 		return null;
 	}
@@ -256,7 +256,6 @@ public class FileUtils {
 	/**
 	 * 获取目录文件个数
 	 * 
-	 * @param f
 	 * @return
 	 */
 	public long getFileList(File dir) {
@@ -405,7 +404,7 @@ public class FileUtils {
 						deletedFile.delete();
 					}
 					newPath.delete();
-					Log.i("DirectoryManager deleteDirectory", fileName);
+					LogUtils.i( fileName);
 					status = true;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -436,7 +435,7 @@ public class FileUtils {
 			checker.checkDelete(newPath.toString());
 			if (newPath.isFile()) {
 				try {
-					Log.i("DirectoryManager deleteFile", fileName);
+					LogUtils.i(fileName);
 					newPath.delete();
 					status = true;
 				} catch (SecurityException se) {
@@ -493,7 +492,7 @@ public class FileUtils {
 		File f = new File(filePath);
 		checker.checkDelete(filePath);
 		if (f.isFile()) {
-			Log.i("DirectoryManager deleteFile", filePath);
+			LogUtils.i( filePath);
 			f.delete();
 			return true;
 		}
@@ -502,7 +501,6 @@ public class FileUtils {
 	
 	/**
 	 * 清空一个文件夹
-	 * @param files
 	 */
 	public static void clearFileWithPath(String filePath) {
 		List<File> files = FileUtils.listPathFiles(filePath);
@@ -543,7 +541,6 @@ public class FileUtils {
 	/**
 	 * 列出root目录下所有子目录
 	 * 
-	 * @param path
 	 * @return 绝对路径
 	 */
 	public static List<String> listPath(String root) {
@@ -589,7 +586,6 @@ public class FileUtils {
 	/**
 	 * 创建目录
 	 * 
-	 * @param path
 	 */
 	public static PathStatus createPath(String newPath) {
 		File path = new File(newPath);
