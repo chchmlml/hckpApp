@@ -33,6 +33,8 @@ public class StringUtils {
         }
     };
 
+
+
     private final static ThreadLocal<SimpleDateFormat> dateFormater2 = new ThreadLocal<SimpleDateFormat>() {
         @Override
         protected SimpleDateFormat initialValue() {
@@ -299,5 +301,13 @@ public class StringUtils {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * 获取随机数
+     * @return
+     */
+    public static String randomNum(){
+        return String.valueOf((int)(Math.random() * 10000));
     }
 }

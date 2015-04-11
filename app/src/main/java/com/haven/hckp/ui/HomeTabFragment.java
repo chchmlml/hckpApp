@@ -349,11 +349,4 @@ public class HomeTabFragment extends BaseFragment {
     private void initFrameButton() {
     }
 
-
-	@Override
-	public String getFragmentName() {
-        LogUtils.i("--->getFragmentName");
-		return TAG;
-	}
-
 }

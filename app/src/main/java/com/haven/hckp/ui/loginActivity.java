@@ -1,8 +1,6 @@
 package com.haven.hckp.ui;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,14 +11,11 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
-import com.haven.hckp.AppException;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
-import com.haven.hckp.bean.User;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
-import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -28,7 +23,6 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
-import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
@@ -36,7 +30,7 @@ import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class loginActivity extends ActionBarActivity {
+public class loginActivity extends BaseActivity {
 
     private static final String TAG = "loginActivity";
 

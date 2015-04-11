@@ -22,6 +22,7 @@ import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
@@ -138,30 +139,10 @@ public class ApiClient {
             //不做URLEncoder处理
             //url.append(URLEncoder.encode(String.valueOf(params.get(name)), UTF_8));
         }
-
-        return url.toString().replace("?&", "?");
+        String newUrl = url.toString().replace("?&", "?");
+        LogUtils.i("--->" + newUrl);
+        return newUrl;
     }
-
-//    private static String http_get_new(String newUrl)
-//    {
-//        HttpUtils http = new HttpUtils();
-//        http.send(
-//                HttpRequest.HttpMethod.GET,
-//                newUrl,
-//                new RequestCallBack<Object>() {
-//                    @Override
-//                    public void onSuccess(ResponseInfo<Object> objectResponseInfo) {
-//                        return objectResponseInfo.result;
-//                    }
-//
-//                    @Override
-//                    public void onFailure(com.lidroid.xutils.exception.HttpException e, String s) {
-//
-//                    }
-//                }
-//        );
-//    }
-
     /**
      * get请求URL
      *
@@ -657,7 +638,6 @@ public class ApiClient {
             put("start", pageIndex);
             put("len", pageSize);
         }});
-
         try {
             return NewsList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -678,7 +658,6 @@ public class ApiClient {
             put("start", pageIndex);
             put("len", pageSize);
         }});
-
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -698,7 +677,6 @@ public class ApiClient {
             put("start", pageIndex);
             put("len", pageSize);
         }});
-
         try {
             return DispathList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {

@@ -36,6 +36,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="中石化"/>
+                <TextView
+                    android:id="@+id/order_type"
+                    android:textColor="@color/lightblue"
+                    style="@style/order_title_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[指定]"/>
 
             </LinearLayout>
 

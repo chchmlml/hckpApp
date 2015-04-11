@@ -88,11 +88,6 @@ public class HomeFragment extends BaseFragment implements OnTopIndicatorListener
         super.onSaveInstanceState(outState);
     }
 
-    @Override
-    public String getFragmentName() {
-        return TAG;
-    }
-
     private class TabPagerAdapter extends FragmentStatePagerAdapter implements
             ViewPager.OnPageChangeListener {
 

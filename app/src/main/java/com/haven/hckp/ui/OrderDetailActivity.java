@@ -2,25 +2,21 @@ package com.haven.hckp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
+import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
-import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
-import com.haven.hckp.widght.NewDataToast;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -32,11 +28,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-public class OrderDetailActivity extends ActionBarActivity {
-
-    private static final String TAG = "OrderDetailActivity";
+public class OrderDetailActivity extends BaseActivity {
 
     private AppContext appContext;
 
@@ -72,6 +65,9 @@ public class OrderDetailActivity extends ActionBarActivity {
 
     @ViewInject(R.id.edit_input)
     private EditText priceInput;
+
+    @ViewInject(R.id.edit_input_text)
+    private EditText priceInputText;
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
@@ -110,7 +106,7 @@ public class OrderDetailActivity extends ActionBarActivity {
                 //NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
             }
         } else if (v.getId() == R.id.back_img) {
-            OrderDetailActivity.this.finish();
+            AppManager.getAppManager().finishActivity();
         }
     }
 
@@ -144,7 +140,7 @@ public class OrderDetailActivity extends ActionBarActivity {
         String newsId = bundle.getString("news_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL, params);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params);
         HttpUtils http = new HttpUtils();
         http.send(HttpRequest.HttpMethod.GET,
                 newUrl,
@@ -177,6 +173,15 @@ public class OrderDetailActivity extends ActionBarActivity {
         startTime.setText(StringUtils.toString(news.get("tp_diy_startdate")));
         endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
         desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
+        String categoryType = StringUtils.toString(news.get("tp_diy_category"));
+        if("2".equals(categoryType)){
+            priceInputText.setText(StringUtils.toString(news.get("tp_diy_price")));
+            priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
+            priceInputText.setVisibility(View.VISIBLE);
+            priceInput.setVisibility(View.GONE);
+        }else{
+            priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
+        }
     }
 
 }

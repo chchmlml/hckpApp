@@ -2,25 +2,30 @@ package com.haven.hckp.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 
+import com.haven.hckp.AppContext;
+import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.common.ConstantValues;
 import com.haven.hckp.common.DoubleClickExitHelper;
+import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.common.UpdateManager;
+import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
 
 /**
  *
  */
-public class MainActivity extends FragmentActivity implements
-        OnTabSelectedListener {
+public class MainActivity extends BaseActivity implements OnTabSelectedListener {
 
-    private static final String TAG = "MainActivity";
     private MyTabWidget mTabWidget;
     private HomeFragment mHomeFragment;
     private OrderFragment mOrderFragment;
@@ -29,17 +34,26 @@ public class MainActivity extends FragmentActivity implements
     private int mIndex = ConstantValues.HOME_FRAGMENT_INDEX;
     private FragmentManager mFragmentManager;
 
-    private DoubleClickExitHelper mDoubleClickExitHelper;
+
+    private AppContext appContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        appContext = (AppContext) getApplicationContext();
 
-        //mDoubleClickExitHelper = new DoubleClickExitHelper(this);
-        //初始化页面
+        // 网络连接判断
+        if (!appContext.isNetworkConnected())
+            UIHelper.ToastMessage(this, R.string.network_not_connected);
+
         init();
         initEvents();
+
+        // 检查新版本
+//        if (appContext.isCheckUp()) {
+//            UpdateManager.getUpdateManager().checkAppUpdate(this, false);
+//        }
     }
 
     private void init() {
@@ -126,8 +140,37 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        // super.onRestoreInstanceState(savedInstanceState);
         mIndex = savedInstanceState.getInt("index");
     }
 
+    /**
+     * 监听返回--是否退出程序
+     */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        boolean flag = true;
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            CustomDialog.Builder builder = new CustomDialog.Builder(this);
+            builder.setTitle("提示");
+            builder.setMessage("您确定退出吗？");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    AppManager.getAppManager().finishAllActivity();
+                    System.exit(0);
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNegativeButton("取消",
+                    new android.content.DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            builder.create().show();
+            // 是否退出应用
+            //return mDoubleClickExitHelper.onKeyDown(keyCode, event);
+        }
+        return flag;
+    }
 }

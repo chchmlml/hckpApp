@@ -1,31 +1,21 @@
 package com.haven.hckp;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
-
 import com.haven.hckp.common.StringUtils;
-import com.haven.hckp.service.MyService;
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.pgyersdk.update.PgyUpdateManager;
 
 /**
  * 启动界面
  */
 public class AppStart extends Activity {
-
-    private static final String TAG = "AppStart";
 
     @ViewInject(R.id.main_imageview)
     private LoadingView mainImageview;

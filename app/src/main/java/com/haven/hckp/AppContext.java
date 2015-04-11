@@ -439,31 +439,6 @@ public class AppContext extends Application {
         }
         return list;
     }
-//	public OrderList getOrderList() throws AppException {
-//        OrderList list = null;
-//		String key = "newslist_"+"_" + PAGE_SIZE;
-//		if (isNetworkConnected() && (!isReadDataCache(key))) {
-//			try {
-//				list = ApiClient.getOrderList(this);
-//				if (list != null ) {
-//					Notice notice = list.getNotice();
-//					list.setNotice(null);
-//					list.setCacheKey(key);
-//					saveObject(list, key);
-//					list.setNotice(notice);
-//				}
-//			} catch (AppException e) {
-//				list = (OrderList) readObject(key);
-//				if (list == null)
-//					throw e;
-//			}
-//		} else {
-//			list = (OrderList) readObject(key);
-//			if (list == null)
-//				list = new OrderList();
-//		}
-//		return list;
-//	}
 
     /**
      * 检测网络是否可用

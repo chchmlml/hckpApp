@@ -1,19 +1,17 @@
 package com.haven.hckp.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.haven.hckp.AppContext;
 import com.haven.hckp.R;
-import com.haven.hckp.common.UIHelper;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
-public class RegisterActivity extends ActionBarActivity {
+public class RegisterActivity extends BaseActivity {
 
     private AppContext appContext;
 

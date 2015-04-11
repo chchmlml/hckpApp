@@ -291,9 +291,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
   
             tipsTextview.setText(R.string.pull_to_refresh_pull_label);  
             lastUpdatedTextView.setVisibility(View.VISIBLE);  
-  
-            //Log.v(TAG, "当前状态，done");  
-            break;  
+            break;
         }  
     }  
   

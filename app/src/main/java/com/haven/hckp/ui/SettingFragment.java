@@ -155,11 +155,6 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 	}
 
 	@Override
-	public String getFragmentName() {
-		return TAG;
-	}
-
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.feedback_layout:

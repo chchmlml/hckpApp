@@ -11,9 +11,6 @@ import android.widget.ImageView;
 
 import com.haven.hckp.R;
 
-/**
- * @author dewyze
- */
 public class AnimFragment extends Fragment implements OnClickListener {
 
     private Activity mActivity;

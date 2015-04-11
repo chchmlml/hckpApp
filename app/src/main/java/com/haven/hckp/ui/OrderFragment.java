@@ -1,13 +1,9 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +12,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,14 +32,10 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
-public class OrderFragment extends BaseFragment implements
-        OnItemClickListener, OnClickListener, OnFragmentDismissListener {
-
-    private static final String TAG = "OrderFragment";
+public class OrderFragment extends BaseFragment implements OnItemClickListener, OnClickListener, OnFragmentDismissListener {
 
     private Activity mActivity;
     private TextView mTitleTv;
@@ -61,7 +52,6 @@ public class OrderFragment extends BaseFragment implements
     private ProgressBar lvNews_foot_progress;
     private PullToRefreshListView lvNews;
 
-    private int curNewsCatalog = NewsList.CATALOG_ALL;
     private View lvNews_footer;
 
     @ViewInject(R.id.right_img)
@@ -109,7 +99,7 @@ public class OrderFragment extends BaseFragment implements
 
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.home);
-//        // 初始化部件，数据
+
         this.initFrameButton();
         this.initFrameListView();
 
@@ -155,7 +145,6 @@ public class OrderFragment extends BaseFragment implements
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();
-//                        more.setText(R.string.load_full);
                         more.setText(R.string.load_full);
                     } else if (msg.what == pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
@@ -385,11 +374,6 @@ public class OrderFragment extends BaseFragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-    }
-
-    @Override
-    public String getFragmentName() {
-        return TAG;
     }
 
     @Override

@@ -380,9 +380,4 @@ public class TeamFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    @Override
-    public String getFragmentName() {
-        return TAG;
-    }
-
 }

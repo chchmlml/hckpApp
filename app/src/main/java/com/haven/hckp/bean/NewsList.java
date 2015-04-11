@@ -67,6 +67,7 @@ public class NewsList extends Entity {
                 news.setTp_diy_enddate(d.get("tp_diy_enddate").toString());
                 news.setTp_diy_kms(d.get("tp_diy_kms").toString() + "km");
                 news.setTp_tc_name(d.get("tp_tc_name").toString());
+                news.setTp_diy_type(d.get("tp_diy_type").toString());
                 newslist.newslist.add(news);
             }
         }

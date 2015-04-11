@@ -17,7 +17,7 @@
             android:id="@+id/title"
             style="@style/text_18_ffffff"
             android:layout_width="fill_parent"
-            android:layout_height="40.0dip"
+            android:layout_height="60.0dip"
             android:gravity="center"
             android:text="@string/title_alert"
             android:visibility="visible" />
