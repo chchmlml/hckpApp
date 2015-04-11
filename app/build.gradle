@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        hckp {
+            keyAlias 'hckp.keystore'
+            keyPassword '201314'
+            storeFile file('/Users/haven/Development/github/hckpApp/hckp.keystore')
+            storePassword '201314'
+        }
+    }
+    compileSdkVersion 21
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId "com.haven.hckp"
+        minSdkVersion 9
+        targetSdkVersion 14
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.hckp
+        }
+        debug {
+            signingConfig signingConfigs.hckp
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.lsjwzh:materialloadingprogressbar:0.5.3-RELEASE'
+}

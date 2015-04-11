@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3b72dd259a962778692bb02fa3032c210a4d2e9d">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/BaiduLBS_Android-193c0f77f32dd4df4ce93c5d86a09b8b885510d8.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e2b978a7240e7b4152dbf3a771db19edfe56c2f3">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/fastjson-1.1.15-04ec46091c7c3b3ad824f6b10060d964abd37a0a.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/commons-httpclient-3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="964cd74171f427720480efdec40a7c7f6e58426a">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/commons-httpclient-3.1-6d7e63900e9fdd02bc24bb5e43325e4492839af0.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.lsjwzh/materialloadingprogressbar/0.5.3-RELEASE/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="317941290928203bdceaa763e87a0ec0924fba78">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-e7a3fb4da91f34f430b01de33a99a3c8ec08e95d.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-678246fea6f76611c17b46cab6a01b89ce352c60.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4ed9a66b633712072af746e0c0d6118d55091f36.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-c196a3122e4eab3fbca20f596bcac70923b6fea5.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8b7e856a4fbceb7bbdfd7679d18c43deb902ae1a">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-7035e42cd7d139086e06b29433baa91f492a3ed5.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/xUtils-2.6.14.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/xUtils-2.6.14-29c0ff9b041530b07af86182a5c86e96edb8fb57.jar" />
+    </item>
+
+</items>
