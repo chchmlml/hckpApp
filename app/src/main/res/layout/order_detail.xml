@@ -213,14 +213,6 @@
             android:inputType="numberDecimal"
             android:singleLine="true" />
 
-        <TextView
-            android:id="@+id/edit_input_text"
-            style="@style/order_detail_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="" />
-
         <Button
             android:layout_width="120dip"
             android:layout_height="35dip"

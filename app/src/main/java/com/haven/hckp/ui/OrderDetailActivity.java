@@ -66,9 +66,6 @@ public class OrderDetailActivity extends BaseActivity {
     @ViewInject(R.id.edit_input)
     private EditText priceInput;
 
-    @ViewInject(R.id.edit_input_text)
-    private EditText priceInputText;
-
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
@@ -81,6 +78,7 @@ public class OrderDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
         ViewUtils.inject(this);
+
         appContext = (AppContext) getApplicationContext();
 
         intent = this.getIntent();
@@ -103,7 +101,6 @@ public class OrderDetailActivity extends BaseActivity {
             } else {
                 linearLoad.setVisibility(View.GONE);
                 UIHelper.ToastMessage(appContext,R.string.error_input);
-                //NewDataToast.makeText(appContext, getString(R.string.error_input, false), false).show();
             }
         } else if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
@@ -124,9 +121,11 @@ public class OrderDetailActivity extends BaseActivity {
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         linearLoad.setVisibility(View.GONE);
-                        //NewDataToast.makeText(appContext, getString(R.string.success_input, false), false).show();
-                        UIHelper.ToastMessage(appContext,R.string.success_input);
-                        OrderDetailActivity.this.finish();
+                        String code = obj.get("code").toString();
+                        if (code.equals("1")) {
+                            AppManager.getAppManager().finishActivity();
+                        }
+                        UIHelper.ToastMessage(appContext, R.string.success_input);
                     }
 
                     @Override
@@ -153,7 +152,7 @@ public class OrderDetailActivity extends BaseActivity {
                             renderView((Map<String, Object>) obj.get("data"));
                         } else {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                            finish();
+                            AppManager.getAppManager().finishActivity();
                         }
                         linearLoad.setVisibility(View.GONE);
                         linearDesc.setVisibility(View.VISIBLE);
@@ -175,10 +174,11 @@ public class OrderDetailActivity extends BaseActivity {
         desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
         String categoryType = StringUtils.toString(news.get("tp_diy_category"));
         if("2".equals(categoryType)){
-            priceInputText.setText(StringUtils.toString(news.get("tp_diy_price")));
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
-            priceInputText.setVisibility(View.VISIBLE);
-            priceInput.setVisibility(View.GONE);
+            priceInput.setCursorVisible(false);
+            priceInput.setFocusable(false);
+            priceInput.setFocusableInTouchMode(false);
+
         }else{
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
         }

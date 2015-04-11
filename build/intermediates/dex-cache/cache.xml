@@ -23,6 +23,13 @@
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/commons-httpclient-3.1-6d7e63900e9fdd02bc24bb5e43325e4492839af0.jar" />
     </item>
     <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/jackson-all-1.7.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="388cd6825ee4686a6a00b7c145ec92f84133e031">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/jackson-all-1.7.6-b55a0f855291a5ef434d7749d389886a69c2ef4e.jar" />
+    </item>
+    <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.lsjwzh/materialloadingprogressbar/0.5.3-RELEASE/classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -51,6 +58,13 @@
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4ed9a66b633712072af746e0c0d6118d55091f36.jar" />
     </item>
     <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/jackson-databind-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2b4dd13fbe6f8c6b146d4c3b7fd70862f136802d">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/jackson-databind-2.5.2-46a0f82d627038bdf21b067473bc721c73a5dee7.jar" />
+    </item>
+    <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -63,6 +77,13 @@
         revision="22.0.1"
         sha1="8b7e856a4fbceb7bbdfd7679d18c43deb902ae1a">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-7035e42cd7d139086e06b29433baa91f492a3ed5.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/jackson-core-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="df483f65c7d6fb363427b0f46f1f34b910788be1">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/jackson-core-2.5.2-8adafcbd782f49232cec322ba62e3a12a7d40baa.jar" />
     </item>
     <item
         jar="/Users/haven/Development/github/hckpApp/app/libs/xUtils-2.6.14.jar"
