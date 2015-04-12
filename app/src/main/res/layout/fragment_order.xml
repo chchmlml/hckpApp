@@ -9,11 +9,14 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
+    <com.haven.hckp.widght.TopIndicatorOrder
+        android:id="@+id/top_indicator_order"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></com.haven.hckp.widght.TopIndicatorOrder>
 
-
-    <com.haven.hckp.widght.PullToRefreshListView
-    android:id="@+id/listview_order"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"/>
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_order"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0" />
 </LinearLayout>

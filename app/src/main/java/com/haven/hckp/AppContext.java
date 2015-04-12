@@ -25,6 +25,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -353,13 +354,13 @@ public class AppContext extends Application {
     /**
      * 新闻列表
      */
-    public NewsList getNewsList(int pageIndex, boolean isRefresh) throws AppException {
+    public NewsList getNewsList(int pageIndex, boolean isRefresh, Map<String, Object> params) throws AppException {
         NewsList list = null;
         String key = "orderlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
-        if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-            //if (isNetworkConnected()) {
+        //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+        if (isNetworkConnected()) {
             try {
-                list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE);
+                list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE,params);
                 if (list != null && pageIndex == 0) {
                     Notice notice = list.getNotice();
                     list.setNotice(null);
@@ -474,7 +475,8 @@ public class AppContext extends Application {
      * @return
      */
     public boolean isAppSound() {
-        return isAudioNormal() && isVoice();
+        return false;
+        //return isAudioNormal() && isVoice();
     }
 
     /**

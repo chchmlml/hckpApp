@@ -633,11 +633,10 @@ public class ApiClient {
      *
      * @throws AppException
      */
-    public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
-        String newUrl = _MakeURL(URLs.NEWS_LIST, new HashMap<String, Object>() {{
-            put("start", pageIndex);
-            put("len", pageSize);
-        }});
+    public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
+        params.put("start", pageIndex);
+        params.put("len", pageSize);
+        String newUrl = _MakeURL(URLs.NEWS_LIST, params);
         try {
             return NewsList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
