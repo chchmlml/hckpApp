@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +11,14 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
-import com.haven.hckp.adapter.ListViewNewsAdapter;
 import com.haven.hckp.adapter.TeamViewNewsAdapter;
-import com.haven.hckp.bean.News;
-import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.bean.Team;
 import com.haven.hckp.bean.TeamList;
@@ -31,13 +28,13 @@ import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeamFragment extends BaseFragment {
 
-    private static final String TAG = "TeamFragment";
     private Activity mActivity;
     private TextView mTitleTv;
     private AppContext appContext;
@@ -53,8 +50,10 @@ public class TeamFragment extends BaseFragment {
     private ProgressBar lvNews_foot_progress;
     private PullToRefreshListView lvNews;
 
-    private int curNewsCatalog = NewsList.CATALOG_ALL;
     private View lvNews_footer;
+
+    @ViewInject(R.id.to_find_linear)
+    private LinearLayout toFindLinear;
 
     @ViewInject(R.id.right_img)
     private ImageView rightBtn;
@@ -62,6 +61,15 @@ public class TeamFragment extends BaseFragment {
     public static TeamFragment newInstance() {
         TeamFragment OrderFragment = new TeamFragment();
         return OrderFragment;
+    }
+
+    @OnClick({R.id.to_find_linear})
+    public void buttonClick(View v) {
+        switch (v.getId()) {
+            case R.id.to_find_linear:
+                UIHelper.showTeamfindRedirect(appContext);
+                break;
+        }
     }
 
     @Override
@@ -76,11 +84,10 @@ public class TeamFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         mView = this.inflater.inflate(R.layout.fragment_team, container, false);
-        ViewUtils.inject(this, mView); //注入view和事件
+        ViewUtils.inject(this, mView);
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
     }
@@ -358,8 +365,6 @@ public class TeamFragment extends BaseFragment {
      */
     private void initFrameButton() {
         rightBtn = (ImageView) mView.findViewById(R.id.right_img);
-//        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.more);
-//        rightBtn.setImageBitmap(bm);
         rightBtn.setVisibility(View.VISIBLE);
         rightBtn.setOnClickListener(new View.OnClickListener() {
             @Override

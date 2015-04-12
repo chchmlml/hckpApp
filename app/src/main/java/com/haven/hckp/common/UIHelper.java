@@ -9,6 +9,7 @@ import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
 import com.haven.hckp.ui.RegisterActivity;
+import com.haven.hckp.ui.TeamFindActivity;
 import com.haven.hckp.ui.loginActivity;
 
 import android.content.DialogInterface;
@@ -200,6 +201,12 @@ public class UIHelper {
 
     public static void showRegisterRedirect(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void showTeamfindRedirect(Context context) {
+        Intent intent = new Intent(context, TeamFindActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

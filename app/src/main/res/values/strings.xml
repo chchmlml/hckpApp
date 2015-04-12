@@ -42,8 +42,9 @@
 
     <!-- 设置 -->
     <string name="carteam">我的车队</string>
+    <string name="cars">我的车辆</string>
     <string name="personal">个人信息</string>
-    <string name="other">其他高级设置</string>
+    <string name="other">发现</string>
     <string name="report_price">我要报价</string>
 
     <string name="login_phone">手机号</string>

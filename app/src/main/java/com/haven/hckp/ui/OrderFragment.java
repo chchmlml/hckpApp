@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.haven.hckp.R;
 import com.haven.hckp.widght.TopIndicatorOrder;
-import com.lidroid.xutils.util.LogUtils;
 
 
 public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnTopIndicatorListener {
@@ -85,7 +84,6 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
 
     @Override
     public void onIndicatorSelected(int index) {
-        LogUtils.i("===> onIndicatorSelected");
         mViewPager.setCurrentItem(index);
     }
 
@@ -98,25 +96,6 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
 
         @Override
         public Fragment getItem(int position) {
-//            OrderTabFragment fragment;
-//            switch(position){
-//                case 0:
-//                    fragment = new OrderTabFragment();
-//                    break;
-//                case 1:
-//                    fragment = new OrderTabFragment();
-//                    break;
-//                case 2:
-//                    fragment = new OrderTabFragment();
-//                    break;
-//                default:
-//                    fragment = null;
-//                    break;
-//            }
-//            LogUtils.i("=====>getItem:" + position);
-//            Bundle bundle = new Bundle();
-//            bundle.putInt("page", position);
-//            OrderTabFragment fragment = (OrderTabFragment) instantiate(mActivity, OrderTabFragment.class.getName(), bundle);
             OrderTabFragment fragment = OrderTabFragment.newInstance(position);
             return fragment;
         }
