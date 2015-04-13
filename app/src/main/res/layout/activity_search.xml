@@ -32,17 +32,10 @@
 	        android:hint="输入搜索内容"/>			
 	   	<Button 
 	   		android:id="@+id/search_btn"
-		   	android:layout_width="40dip"
+		   	android:layout_width="35dip"
 	      	android:layout_height="32dip"
 	      	android:layout_gravity="right|center"
 	      	android:background="@drawable/btn_search_bg"/>
-   	   	<ProgressBar 
-			android:id="@+id/search_progress" 
-			style="@style/loading_small"
-			android:layout_gravity="right|center"
-			android:layout_marginRight="8dip"
-			android:background="@color/white"
-			android:visibility="gone"/>
 	</FrameLayout>
 
 	<LinearLayout
@@ -51,10 +44,10 @@
 	   	android:layout_width="fill_parent" 
 	   	android:layout_height="fill_parent">
 
-
-		<ListView
-		  	android:id="@+id/search_listview"
-		    style="@style/widget_listview"/>
+		<com.haven.hckp.widght.PullToRefreshListView
+			android:id="@+id/listview_order"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" />
 		
 	</LinearLayout>
    	
