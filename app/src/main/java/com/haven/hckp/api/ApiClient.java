@@ -634,7 +634,7 @@ public class ApiClient {
      * @throws AppException
      */
     public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
-        params.put("start", pageIndex);
+        params.put("page", pageIndex);
         params.put("len", pageSize);
         String newUrl = _MakeURL(URLs.NEWS_LIST, params);
         try {
@@ -654,7 +654,7 @@ public class ApiClient {
      */
     public static TeamList getTeamsList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
         String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>() {{
-            put("start", pageIndex);
+            put("page", pageIndex);
             put("len", pageSize);
         }});
         try {
@@ -673,7 +673,7 @@ public class ApiClient {
      */
     public static DispathList getDispathList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
         String newUrl = _MakeURL(URLs.DISPARH_LIST, new HashMap<String, Object>() {{
-            put("start", pageIndex);
+            put("page", pageIndex);
             put("len", pageSize);
         }});
         try {

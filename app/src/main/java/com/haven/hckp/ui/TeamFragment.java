@@ -52,21 +52,18 @@ public class TeamFragment extends BaseFragment {
 
     private View lvNews_footer;
 
-    @ViewInject(R.id.to_find_linear)
-    private LinearLayout toFindLinear;
-
     @ViewInject(R.id.right_img)
-    private ImageView rightBtn;
+    private ImageView rightImg;
 
     public static TeamFragment newInstance() {
         TeamFragment OrderFragment = new TeamFragment();
         return OrderFragment;
     }
 
-    @OnClick({R.id.to_find_linear})
+    @OnClick({R.id.right_img})
     public void buttonClick(View v) {
         switch (v.getId()) {
-            case R.id.to_find_linear:
+            case R.id.right_img:
                 UIHelper.showTeamfindRedirect(appContext);
                 break;
         }
@@ -88,6 +85,7 @@ public class TeamFragment extends BaseFragment {
         this.inflater = inflater;
         mView = this.inflater.inflate(R.layout.fragment_team, container, false);
         ViewUtils.inject(this, mView);
+        rightImg.setVisibility(View.VISIBLE);
         appContext = (AppContext) this.mActivity.getApplicationContext();
         return mView;
     }
@@ -108,10 +106,7 @@ public class TeamFragment extends BaseFragment {
 
         mTitleTv = (TextView) view.findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.team);
-//        // 初始化部件，数据
-        this.initFrameButton();
         this.initFrameListView();
-
     }
 
 
@@ -358,20 +353,6 @@ public class TeamFragment extends BaseFragment {
                 handler.sendMessage(msg);
             }
         }.start();
-    }
-
-    /**
-     * 初始化各个按钮
-     */
-    private void initFrameButton() {
-        rightBtn = (ImageView) mView.findViewById(R.id.right_img);
-        rightBtn.setVisibility(View.VISIBLE);
-        rightBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UIHelper.showFilterRedirect(appContext);
-            }
-        });
     }
 
 

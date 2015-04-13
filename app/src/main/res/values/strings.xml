@@ -11,6 +11,7 @@
     <string name="order_filter">订单检索</string>
     <string name="login_page">用户登录</string>
     <string name="register_page">用户注册</string>
+    <string name="search_team">搜索车队</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
