@@ -30,6 +30,7 @@ public class URLs implements Serializable {
 	public final static String TEAM_LIST = URL_API_HOST+"?apikey=app_driver&entrance=myMotorcade";
 	public final static String TEAM_LIST_SEARCH = URL_API_HOST+"?apikey=app_driver&entrance=GetTcompany";
 	public final static String TEAM_ADD_POST= URL_API_HOST+"?apikey=app_driver&entrance=addMyMotorcade";
+	public final static String TEAM_DEL_POST= URL_API_HOST+"?apikey=app_driver&entrance=DelMyMotorcade";
 
     public final static String LOGIN_POST = URL_API_HOST+"?apikey=app_login";
 
