@@ -57,6 +57,7 @@
     <string name="click_to_login">点击登录</string>
 
     <string name="login_param_is_null">用户名或者密码为空</string>
+    <string name="team_is_null">车队名称不能为空</string>
 
     <string name="register_edit_yan">验证码</string>
     <string name="login_btn">登录</string>
@@ -74,8 +75,5 @@
     <string name="setting_head_title">系统设置</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
     <string name="title_activity_login">loginActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
 </resources>

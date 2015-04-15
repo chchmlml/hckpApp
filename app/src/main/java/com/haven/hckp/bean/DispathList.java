@@ -43,10 +43,9 @@ public class DispathList extends Entity {
     }
 
     public static DispathList parse(InputStream obj) throws IOException, AppException {
-        LogUtils.i( "cui-->NewsList");
         DispathList newslist = new DispathList();
         String str = StringUtils.inputStreamToStr(obj);
-        LogUtils.i("cui-->" + str);
+        LogUtils.i( str);
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");

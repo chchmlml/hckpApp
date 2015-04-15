@@ -380,6 +380,32 @@ public class AppContext extends Application {
         }
         return list;
     }
+    public TeamList getTeamListForSearch(int pageIndex, boolean isRefresh,String tcName) throws AppException {
+        TeamList list = null;
+        String key = "orderlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
+        //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+        if (isNetworkConnected()) {
+            try {
+                list = ApiClient.getTeamsListForsearch(this, pageIndex, PAGE_SIZE,tcName);
+                if (list != null && pageIndex == 0) {
+                    Notice notice = list.getNotice();
+                    list.setNotice(null);
+                    list.setCacheKey(key);
+                    saveObject(list, key);
+                    list.setNotice(notice);
+                }
+            } catch (AppException e) {
+                list = (TeamList) readObject(key);
+                if (list == null)
+                    throw e;
+            }
+        } else {
+            list = (TeamList) readObject(key);
+            if (list == null)
+                list = new TeamList();
+        }
+        return list;
+    }
 
     /**
      * 车队

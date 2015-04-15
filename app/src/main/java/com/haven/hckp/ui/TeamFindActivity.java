@@ -1,6 +1,7 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
+import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.adapter.TeamViewNewsAdapter;
 import com.haven.hckp.api.ApiClient;
@@ -28,6 +31,7 @@ import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.HttpUtils;
@@ -51,14 +55,17 @@ public class TeamFindActivity extends BaseActivity {
     private AppContext appContext;
     private Activity mActivity;
 
+    //车队名称
+    private String tcName = null;
+
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
-    @ViewInject(R.id.search_btn)
-    private Button searchBtn;
+    @ViewInject(R.id.search_editer)
+    private EditText searchEditer;
 
     private Handler lvNewsHandler;
     private List<Team> lvNewsData = new ArrayList<Team>();
@@ -95,6 +102,11 @@ public class TeamFindActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.search_btn:
+                tcName = StringUtils.toString(searchEditer.getText());
+                if(StringUtils.isEmpty(tcName)){
+                    UIHelper.ToastMessage(appContext, R.string.team_is_null);
+                    return;
+                }
                 this.initFrameListViewData();
                 break;
         }
@@ -251,27 +263,24 @@ public class TeamFindActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                UIHelper.ToastMessage(appContext, "敬请期待");
-                return;
+                //点击头部、底部栏无效
+                if (position == 0 || view == lvNews_footer)
+                    return;
 
-//                //点击头部、底部栏无效
-//                if (position == 0 || view == lvNews_footer)
-//                    return;
-//
-//                News news = null;
-//                // 判断是否是TextView
-//                if (view instanceof TextView) {
-//                    news = (News) view.getTag();
-//                } else {
-//                    TextView tv = (TextView) view
-//                            .findViewById(R.id.order_title);
-//                    news = (News) tv.getTag();
-//                }
-//                if (news == null)
-//                    return;
-//
-//                // 跳转到新闻详情
-//                UIHelper.showNewsRedirect(appContext, news);
+                Team news = null;
+                // 判断是否是TextView
+                if (view instanceof TextView) {
+                    news = (Team) view.getTag();
+                } else {
+                    TextView tv = (TextView) view.findViewById(R.id.team_title);
+                    news = (Team) tv.getTag();
+                }
+                if (news == null)
+                    return;
+
+                final Team finalNews = news;
+                addMyMotorcade(finalNews.getTp_tc_id());
+
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -312,6 +321,50 @@ public class TeamFindActivity extends BaseActivity {
         });
     }
 
+    private void addMyMotorcade(final String tcId) {
+        CustomDialog.Builder builder = new CustomDialog.Builder(this);
+        builder.setTitle("提示");
+        builder.setMessage("您确定挂靠此车队吗？");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //挂靠车队操作
+                String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>());
+                RequestParams params = new RequestParams();
+                params.addBodyParameter("tc_id", tcId);
+                HttpUtils http = new HttpUtils();
+                http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                        JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                        String code = obj.get("code").toString();
+                        if (code.equals("1")) {
+                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                            TeamFindActivity.this.finish();
+                        } else {
+                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(HttpException e, String s) {
+                    }
+                });
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("取消",
+                new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        builder.create().show();
+
+
+    }
+
 
     private void loadLvNewsData(final int pageIndex, final Handler handler, final int action) {
         new Thread() {
@@ -321,7 +374,7 @@ public class TeamFindActivity extends BaseActivity {
                 if (action == UIHelper.LISTVIEW_ACTION_REFRESH || action == UIHelper.LISTVIEW_ACTION_SCROLL)
                     isRefresh = true;
                 try {
-                    TeamList list = appContext.getTeamList(pageIndex, isRefresh);
+                    TeamList list = appContext.getTeamListForSearch(pageIndex, isRefresh, tcName);
                     msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {

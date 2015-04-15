@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppException;
 import com.haven.hckp.common.StringUtils;
+import com.lidroid.xutils.util.LogUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,6 +45,7 @@ public class TeamList extends Entity {
     public static TeamList parse(InputStream obj) throws IOException, AppException {
         TeamList newslist = new TeamList();
         String str = StringUtils.inputStreamToStr(obj);
+        LogUtils.i(str);
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");
@@ -56,9 +58,10 @@ public class TeamList extends Entity {
             Team news = null;
             for (Map<String, Object> d : data) {
                 news = new Team();
-                news.setTp_d_id(d.get("tp_d_id").toString());
-                news.setTp_tc_name(d.get("tp_tc_name").toString());
-                news.setTp_tc_phone(d.get("tp_tc_phone").toString());
+                news.setTp_d_id(StringUtils.toString(d.get("tp_d_id")));
+                news.setTp_tc_id(StringUtils.toString(d.get("tp_tc_id")));
+                news.setTp_tc_name(StringUtils.toString(d.get("tp_tc_name")));
+                news.setTp_tc_phone(StringUtils.toString(d.get("tp_tc_phone")));
                 newslist.newslist.add(news);
             }
         }

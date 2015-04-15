@@ -43,6 +43,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +79,7 @@ public class ApiClient {
 
     private static String getUserAgent(AppContext appContext) {
         if (appUserAgent == null || appUserAgent == "") {
-            StringBuilder ua = new StringBuilder("OSChina.NET");
+            StringBuilder ua = new StringBuilder("HCKP.com");
             ua.append('/' + appContext.getPackageInfo().versionName + '_' + appContext.getPackageInfo().versionCode);//App版本
             ua.append("/Android");//手机系统平台
             ua.append("/" + android.os.Build.VERSION.RELEASE);//手机系统版本
@@ -143,6 +145,7 @@ public class ApiClient {
         LogUtils.i("--->" + newUrl);
         return newUrl;
     }
+
     /**
      * get请求URL
      *
@@ -193,6 +196,7 @@ public class ApiClient {
                 e.printStackTrace();
                 throw AppException.network(e);
             } catch (Exception e) {
+                LogUtils.i(e.getMessage());
             } finally {
                 // 释放连接
                 httpGet.releaseConnection();
@@ -657,6 +661,25 @@ public class ApiClient {
             put("page", pageIndex);
             put("len", pageSize);
         }});
+        try {
+            return TeamList.parse(http_get(appContext, newUrl));
+        } catch (Exception e) {
+            if (e instanceof AppException)
+                throw (AppException) e;
+            throw AppException.network(e);
+        }
+    }
+
+    public static TeamList getTeamsListForsearch(AppContext appContext, final int pageIndex, final int pageSize, final String tcName) throws AppException {
+        String newUrl = "";
+        try {
+            newUrl = _MakeURL(URLs.TEAM_LIST_SEARCH, new HashMap<String, Object>() {{
+                put("tc_name", URLEncoder.encode(tcName, "utf-8"));
+            }});
+        } catch (UnsupportedEncodingException e) {
+            LogUtils.i("urlencode 失败");
+            e.printStackTrace();
+        }
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
