@@ -2,9 +2,11 @@ package com.haven.hckp.ui;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,7 +96,7 @@ public class TeamFindActivity extends BaseActivity {
         this.initNewsListView();
     }
 
-    @OnClick({ R.id.back_img,R.id.search_btn})
+    @OnClick({R.id.back_img, R.id.search_btn})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -103,13 +105,35 @@ public class TeamFindActivity extends BaseActivity {
                 break;
             case R.id.search_btn:
                 tcName = StringUtils.toString(searchEditer.getText());
-                if(StringUtils.isEmpty(tcName)){
+                if (StringUtils.isEmpty(tcName)) {
                     UIHelper.ToastMessage(appContext, R.string.team_is_null);
                     return;
                 }
                 this.initFrameListViewData();
                 break;
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        // 添加菜单项
+        menu.setHeaderTitle("请选择您的挂靠类型");
+        menu.add(0, 1, 0, "内部司机");
+        menu.add(0, 2, 0, "外部司机");
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    /**
+     * 司机挂靠的类型与id
+     */
+    private int driverType = 1;
+    private int driverTcId = 0;
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        this.driverType = item.getItemId();
+        addMyMotorcade();
+        return super.onContextItemSelected(item);
     }
 
     /**
@@ -253,12 +277,14 @@ public class TeamFindActivity extends BaseActivity {
         lvNews_foot_more.setText("");
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNews_foot_progress.setVisibility(View.GONE);
-        lvNewsAdapter = new TeamViewNewsAdapter(mActivity, lvNewsData, R.layout.team_list_item);
+        lvNewsAdapter = new TeamViewNewsAdapter(mActivity, lvNewsData, R.layout.team_list_item_search);
 
         lvNews = (PullToRefreshListView) mActivity.findViewById(R.id.listview_order);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
 
+        //注册上下文菜单
+        registerForContextMenu(lvNews);
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -278,9 +304,8 @@ public class TeamFindActivity extends BaseActivity {
                 if (news == null)
                     return;
 
-                final Team finalNews = news;
-                addMyMotorcade(finalNews.getTp_tc_id());
-
+                TeamFindActivity.this.driverTcId = StringUtils.toInt(news.getTp_tc_id());
+                openContextMenu(view);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -321,18 +346,19 @@ public class TeamFindActivity extends BaseActivity {
         });
     }
 
-    private void addMyMotorcade(final String tcId) {
+    private void addMyMotorcade() {
         CustomDialog.Builder builder = new CustomDialog.Builder(this);
         builder.setTitle("提示");
         builder.setMessage("您确定挂靠此车队吗？");
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 //挂靠车队操作
-                String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>());
-                RequestParams params = new RequestParams();
-                params.addBodyParameter("tc_id", tcId);
+                String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>() {{
+                    put("tc_id", TeamFindActivity.this.driverTcId);
+                    put("tc_d_type", TeamFindActivity.this.driverType);
+                }});
                 HttpUtils http = new HttpUtils();
-                http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+                http.send(HttpRequest.HttpMethod.GET, newUrl, null, new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);

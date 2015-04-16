@@ -1,6 +1,7 @@
 package com.haven.hckp.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Team;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.widght.CustomDialog;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -96,31 +98,52 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 		//解挂靠按钮
 		final String tcId = news.getTp_tc_id();
 		Button btn = (Button) convertView.findViewById(R.id.button2);
-		btn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>());
-				RequestParams params = new RequestParams();
-				params.addBodyParameter("tc_id", tcId);
-				HttpUtils http = new HttpUtils();
-				http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
-					@Override
-					public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-						JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-						String code = obj.get("code").toString();
-						if (code.equals("1")) {
-							UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-						} else {
-							UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-						}
-					}
+		if(btn != null){
+			btn.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
 
-					@Override
-					public void onFailure(HttpException e, String s) {
-					}
-				});
-			}
-		});
+					CustomDialog.Builder builder = new CustomDialog.Builder(TeamViewNewsAdapter.this.context);
+					builder.setTitle("提示");
+					builder.setMessage("您确定解除挂靠此车队吗？");
+					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>());
+							RequestParams params = new RequestParams();
+							params.addBodyParameter("tc_id", tcId);
+							HttpUtils http = new HttpUtils();
+							http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+								@Override
+								public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+									String code = obj.get("code").toString();
+									if (code.equals("1")) {
+										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
+									} else {
+										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
+									}
+								}
+
+								@Override
+								public void onFailure(HttpException e, String s) {
+								}
+							});
+							dialog.dismiss();
+						}
+					});
+
+					builder.setNegativeButton("取消",
+							new android.content.DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+								}
+							});
+
+					builder.create().show();
+
+				}
+			});
+		}
 		return convertView;
 	}
 }
