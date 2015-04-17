@@ -1,5 +1,6 @@
 package com.haven.hckp.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
@@ -35,9 +37,6 @@ public class OrderDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
-
-    @ViewInject(R.id.linear_load)
-    private LinearLayout linearLoad;
 
     @ViewInject(R.id.linear_desc)
     private LinearLayout linearDesc;
@@ -93,14 +92,12 @@ public class OrderDetailActivity extends BaseActivity {
     @OnClick({R.id.button, R.id.back_img})
     public void buttonClick(View v) {
         if (v.getId() == R.id.button) {
-            linearLoad.setVisibility(View.VISIBLE);
             String priceStr = priceInput.getText().toString();
             if (!StringUtils.isEmpty(priceStr)) {
                 Double price = Double.parseDouble(priceStr);
                 getPricePort(price);
             } else {
-                linearLoad.setVisibility(View.GONE);
-                UIHelper.ToastMessage(appContext,R.string.error_input);
+                UIHelper.ToastMessage(appContext, R.string.error_input);
             }
         } else if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
@@ -114,13 +111,14 @@ public class OrderDetailActivity extends BaseActivity {
         params.put("diy_price", price);
         String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params);
         HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         http.send(HttpRequest.HttpMethod.GET,
                 newUrl,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                        pd.dismiss();
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                        linearLoad.setVisibility(View.GONE);
                         String code = obj.get("code").toString();
                         if (code.equals("1")) {
                             AppManager.getAppManager().finishActivity();
@@ -130,7 +128,7 @@ public class OrderDetailActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(HttpException e, String s) {
-
+                        pd.dismiss();
                     }
                 });
     }
@@ -141,11 +139,14 @@ public class OrderDetailActivity extends BaseActivity {
         params.put("diy_id", newsId);
         String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params);
         HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+
         http.send(HttpRequest.HttpMethod.GET,
                 newUrl,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                        pd.dismiss();
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         String code = obj.get("code").toString();
                         if (code.equals("1")) {
@@ -154,14 +155,11 @@ public class OrderDetailActivity extends BaseActivity {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                             AppManager.getAppManager().finishActivity();
                         }
-                        linearLoad.setVisibility(View.GONE);
-                        linearDesc.setVisibility(View.VISIBLE);
-                        linearForm.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onFailure(HttpException e, String s) {
-
+                        pd.dismiss();
                     }
                 });
     }
@@ -173,13 +171,13 @@ public class OrderDetailActivity extends BaseActivity {
         endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
         desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
         String categoryType = StringUtils.toString(news.get("tp_diy_category"));
-        if("2".equals(categoryType)){
+        if ("2".equals(categoryType)) {
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
             priceInput.setCursorVisible(false);
             priceInput.setFocusable(false);
             priceInput.setFocusableInTouchMode(false);
 
-        }else{
+        } else {
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
         }
     }

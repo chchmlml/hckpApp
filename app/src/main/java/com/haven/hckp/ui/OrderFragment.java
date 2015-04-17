@@ -1,6 +1,7 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,6 +31,7 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.mActivity = activity;
+
     }
 
     @Override

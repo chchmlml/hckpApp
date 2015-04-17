@@ -110,11 +110,4 @@
             <!--android:onClick="viewClick" />-->
     </RelativeLayout>
 
-
-    <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
-        android:id="@+id/progress_bar"
-        android:visibility="gone"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
-
 </LinearLayout>

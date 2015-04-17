@@ -1,6 +1,7 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -347,47 +348,31 @@ public class TeamFindActivity extends BaseActivity {
     }
 
     private void addMyMotorcade() {
-        CustomDialog.Builder builder = new CustomDialog.Builder(this);
-        builder.setTitle("提示");
-        builder.setMessage("您确定挂靠此车队吗？");
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                //挂靠车队操作
-                String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>() {{
-                    put("tc_id", TeamFindActivity.this.driverTcId);
-                    put("tc_d_type", TeamFindActivity.this.driverType);
-                }});
-                HttpUtils http = new HttpUtils();
-                http.send(HttpRequest.HttpMethod.GET, newUrl, null, new RequestCallBack<String>() {
-                    @Override
-                    public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                        JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                        String code = obj.get("code").toString();
-                        if (code.equals("1")) {
-                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                            TeamFindActivity.this.finish();
-                        } else {
-                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                        }
-                    }
+        final ProgressDialog pd = ProgressDialog.show(this,null,"请稍后...");
+        String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>() {{
+            put("tc_id", TeamFindActivity.this.driverTcId);
+            put("tc_d_type", TeamFindActivity.this.driverType);
+        }});
+        HttpUtils http = new HttpUtils();
+        http.send(HttpRequest.HttpMethod.GET, newUrl, null, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    TeamFindActivity.this.finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+                pd.dismiss();
+            }
 
-                    @Override
-                    public void onFailure(HttpException e, String s) {
-                    }
-                });
-                dialog.dismiss();
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
             }
         });
-
-        builder.setNegativeButton("取消",
-                new android.content.DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.create().show();
-
 
     }
 

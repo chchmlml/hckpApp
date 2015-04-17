@@ -1,5 +1,6 @@
 package com.haven.hckp.ui;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,9 +50,6 @@ public class loginActivity extends BaseActivity {
     @ViewInject(R.id.btn_register)
     private Button btnRegister;
 
-    @ViewInject(R.id.progress_bar)
-    private CircleProgressBar progressBar;
-
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
@@ -98,11 +96,12 @@ public class loginActivity extends BaseActivity {
         params.addBodyParameter("email", emailStr);
         params.addBodyParameter("pwd", pwdStr);
         HttpUtils http = new HttpUtils();
-        progressBar.setVisibility(View.VISIBLE);
+        final ProgressDialog pd = ProgressDialog.show(this,null,"请稍后...");
+
         http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                progressBar.setVisibility(View.GONE);
+                pd.dismiss();
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
@@ -120,7 +119,7 @@ public class loginActivity extends BaseActivity {
 
             @Override
             public void onFailure(HttpException e, String s) {
-                progressBar.setVisibility(View.GONE);
+                pd.dismiss();
             }
         });
 

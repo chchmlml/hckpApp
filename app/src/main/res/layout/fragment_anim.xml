@@ -46,7 +46,7 @@
             android:background="@drawable/image_layout_shape"
             android:gravity="center"
             android:padding="20dip"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/hckp_icon" />
     </com.haven.hckp.widght.CustomRelativeLayout>
 
 </LinearLayout>

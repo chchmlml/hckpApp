@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_20px"
         android:layout_marginTop="50dip"
-        android:visibility="gone"
         android:orientation="vertical">
 
         <LinearLayout
@@ -197,7 +196,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal|center_vertical"
         android:padding="@dimen/padding_10px"
-        android:visibility="gone"
         android:orientation="horizontal">
 
         <EditText
@@ -222,22 +220,6 @@
             android:background="@drawable/btn_ok_selector"
             android:text="@string/report_price"
             android:id="@+id/button" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_load"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/padding_20px"
-        android:layout_marginTop="50dip"
-        android:background="@color/viewfinder_mask"
-        android:gravity="center_horizontal|center_vertical"
-        android:orientation="horizontal">
-
-        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
     </LinearLayout>
 
 </RelativeLayout>

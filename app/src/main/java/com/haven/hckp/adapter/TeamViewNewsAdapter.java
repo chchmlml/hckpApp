@@ -1,5 +1,6 @@
 package com.haven.hckp.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -108,6 +109,7 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 					builder.setMessage("您确定解除挂靠此车队吗？");
 					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
+							final ProgressDialog pd = ProgressDialog.show(context,null,"请稍后...");
 							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>());
 							RequestParams params = new RequestParams();
 							params.addBodyParameter("tc_id", tcId);
@@ -115,6 +117,7 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 							http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
 								@Override
 								public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+									pd.dismiss();
 									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
 									String code = obj.get("code").toString();
 									if (code.equals("1")) {
@@ -126,6 +129,7 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 
 								@Override
 								public void onFailure(HttpException e, String s) {
+									pd.dismiss();
 								}
 							});
 							dialog.dismiss();
