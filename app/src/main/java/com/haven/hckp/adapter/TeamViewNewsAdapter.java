@@ -3,11 +3,13 @@ package com.haven.hckp.adapter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -18,6 +20,8 @@ import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Team;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.ui.MainActivity;
+import com.haven.hckp.ui.TeamFindActivity;
 import com.haven.hckp.widght.CustomDialog;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -96,9 +100,18 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 		listItemView.teamTitle.setText(news.getTp_tc_name());
 		listItemView.teamTitle.setTag(news);
         listItemView.teamDesc.setText(news.getTp_tc_phone());
+		//审核按钮
+		TextView textStatus = (TextView) convertView.findViewById(R.id.icon_status);
+		if(textStatus != null){
+			if("1".equals(news.getTp_tc_status())){
+				textStatus.setVisibility(View.VISIBLE);
+			}else{
+				textStatus.setVisibility(View.GONE);
+			}
+		}
 		//解挂靠按钮
 		final String tcId = news.getTp_tc_id();
-		Button btn = (Button) convertView.findViewById(R.id.button2);
+		ImageView btn = (ImageView) convertView.findViewById(R.id.button2);
 		if(btn != null){
 			btn.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -121,6 +134,8 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
 									String code = obj.get("code").toString();
 									if (code.equals("1")) {
+										TeamViewNewsAdapter.this.listItems.remove(position);
+										TeamViewNewsAdapter.this.notifyDataSetChanged();
 										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
 									} else {
 										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());

@@ -37,9 +37,6 @@ import java.text.DecimalFormat;
 
 /**
  * 应用程序更新工具包
- * @author liux (http://my.oschina.net/liux)
- * @version 1.1
- * @created 2012-6-29
  */
 public class UpdateManager {
 

@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:gravity="left|center_vertical"
+                android:layout_marginRight="@dimen/padding_5px"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -29,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/team_car" />
+                    android:src="@drawable/icon_car" />
 
             </LinearLayout>
 
@@ -48,6 +49,15 @@
                     android:text="北京-上海"/>
 
                 <TextView
+                    android:id="@+id/icon_status"
+                    style="@style/order_title_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[审]"
+                    android:textColor="@color/blue"
+                    android:layout_centerInParent="true" />
+
+                <TextView
                     android:id="@+id/team_desc"
                     style="@style/order_title_style2"
                     android:layout_width="wrap_content"
@@ -62,14 +72,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:gravity="left|center_vertical"
+                android:paddingRight="@dimen/padding_10px"
                 android:orientation="horizontal">
 
-                <Button
-                    android:background="@drawable/login_button"
+                <ImageView
+                    android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="解挂"
-                    android:id="@+id/button2" />
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/btn_del" />
 
             </LinearLayout>
 

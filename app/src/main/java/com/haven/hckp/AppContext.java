@@ -356,7 +356,7 @@ public class AppContext extends Application {
      */
     public NewsList getNewsList(int pageIndex, boolean isRefresh, Map<String, Object> params) throws AppException {
         NewsList list = null;
-        String key = "orderlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
+        String key = "newslist_" + "_" + pageIndex + "_" + PAGE_SIZE;
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
@@ -382,7 +382,7 @@ public class AppContext extends Application {
     }
     public TeamList getTeamListForSearch(int pageIndex, boolean isRefresh,String tcName) throws AppException {
         TeamList list = null;
-        String key = "orderlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
+        String key = "teamsearchlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
@@ -413,8 +413,8 @@ public class AppContext extends Application {
     public TeamList getTeamList(int pageIndex, boolean isRefresh) throws AppException {
         TeamList list = null;
         String key = "teamlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
-        if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-            //if (isNetworkConnected()) {
+        //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+        if (isNetworkConnected()) {
             try {
                 list = ApiClient.getTeamsList(this, pageIndex, PAGE_SIZE);
                 if (list != null && pageIndex == 0) {
@@ -443,8 +443,8 @@ public class AppContext extends Application {
     public DispathList getDispathList(int pageIndex, boolean isRefresh) throws AppException {
         DispathList list = null;
         String key = "dispathList_" + "_" + pageIndex + "_" + PAGE_SIZE;
-        if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-            //if (isNetworkConnected()) {
+        //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+        if (isNetworkConnected()) {
             try {
                 list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE);
                 if (list != null && pageIndex == 0) {

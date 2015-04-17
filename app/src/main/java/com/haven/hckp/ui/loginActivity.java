@@ -79,6 +79,7 @@ public class loginActivity extends BaseActivity {
                 break;
             case R.id.btn_register:
                 UIHelper.showRegisterRedirect(appContext);
+                finish();
                 break;
         }
     }

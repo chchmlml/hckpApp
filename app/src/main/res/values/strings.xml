@@ -12,6 +12,8 @@
     <string name="login_page">用户登录</string>
     <string name="register_page">用户注册</string>
     <string name="search_team">搜索车队</string>
+    <string name="personal_info">个人信息</string>
+    <string name="logont_success">注销登录成功！</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
@@ -50,6 +52,7 @@
 
     <string name="login_phone">手机号</string>
     <string name="login_email">账号/手机/电子邮箱</string>
+    <string name="login_username">用户名</string>
     <string name="login_password">密码</string>
     <string name="login_password2">确认密码</string>
     <string name="register_btn_yan">验证码</string>
@@ -58,6 +61,11 @@
 
     <string name="login_param_is_null">用户名或者密码为空</string>
     <string name="team_is_null">车队名称不能为空</string>
+    <string name="register_param1_is_null">手机号不能为空</string>
+    <string name="register_param2_is_null">密码不能为空</string>
+    <string name="register_param3_is_null">确认密码不能为空</string>
+    <string name="register_param4_is_null">用户名不能为空</string>
+    <string name="register_param5_is_null">两次密码不同，请确认</string>
 
     <string name="register_edit_yan">验证码</string>
     <string name="login_btn">登录</string>

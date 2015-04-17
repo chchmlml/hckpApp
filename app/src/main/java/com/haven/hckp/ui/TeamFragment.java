@@ -1,6 +1,7 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +28,7 @@ import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.NewDataToast;
 import com.haven.hckp.widght.PullToRefreshListView;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -52,6 +54,8 @@ public class TeamFragment extends BaseFragment {
 
     private View lvNews_footer;
 
+    private final int REQUEST_CODE = 103;
+
     @ViewInject(R.id.right_img)
     private ImageView rightImg;
 
@@ -64,8 +68,18 @@ public class TeamFragment extends BaseFragment {
     public void buttonClick(View v) {
         switch (v.getId()) {
             case R.id.right_img:
-                UIHelper.showTeamfindRedirect(appContext);
+                //UIHelper.showTeamfindRedirect(appContext);
+                Intent intent = new Intent(mActivity, TeamFindActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        LogUtils.i("onActivityResult requestCode:" + requestCode + " resultCode:" + resultCode);
+        if (REQUEST_CODE == requestCode) {
+            this.initFrameListView();
         }
     }
 
@@ -269,8 +283,6 @@ public class TeamFragment extends BaseFragment {
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
-                UIHelper.ToastMessage(appContext, "敬请期待");
                 return;
 
 //                //点击头部、底部栏无效

@@ -1,26 +1,21 @@
 package com.haven.hckp.ui;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
-
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.common.ConstantValues;
-import com.haven.hckp.common.DoubleClickExitHelper;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.common.UpdateManager;
 import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  *
@@ -52,9 +47,9 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         initEvents();
 
         // 检查新版本
-//        if (appContext.isCheckUp()) {
-//            UpdateManager.getUpdateManager().checkAppUpdate(this, false);
-//        }
+        if (appContext.isCheckUp()) {
+            //UpdateManager.getUpdateManager().checkAppUpdate(this, false);
+        }
     }
 
     private void init() {
@@ -64,6 +59,23 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
     private void initEvents() {
         mTabWidget.setOnTabSelectedListener(this);
+    }
+
+
+    private final int REQUEST_CODE = 103;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        LogUtils.i("onActivityResult requestCode:" + requestCode + " resultCode:" + resultCode);
+//        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+//        hideFragments(transaction);
+//        switch (resultCode)
+//        {
+//            case REQUEST_CODE:
+//                mTeamFragment = new TeamFragment();
+//                transaction.add(R.id.center_layout, mTeamFragment);
+//                break;
+//        }
+//        transaction.commitAllowingStateLoss();
     }
 
     @Override
@@ -96,12 +108,12 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
                 }
                 break;
             case ConstantValues.COLLECT_FRAGMENT_INDEX:
-                if (null == mTeamFragment) {
+                //if (null == mTeamFragment) {
                     mTeamFragment = new TeamFragment();
                     transaction.add(R.id.center_layout, mTeamFragment);
-                } else {
-                    transaction.show(mTeamFragment);
-                }
+                //} else {
+                    //transaction.show(mTeamFragment);
+                //}
                 break;
             case ConstantValues.SETTING_FRAGMENT_INDEX:
                 if (null == mSettingFragment) {

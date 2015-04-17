@@ -25,11 +25,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:layout_marginRight="@dimen/padding_5px"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/team_car" />
+                    android:src="@drawable/icon_car" />
 
             </LinearLayout>
 
@@ -58,6 +59,21 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="left|center_vertical"
+                android:layout_marginRight="@dimen/padding_10px"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/btn_team_add" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

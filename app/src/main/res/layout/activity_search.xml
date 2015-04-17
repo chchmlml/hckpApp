@@ -24,6 +24,7 @@
 	        android:layout_marginRight="36dip"
 	        android:singleLine="true"
 	        android:focusable="true"
+			android:paddingLeft="@dimen/padding_5px"
 			android:textColor="@color/gray"
 			android:textColorHint="@color/gray"
 	        android:focusableInTouchMode="true"

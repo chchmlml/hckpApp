@@ -77,11 +77,17 @@ public class SettingFragment extends BaseFragment {
 		initUser();
 	}
 
-    @OnClick({R.id.user_name_hode})
+    @OnClick({R.id.user_name_hode,R.id.setting_info})
     public void buttonClick(View v) {
-        if (v.getId() == R.id.user_name_hode) {
-            UIHelper.showLoginRedirect(appContext);
-        }
+
+		switch (v.getId()) {
+			case R.id.user_name_hode:
+				UIHelper.showLoginRedirect(appContext);
+				break;
+			case R.id.setting_info:
+				UIHelper.showPersonalRedirect(appContext);
+				break;
+		}
     }
 
 	@Override

@@ -3,6 +3,7 @@ package com.haven.hckp.ui;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
@@ -347,8 +349,10 @@ public class TeamFindActivity extends BaseActivity {
         });
     }
 
+    private final int REQUEST_CODE = 103;
+
     private void addMyMotorcade() {
-        final ProgressDialog pd = ProgressDialog.show(this,null,"请稍后...");
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>() {{
             put("tc_id", TeamFindActivity.this.driverTcId);
             put("tc_d_type", TeamFindActivity.this.driverType);
@@ -361,6 +365,9 @@ public class TeamFindActivity extends BaseActivity {
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    Intent intent = new Intent(TeamFindActivity.this, MainActivity.class);
+                    setResult(REQUEST_CODE, intent);
+                    LogUtils.i("setResult(" + REQUEST_CODE + ",intent)");
                     TeamFindActivity.this.finish();
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());

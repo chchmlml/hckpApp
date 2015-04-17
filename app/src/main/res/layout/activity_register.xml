@@ -36,13 +36,16 @@
                 android:layout_marginRight="5.0dip" />
 
             <EditText
+                android:id="@+id/input_phone"
                 android:background="@null"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:hint="@string/login_email"
+                android:hint="@string/login_phone"
                 android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/black"
                 android:textColorHint="@color/grayslate"
-                android:inputType="number">
+                android:inputType="phone">
 
                 <requestFocus />
             </EditText>
@@ -59,19 +62,22 @@
 
             <TextView
                 android:gravity="center"
-                android:background="@drawable/login_icon_qr_code"
+                android:background="@drawable/pwd_icon"
                 android:layout_width="20.0dip"
                 android:layout_height="20.0dip"
                 android:layout_marginRight="5.0dip" />
 
             <EditText
+                android:inputType="textPassword"
+                android:id="@+id/input_pwd"
                 android:textColorHint="@color/grayslate"
                 android:background="@null"
+                android:singleLine="true"
+                android:textColor="@color/black"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:hint="@string/login_password"
-                android:maxLines="1"
-                android:inputType="number" />
+                android:maxLines="1" />
         </LinearLayout>
 
 
@@ -85,51 +91,52 @@
 
             <TextView
                 android:gravity="center"
-                android:background="@drawable/login_icon_qr_code"
+                android:background="@drawable/pwd_icon"
                 android:layout_width="20.0dip"
                 android:layout_height="20.0dip"
                 android:layout_marginRight="5.0dip" />
 
             <EditText
+                android:inputType="textPassword"
+                android:id="@+id/input_pwd2"
                 android:textColorHint="@color/grayslate"
                 android:background="@null"
+                android:textColor="@color/black"
+                android:singleLine="true"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:hint="@string/login_password2"
-                android:maxLines="1"
-                android:inputType="number" />
+                android:maxLines="1" />
         </LinearLayout>
-        <!--<LinearLayout-->
-            <!--android:gravity="center"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="50.0dip"-->
-            <!--android:layout_marginLeft="10.0dip"-->
-            <!--android:layout_marginTop="5.0dip"-->
-            <!--android:layout_marginRight="10.0dip"-->
-            <!--android:layout_marginBottom="10.0dip">-->
+        <LinearLayout
+            android:gravity="center"
+            android:background="@drawable/general_img_inputbox"
+            android:padding="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:layout_margin="10.0dip">
 
-            <!--<EditText-->
-                <!--android:background="@drawable/general_img_inputbox"-->
-                <!--android:padding="5.0dip"-->
-                <!--android:layout_width="150.0dip"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:layout_marginRight="10.0dip"-->
-                <!--android:hint="@string/register_edit_yan"-->
-                <!--android:maxLines="1"-->
-                <!--android:inputType="number" />-->
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/user_icon"
+                android:layout_width="20.0dip"
+                android:layout_height="20.0dip"
+                android:layout_marginRight="5.0dip" />
 
-            <!--<Button-->
-                <!--android:textSize="18.0dip"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:background="@drawable/btn_ok_selector"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:text="@string/register_btn_yan"-->
-                <!--android:onClick="viewClick" />-->
-        <!--</LinearLayout>-->
+            <EditText
+                android:id="@+id/input_username"
+                android:textColorHint="@color/grayslate"
+                android:background="@null"
+                android:textColor="@color/black"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:singleLine="true"
+                android:hint="@string/login_username"
+                android:maxLines="1"/>
+        </LinearLayout>
 
         <Button
+            android:id="@+id/btn_submit"
             android:textSize="18.0dip"
             android:textColor="@color/white"
             android:background="@drawable/btn_ok_selector"
