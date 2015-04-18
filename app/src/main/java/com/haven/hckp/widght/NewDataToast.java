@@ -18,22 +18,21 @@ public class NewDataToast extends Toast{
 	private MediaPlayer mPlayer;
 	private boolean isSound;
 	
-	public NewDataToast(Context context) {
-		this(context, false);
-	}
+//	public NewDataToast(Context context) {
+//		this(context, false);
+//	}
 	
-	public NewDataToast(Context context, boolean isSound) {
+	public NewDataToast(Context context) {
+//	public NewDataToast(Context context, boolean isSound) {
 		super(context);
-		
-		this.isSound = isSound;
-
-        mPlayer = MediaPlayer.create(context, R.raw.newdatatoast);
-        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				mp.release();
-			}
-        });
+//		this.isSound = isSound;
+//        mPlayer = MediaPlayer.create(context, R.raw.newdatatoast);
+//        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+//			@Override
+//			public void onCompletion(MediaPlayer mp) {
+//				mp.release();
+//			}
+//        });
 
     }
 
@@ -41,9 +40,9 @@ public class NewDataToast extends Toast{
 	public void show() {
 		super.show();
 		
-		if(isSound){
-			mPlayer.start();
-		}
+//		if(isSound){
+//			mPlayer.start();
+//		}
 	}
 	
 	/**
@@ -57,12 +56,13 @@ public class NewDataToast extends Toast{
 	 * 获取控件实例
 	 * @param context
 	 * @param text 提示消息
-	 * @param isSound 是否播放声音
 	 * @return
 	 */
-	public static NewDataToast makeText(Context context, CharSequence text, boolean isSound) {
-		NewDataToast result = new NewDataToast(context, isSound);
-		
+	//public static NewDataToast makeText(Context context, CharSequence text, boolean isSound) {
+	public static NewDataToast makeText(Context context, CharSequence text) {
+		NewDataToast result = new NewDataToast(context);
+//		NewDataToast result = new NewDataToast(context, isSound);
+
         LayoutInflater inflate = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         
         DisplayMetrics dm = context.getResources().getDisplayMetrics();

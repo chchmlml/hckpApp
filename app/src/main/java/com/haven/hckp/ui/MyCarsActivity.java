@@ -13,7 +13,10 @@ import android.widget.TextView;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
+import com.haven.hckp.adapter.CarViewNewsAdapter;
 import com.haven.hckp.adapter.ListViewNewsAdapter;
+import com.haven.hckp.bean.Car;
+import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
@@ -42,9 +45,9 @@ public class MyCarsActivity extends BaseActivity {
     private AppContext appContext;
 
     private Handler lvNewsHandler;
-    private List<News> lvNewsData = new ArrayList<News>();
+    private List<Car> lvNewsData = new ArrayList<Car>();
     private int lvNewsSumData;
-    private ListViewNewsAdapter lvNewsAdapter;
+    private CarViewNewsAdapter lvNewsAdapter;
 
     private TextView lvNews_foot_more;
     private ProgressBar lvNews_foot_progress;
@@ -109,14 +112,14 @@ public class MyCarsActivity extends BaseActivity {
             case UIHelper.LISTVIEW_ACTION_REFRESH:
             case UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG:
                 int newdata = 0;// 新加载数据-只有刷新动作才会使用到
-                NewsList nlist = (NewsList) obj;
+                CarList nlist = (CarList) obj;
                 notice = nlist.getNotice();
                 lvNewsSumData = what;
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     if (lvNewsData.size() > 0) {
-                        for (News news1 : nlist.getNewslist()) {
+                        for (Car news1 : nlist.getNewslist()) {
                             boolean b = false;
-                            for (News news2 : lvNewsData) {
+                            for (Car news2 : lvNewsData) {
                                 if (news1.getId() == news2.getId()) {
                                     b = true;
                                     break;
@@ -135,20 +138,20 @@ public class MyCarsActivity extends BaseActivity {
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     // 提示新加载数据
                     if (newdata > 0) {
-                        NewDataToast.makeText(this, getString(R.string.new_data_toast_message, newdata), appContext.isAppSound()).show();
+                        NewDataToast.makeText(this, getString(R.string.new_data_toast_message, newdata)).show();
                     } else {
-                        NewDataToast.makeText(this, getString(R.string.new_data_toast_none, false), appContext.isAppSound()).show();
+                        NewDataToast.makeText(this, getString(R.string.new_data_toast_none, false)).show();
                     }
                 }
                 break;
             case UIHelper.LISTVIEW_ACTION_SCROLL:
-                NewsList list = (NewsList) obj;
+                CarList list = (CarList) obj;
                 notice = list.getNotice();
                 lvNewsSumData += what;
                 if (lvNewsData.size() > 0) {
-                    for (News news1 : list.getNewslist()) {
+                    for (Car news1 : list.getNewslist()) {
                         boolean b = false;
-                        for (News news2 : lvNewsData) {
+                        for (Car news2 : lvNewsData) {
                             if (news1.getId() == news2.getId()) {
                                 b = true;
                                 break;
@@ -176,7 +179,7 @@ public class MyCarsActivity extends BaseActivity {
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
 
-        lvNewsAdapter = new ListViewNewsAdapter(this, lvNewsData, R.layout.order_list_item);
+        lvNewsAdapter = new CarViewNewsAdapter(this, lvNewsData, R.layout.order_list_item);
 
         lvNews = (PullToRefreshListView) findViewById(R.id.listview_cars);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
@@ -301,7 +304,7 @@ public class MyCarsActivity extends BaseActivity {
                     // 有异常--显示加载出错 & 弹出错误消息
                     lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
                     if (!notice.getCode().equals("1")) {
-                        NewDataToast.makeText(appContext, notice.getMsg(), appContext.isAppSound()).show();
+                        NewDataToast.makeText(appContext, notice.getMsg()).show();
                     }
                 }
                 if (adapter.getCount() == 0) {

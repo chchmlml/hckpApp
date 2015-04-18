@@ -500,32 +500,31 @@ public class AppContext extends Application {
      *
      * @return
      */
-    public boolean isAppSound() {
-        return false;
-        //return isAudioNormal() && isVoice();
-    }
-
-    /**
-     * 是否发出提示音
-     *
-     * @return
-     */
-    public boolean isVoice() {
-        String perf_voice = getProperty(AppConfig.CONF_VOICE);
-        // 默认是开启提示声音
-        if (StringUtils.isEmpty(perf_voice))
-            return true;
-        else
-            return StringUtils.toBool(perf_voice);
-    }
-
-    /**
-     * 检测当前系统声音是否为正常模式
-     *
-     * @return
-     */
-    public boolean isAudioNormal() {
-        AudioManager mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-        return mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL;
-    }
+//    public boolean isAppSound() {
+//        return isAudioNormal() && isVoice();
+//    }
+//
+//    /**
+//     * 是否发出提示音
+//     *
+//     * @return
+//     */
+//    public boolean isVoice() {
+//        String perf_voice = getProperty(AppConfig.CONF_VOICE);
+//        // 默认是开启提示声音
+//        if (StringUtils.isEmpty(perf_voice))
+//            return true;
+//        else
+//            return StringUtils.toBool(perf_voice);
+//    }
+//
+//    /**
+//     * 检测当前系统声音是否为正常模式
+//     *
+//     * @return
+//     */
+//    public boolean isAudioNormal() {
+//        AudioManager mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+//        return mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL;
+//    }
 }

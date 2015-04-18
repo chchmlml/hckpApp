@@ -44,8 +44,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="18221302153"
+                    android:layout_marginTop="30dip"
                     android:layout_toRightOf="@id/user_info_userface"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/author_text" />
 
                 <TextView
@@ -53,10 +54,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/user_info_userface"
-                    android:layout_alignBottom="@+id/user_info_userface"
-                    android:layout_marginBottom="30dip"
+                    android:layout_alignParentBottom="true"
                     android:text="chchmlml"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/author_text" />
             </RelativeLayout>
 
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:duplicateParentState="true"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/grayslate"
                     android:text="加入时间：" />
 
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:duplicateParentState="true"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/grayslate"
                     android:text="所在地区：" />
 
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:duplicateParentState="true"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/grayslate"
                     android:text="开发平台：" />
 
@@ -158,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:duplicateParentState="true"
-                    android:textSize="15dip"
+                    android:textSize="13dip"
                     android:textColor="@color/grayslate"
                     android:text="专长领域：" />
 
@@ -180,8 +180,7 @@
                 android:gravity="center_vertical"
                 android:focusable="true"
                 android:clickable="true"
-                android:layout_marginTop="@dimen/padding_10px"
-                android:background="@drawable/table_below_bg">
+                android:layout_marginTop="@dimen/padding_10px">
 
                 <Button
                     android:id="@+id/btn_logout"

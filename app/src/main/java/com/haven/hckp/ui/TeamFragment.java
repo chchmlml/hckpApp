@@ -174,7 +174,7 @@ public class TeamFragment extends BaseFragment {
                     // 有异常--显示加载出错 & 弹出错误消息
                     lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
                     if (!notice.getCode().equals("1")) {
-                        NewDataToast.makeText(mActivity, notice.getMsg(), appContext.isAppSound()).show();
+                        NewDataToast.makeText(mActivity, notice.getMsg()).show();
                     }
                 }
                 if (adapter.getCount() == 0) {
@@ -234,9 +234,9 @@ public class TeamFragment extends BaseFragment {
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     // 提示新加载数据
                     if (newdata > 0) {
-                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_message, newdata), appContext.isAppSound()).show();
+                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_message, newdata)).show();
                     } else {
-                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_none, false), appContext.isAppSound()).show();
+                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_none, false)).show();
                     }
                 }
                 break;

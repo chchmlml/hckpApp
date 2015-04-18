@@ -7,6 +7,7 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
+import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Result;
@@ -668,6 +669,19 @@ public class ApiClient {
         }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return TeamList.parse(http_get(appContext, newUrl));
+        } catch (Exception e) {
+            if (e instanceof AppException)
+                throw (AppException) e;
+            throw AppException.network(e);
+        }
+    }
+    public static CarList getCarList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
+        String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>() {{
+            put("page", pageIndex);
+            put("len", pageSize);
+        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        try {
+            return CarList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
             if (e instanceof AppException)
                 throw (AppException) e;
