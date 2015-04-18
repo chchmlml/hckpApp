@@ -1,7 +1,9 @@
 package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,8 +34,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class loginActivity extends BaseActivity {
-
-    private static final String TAG = "loginActivity";
 
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
@@ -92,7 +92,7 @@ public class loginActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, R.string.login_param_is_null);
             return;
         }
-        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>());
+        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>(),(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         RequestParams params = new RequestParams();
         params.addBodyParameter("email", emailStr);
         params.addBodyParameter("pwd", pwdStr);

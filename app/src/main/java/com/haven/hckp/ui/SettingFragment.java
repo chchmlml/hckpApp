@@ -37,8 +37,8 @@ public class SettingFragment extends BaseFragment {
     @ViewInject(R.id.setting_info)
 	private RelativeLayout settingInfo;
 
-    @ViewInject(R.id.setting_other)
-	private RelativeLayout settingOther;
+//    @ViewInject(R.id.setting_other)
+//	private RelativeLayout settingOther;
 
     @ViewInject(R.id.user_name_hode)
 	private TextView userNameHode;
@@ -77,16 +77,28 @@ public class SettingFragment extends BaseFragment {
 		initUser();
 	}
 
-    @OnClick({R.id.user_name_hode,R.id.setting_info})
+    @OnClick({R.id.user_name_hode,R.id.setting_info,R.id.setting_cars,R.id.user_thumb})
     public void buttonClick(View v) {
 
-		switch (v.getId()) {
-			case R.id.user_name_hode:
-				UIHelper.showLoginRedirect(appContext);
-				break;
-			case R.id.setting_info:
-				UIHelper.showPersonalRedirect(appContext);
-				break;
+		User u = null;
+		try {
+			u = ApiClient.getUser(appContext);
+			switch (v.getId()) {
+				case R.id.user_thumb:
+				case R.id.user_name_hode:
+					if(StringUtils.isEmpty(u.getUserUsername())){
+						UIHelper.showLoginRedirect(appContext);
+					}
+					break;
+				case R.id.setting_cars:
+					UIHelper.showMycarsRedirect(appContext);
+					break;
+				case R.id.setting_info:
+					UIHelper.showPersonalRedirect(appContext);
+					break;
+			}
+		} catch (AppException e) {
+			e.printStackTrace();
 		}
     }
 

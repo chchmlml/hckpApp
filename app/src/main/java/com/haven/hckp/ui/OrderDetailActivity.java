@@ -1,8 +1,10 @@
 package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,7 +111,7 @@ public class OrderDetailActivity extends BaseActivity {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
         params.put("diy_price", price);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         http.send(HttpRequest.HttpMethod.GET,
@@ -137,7 +139,7 @@ public class OrderDetailActivity extends BaseActivity {
         String newsId = bundle.getString("news_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

@@ -1,7 +1,9 @@
 package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -105,7 +107,7 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
-        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>());
+        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(),(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE));
         RequestParams params = new RequestParams();
         params.addBodyParameter("phone", phone);
         params.addBodyParameter("pwd", pwd);

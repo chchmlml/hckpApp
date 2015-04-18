@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
 import com.haven.hckp.ui.PersonalActivity;
@@ -196,6 +197,12 @@ public class UIHelper {
 
     public static void showLoginRedirect(Context context) {
         Intent intent = new Intent(context, loginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void showMycarsRedirect(Context context) {
+        Intent intent = new Intent(context, MyCarsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

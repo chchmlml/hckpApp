@@ -14,6 +14,7 @@
     <string name="search_team">搜索车队</string>
     <string name="personal_info">个人信息</string>
     <string name="logont_success">注销登录成功！</string>
+    <string name="my_cars">我的车辆</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>

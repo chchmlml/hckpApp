@@ -63,8 +63,6 @@
 
             </LinearLayout>
 
-            <!-- 反馈意见  关于我们  应用推荐 -->
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -108,8 +106,6 @@
                     android:layout_height="1dip"
                     android:background="@color/graywhite" />
 
-                <!-- 关于我们 -->
-
                 <RelativeLayout
                     android:id="@+id/setting_info"
                     android:layout_width="fill_parent"
@@ -144,36 +140,34 @@
                     android:layout_height="1dip"
                     android:background="@color/graywhite" />
 
-                <!-- 应用推荐 -->
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/setting_other"-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content">-->
 
-                <RelativeLayout
-                    android:id="@+id/setting_other"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginLeft="20dip"-->
+                        <!--android:src="@drawable/shezhi" />-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dip"
-                        android:src="@drawable/shezhi" />
+                    <!--<TextView-->
+                        <!--style="@style/setting_text_style"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="40dip"-->
+                        <!--android:text="@string/other" />-->
 
-                    <TextView
-                        style="@style/setting_text_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dip"
-                        android:text="@string/other" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="15dip"
-                        android:src="@drawable/setting_arrow" />
-                </RelativeLayout>
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginRight="15dip"-->
+                        <!--android:src="@drawable/setting_arrow" />-->
+                <!--</RelativeLayout>-->
 
             </LinearLayout>
 

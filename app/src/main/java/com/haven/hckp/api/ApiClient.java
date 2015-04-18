@@ -1,10 +1,10 @@
 package com.haven.hckp.api;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
-
-import com.alibaba.fastjson.JSON;
+import android.os.Build;
+import android.telephony.TelephonyManager;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.bean.DispathList;
@@ -18,10 +18,6 @@ import com.haven.hckp.bean.WellcomeImage;
 import com.haven.hckp.common.FileUtils;
 import com.haven.hckp.common.ImageUtils;
 import com.haven.hckp.common.StringUtils;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.util.LogUtils;
 
 import org.apache.commons.httpclient.Cookie;
@@ -55,8 +51,6 @@ import java.util.Map;
 public class ApiClient {
 
     public static final String UTF_8 = "UTF-8";
-    public static final String DESC = "descend";
-    public static final String ASC = "ascend";
 
     private final static int TIMEOUT_CONNECTION = 20000;
     private final static int TIMEOUT_SOCKET = 20000;
@@ -128,18 +122,29 @@ public class ApiClient {
         return httpPost;
     }
 
-    public static String _MakeURL(String p_url, Map<String, Object> params) {
+    public static String _MakeURL(String p_url, Map<String, Object> params,TelephonyManager tm) {
+
+        //获取设备信息
+        Build bd = new Build();
+        params.put("model",bd.MODEL);
+        params.put("androidVersion", android.os.Build.VERSION.RELEASE);
+        params.put("DeviceId", tm.getDeviceId());
+
         StringBuilder url = new StringBuilder(p_url);
         if (url.indexOf("?") < 0)
             url.append('?');
 
         for (String name : params.keySet()) {
-            url.append('&');
-            url.append(name);
-            url.append('=');
-            url.append(String.valueOf(params.get(name)));
-            //不做URLEncoder处理
-            //url.append(URLEncoder.encode(String.valueOf(params.get(name)), UTF_8));
+            try {
+                url.append('&');
+                url.append(name);
+                url.append('=');
+                //url.append(String.valueOf(params.get(name)));
+                //不做URLEncoder处理
+                url.append(URLEncoder.encode(String.valueOf(params.get(name)), UTF_8));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
         String newUrl = url.toString().replace("?&", "?");
         LogUtils.i("--->" + newUrl);
@@ -640,7 +645,7 @@ public class ApiClient {
     public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
         params.put("page", pageIndex);
         params.put("len", pageSize);
-        String newUrl = _MakeURL(URLs.NEWS_LIST, params);
+        String newUrl = _MakeURL(URLs.NEWS_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return NewsList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -660,7 +665,7 @@ public class ApiClient {
         String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>() {{
             put("page", pageIndex);
             put("len", pageSize);
-        }});
+        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -672,14 +677,9 @@ public class ApiClient {
 
     public static TeamList getTeamsListForsearch(AppContext appContext, final int pageIndex, final int pageSize, final String tcName) throws AppException {
         String newUrl = "";
-        try {
-            newUrl = _MakeURL(URLs.TEAM_LIST_SEARCH, new HashMap<String, Object>() {{
-                put("tc_name", URLEncoder.encode(tcName, "utf-8"));
-            }});
-        } catch (UnsupportedEncodingException e) {
-            LogUtils.i("urlencode 失败");
-            e.printStackTrace();
-        }
+        newUrl = _MakeURL(URLs.TEAM_LIST_SEARCH, new HashMap<String, Object>() {{
+            put("tc_name", tcName);
+        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -698,7 +698,7 @@ public class ApiClient {
         String newUrl = _MakeURL(URLs.DISPARH_LIST, new HashMap<String, Object>() {{
             put("page", pageIndex);
             put("len", pageSize);
-        }});
+        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return DispathList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,7 +124,7 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							final ProgressDialog pd = ProgressDialog.show(context,null,"请稍后...");
-							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>());
+							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(),(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
 							RequestParams params = new RequestParams();
 							params.addBodyParameter("tc_id", tcId);
 							HttpUtils http = new HttpUtils();

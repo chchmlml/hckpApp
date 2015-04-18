@@ -9,17 +9,194 @@
 
     <include layout="@layout/title_bar" />
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:textSize="18.0dip"
-        android:textColor="@color/white"
-        android:background="@drawable/btn_ok_selector"
+    <ScrollView
+        android:id="@+id/user_info_scrollview"
         android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_margin="5.0dip"
-        android:layout_marginTop="10.0dip"
-        android:text="@string/logout_btn"
-        android:onClick="viewClick" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:fadingEdge="none">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="15.0dip">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_info_userface"
+                    android:layout_marginRight="@dimen/padding_10px"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
+                    android:scaleType="fitCenter"
+                    android:padding="3.0dip"
+                    android:clickable="true"
+                    android:background="@drawable/widget_dface_border"
+                    android:src="@drawable/icon_defult_userimage" />
+
+                <TextView
+                    android:id="@+id/user_info_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18221302153"
+                    android:layout_toRightOf="@id/user_info_userface"
+                    android:textSize="15dip"
+                    android:textColor="@color/author_text" />
+
+                <TextView
+                    android:id="@+id/user_info_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/user_info_userface"
+                    android:layout_alignBottom="@+id/user_info_userface"
+                    android:layout_marginBottom="30dip"
+                    android:text="chchmlml"
+                    android:textSize="15dip"
+                    android:textColor="@color/author_text" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/table_above_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="15dip"
+                    android:textColor="@color/grayslate"
+                    android:text="加入时间：" />
+
+                <TextView
+                    android:id="@+id/user_info_jointime"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="14dip"
+                    android:textColor="#ff000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/table_mid_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="15dip"
+                    android:textColor="@color/grayslate"
+                    android:text="所在地区：" />
+
+                <TextView
+                    android:id="@+id/user_info_from"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="14dip"
+                    android:textColor="#ff000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/table_mid_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="15dip"
+                    android:textColor="@color/grayslate"
+                    android:text="开发平台：" />
+
+                <TextView
+                    android:id="@+id/user_info_devplatform"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="14dip"
+                    android:textColor="#ff000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/table_below_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="15dip"
+                    android:textColor="@color/grayslate"
+                    android:text="专长领域：" />
+
+                <TextView
+                    android:id="@+id/user_info_expertise"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10.0dip"
+                    android:duplicateParentState="true"
+                    android:textSize="14dip"
+                    android:textColor="#ff000000" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:layout_marginTop="@dimen/padding_10px"
+                android:background="@drawable/table_below_bg">
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:textSize="18.0dip"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_ok_selector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:layout_margin="5.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:text="@string/logout_btn"
+                    android:onClick="viewClick" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
