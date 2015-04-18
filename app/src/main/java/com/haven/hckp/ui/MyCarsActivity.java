@@ -14,7 +14,6 @@ import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
 import com.haven.hckp.adapter.CarViewNewsAdapter;
-import com.haven.hckp.adapter.ListViewNewsAdapter;
 import com.haven.hckp.bean.Car;
 import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.News;

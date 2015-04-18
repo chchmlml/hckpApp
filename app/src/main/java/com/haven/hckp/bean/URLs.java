@@ -23,19 +23,19 @@ public class URLs implements Serializable {
 	private final static String URL_UNDERLINE = "_";
 
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
-	public final static String NEWS_LIST = URL_API_HOST+"?apikey=app_driver&entrance=offerPrice";
-	public final static String NEWS_DETAIL = URL_API_HOST+"?apikey=app_driver&entrance=inquiryDetail";
-    public final static String NEWS_DETAIL_POST = URL_API_HOST+"?apikey=app_driver&entrance=InInquiryPrice";
+	public final static String NEWS_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=offerPrice";
+	public final static String NEWS_DETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=inquiryDetail";
+    public final static String NEWS_DETAIL_POST = URL_API_HOST+"index.php?apikey=app_driver&entrance=InInquiryPrice";
 
-	public final static String TEAM_LIST = URL_API_HOST+"?apikey=app_driver&entrance=myMotorcade";
-	public final static String TEAM_LIST_SEARCH = URL_API_HOST+"?apikey=app_driver&entrance=GetTcompany";
-	public final static String TEAM_ADD_POST= URL_API_HOST+"?apikey=app_driver&entrance=addMyMotorcade";
-	public final static String TEAM_DEL_POST= URL_API_HOST+"?apikey=app_driver&entrance=DelMyMotorcade";
+	public final static String TEAM_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myMotorcade";
+	public final static String TEAM_LIST_SEARCH = URL_API_HOST+"index.php?apikey=app_driver&entrance=GetTcompany";
+	public final static String TEAM_ADD_POST= URL_API_HOST+"index.php?apikey=app_driver&entrance=addMyMotorcade";
+	public final static String TEAM_DEL_POST= URL_API_HOST+"index.php?apikey=app_driver&entrance=DelMyMotorcade";
 
-    public final static String LOGIN_POST = URL_API_HOST+"?apikey=app_login";
-    public final static String REGISTER_POST = URL_API_HOST+"?apikey=app_regist";
+    public final static String LOGIN_POST = URL_API_HOST+"index.php?apikey=app_login";
+    public final static String REGISTER_POST = URL_API_HOST+"index.php?apikey=app_regist";
 
-    public final static String DISPARH_LIST = URL_API_HOST+"?apikey=app_driver&entrance=myDispatch";
+    public final static String DISPARH_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myDispatch";
 
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 
