@@ -2,6 +2,7 @@ package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -128,6 +129,8 @@ public class RegisterActivity extends BaseActivity {
                     appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
                     appContext.setProperty("sessionId",  StringUtils.toString(userObj.get("session_id")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
                     finish();
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
