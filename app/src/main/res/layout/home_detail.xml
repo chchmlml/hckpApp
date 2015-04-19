@@ -11,16 +11,15 @@
 
     <LinearLayout
         android:id="@+id/linear_desc"
+        android:layout_below="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_20px"
-        android:layout_marginTop="50dip"
+        android:padding="@dimen/padding_10px"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_20px"
             android:padding="@dimen/padding_5px"
             android:background="@color/white"
             android:orientation="horizontal">
@@ -33,7 +32,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag4" />
+                    android:text="@string/dispath_detail_tag1" />
             </LinearLayout>
 
             <LinearLayout
@@ -43,112 +42,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/location_info"
+                    android:id="@+id/tp_di_sn"
                     style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginBottom="1dip"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag5" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/carteam_name"
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_20px"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/start_time"
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_20px"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag7" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/end_time"
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:text="" />
             </LinearLayout>
         </LinearLayout>
@@ -168,7 +67,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/order_detail_tag8" />
+                    android:text="@string/dispath_detail_tag3" />
             </LinearLayout>
 
             <LinearLayout
@@ -178,48 +77,131 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/desc"
+                    android:id="@+id/tp_di_startdate"
+                    style="@style/order_detail_style"
+                    android:singleLine="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/dispath_detail_tag4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tp_di_enddate"
+                    style="@style/order_detail_style"
+                    android:singleLine="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/order_detail_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dispath_detail_tag2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tp_di_status"
+                    style="@style/order_detail_style"
+                    android:singleLine="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/order_detail_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dispath_detail_tag5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tp_di_remark"
+                    style="@style/order_detail_style"
+                    android:singleLine="false"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:text="" />
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/order_border"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="@dimen/padding_10px"
-        android:orientation="horizontal">
+    <ListView
+        android:id="@+id/lv"
+        android:layout_margin="@dimen/padding_10px"
+        android:background="@color/graywhite"
+        android:layout_below="@+id/linear_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/edit_input"
-            android:layout_width="120dip"
-            android:layout_height="35dip"
-            android:background="@drawable/bg_edittext"
-            android:textColor="@color/black"
-            android:layout_marginRight="10dip"
-            android:paddingLeft="2dip"
-            android:textColorHint="@color/gray"
-            android:hint="@string/input_hint"
-            android:inputType="numberDecimal"
-            android:singleLine="true" />
-
-        <Button
-            android:layout_width="120dip"
-            android:layout_height="35dip"
-            android:layout_marginTop="5dip"
-            android:layout_marginRight="10dip"
-            android:layout_margin="0dip"
-            android:background="@drawable/btn_ok_selector"
-            android:text="@string/report_price"
-            android:id="@+id/button" />
-    </LinearLayout>
 
 </RelativeLayout>

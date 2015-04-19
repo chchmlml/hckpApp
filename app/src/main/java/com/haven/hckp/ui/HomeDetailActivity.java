@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -76,7 +73,7 @@ public class HomeDetailActivity extends BaseActivity {
         String newsId = bundle.getString("di_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("di_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL , params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
@@ -89,12 +86,12 @@ public class HomeDetailActivity extends BaseActivity {
                         LogUtils.i(objectResponseInfo.result);
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         String code = obj.get("code").toString();
-//                        if (code.equals("1")) {
-//                            renderView((Map<String, Object>) obj.get("data"));
-//                        } else {
-//                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-//                            AppManager.getAppManager().finishActivity();
-//                        }
+                        if (code.equals("1")) {
+                            renderView((Map<String, Object>) obj.get("data"));
+                        } else {
+                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                            AppManager.getAppManager().finishActivity();
+                        }
                     }
 
                     @Override
@@ -102,5 +99,49 @@ public class HomeDetailActivity extends BaseActivity {
                         pd.dismiss();
                     }
                 });
+    }
+
+    @ViewInject(R.id.tp_di_sn)
+    private TextView diSn;
+
+    @ViewInject(R.id.tp_di_startdate)
+    private TextView diStartdate;
+
+    @ViewInject(R.id.tp_di_enddate)
+    private TextView diEnddate;
+
+    @ViewInject(R.id.tp_di_status)
+    private TextView diStatus;
+
+    @ViewInject(R.id.tp_di_remark)
+    private TextView diRemark;
+
+    private void renderView(Map<String, Object> data) {
+        Map<String, Object> dispatchInfo = (Map<String, Object>) data.get("dispatch_info");
+        diSn.setText(StringUtils.toString(dispatchInfo.get("tp_di_sn")));
+        diStartdate.setText(StringUtils.toString(dispatchInfo.get("tp_di_startdate")));
+        diEnddate.setText(StringUtils.toString(dispatchInfo.get("tp_di_enddate")));
+        String dsipathStatus = getDispathStatus(StringUtils.toString(dispatchInfo.get("tp_di_status")));
+        diStatus.setText(dsipathStatus);
+        diRemark.setText(StringUtils.toString(dispatchInfo.get("tp_di_remark")));
+
+    }
+
+    private String getDispathStatus(String s) {
+        switch (StringUtils.toInt(s)) {
+            case 1:
+                return "未下单";
+            case 2:
+                return "已下单";
+            case 3:
+                return "已接受";
+            case 4:
+                return "运输中";
+            case 5:
+                return "已完成";
+            case 6:
+                return "已中断";
+        }
+        return "null";
     }
 }
