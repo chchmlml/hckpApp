@@ -7,12 +7,14 @@ import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.common.StringUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.pgyersdk.crash.PgyCrashManager;
 
 import java.io.File;
@@ -360,7 +362,7 @@ public class AppContext extends Application {
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
-                list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE,params);
+                list = ApiClient.getNewsList(this, pageIndex, PAGE_SIZE, params);
                 if (list != null && pageIndex == 0) {
                     Notice notice = list.getNotice();
                     list.setNotice(null);
@@ -380,13 +382,14 @@ public class AppContext extends Application {
         }
         return list;
     }
-    public TeamList getTeamListForSearch(int pageIndex, boolean isRefresh,String tcName) throws AppException {
+
+    public TeamList getTeamListForSearch(int pageIndex, boolean isRefresh, String tcName) throws AppException {
         TeamList list = null;
         String key = "teamsearchlist_" + "_" + pageIndex + "_" + PAGE_SIZE;
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
-                list = ApiClient.getTeamsListForsearch(this, pageIndex, PAGE_SIZE,tcName);
+                list = ApiClient.getTeamsListForsearch(this, pageIndex, PAGE_SIZE, tcName);
                 if (list != null && pageIndex == 0) {
                     Notice notice = list.getNotice();
                     list.setNotice(null);
@@ -493,6 +496,43 @@ public class AppContext extends Application {
         if (info == null)
             info = new PackageInfo();
         return info;
+    }
+
+
+    /**
+     * 获取报价单列表
+     *
+     * @throws AppException
+     */
+    public static boolean isLogin(AppContext appContext) throws AppException {
+        boolean islogin = true;
+        if (StringUtils.isEmpty(appContext.getProperty("userId"))) {
+            islogin = false;
+        }
+        if (StringUtils.isEmpty(appContext.getProperty("userName"))) {
+            islogin = false;
+        }
+        if (StringUtils.isEmpty(appContext.getProperty("userPhone"))) {
+            islogin = false;
+        }
+        if (StringUtils.isEmpty(appContext.getProperty("sessionId"))) {
+            islogin = false;
+        }
+        LogUtils.i("islogin = " + islogin);
+        return islogin;
+    }
+
+    /**
+     * 获取报价单列表
+     *
+     * @throws AppException
+     */
+    public static void logout(AppContext appContext) throws AppException {
+        appContext.setProperty("userId", "");
+        appContext.setProperty("userName", "");
+        appContext.setProperty("userPhone", "");
+        appContext.setProperty("sessionId", "");
+
     }
 
     /**

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import com.haven.hckp.common.StringUtils;
+import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
@@ -38,11 +39,16 @@ public class AppStart extends Activity {
             }
         }, 1000);
 
+        //是否登录
         AppContext appContext = (AppContext) getApplication();
-        String cookie = appContext.getProperty("cookies");
-        if (StringUtils.isEmpty(cookie)) {
+        try {
+            if (!AppContext.isLogin(appContext)) {
+                UIHelper.showLogin2Redirect(appContext);
+                finish();
+            }
+        } catch (AppException e) {
+            e.printStackTrace();
         }
-        LogUtils.i("cookie = " + cookie);
     }
 
 

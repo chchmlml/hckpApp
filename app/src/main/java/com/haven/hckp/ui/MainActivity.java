@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import com.haven.hckp.AppContext;
+import com.haven.hckp.AppException;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.common.ConstantValues;
@@ -88,6 +89,15 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
     @Override
     public void onTabSelected(int index) {
+        //登陆判断
+        try {
+            if (!AppContext.isLogin(appContext)) {
+                UIHelper.showLogin2Redirect(appContext);
+                finish();
+            }
+        } catch (AppException e) {
+            e.printStackTrace();
+        }
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         hideFragments(transaction);
         switch (index) {
