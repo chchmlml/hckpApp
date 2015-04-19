@@ -27,6 +27,7 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -39,33 +40,6 @@ public class HomeDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
-
-    @ViewInject(R.id.linear_desc)
-    private LinearLayout linearDesc;
-
-    @ViewInject(R.id.linear_form)
-    private LinearLayout linearForm;
-
-    @ViewInject(R.id.location_info)
-    private TextView locationInfo;
-
-    @ViewInject(R.id.carteam_name)
-    private TextView carTeam;
-
-    @ViewInject(R.id.start_time)
-    private TextView startTime;
-
-    @ViewInject(R.id.end_time)
-    private TextView endTime;
-
-    @ViewInject(R.id.desc)
-    private TextView desc;
-
-    @ViewInject(R.id.button)
-    private Button button;
-
-    @ViewInject(R.id.edit_input)
-    private EditText priceInput;
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
@@ -93,53 +67,16 @@ public class HomeDetailActivity extends BaseActivity {
 
     @OnClick({R.id.button, R.id.back_img})
     public void buttonClick(View v) {
-        if (v.getId() == R.id.button) {
-            String priceStr = priceInput.getText().toString();
-            if (!StringUtils.isEmpty(priceStr)) {
-                Double price = Double.parseDouble(priceStr);
-                getPricePort(price);
-            } else {
-                UIHelper.ToastMessage(appContext, R.string.error_input);
-            }
-        } else if (v.getId() == R.id.back_img) {
+        if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
         }
     }
 
-    private void getPricePort(Double price) {
-        String newsId = bundle.getString("news_id");
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("diy_id", newsId);
-        params.put("diy_price", price);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
-        HttpUtils http = new HttpUtils();
-        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
-        http.send(HttpRequest.HttpMethod.GET,
-                newUrl,
-                new RequestCallBack<String>() {
-                    @Override
-                    public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                        pd.dismiss();
-                        JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                        String code = obj.get("code").toString();
-                        if (code.equals("1")) {
-                            AppManager.getAppManager().finishActivity();
-                        }
-                        UIHelper.ToastMessage(appContext, R.string.success_input);
-                    }
-
-                    @Override
-                    public void onFailure(HttpException e, String s) {
-                        pd.dismiss();
-                    }
-                });
-    }
-
     private void initDataView() {
-        String newsId = bundle.getString("news_id");
+        String newsId = bundle.getString("di_id");
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("diy_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        params.put("di_id", newsId);
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL , params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
@@ -149,14 +86,15 @@ public class HomeDetailActivity extends BaseActivity {
                     @Override
                     public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                         pd.dismiss();
+                        LogUtils.i(objectResponseInfo.result);
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         String code = obj.get("code").toString();
-                        if (code.equals("1")) {
-                            renderView((Map<String, Object>) obj.get("data"));
-                        } else {
-                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                            AppManager.getAppManager().finishActivity();
-                        }
+//                        if (code.equals("1")) {
+//                            renderView((Map<String, Object>) obj.get("data"));
+//                        } else {
+//                            UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+//                            AppManager.getAppManager().finishActivity();
+//                        }
                     }
 
                     @Override
@@ -165,23 +103,4 @@ public class HomeDetailActivity extends BaseActivity {
                     }
                 });
     }
-
-    private void renderView(Map<String, Object> news) {
-        locationInfo.setText(news.get("tp_diy_start_city") + "-" + news.get("tp_diy_end_city"));
-        carTeam.setText(StringUtils.toString(news.get("tp_tc_name")));
-        startTime.setText(StringUtils.toString(news.get("tp_diy_startdate")));
-        endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
-        desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
-        String categoryType = StringUtils.toString(news.get("tp_diy_category"));
-        if ("2".equals(categoryType)) {
-            priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
-            priceInput.setCursorVisible(false);
-            priceInput.setFocusable(false);
-            priceInput.setFocusableInTouchMode(false);
-
-        } else {
-            priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
-        }
-    }
-
 }

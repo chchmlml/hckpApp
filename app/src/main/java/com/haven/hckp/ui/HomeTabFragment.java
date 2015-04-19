@@ -39,8 +39,6 @@ import java.util.List;
  *
  */
 public class HomeTabFragment extends BaseFragment {
-	
-	private static final String TAG = "HomeTabFragment";
 
     private Activity mActivity;
     private AppContext appContext;
@@ -99,7 +97,6 @@ public class HomeTabFragment extends BaseFragment {
      * 初始化所有ListView
      */
     private void initFrameListView() {
-        LogUtils.i("--->initFrameListView");
         // 初始化listview控件
         this.initNewsListView();
         // 加载listview数据
@@ -211,27 +208,23 @@ public class HomeTabFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                UIHelper.ToastMessage(appContext, "敬请期待");
-                return;
-//
-//                //点击头部、底部栏无效
-//                if (position == 0 || view == lvNews_footer)
-//                    return;
-//
-//                News news = null;
-//                // 判断是否是TextView
-//                if (view instanceof TextView) {
-//                    news = (News) view.getTag();
-//                } else {
-//                    TextView tv = (TextView) view
-//                            .findViewById(R.id.order_title);
-//                    news = (News) tv.getTag();
-//                }
-//                if (news == null)
-//                    return;
-//
-//                // 跳转到新闻详情
-//                UIHelper.showNewsRedirect(appContext, news);
+                //点击头部、底部栏无效
+                if (position == 0 || view == lvNews_footer)
+                    return;
+
+                Dispath news = null;
+                // 判断是否是TextView
+                if (view instanceof TextView) {
+                    news = (Dispath) view.getTag();
+                } else {
+                    TextView tv = (TextView) view.findViewById(R.id.tp_di_sn);
+                    news = (Dispath) tv.getTag();
+                }
+                if (news == null)
+                    return;
+
+                // 跳转到新闻详情
+                UIHelper.showDispathDetailRedirect(appContext, news);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -294,7 +287,6 @@ public class HomeTabFragment extends BaseFragment {
                 msg.arg1 = action;
                 msg.arg2 = UIHelper.LISTVIEW_DATATYPE_NEWS;
                 handler.sendMessage(msg);
-                LogUtils.i( "数据加载中了--->");
             }
         }.start();
     }
@@ -313,7 +305,6 @@ public class HomeTabFragment extends BaseFragment {
             public void handleMessage(Message msg) {
                 Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                 if (msg.what >= 0) {
-                    LogUtils.i("数据加载完成");
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();

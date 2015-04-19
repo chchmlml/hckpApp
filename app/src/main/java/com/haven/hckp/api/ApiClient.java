@@ -126,10 +126,10 @@ public class ApiClient {
     public static String _MakeURL(String p_url, Map<String, Object> params,TelephonyManager tm) {
 
         //获取设备信息
-        Build bd = new Build();
-        params.put("model",bd.MODEL);
-        params.put("androidVersion", android.os.Build.VERSION.RELEASE);
-        params.put("DeviceId", tm.getDeviceId());
+//        Build bd = new Build();
+//        params.put("model",bd.MODEL);
+//        params.put("androidVersion", android.os.Build.VERSION.RELEASE);
+//        params.put("DeviceId", tm.getDeviceId());
 
         StringBuilder url = new StringBuilder(p_url);
         if (url.indexOf("?") < 0)
@@ -148,7 +148,7 @@ public class ApiClient {
             }
         }
         String newUrl = url.toString().replace("?&", "?");
-        LogUtils.i("--->" + newUrl);
+        LogUtils.i("newUrl:" + newUrl);
         return newUrl;
     }
 

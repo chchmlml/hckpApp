@@ -28,7 +28,7 @@ public class TopIndicator extends LinearLayout {
             R.drawable.bg_setting};
     private List<CheckedTextView> mCheckedList = new ArrayList<CheckedTextView>();
     private List<View> mViewList = new ArrayList<View>();
-    private CharSequence[] mLabels = new CharSequence[]{"全部订单", "执行中", "未执行",
+    private CharSequence[] mLabels = new CharSequence[]{"全部订单", "执行中", "未执行","未确认",
             "已完成"};
     private int mScreenWidth;
     private int mUnderLineWidth;
@@ -60,7 +60,7 @@ public class TopIndicator extends LinearLayout {
         mUnderLine = new View(context);
         mUnderLine.setBackgroundColor(Color.rgb(247, 88, 123));
         LinearLayout.LayoutParams underLineParams = new LinearLayout.LayoutParams(
-                mUnderLineWidth, 4);
+                mUnderLineWidth, 5);
 
         LinearLayout topLayout = new LinearLayout(context);
         LinearLayout.LayoutParams topLayoutParams = new LinearLayout.LayoutParams(

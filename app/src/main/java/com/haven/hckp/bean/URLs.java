@@ -35,7 +35,8 @@ public class URLs implements Serializable {
     public final static String LOGIN_POST = URL_API_HOST+"index.php?apikey=app_login";
     public final static String REGISTER_POST = URL_API_HOST+"index.php?apikey=app_regist";
 
-    public final static String DISPARH_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myDispatch";
+	public final static String DISPARH_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myDispatch";
+	public final static String DISPARH_DETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=DispatchInfo";
 
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 

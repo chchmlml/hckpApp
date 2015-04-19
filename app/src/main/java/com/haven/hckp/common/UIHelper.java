@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.haven.hckp.AppContext;
+import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.ui.HomeDetailActivity;
 import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
@@ -221,6 +224,13 @@ public class UIHelper {
 
     public static void showRegisterRedirect(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void showDispathDetailRedirect(AppContext context, Dispath dispath) {
+        Intent intent = new Intent(context, HomeDetailActivity.class);
+        intent.putExtra("di_id",dispath.getTp_di_id());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

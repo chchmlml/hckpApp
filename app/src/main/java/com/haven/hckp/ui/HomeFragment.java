@@ -106,7 +106,7 @@ public class HomeFragment extends BaseFragment implements OnTopIndicatorListener
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
 
         @Override

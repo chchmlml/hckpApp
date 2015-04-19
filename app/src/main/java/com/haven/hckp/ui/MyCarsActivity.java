@@ -288,7 +288,6 @@ public class MyCarsActivity extends BaseActivity {
             public void handleMessage(Message msg) {
                 Notice notice = handleLvData(msg.what, msg.obj, msg.arg2, msg.arg1);
                 if (msg.what >= 0) {
-                    LogUtils.i("数据加载完成");
                     if (msg.what < pageSize) {
                         lv.setTag(UIHelper.LISTVIEW_DATA_FULL);
                         adapter.notifyDataSetChanged();
