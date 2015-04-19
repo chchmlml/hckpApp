@@ -33,7 +33,9 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -55,7 +57,16 @@ public class HomeTabFragment extends BaseFragment {
 
     private View lvNews_footer;
     private View mView;
-	
+
+
+    private int listType;
+
+    public static HomeTabFragment newInstance(int arg) {
+        HomeTabFragment fragment = new HomeTabFragment();
+        fragment.listType = arg;
+        return fragment;
+    }
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -276,7 +287,23 @@ public class HomeTabFragment extends BaseFragment {
                 if (action == UIHelper.LISTVIEW_ACTION_REFRESH || action == UIHelper.LISTVIEW_ACTION_SCROLL)
                     isRefresh = true;
                 try {
-                    DispathList list = appContext.getDispathList(pageIndex, isRefresh);
+                    //额外参数
+                    Map<String,Object> params = new HashMap<String, Object>();
+                    switch (listType){
+                        case 1:
+                            params.put("status","1");
+                            break;
+                        case 2:
+                            params.put("status","2");
+                            break;
+                        case 3:
+                            params.put("status","3");
+                            break;
+                        case 4:
+                            params.put("status","4");
+                            break;
+                    }
+                    DispathList list = appContext.getDispathList(pageIndex, isRefresh,params);
                     msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {

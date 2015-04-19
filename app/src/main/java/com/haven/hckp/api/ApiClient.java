@@ -708,11 +708,10 @@ public class ApiClient {
      *
      * @throws AppException
      */
-    public static DispathList getDispathList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
-        String newUrl = _MakeURL(URLs.DISPARH_LIST, new HashMap<String, Object>() {{
-            put("page", pageIndex);
-            put("len", pageSize);
-        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+    public static DispathList getDispathList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
+        params.put("page", pageIndex);
+        params.put("len", pageSize);
+        String newUrl = _MakeURL(URLs.DISPARH_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
         try {
             return DispathList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {

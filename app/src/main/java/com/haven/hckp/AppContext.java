@@ -443,13 +443,13 @@ public class AppContext extends Application {
     /**
      * 运单列表
      */
-    public DispathList getDispathList(int pageIndex, boolean isRefresh) throws AppException {
+    public DispathList getDispathList(int pageIndex, boolean isRefresh, Map<String, Object> params) throws AppException {
         DispathList list = null;
         String key = "dispathList_" + "_" + pageIndex + "_" + PAGE_SIZE;
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
-                list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE);
+                list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE,params);
                 if (list != null && pageIndex == 0) {
                     Notice notice = list.getNotice();
                     list.setNotice(null);

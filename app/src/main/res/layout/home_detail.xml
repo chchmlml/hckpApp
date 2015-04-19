@@ -14,8 +14,22 @@
         android:layout_below="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_10px"
         android:orientation="vertical">
+
+        <!--<LinearLayout-->
+            <!--android:background="@color/grayslate"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="@dimen/padding_5px"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--style="@style/order_detail_style"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/dispath_detail_title1" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -195,13 +209,34 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lv"
-        android:layout_margin="@dimen/padding_10px"
-        android:background="@color/graywhite"
+
+    <LinearLayout
         android:layout_below="@+id/linear_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@color/grayslate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_5px"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/order_detail_style"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dispath_detail_title2" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv"
+            android:background="@color/graywhite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </RelativeLayout>

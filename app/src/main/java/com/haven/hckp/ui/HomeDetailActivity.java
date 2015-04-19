@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -14,6 +16,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
+import com.haven.hckp.adapter.DispathDetailAdapter;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
@@ -29,6 +32,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HomeDetailActivity extends BaseActivity {
@@ -40,6 +44,24 @@ public class HomeDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
+
+    @ViewInject(R.id.tp_di_sn)
+    private TextView diSn;
+
+    @ViewInject(R.id.tp_di_startdate)
+    private TextView diStartdate;
+
+    @ViewInject(R.id.tp_di_enddate)
+    private TextView diEnddate;
+
+    @ViewInject(R.id.tp_di_status)
+    private TextView diStatus;
+
+    @ViewInject(R.id.tp_di_remark)
+    private TextView diRemark;
+
+    @ViewInject(R.id.lv)
+    private ListView lv;
 
     private Intent intent;
     private Bundle bundle;
@@ -87,7 +109,9 @@ public class HomeDetailActivity extends BaseActivity {
                         JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                         String code = obj.get("code").toString();
                         if (code.equals("1")) {
-                            renderView((Map<String, Object>) obj.get("data"));
+                            renderBaseView((Map<String, Object>) obj.get("data"));
+                            renderListView((Map<String, Object>) obj.get("data"));
+
                         } else {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                             AppManager.getAppManager().finishActivity();
@@ -101,22 +125,19 @@ public class HomeDetailActivity extends BaseActivity {
                 });
     }
 
-    @ViewInject(R.id.tp_di_sn)
-    private TextView diSn;
+    private final String[] strs = new String[]{
+            "first", "second", "third", "fourth", "fifth"
+    };
 
-    @ViewInject(R.id.tp_di_startdate)
-    private TextView diStartdate;
+    private void renderListView(Map<String, Object> data) {
+        List<Map<String, Object>> transportList = (List<Map<String, Object>>) data.get("transport_list");
 
-    @ViewInject(R.id.tp_di_enddate)
-    private TextView diEnddate;
+        if (transportList != null && transportList.size() > 0) {
+            lv.setAdapter(new DispathDetailAdapter(appContext, transportList, R.layout.home_detail_list_item));
+        }
+    }
 
-    @ViewInject(R.id.tp_di_status)
-    private TextView diStatus;
-
-    @ViewInject(R.id.tp_di_remark)
-    private TextView diRemark;
-
-    private void renderView(Map<String, Object> data) {
+    private void renderBaseView(Map<String, Object> data) {
         Map<String, Object> dispatchInfo = (Map<String, Object>) data.get("dispatch_info");
         diSn.setText(StringUtils.toString(dispatchInfo.get("tp_di_sn")));
         diStartdate.setText(StringUtils.toString(dispatchInfo.get("tp_di_startdate")));
