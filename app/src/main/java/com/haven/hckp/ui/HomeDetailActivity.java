@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.adapter.DispathDetailAdapter;
 import com.haven.hckp.api.ApiClient;
+import com.haven.hckp.bean.Dispath;
+import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
@@ -63,8 +67,14 @@ public class HomeDetailActivity extends BaseActivity {
     @ViewInject(R.id.lv)
     private ListView lv;
 
+    @ViewInject(R.id.button)
+    private Button button;
+
     private Intent intent;
     private Bundle bundle;
+
+    private String orderStatus = null;
+    private String diId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,12 +99,41 @@ public class HomeDetailActivity extends BaseActivity {
         if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
         }
+        if (v.getId() == R.id.button) {
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            int status = StringUtils.toInt(orderStatus, 0);
+            params.put("status", StringUtils.toString(++status));
+            params.put("di_id", diId);
+            String newUrl = ApiClient._MakeURL(URLs.DISPARH_SET_STATUS, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+            HttpUtils http = new HttpUtils();
+            final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+            http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
+                @Override
+                public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                    pd.dismiss();
+                    JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                    String code = obj.get("code").toString();
+                    if (code.equals("1")) {
+                        UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                        finish();
+                    } else {
+                        UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(HttpException e, String s) {
+                    pd.dismiss();
+                }
+            });
+        }
     }
 
     private void initDataView() {
         String newsId = bundle.getString("di_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("di_id", newsId);
+        params.put("r", StringUtils.randomNum());
         String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
@@ -125,15 +164,30 @@ public class HomeDetailActivity extends BaseActivity {
                 });
     }
 
-    private final String[] strs = new String[]{
-            "first", "second", "third", "fourth", "fifth"
-    };
-
     private void renderListView(Map<String, Object> data) {
         List<Map<String, Object>> transportList = (List<Map<String, Object>>) data.get("transport_list");
 
         if (transportList != null && transportList.size() > 0) {
             lv.setAdapter(new DispathDetailAdapter(appContext, transportList, R.layout.home_detail_list_item));
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Map<String, Object> news = null;
+                    // 判断是否是TextView
+                    if (view instanceof TextView) {
+                        news = (Map<String, Object>) view.getTag();
+                    } else {
+                        TextView tv = (TextView) view
+                                .findViewById(R.id.tp_tt_sn);
+                        news = (Map<String, Object>) tv.getTag();
+                    }
+                    if (news == null)
+                        return;
+
+                    // 跳转到新闻详情
+                    UIHelper.showDispathDetailRedirect(appContext, news);
+                }
+            });
         }
     }
 
@@ -146,21 +200,33 @@ public class HomeDetailActivity extends BaseActivity {
         diStatus.setText(dsipathStatus);
         diRemark.setText(StringUtils.toString(dispatchInfo.get("tp_di_remark")));
 
+        orderStatus = dsipathStatus;
+        diId = StringUtils.toString(dispatchInfo.get("tp_di_id"));
+
     }
+
 
     private String getDispathStatus(String s) {
         switch (StringUtils.toInt(s)) {
             case 1:
+                button.setText("下单");
                 return "未下单";
             case 2:
+                button.setText("接收运单");
                 return "已下单";
             case 3:
+                button.setText("开始运输");
                 return "已接受";
             case 4:
+                button.setText("完成");
                 return "运输中";
             case 5:
+                button.setClickable(false);
+                button.setText("结束");
                 return "已完成";
             case 6:
+                button.setClickable(false);
+                button.setText("结束");
                 return "已中断";
         }
         return "null";

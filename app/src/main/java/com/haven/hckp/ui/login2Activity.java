@@ -1,10 +1,14 @@
 package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +25,7 @@ import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.service.BindMusicPlayerService;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -28,6 +33,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -82,6 +88,11 @@ public class login2Activity extends BaseActivity {
 
         switch (v.getId()) {
             case R.id.btn_login:
+                LogUtils.i("start service --->");
+
+                Intent i = new Intent("com.haven.bindMusic");
+                i.setPackage(getPackageName());//这里你需要设置你应用的包名
+                bindService(i, connection, Context.BIND_AUTO_CREATE);
                 loginAction();
                 break;
             case R.id.btn_register:
@@ -89,6 +100,27 @@ public class login2Activity extends BaseActivity {
                 break;
         }
     }
+    private BindMusicPlayerService bindMusicPlayerService;
+
+    private ServiceConnection connection = new ServiceConnection(){
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.v("BindMusicButton", "in onServiceConnected(ComponentName name, IBinder service)");
+            bindMusicPlayerService = ((BindMusicPlayerService.MyBinder)service).getService();
+            if(bindMusicPlayerService!=null){
+                Log.v("BindMusicButton", "in if(bindMusicPlayerService!=null)");
+                bindMusicPlayerService.play();
+            }
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            bindMusicPlayerService = null;
+            Log.v("BindMusicButton", "in onServiceDisconnected(ComponentName name) ");
+
+        }};
 
     private void loginAction() {
 

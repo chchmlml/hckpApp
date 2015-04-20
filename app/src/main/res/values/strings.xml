@@ -9,6 +9,7 @@
     <string name="setting">个人设置</string>
     <string name="order_detail">报价单详情</string>
     <string name="home_detail">调度单详情</string>
+    <string name="home_dispath_detail">运输单详情</string>
     <string name="order_filter">订单检索</string>
     <string name="login_page">用户登录</string>
     <string name="register_page">用户注册</string>
@@ -38,6 +39,17 @@
     <string name="dispath_detail_tag3">发货时间：</string>
     <string name="dispath_detail_tag4">送达时间：</string>
     <string name="dispath_detail_tag5">备注：</string>
+
+    <!--运输单详情-->
+    <string name="home_dispath_title1">委托单号：</string>
+    <string name="home_dispath_title2">货主：</string>
+    <string name="home_dispath_title3">装货时间：</string>
+    <string name="home_dispath_title4">送达时间：</string>
+    <string name="home_dispath_title5">货物名称：</string>
+    <string name="home_dispath_title6">当前重量：</string>
+    <string name="home_dispath_title7">当前件数：</string>
+    <string name="home_dispath_title8">状态：</string>
+    <string name="home_dispath_title9">类型：</string>
 
     <!--订单筛选-->
     <string name="order_filter_tag1">货物属性</string>

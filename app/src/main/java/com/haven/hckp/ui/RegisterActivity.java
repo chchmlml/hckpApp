@@ -26,6 +26,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -74,6 +75,11 @@ public class RegisterActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.btn_submit:
+                LogUtils.i("start service --->");
+                final Intent sIntent = new Intent();
+                sIntent.setAction("com.haven.hckp.service.LocationService");
+                sIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
+                this.startService(sIntent);
                 loginAction();
                 break;
         }

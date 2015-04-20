@@ -37,6 +37,7 @@ public class URLs implements Serializable {
 
 	public final static String DISPARH_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myDispatch";
 	public final static String DISPARH_DETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=DispatchInfo";
+	public final static String DISPARH_SET_STATUS = URL_API_HOST+"index.php?apikey=app_driver&entrance=setDispatchStatus";
 
 	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
 

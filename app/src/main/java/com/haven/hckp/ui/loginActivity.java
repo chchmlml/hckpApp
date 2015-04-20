@@ -2,6 +2,7 @@ package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
@@ -26,6 +27,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
@@ -75,6 +77,11 @@ public class loginActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.btn_login:
+                LogUtils.i("start service --->");
+                final Intent sIntent = new Intent();
+                sIntent.setAction("com.haven.hckp.service.LocationService");
+                sIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
+                this.startService(sIntent);
                 loginAction();
                 break;
             case R.id.btn_register:

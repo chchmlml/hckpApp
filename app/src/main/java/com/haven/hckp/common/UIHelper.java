@@ -2,6 +2,7 @@ package com.haven.hckp.common;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.haven.hckp.AppContext;
@@ -9,6 +10,7 @@ import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.HomeDetailActivity;
+import com.haven.hckp.ui.HomeDispathDetailActivity;
 import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
@@ -19,6 +21,8 @@ import com.haven.hckp.ui.login2Activity;
 import com.haven.hckp.ui.loginActivity;
 
 import android.content.DialogInterface;
+
+import java.util.Map;
 
 /**
  * 应用程序UI工具包：封装UI相关的一些操作
@@ -190,6 +194,24 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
+    public static void showDispathDetailRedirect(Context context, Map<String, Object> news) {
+        Intent intent = new Intent(context, HomeDispathDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putString("tp_o_sn", StringUtils.toString(news.get("tp_o_sn")));
+        b.putString("tp_o_getuser", StringUtils.toString(news.get("tp_o_getuser")));
+        b.putString("tp_o_loaddate", StringUtils.toString(news.get("tp_o_loaddate")));
+        b.putString("tp_o_reachdate", StringUtils.toString(news.get("tp_o_reachdate")));
+        b.putString("tp_og_name", StringUtils.toString(news.get("tp_og_name")));
+        b.putString("tp_og_nums", StringUtils.toString(news.get("tp_og_nums")));
+        b.putString("tp_og_goodspack", StringUtils.toString(news.get("tp_og_goodspack")));
+        b.putString("tp_tt_status", StringUtils.toString(news.get("tp_tt_status")));
+        b.putString("tp_tt_type", StringUtils.toString(news.get("tp_tt_type")));
+        b.putString("tp_di_id", StringUtils.toString(news.get("tp_di_id")));
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
     /**
      * 新闻超链接点击跳转
      */
@@ -216,6 +238,7 @@ public class UIHelper {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+
     public static void showPersonalRedirect(Context context) {
         Intent intent = new Intent(context, PersonalActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -230,7 +253,7 @@ public class UIHelper {
 
     public static void showDispathDetailRedirect(AppContext context, Dispath dispath) {
         Intent intent = new Intent(context, HomeDetailActivity.class);
-        intent.putExtra("di_id",dispath.getTp_di_id());
+        intent.putExtra("di_id", dispath.getTp_di_id());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
