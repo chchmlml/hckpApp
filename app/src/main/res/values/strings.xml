@@ -17,6 +17,7 @@
     <string name="personal_info">个人信息</string>
     <string name="logont_success">注销登录成功！</string>
     <string name="my_cars">我的车辆</string>
+    <string name="my_cars_detail">车辆详情</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
@@ -39,6 +40,15 @@
     <string name="dispath_detail_tag3">发货时间：</string>
     <string name="dispath_detail_tag4">送达时间：</string>
     <string name="dispath_detail_tag5">备注：</string>
+
+    <!--车辆详情-->
+    <string name="my_car_detail_tag1">车牌：</string>
+    <string name="my_car_detail_tag2">车载重：</string>
+    <string name="my_car_detail_tag3">车高：</string>
+    <string name="my_car_detail_tag4">车长：</string>
+    <string name="my_car_detail_tag5">车宽：</string>
+    <string name="my_car_detail_tag6">出厂日期：</string>
+    <string name="my_car_detail_tag7">车名：</string>
 
     <!--运输单详情-->
     <string name="home_dispath_title1">委托单号：</string>

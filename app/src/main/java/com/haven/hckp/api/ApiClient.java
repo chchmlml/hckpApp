@@ -655,6 +655,18 @@ public class ApiClient {
             throw AppException.network(e);
         }
     }
+    public static CarList getCarList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
+        params.put("page", pageIndex);
+        params.put("len", pageSize);
+        String newUrl = _MakeURL(URLs.CAR_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        try {
+            return CarList.parse(http_get(appContext, newUrl));
+        } catch (Exception e) {
+            if (e instanceof AppException)
+                throw (AppException) e;
+            throw AppException.network(e);
+        }
+    }
 //
 
     /**

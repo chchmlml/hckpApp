@@ -27,6 +27,8 @@ public class URLs implements Serializable {
 	public final static String NEWS_DETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=inquiryDetail";
     public final static String NEWS_DETAIL_POST = URL_API_HOST+"index.php?apikey=app_driver&entrance=InInquiryPrice";
 
+	public final static String CAR_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=MyCar";
+
 	public final static String TEAM_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myMotorcade";
 	public final static String TEAM_LIST_SEARCH = URL_API_HOST+"index.php?apikey=app_driver&entrance=GetTcompany";
 	public final static String TEAM_ADD_POST= URL_API_HOST+"index.php?apikey=app_driver&entrance=addMyMotorcade";

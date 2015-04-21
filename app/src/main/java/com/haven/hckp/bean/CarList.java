@@ -56,11 +56,19 @@ public class CarList extends Entity {
             Car news = null;
             for (Map<String, Object> d : data) {
                 news = new Car();
+                news.setTp_d_c_id(StringUtils.toString(d.get("tp_d_c_id")));
                 news.setTp_d_id(StringUtils.toString(d.get("tp_d_id")));
+                news.setTp_car_id(StringUtils.toString(d.get("tp_car_id")));
+                news.setTp_d_c_type(StringUtils.toString(d.get("tp_d_c_type")));
+                news.setTp_d_c_time(StringUtils.toString(d.get("tp_d_c_time")));
+                news.setTp_car_no(StringUtils.toString(d.get("tp_car_no")));
+                news.setTp_car_weight(StringUtils.toString(d.get("tp_car_weight")));
+                news.setTp_car_hight(StringUtils.toString(d.get("tp_car_hight")));
+                news.setTp_car_length(StringUtils.toString(d.get("tp_car_length")));
+                news.setTp_car_outdate(StringUtils.toString(d.get("tp_car_outdate")));
                 news.setTp_tc_id(StringUtils.toString(d.get("tp_tc_id")));
-                news.setTp_tc_name(StringUtils.toString(d.get("tp_tc_name")));
-                news.setTp_tc_status(StringUtils.toString(d.get("tp_tc_status")));
-                news.setTp_tc_phone(StringUtils.toString(d.get("tp_tc_phone")));
+                news.setTp_car_name(StringUtils.toString(d.get("tp_car_name")));
+                news.setTp_car_weight(StringUtils.toString(d.get("tp_car_width")));
                 newslist.newslist.add(news);
             }
         }

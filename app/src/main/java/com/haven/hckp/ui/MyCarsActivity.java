@@ -178,7 +178,7 @@ public class MyCarsActivity extends BaseActivity {
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
 
-        lvNewsAdapter = new CarViewNewsAdapter(this, lvNewsData, R.layout.order_list_item);
+        lvNewsAdapter = new CarViewNewsAdapter(this, lvNewsData, R.layout.car_list_item);
 
         lvNews = (PullToRefreshListView) findViewById(R.id.listview_cars);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
@@ -192,20 +192,20 @@ public class MyCarsActivity extends BaseActivity {
                 if (position == 0 || view == lvNews_footer)
                     return;
 
-                News news = null;
+                Car news = null;
                 // 判断是否是TextView
                 if (view instanceof TextView) {
-                    news = (News) view.getTag();
+                    news = (Car) view.getTag();
                 } else {
                     TextView tv = (TextView) view
-                            .findViewById(R.id.order_title);
-                    news = (News) tv.getTag();
+                            .findViewById(R.id.car_no);
+                    news = (Car) tv.getTag();
                 }
                 if (news == null)
                     return;
 
                 // 跳转到新闻详情
-                UIHelper.showNewsRedirect(appContext, news);
+                UIHelper.showCarDetailRedirect(appContext, news);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -259,7 +259,7 @@ public class MyCarsActivity extends BaseActivity {
                 try {
                     //额外参数
                     Map<String,Object> params = new HashMap<String, Object>();
-                    NewsList list = appContext.getNewsList(pageIndex, isRefresh,params);
+                    CarList list = appContext.getCarList(pageIndex, isRefresh, params);
                     msg.what = 0;
                     msg.obj = list;
                 } catch (AppException e) {

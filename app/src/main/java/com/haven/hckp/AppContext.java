@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.haven.hckp.api.ApiClient;
+import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.DispathList;
 import com.haven.hckp.bean.NewsList;
 import com.haven.hckp.bean.Notice;
@@ -379,6 +380,32 @@ public class AppContext extends Application {
             list = (NewsList) readObject(key);
             if (list == null)
                 list = new NewsList();
+        }
+        return list;
+    }
+    public CarList getCarList(int pageIndex, boolean isRefresh, Map<String, Object> params) throws AppException {
+        CarList list = null;
+        String key = "newslist_" + "_" + pageIndex + "_" + PAGE_SIZE;
+        //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+        if (isNetworkConnected()) {
+            try {
+                list = ApiClient.getCarList(this, pageIndex, PAGE_SIZE, params);
+                if (list != null && pageIndex == 0) {
+                    Notice notice = list.getNotice();
+                    list.setNotice(null);
+                    list.setCacheKey(key);
+                    saveObject(list, key);
+                    list.setNotice(notice);
+                }
+            } catch (AppException e) {
+                list = (CarList) readObject(key);
+                if (list == null)
+                    throw e;
+            }
+        } else {
+            list = (CarList) readObject(key);
+            if (list == null)
+                list = new CarList();
         }
         return list;
     }

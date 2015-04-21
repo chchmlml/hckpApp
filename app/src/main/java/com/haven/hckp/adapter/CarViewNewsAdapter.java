@@ -20,13 +20,9 @@ public class CarViewNewsAdapter extends BaseAdapter {
     private int itemViewResource;// 自定义项视图源
 
     static class ListItemView { // 自定义控件集合
-        public TextView orderTitle;
-        public TextView orderTitle2;
-        public TextView orderType;
-        public TextView orderDesc;
-        public TextView orderStarttime;
-        public TextView orderEndtime;
-        public TextView orderLength;
+        public TextView carNo;
+        public TextView carName;
+        public TextView carWeight;
     }
 
     /**
@@ -70,13 +66,9 @@ public class CarViewNewsAdapter extends BaseAdapter {
 
             listItemView = new ListItemView();
             // 获取控件对象
-            listItemView.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
-            listItemView.orderTitle2 = (TextView) convertView.findViewById(R.id.order_title2);
-            listItemView.orderType = (TextView) convertView.findViewById(R.id.order_type);
-            listItemView.orderDesc = (TextView) convertView.findViewById(R.id.order_desc);
-            listItemView.orderStarttime = (TextView) convertView.findViewById(R.id.order_starttime);
-            listItemView.orderEndtime = (TextView) convertView.findViewById(R.id.order_endtime);
-            listItemView.orderLength = (TextView) convertView.findViewById(R.id.order_length);
+            listItemView.carName = (TextView) convertView.findViewById(R.id.car_name);
+            listItemView.carNo = (TextView) convertView.findViewById(R.id.car_no);
+            listItemView.carWeight = (TextView) convertView.findViewById(R.id.car_weight);
 
             // 设置控件集到convertView
             convertView.setTag(listItemView);
@@ -87,9 +79,10 @@ public class CarViewNewsAdapter extends BaseAdapter {
         // 设置文字和图片
         Car news = listItems.get(position);
 
-        listItemView.orderTitle.setText(news.getTp_d_id());
-        listItemView.orderTitle.setTag(news);
-        listItemView.orderTitle2.setText(news.getTp_tc_name());
+        listItemView.carNo.setText(news.getTp_car_no());
+        listItemView.carNo.setTag(news);
+        listItemView.carName.setText(news.getTp_car_name());
+        listItemView.carWeight.setText(news.getTp_car_weight()+"t");
 
         return convertView;
     }

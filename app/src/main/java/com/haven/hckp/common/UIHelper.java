@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.haven.hckp.AppContext;
+import com.haven.hckp.bean.Car;
 import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.HomeDetailActivity;
 import com.haven.hckp.ui.HomeDispathDetailActivity;
+import com.haven.hckp.ui.MyCarDetailActivity;
 import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
@@ -191,6 +193,20 @@ public class UIHelper {
         Intent intent = new Intent(context, OrderDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("news_id", news.getTp_diy_id());
+        context.startActivity(intent);
+    }
+    public static void showCarDetailRedirect(Context context, Car car) {
+        Intent intent = new Intent(context, MyCarDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putString("car_no", StringUtils.toString(car.getTp_car_no()));
+        b.putString("car_name", StringUtils.toString(car.getTp_car_name()));
+        b.putString("car_height", StringUtils.toString(car.getTp_car_hight()));
+        b.putString("car_width", StringUtils.toString(car.getTp_car_width()));
+        b.putString("car_weight", StringUtils.toString(car.getTp_car_weight()));
+        b.putString("car_outdate", StringUtils.toString(car.getTp_car_outdate()));
+        b.putString("car_length", StringUtils.toString(car.getTp_car_length()));
+        intent.putExtras(b);
         context.startActivity(intent);
     }
 

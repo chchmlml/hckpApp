@@ -13,28 +13,26 @@ import java.io.InputStream;
  */
 public class Car extends Entity {
 
-    private String tp_tc_d_id;
+    private String tp_d_c_id;
     private String tp_d_id;
+    private String tp_car_id;
+    private String tp_d_c_type;
+    private String tp_d_c_time;
+    private String tp_car_no;
+    private String tp_car_weight;
+    private String tp_car_hight;
+    private String tp_car_length;
+    private String tp_car_outdate;
     private String tp_tc_id;
-    private String tp_tc_d_type;
-    private String tp_tc_status;
-    private String tp_tc_name;
-    private String tp_tc_phone;
-    private String tp_tc_fax;
-    private String tp_tc_user;
-    private String tp_tc_taxcertificate;
-    private String tp_tc_orgcode;
-    private String tp_tc_busilicense;
-    private String tp_tc_trsplicense;
-    private String tp_tc_type;
-    private String tp_u_id;
+    private String tp_car_name;
+    private String tp_car_width;
 
-    public String getTp_tc_d_id() {
-        return tp_tc_d_id;
+    public String getTp_d_c_id() {
+        return tp_d_c_id;
     }
 
-    public void setTp_tc_d_id(String tp_tc_d_id) {
-        this.tp_tc_d_id = tp_tc_d_id;
+    public void setTp_d_c_id(String tp_d_c_id) {
+        this.tp_d_c_id = tp_d_c_id;
     }
 
     public String getTp_d_id() {
@@ -45,6 +43,70 @@ public class Car extends Entity {
         this.tp_d_id = tp_d_id;
     }
 
+    public String getTp_car_id() {
+        return tp_car_id;
+    }
+
+    public void setTp_car_id(String tp_car_id) {
+        this.tp_car_id = tp_car_id;
+    }
+
+    public String getTp_d_c_type() {
+        return tp_d_c_type;
+    }
+
+    public void setTp_d_c_type(String tp_d_c_type) {
+        this.tp_d_c_type = tp_d_c_type;
+    }
+
+    public String getTp_d_c_time() {
+        return tp_d_c_time;
+    }
+
+    public void setTp_d_c_time(String tp_d_c_time) {
+        this.tp_d_c_time = tp_d_c_time;
+    }
+
+    public String getTp_car_no() {
+        return tp_car_no;
+    }
+
+    public void setTp_car_no(String tp_car_no) {
+        this.tp_car_no = tp_car_no;
+    }
+
+    public String getTp_car_weight() {
+        return tp_car_weight;
+    }
+
+    public void setTp_car_weight(String tp_car_weight) {
+        this.tp_car_weight = tp_car_weight;
+    }
+
+    public String getTp_car_hight() {
+        return tp_car_hight;
+    }
+
+    public void setTp_car_hight(String tp_car_hight) {
+        this.tp_car_hight = tp_car_hight;
+    }
+
+    public String getTp_car_length() {
+        return tp_car_length;
+    }
+
+    public void setTp_car_length(String tp_car_length) {
+        this.tp_car_length = tp_car_length;
+    }
+
+    public String getTp_car_outdate() {
+        return tp_car_outdate;
+    }
+
+    public void setTp_car_outdate(String tp_car_outdate) {
+        this.tp_car_outdate = tp_car_outdate;
+    }
+
     public String getTp_tc_id() {
         return tp_tc_id;
     }
@@ -53,100 +115,20 @@ public class Car extends Entity {
         this.tp_tc_id = tp_tc_id;
     }
 
-    public String getTp_tc_d_type() {
-        return tp_tc_d_type;
+    public String getTp_car_name() {
+        return tp_car_name;
     }
 
-    public void setTp_tc_d_type(String tp_tc_d_type) {
-        this.tp_tc_d_type = tp_tc_d_type;
+    public void setTp_car_name(String tp_car_name) {
+        this.tp_car_name = tp_car_name;
     }
 
-    public String getTp_tc_status() {
-        return tp_tc_status;
+    public String getTp_car_width() {
+        return tp_car_width;
     }
 
-    public void setTp_tc_status(String tp_tc_status) {
-        this.tp_tc_status = tp_tc_status;
-    }
-
-    public String getTp_tc_name() {
-        return tp_tc_name;
-    }
-
-    public void setTp_tc_name(String tp_tc_name) {
-        this.tp_tc_name = tp_tc_name;
-    }
-
-    public String getTp_tc_phone() {
-        return tp_tc_phone;
-    }
-
-    public void setTp_tc_phone(String tp_tc_phone) {
-        this.tp_tc_phone = tp_tc_phone;
-    }
-
-    public String getTp_tc_fax() {
-        return tp_tc_fax;
-    }
-
-    public void setTp_tc_fax(String tp_tc_fax) {
-        this.tp_tc_fax = tp_tc_fax;
-    }
-
-    public String getTp_tc_user() {
-        return tp_tc_user;
-    }
-
-    public void setTp_tc_user(String tp_tc_user) {
-        this.tp_tc_user = tp_tc_user;
-    }
-
-    public String getTp_tc_taxcertificate() {
-        return tp_tc_taxcertificate;
-    }
-
-    public void setTp_tc_taxcertificate(String tp_tc_taxcertificate) {
-        this.tp_tc_taxcertificate = tp_tc_taxcertificate;
-    }
-
-    public String getTp_tc_orgcode() {
-        return tp_tc_orgcode;
-    }
-
-    public void setTp_tc_orgcode(String tp_tc_orgcode) {
-        this.tp_tc_orgcode = tp_tc_orgcode;
-    }
-
-    public String getTp_tc_busilicense() {
-        return tp_tc_busilicense;
-    }
-
-    public void setTp_tc_busilicense(String tp_tc_busilicense) {
-        this.tp_tc_busilicense = tp_tc_busilicense;
-    }
-
-    public String getTp_tc_trsplicense() {
-        return tp_tc_trsplicense;
-    }
-
-    public void setTp_tc_trsplicense(String tp_tc_trsplicense) {
-        this.tp_tc_trsplicense = tp_tc_trsplicense;
-    }
-
-    public String getTp_tc_type() {
-        return tp_tc_type;
-    }
-
-    public void setTp_tc_type(String tp_tc_type) {
-        this.tp_tc_type = tp_tc_type;
-    }
-
-    public String getTp_u_id() {
-        return tp_u_id;
-    }
-
-    public void setTp_u_id(String tp_u_id) {
-        this.tp_u_id = tp_u_id;
+    public void setTp_car_width(String tp_car_width) {
+        this.tp_car_width = tp_car_width;
     }
 
     public static Car parse(InputStream inputStream) throws IOException, AppException {
