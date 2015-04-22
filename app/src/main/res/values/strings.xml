@@ -18,6 +18,7 @@
     <string name="logont_success">注销登录成功！</string>
     <string name="my_cars">我的车辆</string>
     <string name="my_cars_detail">车辆详情</string>
+    <string name="my_cars_edit">车辆编辑</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>
@@ -90,6 +91,7 @@
     <string name="login_password2">确认密码</string>
     <string name="register_btn_yan">验证码</string>
     <string name="register">注册</string>
+    <string name="add">添加</string>
     <string name="click_to_login">点击登录</string>
 
     <string name="login_param_is_null">用户名或者密码为空</string>

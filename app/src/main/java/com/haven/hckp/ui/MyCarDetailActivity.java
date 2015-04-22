@@ -62,12 +62,8 @@ public class MyCarDetailActivity extends BaseActivity {
     @ViewInject(R.id.car_length)
     private TextView carLength;
 
-
     private Intent intent;
     private Bundle bundle;
-
-    private String orderStatus = null;
-    private String diId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +81,17 @@ public class MyCarDetailActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         renderBaseView();
+    }
+
+
+    @OnClick({R.id.back_img})
+    public void buttonClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btn_login:
+                finish();
+                break;
+        }
     }
 
     private void renderBaseView() {

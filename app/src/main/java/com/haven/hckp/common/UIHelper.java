@@ -13,6 +13,8 @@ import com.haven.hckp.bean.Notice;
 import com.haven.hckp.ui.HomeDetailActivity;
 import com.haven.hckp.ui.HomeDispathDetailActivity;
 import com.haven.hckp.ui.MyCarDetailActivity;
+import com.haven.hckp.ui.MyCarEdit2Activity;
+import com.haven.hckp.ui.MyCarEditActivity;
 import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
@@ -239,6 +241,13 @@ public class UIHelper {
 
     public static void showLoginRedirect(Context context) {
         Intent intent = new Intent(context, loginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+
+    public static void showMyCarAddRedirect(Context context) {
+        Intent intent = new Intent(context, MyCarEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

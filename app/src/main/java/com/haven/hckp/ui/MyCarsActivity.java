@@ -41,6 +41,9 @@ public class MyCarsActivity extends BaseActivity {
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
+    @ViewInject(R.id.right_img)
+    private ImageView rightImg;
+
     private AppContext appContext;
 
     private Handler lvNewsHandler;
@@ -63,15 +66,21 @@ public class MyCarsActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
+
+        rightImg.setVisibility(View.VISIBLE);
+        rightImg.setImageDrawable(getResources().getDrawable(R.drawable.add_btn));
         initViews();
     }
 
-    @OnClick({ R.id.back_img})
+    @OnClick({ R.id.back_img,R.id.right_img})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
             case R.id.back_img:
                 this.finish();
+                break;
+            case R.id.right_img:
+                UIHelper.showMyCarAddRedirect(appContext);
                 break;
         }
     }
