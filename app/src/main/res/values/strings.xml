@@ -19,6 +19,7 @@
     <string name="my_cars">我的车辆</string>
     <string name="my_cars_detail">车辆详情</string>
     <string name="my_cars_edit">车辆编辑</string>
+    <string name="my_cars_add">车辆添加</string>
 
     <!--订单详情-->
     <string name="order_detail_tag1">订单状态：</string>

@@ -3,7 +3,6 @@ package com.haven.hckp.ui;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.os.Message;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,15 +30,13 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
-import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Map;
 
-public class MyCarEditActivity extends BaseActivity {
+public class MyCarCreateActivity extends BaseActivity {
 
     private AppContext appContext;
 
@@ -86,10 +82,10 @@ public class MyCarEditActivity extends BaseActivity {
         intent = this.getIntent();
         bundle = intent.getExtras();
 
-        mTitleTv.setText(R.string.my_cars_edit);
+        mTitleTv.setText(R.string.my_cars_add);
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
-        renderBaseView();
+        //renderBaseView();
 
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
@@ -136,7 +132,7 @@ public class MyCarEditActivity extends BaseActivity {
         p.put("car_outdate", StringUtils.toString(carOutdate.getText()));
         params.addBodyParameter("car_name", StringUtils.toString(carName.getText()));
         p.put("car_name", StringUtils.toString(carName.getText()));
-        String newUrl = ApiClient._MakeURL(URLs.EDIT_CAR, p, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.CREATE_CAR, p, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
         //LogUtils.i(JSON.toJSONString(params));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");

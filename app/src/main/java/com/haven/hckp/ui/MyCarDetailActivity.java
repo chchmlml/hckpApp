@@ -46,6 +46,8 @@ public class MyCarDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
+    @ViewInject(R.id.right_img)
+    private ImageView editBtn;
 
     @ViewInject(R.id.car_no)
     private TextView carNo;
@@ -81,14 +83,20 @@ public class MyCarDetailActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         renderBaseView();
+        editBtn.setVisibility(View.VISIBLE);
+        editBtn.setImageDrawable(getResources().getDrawable(R.drawable.edit_btn));
     }
 
 
-    @OnClick({R.id.back_img})
+    @OnClick({R.id.back_img,R.id.right_img})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
             case R.id.btn_login:
+                finish();
+                break;
+            case R.id.right_img:
+                UIHelper.showMyEditAddRedirect(appContext,bundle);
                 finish();
                 break;
         }
