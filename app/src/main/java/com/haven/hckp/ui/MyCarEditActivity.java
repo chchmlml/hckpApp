@@ -49,6 +49,8 @@ public class MyCarEditActivity extends BaseActivity {
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
+    @ViewInject(R.id.button)
+    private Button button;
 
     @ViewInject(R.id.car_no)
     private TextView carNo;
@@ -90,6 +92,7 @@ public class MyCarEditActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         renderBaseView();
+        button.setText(R.string.update);
 
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
@@ -98,14 +101,14 @@ public class MyCarEditActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.back_img, R.id.car_outdate, R.id.button})
+    @OnClick({R.id.back_img, R.id.show_date, R.id.button})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
             case R.id.back_img:
                 finish();
                 break;
-            case R.id.car_outdate: {
+            case R.id.show_date: {
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(carOutdate.getWindowToken(), 0); //myEdit是你的EditText对象
                 Message msg = new Message();

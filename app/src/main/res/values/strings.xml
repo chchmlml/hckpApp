@@ -93,7 +93,9 @@
     <string name="register_btn_yan">验证码</string>
     <string name="register">注册</string>
     <string name="add">添加</string>
+    <string name="update">更新</string>
     <string name="click_to_login">点击登录</string>
+    <string name="chose_date">选择日期</string>
 
     <string name="login_param_is_null">用户名或者密码为空</string>
     <string name="team_is_null">车队名称不能为空</string>

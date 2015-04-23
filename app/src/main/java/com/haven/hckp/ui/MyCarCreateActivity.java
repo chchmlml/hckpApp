@@ -60,6 +60,8 @@ public class MyCarCreateActivity extends BaseActivity {
     private TextView carOutdate;
     @ViewInject(R.id.car_length)
     private TextView carLength;
+    @ViewInject(R.id.show_date)
+    private TextView showDate;
 
     private Intent intent;
     private Bundle bundle;
@@ -87,6 +89,9 @@ public class MyCarCreateActivity extends BaseActivity {
         backBtn.setVisibility(View.VISIBLE);
         //renderBaseView();
 
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(carOutdate.getWindowToken(), 0); //myEdit是你的EditText对象
+
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
@@ -94,16 +99,14 @@ public class MyCarCreateActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.back_img, R.id.car_outdate, R.id.button})
+    @OnClick({R.id.back_img, R.id.show_date, R.id.button})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
             case R.id.back_img:
                 finish();
                 break;
-            case R.id.car_outdate: {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(carOutdate.getWindowToken(), 0); //myEdit是你的EditText对象
+            case R.id.show_date: {
                 Message msg = new Message();
                 msg.what = 0;
                 this.dateandtimeHandler.sendMessage(msg);

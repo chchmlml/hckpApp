@@ -232,7 +232,7 @@
 
                 <EditText
                     android:id="@+id/car_outdate"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dip"
                     android:background="@drawable/bg_edittext"
                     android:textColor="@color/black"
@@ -240,7 +240,18 @@
                     android:paddingLeft="2dip"
                     android:textColorHint="@color/gray"
                     android:inputType="numberDecimal"
+                    android:layout_weight="1"
+                    android:enabled="false"
                     android:singleLine="true" />
+                <Button
+                    android:layout_width="120dip"
+                    android:layout_height="35dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_margin="0dip"
+                    android:background="@drawable/btn_ok_selector"
+                    android:text="@string/chose_date"
+                    android:id="@+id/show_date" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
