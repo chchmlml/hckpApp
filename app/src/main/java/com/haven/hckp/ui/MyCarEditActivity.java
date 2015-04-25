@@ -109,8 +109,6 @@ public class MyCarEditActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.show_date: {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(carOutdate.getWindowToken(), 0); //myEdit是你的EditText对象
                 Message msg = new Message();
                 msg.what = 0;
                 this.dateandtimeHandler.sendMessage(msg);

@@ -112,58 +112,58 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 		}
 		//解挂靠按钮
 		final String tcId = news.getTp_tc_id();
-		ImageView btn = (ImageView) convertView.findViewById(R.id.button2);
-		if(btn != null){
-			btn.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-					CustomDialog.Builder builder = new CustomDialog.Builder(TeamViewNewsAdapter.this.context);
-					builder.setTitle("提示");
-					builder.setMessage("您确定解除挂靠此车队吗？");
-					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							final ProgressDialog pd = ProgressDialog.show(context,null,"请稍后...");
-							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(),(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
-							RequestParams params = new RequestParams();
-							params.addBodyParameter("tc_id", tcId);
-							HttpUtils http = new HttpUtils();
-							http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
-								@Override
-								public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-									pd.dismiss();
-									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-									String code = obj.get("code").toString();
-									if (code.equals("1")) {
-										TeamViewNewsAdapter.this.listItems.remove(position);
-										TeamViewNewsAdapter.this.notifyDataSetChanged();
-										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-									} else {
-										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-									}
-								}
-
-								@Override
-								public void onFailure(HttpException e, String s) {
-									pd.dismiss();
-								}
-							});
-							dialog.dismiss();
-						}
-					});
-
-					builder.setNegativeButton("取消",
-							new android.content.DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
-									dialog.dismiss();
-								}
-							});
-
-					builder.create().show();
-
-				}
-			});
-		}
+//		ImageView btn = (ImageView) convertView.findViewById(R.id.button2);
+//		if(btn != null){
+//			btn.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View v) {
+//
+//					CustomDialog.Builder builder = new CustomDialog.Builder(TeamViewNewsAdapter.this.context);
+//					builder.setTitle("提示");
+//					builder.setMessage("您确定解除挂靠此车队吗？");
+//					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//						public void onClick(DialogInterface dialog, int which) {
+//							final ProgressDialog pd = ProgressDialog.show(context,null,"请稍后...");
+//							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(),(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
+//							RequestParams params = new RequestParams();
+//							params.addBodyParameter("tc_id", tcId);
+//							HttpUtils http = new HttpUtils();
+//							http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+//								@Override
+//								public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+//									pd.dismiss();
+//									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+//									String code = obj.get("code").toString();
+//									if (code.equals("1")) {
+//										TeamViewNewsAdapter.this.listItems.remove(position);
+//										TeamViewNewsAdapter.this.notifyDataSetChanged();
+//										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
+//									} else {
+//										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
+//									}
+//								}
+//
+//								@Override
+//								public void onFailure(HttpException e, String s) {
+//									pd.dismiss();
+//								}
+//							});
+//							dialog.dismiss();
+//						}
+//					});
+//
+//					builder.setNegativeButton("取消",
+//							new android.content.DialogInterface.OnClickListener() {
+//								public void onClick(DialogInterface dialog, int which) {
+//									dialog.dismiss();
+//								}
+//							});
+//
+//					builder.create().show();
+//
+//				}
+//			});
+//		}
 		return convertView;
 	}
 }

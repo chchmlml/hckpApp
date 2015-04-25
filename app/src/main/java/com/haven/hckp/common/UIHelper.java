@@ -10,22 +10,21 @@ import com.haven.hckp.bean.Car;
 import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
+import com.haven.hckp.bean.Team;
 import com.haven.hckp.ui.HomeDetailActivity;
 import com.haven.hckp.ui.HomeDispathDetailActivity;
 import com.haven.hckp.ui.MyCarCreateActivity;
 import com.haven.hckp.ui.MyCarDetailActivity;
-import com.haven.hckp.ui.MyCarEdit2Activity;
 import com.haven.hckp.ui.MyCarEditActivity;
 import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
 import com.haven.hckp.ui.PersonalActivity;
 import com.haven.hckp.ui.RegisterActivity;
+import com.haven.hckp.ui.TeamDetailActivity;
 import com.haven.hckp.ui.TeamFindActivity;
 import com.haven.hckp.ui.login2Activity;
 import com.haven.hckp.ui.loginActivity;
-
-import android.content.DialogInterface;
 
 import java.util.Map;
 
@@ -196,6 +195,17 @@ public class UIHelper {
         Intent intent = new Intent(context, OrderDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("news_id", news.getTp_diy_id());
+        context.startActivity(intent);
+    }
+    public static void showTeamDetialRedirect(Context context, Team news) {
+        Intent intent = new Intent(context, TeamDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("tc_id", news.getTp_tc_id());
+        intent.putExtra("tc_name", news.getTp_tc_name());
+        intent.putExtra("tc_user", news.getTp_tc_user());
+        intent.putExtra("tc_phone", news.getTp_tc_phone());
+        intent.putExtra("tc_fax", news.getTp_tc_fax());
+        intent.putExtra("tc_status", news.getTp_tc_status());
         context.startActivity(intent);
     }
     public static void showCarDetailRedirect(Context context, Car car) {

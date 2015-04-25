@@ -63,6 +63,8 @@ public class TeamList extends Entity {
                 news.setTp_tc_name(StringUtils.toString(d.get("tp_tc_name")));
                 news.setTp_tc_status(StringUtils.toString(d.get("tp_tc_status")));
                 news.setTp_tc_phone(StringUtils.toString(d.get("tp_tc_phone")));
+                news.setTp_tc_fax(StringUtils.toString(d.get("tp_tc_fax")));
+                news.setTp_tc_user(StringUtils.toString(d.get("tp_tc_user")));
                 newslist.newslist.add(news);
             }
         }
