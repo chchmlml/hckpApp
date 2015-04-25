@@ -169,31 +169,31 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
     /**
      * 监听返回--是否退出程序
      */
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        boolean flag = true;
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            CustomDialog.Builder builder = new CustomDialog.Builder(this);
-            builder.setTitle("提示");
-            builder.setMessage("您确定退出吗？");
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    AppManager.getAppManager().finishAllActivity();
-                    System.exit(0);
-                    dialog.dismiss();
-                }
-            });
-
-            builder.setNegativeButton("取消",
-                    new android.content.DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-
-            builder.create().show();
+  //  public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        boolean flag = true;
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            CustomDialog.Builder builder = new CustomDialog.Builder(this);
+//            builder.setTitle("提示");
+//            builder.setMessage("您确定退出吗？");
+//            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int which) {
+//                    AppManager.getAppManager().finishAllActivity();
+//                    System.exit(0);
+//                    dialog.dismiss();
+//                }
+//            });
+//
+//            builder.setNegativeButton("取消",
+//                    new android.content.DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    });
+//
+//            builder.create().show();
             // 是否退出应用
             //return mDoubleClickExitHelper.onKeyDown(keyCode, event);
-        }
-        return flag;
-    }
+        //}
+      //  return true;
+    //}
 }

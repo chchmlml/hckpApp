@@ -1,6 +1,7 @@
 package com.haven.hckp.ui;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -61,6 +63,11 @@ public class PersonalActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.btn_logout:
+
+                LogUtils.i("stop service --->");
+                Intent i = new Intent("com.haven.hckp.location");
+                stopService(i);
+
                 try {
                     ApiClient.logout(appContext);
                     UIHelper.ToastMessage(appContext,R.string.logont_success);
