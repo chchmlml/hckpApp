@@ -268,6 +268,12 @@ public class UIHelper {
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
+    public static void showPersonalEditAddRedirect(Context context, Map<String, Object> bundle) {
+        Intent intent = new Intent(context, MyCarEditActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     public static void showLogin2Redirect(Context context) {
         Intent intent = new Intent(context, login2Activity.class);

@@ -39,30 +39,30 @@
                     android:background="@drawable/widget_dface_border"
                     android:src="@drawable/icon_defult_userimage" />
 
-                <TextView
-                    android:id="@+id/user_info_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18221302153"
-                    android:layout_marginTop="30dip"
-                    android:layout_toRightOf="@id/user_info_userface"
-                    android:textSize="13dip"
-                    android:textColor="@color/author_text" />
+                <!--<TextView-->
+                    <!--android:id="@+id/user_info_phone"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="18221302153"-->
+                    <!--android:layout_marginTop="30dip"-->
+                    <!--android:layout_toRightOf="@id/user_info_userface"-->
+                    <!--android:textSize="13dip"-->
+                    <!--android:textColor="@color/author_text" />-->
 
-                <TextView
-                    android:id="@+id/user_info_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/user_info_userface"
-                    android:layout_alignParentBottom="true"
-                    android:text="chchmlml"
-                    android:textSize="13dip"
-                    android:textColor="@color/author_text" />
+                <!--<TextView-->
+                    <!--android:id="@+id/user_info_username"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toRightOf="@id/user_info_userface"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:text="chchmlml"-->
+                    <!--android:textSize="13dip"-->
+                    <!--android:textColor="@color/author_text" />-->
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="50dip"
+                android:layout_height="40dip"
                 android:layout_marginTop="10.0dip"
                 android:gravity="center_vertical"
                 android:focusable="true"
@@ -72,14 +72,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginLeft="23.0dip"
                     android:duplicateParentState="true"
                     android:textSize="13dip"
                     android:textColor="@color/grayslate"
-                    android:text="加入时间：" />
+                    android:text="用户名：" />
 
                 <TextView
-                    android:id="@+id/user_info_jointime"
+                    android:id="@+id/ts_u_username"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -91,7 +91,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="50dip"
+                android:layout_height="40dip"
                 android:gravity="center_vertical"
                 android:focusable="true"
                 android:clickable="true"
@@ -104,10 +104,10 @@
                     android:duplicateParentState="true"
                     android:textSize="13dip"
                     android:textColor="@color/grayslate"
-                    android:text="所在地区：" />
+                    android:text="手机号码：" />
 
                 <TextView
-                    android:id="@+id/user_info_from"
+                    android:id="@+id/ts_u_phone"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -119,7 +119,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="50dip"
+                android:layout_height="40dip"
                 android:gravity="center_vertical"
                 android:focusable="true"
                 android:clickable="true"
@@ -132,10 +132,10 @@
                     android:duplicateParentState="true"
                     android:textSize="13dip"
                     android:textColor="@color/grayslate"
-                    android:text="开发平台：" />
+                    android:text="用户昵称：" />
 
                 <TextView
-                    android:id="@+id/user_info_devplatform"
+                    android:id="@+id/ts_real_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -147,7 +147,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="50dip"
+                android:layout_height="40dip"
                 android:gravity="center_vertical"
                 android:focusable="true"
                 android:clickable="true"
@@ -160,10 +160,10 @@
                     android:duplicateParentState="true"
                     android:textSize="13dip"
                     android:textColor="@color/grayslate"
-                    android:text="专长领域：" />
+                    android:text="注册时间：" />
 
                 <TextView
-                    android:id="@+id/user_info_expertise"
+                    android:id="@+id/ts_u_regtime"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
