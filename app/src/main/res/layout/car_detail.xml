@@ -19,6 +19,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/padding_5px"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/order_detail_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_car_detail_tag7" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/car_name"
+                    style="@style/order_detail_style"
+                    android:singleLine="false"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="@dimen/padding_5px"
             android:background="@color/white"
             android:orientation="horizontal">
@@ -31,7 +66,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag1" />
+                    android:text="车牌号：" />
             </LinearLayout>
 
             <LinearLayout
@@ -39,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="1">
+
                 <TextView
                     android:id="@+id/car_no"
                     style="@style/order_detail_style"
@@ -65,7 +101,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag2" />
+                    android:text="车载重：" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,7 +136,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag3" />
+                    android:text="车辆高" />
             </LinearLayout>
 
             <LinearLayout
@@ -136,7 +172,7 @@
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag4" />
+                    android:text="车辆长：" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,13 +201,14 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:gravity="right"
                 android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/order_detail_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag5" />
+                    android:text="车辆宽：" />
             </LinearLayout>
 
             <LinearLayout
@@ -190,6 +227,7 @@
                     android:text="" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -216,40 +254,6 @@
 
                 <TextView
                     android:id="@+id/car_outdate"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_car_detail_tag7" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/car_name"
                     style="@style/order_detail_style"
                     android:singleLine="false"
                     android:layout_width="fill_parent"

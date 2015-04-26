@@ -53,13 +53,13 @@
     <string name="team_detail_tag5">状态：</string>
 
     <!--车辆详情-->
-    <string name="my_car_detail_tag1">车牌：</string>
-    <string name="my_car_detail_tag2">车载重：</string>
-    <string name="my_car_detail_tag3">车高：</string>
-    <string name="my_car_detail_tag4">车长：</string>
-    <string name="my_car_detail_tag5">车宽：</string>
-    <string name="my_car_detail_tag6">出厂日期：</string>
     <string name="my_car_detail_tag7">车名：</string>
+    <string name="my_car_detail_tag1">车牌：沪A100011</string>
+    <string name="my_car_detail_tag2">车载重：吨</string>
+    <string name="my_car_detail_tag3">车高：米</string>
+    <string name="my_car_detail_tag4">车长：米</string>
+    <string name="my_car_detail_tag5">车宽：米</string>
+    <string name="my_car_detail_tag6">出厂日期：</string>
 
     <!--运输单详情-->
     <string name="home_dispath_title1">委托单号：</string>
@@ -98,6 +98,7 @@
     <string name="login_phone">手机号</string>
     <string name="login_email">账号/手机/电子邮箱</string>
     <string name="login_username">用户名</string>
+    <string name="old_password">旧密码</string>
     <string name="login_password">密码</string>
     <string name="login_password2">确认密码</string>
     <string name="register_btn_yan">验证码</string>
@@ -105,7 +106,7 @@
     <string name="add">添加</string>
     <string name="update">更新</string>
     <string name="click_to_login">点击登录</string>
-    <string name="chose_date">选择日期</string>
+    <string name="chose_date">日期</string>
 
     <string name="login_param_is_null">用户名或者密码为空</string>
     <string name="team_is_null">车队名称不能为空</string>
@@ -114,6 +115,7 @@
     <string name="register_param3_is_null">确认密码不能为空</string>
     <string name="register_param4_is_null">用户名不能为空</string>
     <string name="register_param5_is_null">两次密码不同，请确认</string>
+    <string name="register_param6_is_null">旧密码不正确，请确认</string>
 
     <string name="register_edit_yan">验证码</string>
     <string name="login_btn">登录</string>

@@ -133,7 +133,7 @@ public class PersonalActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_logout, R.id.back_img})
+    @OnClick({R.id.btn_logout, R.id.back_img, R.id.right_img})
     public void buttonClick(View v) {
 
         switch (v.getId()) {

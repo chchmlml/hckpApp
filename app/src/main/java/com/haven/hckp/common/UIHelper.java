@@ -20,6 +20,7 @@ import com.haven.hckp.ui.MyCarsActivity;
 import com.haven.hckp.ui.OrderDetailActivity;
 import com.haven.hckp.ui.OrderFilterActivity;
 import com.haven.hckp.ui.PersonalActivity;
+import com.haven.hckp.ui.PersonalEditActivity;
 import com.haven.hckp.ui.RegisterActivity;
 import com.haven.hckp.ui.TeamDetailActivity;
 import com.haven.hckp.ui.TeamFindActivity;
@@ -197,6 +198,7 @@ public class UIHelper {
         intent.putExtra("news_id", news.getTp_diy_id());
         context.startActivity(intent);
     }
+
     public static void showTeamDetialRedirect(Context context, Team news) {
         Intent intent = new Intent(context, TeamDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -208,6 +210,7 @@ public class UIHelper {
         intent.putExtra("tc_status", news.getTp_tc_status());
         context.startActivity(intent);
     }
+
     public static void showCarDetailRedirect(Context context, Car car) {
         Intent intent = new Intent(context, MyCarDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -262,16 +265,22 @@ public class UIHelper {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+
     public static void showMyEditAddRedirect(Context context, Bundle bundle) {
         Intent intent = new Intent(context, MyCarEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
-    public static void showPersonalEditAddRedirect(Context context, Map<String, Object> bundle) {
-        Intent intent = new Intent(context, MyCarEditActivity.class);
+
+    public static void showPersonalEditAddRedirect(Context context, Map<String, Object> data) {
+        Intent intent = new Intent(context, PersonalEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.putExtras(bundle);
+        Bundle b = new Bundle();
+        b.putString("username", StringUtils.toString(data.get("ts_u_username")));
+        b.putString("oldPwd", StringUtils.toString(data.get("ts_u_password")));
+        b.putString("phone", StringUtils.toString(data.get("ts_u_phone")));
+        intent.putExtras(b);
         context.startActivity(intent);
     }
 
