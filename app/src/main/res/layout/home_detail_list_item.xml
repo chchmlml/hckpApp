@@ -82,9 +82,9 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_height="fill_parent"
         android:paddingRight="@dimen/padding_10px"
+        android:gravity="center_vertical"
         android:orientation="vertical">
         <ImageView
             android:layout_width="wrap_content"

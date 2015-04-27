@@ -1,13 +1,21 @@
 package com.haven.hckp;
 
 import android.app.Application;
+import android.app.Service;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Vibrator;
+import android.util.Log;
+import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.GeofenceClient;
+import com.baidu.location.LocationClient;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.DispathList;
@@ -41,14 +49,85 @@ public class AppContext extends Application {
     private static final int CACHE_TIME = 60 * 60000;// 缓存失效时间
 
     private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
+    public LocationClient mLocationClient;
+    public GeofenceClient mGeofenceClient;
+    public MyLocationListener mMyLocationListener;
+
+    public TextView mLocationResult,logMsg;
+    public TextView trigger,exit;
+    public Vibrator mVibrator;
 
     @Override
     public void onCreate() {
         super.onCreate();
         PgyCrashManager.register(this, AppConfig.APP_ID);
+        mLocationClient = new LocationClient(this.getApplicationContext());
+        mMyLocationListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(mMyLocationListener);
+        mGeofenceClient = new GeofenceClient(getApplicationContext());
+
+
+        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+
         // 注册App异常崩溃处理器
         // Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
     }
+
+
+    /**
+     */
+    public class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            //Receive Location
+            StringBuffer sb = new StringBuffer(256);
+            sb.append("time : ");
+            sb.append(location.getTime());
+            sb.append("\nerror code : ");
+            sb.append(location.getLocType());
+            sb.append("\nlatitude : ");
+            sb.append(location.getLatitude());
+            sb.append("\nlontitude : ");
+            sb.append(location.getLongitude());
+            sb.append("\nradius : ");
+            sb.append(location.getRadius());
+            if (location.getLocType() == BDLocation.TypeGpsLocation) {
+                sb.append("\nspeed : ");
+                sb.append(location.getSpeed());
+                sb.append("\nsatellite : ");
+                sb.append(location.getSatelliteNumber());
+                sb.append("\ndirection : ");
+                sb.append("\naddr : ");
+                sb.append(location.getAddrStr());
+                sb.append(location.getDirection());
+            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
+                sb.append("\naddr : ");
+                sb.append(location.getAddrStr());
+                sb.append("\noperationers : ");
+                sb.append(location.getOperators());
+            }
+            logMsg(sb.toString());
+            Log.i("BaiduLocationApiDem", sb.toString());
+        }
+
+
+    }
+
+
+    /**
+     * @param str
+     */
+    public void logMsg(String str) {
+        try {
+            if (mLocationResult != null)
+                mLocationResult.setText(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     /**
      * 是否启动检查更新
@@ -383,6 +462,7 @@ public class AppContext extends Application {
         }
         return list;
     }
+
     public CarList getCarList(int pageIndex, boolean isRefresh, Map<String, Object> params) throws AppException {
         CarList list = null;
         String key = "newslist_" + "_" + pageIndex + "_" + PAGE_SIZE;
@@ -476,7 +556,7 @@ public class AppContext extends Application {
         //if (isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
         if (isNetworkConnected()) {
             try {
-                list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE,params);
+                list = ApiClient.getDispathList(this, pageIndex, PAGE_SIZE, params);
                 if (list != null && pageIndex == 0) {
                     Notice notice = list.getNotice();
                     list.setNotice(null);

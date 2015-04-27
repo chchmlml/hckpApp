@@ -6,12 +6,17 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.haven.hckp.AppContext;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.util.LogUtils;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Timer;
@@ -19,7 +24,8 @@ import java.util.TimerTask;
 
 public class LocationService extends Service {
 
-    private int TIME = 1000;
+
+    private LocationClient mLocationClient;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -47,7 +53,9 @@ public class LocationService extends Service {
                 });
             }
             super.handleMessage(msg);
-        };
+        }
+
+        ;
     };
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
@@ -63,7 +71,24 @@ public class LocationService extends Service {
 
     @Override
     public void onCreate() {
-        timer.schedule(task, 1000, 1000); // 1s后执行task,经过1s再次执行
+
+//        AppContext appContext = (AppContext) getApplication();
+//        mLocationClient = appContext.mLocationClient;
+//        InitLocation();
+//        mLocationClient.start();
+
+        //timer.schedule(task, 1000, 1000); // 1s后执行task,经过1s再次执行
+    }
+
+    private int TIME = 1000;
+
+    private void InitLocation() {
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
+        option.setCoorType("bd09ll");
+        option.setScanSpan(TIME);
+        option.setIsNeedAddress(false);
+        mLocationClient.setLocOption(option);
     }
 
     @Override
@@ -99,7 +124,8 @@ public class LocationService extends Service {
     @Override
     public void onDestroy() {
         LogUtils.i("location onDestroy");
-        timer.cancel();
+        //timer.cancel();
+        mLocationClient.stop();
     }
 
     @Override

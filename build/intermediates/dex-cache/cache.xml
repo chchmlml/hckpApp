@@ -5,7 +5,7 @@
         jar="/Users/haven/Development/github/hckpApp/app/libs/BaiduLBS_Android.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="3b72dd259a962778692bb02fa3032c210a4d2e9d">
+        sha1="a57f7efe16a98b26ca59abcd26e1ab884f9385a1">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/BaiduLBS_Android-193c0f77f32dd4df4ce93c5d86a09b8b885510d8.jar" />
     </item>
     <item
@@ -35,13 +35,6 @@
         revision="22.0.1"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.squareup/android-times-square/1.5.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="49a161d665861cd093b0b0ba2bfcfe791f1330ef">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-fd6735b980e8efa8f78762d6a203773284e9c279.jar" />
     </item>
     <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"

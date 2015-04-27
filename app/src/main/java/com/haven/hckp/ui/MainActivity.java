@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
+
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.AppManager;
@@ -34,6 +37,8 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
     private AppContext appContext;
 
+    private LocationClient mLocationClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,22 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         if (appContext.isCheckUp()) {
             //UpdateManager.getUpdateManager().checkAppUpdate(this, false);
         }
+
+        AppContext appContext = (AppContext) getApplication();
+        mLocationClient = appContext.mLocationClient;
+        InitLocation();
+        mLocationClient.start();
+
+    }
+
+
+    private void InitLocation() {
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
+        option.setCoorType("bd09ll");
+        option.setScanSpan(1000);
+        option.setIsNeedAddress(false);
+        mLocationClient.setLocOption(option);
     }
 
     private void init() {
