@@ -23,7 +23,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
     static class ListItemView { // 自定义控件集合
         public TextView orderTitle;
         public TextView orderTitle2;
-        public TextView orderType;
+        public ImageView orderType;
         public TextView orderDesc;
         public TextView orderStarttime;
         public TextView orderEndtime;
@@ -73,7 +73,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
             // 获取控件对象
             listItemView.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
             listItemView.orderTitle2 = (TextView) convertView.findViewById(R.id.order_title2);
-            listItemView.orderType = (TextView) convertView.findViewById(R.id.order_type);
+            listItemView.orderType = (ImageView) convertView.findViewById(R.id.order_type);
             listItemView.orderDesc = (TextView) convertView.findViewById(R.id.order_desc);
             listItemView.orderStarttime = (TextView) convertView.findViewById(R.id.order_starttime);
             listItemView.orderEndtime = (TextView) convertView.findViewById(R.id.order_endtime);
@@ -92,9 +92,9 @@ public class ListViewNewsAdapter extends BaseAdapter {
         listItemView.orderTitle.setTag(news);
         listItemView.orderDesc.setText(news.getTp_diy_desc());
         if ("1".equals(news.getTp_diy_type())) {
-            listItemView.orderType.setText("[广播]");
+            listItemView.orderType.setVisibility(View.GONE);
         } else {
-            listItemView.orderType.setText("[指定]");
+            listItemView.orderType.setVisibility(View.VISIBLE);
         }
         listItemView.orderStarttime.setText(news.getTp_diy_startdate());
         listItemView.orderEndtime.setText(news.getTp_diy_enddate());

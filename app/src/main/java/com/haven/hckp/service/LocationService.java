@@ -7,9 +7,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.haven.hckp.AppContext;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -24,8 +21,6 @@ import java.util.TimerTask;
 
 public class LocationService extends Service {
 
-
-    private LocationClient mLocationClient;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -81,16 +76,6 @@ public class LocationService extends Service {
     }
 
     private int TIME = 1000;
-
-    private void InitLocation() {
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
-        option.setCoorType("bd09ll");
-        option.setScanSpan(TIME);
-        option.setIsNeedAddress(false);
-        mLocationClient.setLocOption(option);
-    }
-
     @Override
     protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         super.dump(fd, writer, args);
@@ -125,7 +110,6 @@ public class LocationService extends Service {
     public void onDestroy() {
         LogUtils.i("location onDestroy");
         //timer.cancel();
-        mLocationClient.stop();
     }
 
     @Override

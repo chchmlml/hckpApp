@@ -36,13 +36,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="中石化"/>
-                <TextView
+
+                <ImageView
                     android:id="@+id/order_type"
-                    android:textColor="@color/lightblue"
-                    style="@style/order_title_style2"
+                    android:layout_marginLeft="5dip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[指定]"/>
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/zhiding" />
+
 
             </LinearLayout>
 

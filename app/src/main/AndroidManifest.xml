@@ -149,30 +149,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity
-            android:name=".ui.LocationActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
-        <service android:name=".service.LocationService">
-            <intent-filter>
-                <action android:name="com.haven.hckp.location" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote">
-            <intent-filter>
-                <action android:name="com.baidu.location.service_v2.2"></action>
-            </intent-filter>
-        </service>
-
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="GVpICeYD4Oqb8DR9G6s0tgib" />
 
     </application>
 

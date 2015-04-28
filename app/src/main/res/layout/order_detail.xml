@@ -216,6 +216,7 @@
             android:layout_marginTop="5dip"
             android:layout_marginRight="10dip"
             android:layout_margin="0dip"
+            android:textColor="@color/white"
             android:background="@drawable/btn_ok_selector"
             android:text="@string/report_price"
             android:id="@+id/button" />

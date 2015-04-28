@@ -73,6 +73,8 @@ public class OrderDetailActivity extends BaseActivity {
     private Intent intent;
     private Bundle bundle;
 
+    private String orderType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -173,6 +175,7 @@ public class OrderDetailActivity extends BaseActivity {
         endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
         desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
         String categoryType = StringUtils.toString(news.get("tp_diy_category"));
+        this.orderType = categoryType;
         if ("2".equals(categoryType)) {
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
             priceInput.setCursorVisible(false);

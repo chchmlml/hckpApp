@@ -1,22 +1,14 @@
 package com.haven.hckp.ui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.KeyEvent;
-
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
-import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.common.ConstantValues;
 import com.haven.hckp.common.UIHelper;
-import com.haven.hckp.common.UpdateManager;
-import com.haven.hckp.widght.CustomDialog;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
 import com.lidroid.xutils.util.LogUtils;
@@ -37,8 +29,6 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
     private AppContext appContext;
 
-    private LocationClient mLocationClient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,20 +48,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         }
 
         AppContext appContext = (AppContext) getApplication();
-        mLocationClient = appContext.mLocationClient;
-        InitLocation();
-        mLocationClient.start();
 
-    }
-
-
-    private void InitLocation() {
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
-        option.setCoorType("bd09ll");
-        option.setScanSpan(1000);
-        option.setIsNeedAddress(false);
-        mLocationClient.setLocOption(option);
     }
 
     private void init() {
