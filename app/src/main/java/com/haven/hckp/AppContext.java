@@ -1,15 +1,11 @@
 package com.haven.hckp;
 
 import android.app.Application;
-import android.app.Service;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Vibrator;
-import android.util.Log;
-import android.widget.TextView;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.CarList;
 import com.haven.hckp.bean.DispathList;
@@ -19,7 +15,6 @@ import com.haven.hckp.bean.TeamList;
 import com.haven.hckp.common.StringUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.pgyersdk.crash.PgyCrashManager;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +38,6 @@ public class AppContext extends Application {
     private static final int CACHE_TIME = 60 * 60000;// 缓存失效时间
 
     private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
-
     @Override
     public void onCreate() {
         super.onCreate();

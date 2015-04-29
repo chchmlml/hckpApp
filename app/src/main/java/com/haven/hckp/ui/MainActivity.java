@@ -1,9 +1,14 @@
 package com.haven.hckp.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
@@ -49,6 +54,9 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
         AppContext appContext = (AppContext) getApplication();
 
+        LogUtils.i("start service --->");
+        Intent i = new Intent("com.haven.hckp.location");
+        startService(i);
     }
 
     private void init() {
@@ -62,6 +70,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
 
     private final int REQUEST_CODE = 103;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         LogUtils.i("onActivityResult requestCode:" + requestCode + " resultCode:" + resultCode);
@@ -117,10 +126,10 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
                 break;
             case ConstantValues.COLLECT_FRAGMENT_INDEX:
                 //if (null == mTeamFragment) {
-                    mTeamFragment = new TeamFragment();
-                    transaction.add(R.id.center_layout, mTeamFragment);
+                mTeamFragment = new TeamFragment();
+                transaction.add(R.id.center_layout, mTeamFragment);
                 //} else {
-                    //transaction.show(mTeamFragment);
+                //transaction.show(mTeamFragment);
                 //}
                 break;
             case ConstantValues.SETTING_FRAGMENT_INDEX:
@@ -163,11 +172,10 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         mIndex = savedInstanceState.getInt("index");
     }
-
     /**
      * 监听返回--是否退出程序
      */
-  //  public boolean onKeyDown(int keyCode, KeyEvent event) {
+    //  public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        boolean flag = true;
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {
 //            CustomDialog.Builder builder = new CustomDialog.Builder(this);
@@ -189,9 +197,9 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 //                    });
 //
 //            builder.create().show();
-            // 是否退出应用
-            //return mDoubleClickExitHelper.onKeyDown(keyCode, event);
-        //}
-      //  return true;
+    // 是否退出应用
+    //return mDoubleClickExitHelper.onKeyDown(keyCode, event);
+    //}
+    //  return true;
     //}
 }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TencentLocationSDK_v4.1_r161859">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/TencentLocationSDK_v4.1_r161859.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -28,6 +28,7 @@
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
+
         <!-- 启动页 -->
         <activity
             android:name=".AppStart"
@@ -39,6 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".service.LocationService">
+            <intent-filter>
+                <action android:name="com.haven.hckp.location" />
+            </intent-filter>
+        </service>
+
         <!-- 首页 -->
         <activity
             android:name=".ui.MainActivity"
