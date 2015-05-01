@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/TencentLocationSDK_v4.1_r161859.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="20e764286eb2028e888d50ca2e028311b041fe07">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/TencentLocationSDK_v4.1_r161859-daa26355dc1c94930b99274df328102ffaa4c53e.jar" />
-    </item>
-    <item
         jar="/Users/haven/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -44,18 +37,18 @@
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4ed9a66b633712072af746e0c0d6118d55091f36.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/TencentMapSDK_Raster_v1.0.6.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="232c8c3964113f0f39a9f4cdd3473d5075d188aa">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/TencentMapSDK_Raster_v1.0.6-d61423ffc1ef691da69d5926f77a3aa4fee55224.jar" />
-    </item>
-    <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-00bed9c56e7abf61508eb7c1c43a1e35be994cc6.jar" />
     </item>
     <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"

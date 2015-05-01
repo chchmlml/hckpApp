@@ -31,6 +31,12 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     packagingOptions {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -40,8 +46,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.android.support:support-v4:18.0.0'
     compile 'com.lsjwzh:materialloadingprogressbar:0.5.3-RELEASE'
 }
