@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/graywhite"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/graywhite">
 
     <include layout="@layout/title_bar" />
 
@@ -192,28 +193,28 @@
                 android:hint="@string/my_car_detail_tag6"
                 android:maxLines="1" />
 
-
-            <Button
-                android:layout_width="60dip"
-                android:layout_height="35dip"
-                android:layout_marginTop="5dip"
-                android:layout_marginRight="10dip"
-                android:layout_margin="0dip"
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bootstrap:bb_type="info"
+                bootstrap:bb_size="small"
                 android:text="@string/chose_date"
-                android:id="@+id/show_date" />
+                android:id="@+id/show_date"  />
         </LinearLayout>
 
-        <Button
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/button"
-            android:textSize="18.0dip"
-            android:textColor="@color/white"
-            android:background="@drawable/btn_ok_selector"
             android:layout_width="fill_parent"
             android:layout_height="45.0dip"
             android:layout_margin="5.0dip"
             android:layout_marginTop="10.0dip"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="success"
             android:text="添加车辆"
-            android:onClick="viewClick" />
+            android:onClick="viewClick"  />
+        />
     </LinearLayout>
 
     <LinearLayout

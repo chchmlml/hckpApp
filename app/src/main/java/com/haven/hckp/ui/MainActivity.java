@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -17,7 +18,11 @@ import com.haven.hckp.common.ConstantValues;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
-import com.lidroid.xutils.util.LogUtils;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  *
@@ -56,29 +61,31 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         if (appContext.isCheckUp()) {
             //UpdateManager.getUpdateManager().checkAppUpdate(this, false);
         }
-
-        AppContext appContext = (AppContext) getApplication();
-
-        mLocationClient = new LocationClient(getApplicationContext());     //声明LocationClient类
-        mLocationClient.registerLocationListener(myListener);    //注册监听函数
-
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//设置定位模式
-        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
-        option.setIsNeedAddress(true);//返回的定位结果包含地址信息
-        option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
-        mLocationClient.setLocOption(option);
-
-        mLocationClient.start();
+        //定位
+        startLocation();
     }
 
+    /**
+     * 定位
+     */
+    private void startLocation() {
+        mLocationClient = new LocationClient(appContext);     //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);    //注册监听函数
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);//设置定位模式
+        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+        option.setScanSpan(20000);//设置发起定位请求的间隔时间为5000ms
+        option.setIsNeedAddress(true);//返回的定位结果包含地址信息
+        //option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
+        mLocationClient.setLocOption(option);
+        mLocationClient.start();
+    }
 
     public class MyLocationListener implements BDLocationListener {
         @Override
         public void onReceiveLocation(BDLocation location) {
             if (location == null)
-                return ;
+                return;
             StringBuffer sb = new StringBuffer(256);
             sb.append("time : ");
             sb.append(location.getTime());
@@ -90,12 +97,12 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
             sb.append(location.getLongitude());
             sb.append("\nradius : ");
             sb.append(location.getRadius());
-            if (location.getLocType() == BDLocation.TypeGpsLocation){
+            if (location.getLocType() == BDLocation.TypeGpsLocation) {
                 sb.append("\nspeed : ");
                 sb.append(location.getSpeed());
                 sb.append("\nsatellite : ");
                 sb.append(location.getSatelliteNumber());
-            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation){
+            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
                 sb.append("\naddr : ");
                 sb.append(location.getAddrStr());
             }
@@ -203,34 +210,33 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         mIndex = savedInstanceState.getInt("index");
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mLocationClient.stop();
+    }
+
     /**
      * 监听返回--是否退出程序
      */
-    //  public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        boolean flag = true;
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            CustomDialog.Builder builder = new CustomDialog.Builder(this);
-//            builder.setTitle("提示");
-//            builder.setMessage("您确定退出吗？");
-//            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int which) {
-//                    AppManager.getAppManager().finishAllActivity();
-//                    System.exit(0);
-//                    dialog.dismiss();
-//                }
-//            });
-//
-//            builder.setNegativeButton("取消",
-//                    new android.content.DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                        }
-//                    });
-//
-//            builder.create().show();
-    // 是否退出应用
-    //return mDoubleClickExitHelper.onKeyDown(keyCode, event);
-    //}
-    //  return true;
-    //}
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+                    .setTitleText("确定退出吗？")
+                    .setContentText("点击确认，我们将无法定位您的位置信息，影响正常配送。")
+                    .setConfirmText("确定")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            System.exit(0);
+                        }
+                    })
+                    .showCancelButton(true)
+                    .setCancelText("取消")
+                    .setCancelClickListener(null)
+                    .show();
+        }
+        return false;
+    }
 }

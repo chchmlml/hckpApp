@@ -37,9 +37,6 @@ public class SettingFragment extends BaseFragment {
     @ViewInject(R.id.setting_info)
 	private RelativeLayout settingInfo;
 
-//    @ViewInject(R.id.setting_other)
-//	private RelativeLayout settingOther;
-
     @ViewInject(R.id.user_name_hode)
 	private TextView userNameHode;
 

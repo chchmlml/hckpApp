@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
@@ -61,7 +62,7 @@ public class MyCarCreateActivity extends BaseActivity {
     @ViewInject(R.id.car_length)
     private TextView carLength;
     @ViewInject(R.id.show_date)
-    private TextView showDate;
+    private BootstrapButton showDate;
 
     private Intent intent;
     private Bundle bundle;

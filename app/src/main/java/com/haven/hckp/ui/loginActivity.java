@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
@@ -47,7 +48,7 @@ public class loginActivity extends BaseActivity {
     private TextView textPwd;
 
     @ViewInject(R.id.btn_login)
-    private Button btnLogin;
+    private BootstrapButton btnLogin;
 
     @ViewInject(R.id.btn_register)
     private Button btnRegister;
@@ -77,11 +78,6 @@ public class loginActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.btn_login:
-                LogUtils.i("start service --->");
-                final Intent sIntent = new Intent();
-                sIntent.setAction("com.haven.hckp.service.LocationService");
-                sIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
-                this.startService(sIntent);
                 loginAction();
                 break;
             case R.id.btn_register:

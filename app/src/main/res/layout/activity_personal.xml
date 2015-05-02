@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/graywhite"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/graywhite">
 
     <include layout="@layout/title_bar" />
 
@@ -28,16 +29,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
                     android:id="@+id/user_info_userface"
-                    android:layout_marginRight="@dimen/padding_10px"
-                    android:layout_width="70dip"
-                    android:layout_height="70dip"
-                    android:scaleType="fitCenter"
-                    android:padding="3.0dip"
-                    android:clickable="true"
-                    android:background="@drawable/widget_dface_border"
-                    android:src="@drawable/icon_defult_userimage" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_defult_userimage"
+                    bootstrap:bct_size="default"/>
 
                 <!--<TextView-->
                     <!--android:id="@+id/user_info_phone"-->
@@ -182,17 +181,20 @@
                 android:clickable="true"
                 android:layout_marginTop="@dimen/padding_10px">
 
-                <Button
+
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/btn_logout"
-                    android:textSize="18.0dip"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_ok_selector"
                     android:layout_width="fill_parent"
                     android:layout_height="45.0dip"
-                    android:layout_margin="5.0dip"
+                    android:layout_margin="1.0dip"
                     android:layout_marginTop="10.0dip"
+                    bootstrap:bb_roundedCorners="true"
+                    bootstrap:bb_size="small"
+                    bootstrap:bb_type="success"
                     android:text="@string/logout_btn"
-                    android:onClick="viewClick" />
+                    android:onClick="viewClick"  />
+                />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

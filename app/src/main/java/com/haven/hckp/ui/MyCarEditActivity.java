@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
@@ -50,7 +51,7 @@ public class MyCarEditActivity extends BaseActivity {
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
     @ViewInject(R.id.button)
-    private Button button;
+    private BootstrapButton button;
 
     @ViewInject(R.id.car_no)
     private TextView carNo;

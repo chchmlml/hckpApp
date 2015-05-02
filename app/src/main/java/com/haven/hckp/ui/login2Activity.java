@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
@@ -51,7 +52,7 @@ public class login2Activity extends BaseActivity {
     private TextView textPwd;
 
     @ViewInject(R.id.btn_login)
-    private Button btnLogin;
+    private BootstrapButton btnLogin;
 
     @ViewInject(R.id.btn_register)
     private Button btnRegister;

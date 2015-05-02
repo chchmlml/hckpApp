@@ -92,7 +92,7 @@ public class MyCarDetailActivity extends BaseActivity {
     public void buttonClick(View v) {
 
         switch (v.getId()) {
-            case R.id.btn_login:
+            case R.id.back_img:
                 finish();
                 break;
             case R.id.right_img:

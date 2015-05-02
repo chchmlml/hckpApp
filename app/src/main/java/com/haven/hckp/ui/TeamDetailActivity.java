@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
@@ -38,6 +39,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class TeamDetailActivity extends BaseActivity {
 
@@ -65,7 +68,7 @@ public class TeamDetailActivity extends BaseActivity {
     private TextView tcStatus;
 
     @ViewInject(R.id.button)
-    private Button button;
+    private BootstrapButton button;
 
     private Intent intent;
     private Bundle bundle;
@@ -94,40 +97,35 @@ public class TeamDetailActivity extends BaseActivity {
             AppManager.getAppManager().finishActivity();
         }
         if (v.getId() == R.id.button) {
-            CustomDialog.Builder builder = new CustomDialog.Builder(this);
-            builder.setTitle("提示");
-            builder.setMessage("您确定解除挂靠此车队吗？");
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    final ProgressDialog pd = ProgressDialog.show(TeamDetailActivity.this, null, "请稍后...");
-                    String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
-                    RequestParams params = new RequestParams();
-                    params.addBodyParameter("tc_id", bundle.getString("tc_id"));
-                    HttpUtils http = new HttpUtils();
-                    http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("您确定解除挂靠此车队吗？")
+                    .setConfirmText("确定")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
-                        public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                            pd.dismiss();
-                            finish();
-                        }
+                        public void onClick(SweetAlertDialog sDialog) {
+                            final ProgressDialog pd = ProgressDialog.show(TeamDetailActivity.this, null, "请稍后...");
+                            String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+                            RequestParams params = new RequestParams();
+                            params.addBodyParameter("tc_id", bundle.getString("tc_id"));
+                            HttpUtils http = new HttpUtils();
+                            http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+                                @Override
+                                public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                                    pd.dismiss();
+                                    finish();
+                                }
 
-                        @Override
-                        public void onFailure(HttpException e, String s) {
-                            pd.dismiss();
+                                @Override
+                                public void onFailure(HttpException e, String s) {
+                                    pd.dismiss();
+                                }
+                            });
                         }
-                    });
-                    dialog.dismiss();
-                }
-            });
-
-            builder.setNegativeButton("取消",
-                    new android.content.DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-
-            builder.create().show();
+                    })
+                    .showCancelButton(true)
+                    .setCancelText("取消")
+                    .setCancelClickListener(null)
+                    .show();
         }
     }
 

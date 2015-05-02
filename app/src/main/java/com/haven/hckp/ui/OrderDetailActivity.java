@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
@@ -62,7 +63,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView desc;
 
     @ViewInject(R.id.button)
-    private Button button;
+    private BootstrapButton button;
 
     @ViewInject(R.id.edit_input)
     private EditText priceInput;

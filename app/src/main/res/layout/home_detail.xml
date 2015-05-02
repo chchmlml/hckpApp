@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graywhite"
@@ -17,18 +18,18 @@
         android:orientation="vertical">
 
         <!--<LinearLayout-->
-            <!--android:background="@color/grayslate"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="@dimen/padding_5px"-->
-            <!--android:orientation="horizontal">-->
+        <!--android:background="@color/grayslate"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/padding_5px"-->
+        <!--android:orientation="horizontal">-->
 
-            <!--<TextView-->
-                <!--style="@style/order_detail_style"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/dispath_detail_title1" />-->
+        <!--<TextView-->
+        <!--style="@style/order_detail_style"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/dispath_detail_title1" />-->
         <!--</LinearLayout>-->
 
         <LinearLayout
@@ -249,14 +250,16 @@
         android:padding="@dimen/padding_10px"
         android:orientation="horizontal">
 
-        <Button
-            android:layout_width="120dip"
-            android:layout_height="35dip"
-            android:layout_marginTop="5dip"
-            android:layout_marginRight="10dip"
-            android:layout_margin="0dip"
-            android:background="@drawable/btn_ok_selector"
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bootstrap:bb_icon_left="fa-check-square-o"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="success"
             android:text="@string/report_price"
             android:id="@+id/button" />
+        />
     </LinearLayout>
 </RelativeLayout>

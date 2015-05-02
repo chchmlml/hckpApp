@@ -75,11 +75,6 @@ public class RegisterActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.btn_submit:
-                LogUtils.i("start service --->");
-                final Intent sIntent = new Intent();
-                sIntent.setAction("com.haven.hckp.service.LocationService");
-                sIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
-                this.startService(sIntent);
                 loginAction();
                 break;
         }

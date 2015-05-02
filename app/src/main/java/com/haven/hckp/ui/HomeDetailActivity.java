@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
@@ -38,6 +39,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HomeDetailActivity extends BaseActivity {
 
@@ -68,7 +71,7 @@ public class HomeDetailActivity extends BaseActivity {
     private ListView lv;
 
     @ViewInject(R.id.button)
-    private Button button;
+    private BootstrapButton button;
 
     private Intent intent;
     private Bundle bundle;
@@ -100,33 +103,51 @@ public class HomeDetailActivity extends BaseActivity {
             AppManager.getAppManager().finishActivity();
         }
         if (v.getId() == R.id.button) {
-            HashMap<String, Object> params = new HashMap<String, Object>();
-            int status = StringUtils.toInt(orderStatus, 0);
-            params.put("status", StringUtils.toString(++status));
-            params.put("di_id", diId);
-            String newUrl = ApiClient._MakeURL(URLs.DISPARH_SET_STATUS, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
-            HttpUtils http = new HttpUtils();
-            final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
-            http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
-                @Override
-                public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                    pd.dismiss();
-                    JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                    String code = obj.get("code").toString();
-                    if (code.equals("1")) {
-                        UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                        finish();
-                    } else {
-                        UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    }
-                }
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("确定更新状态？")
+                    .setConfirmText("确定")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            updateOrderStatus();
+                        }
+                    })
+                    .showCancelButton(true)
+                    .setCancelText("取消")
+                    .setCancelClickListener(null)
+                    .show();
 
-                @Override
-                public void onFailure(HttpException e, String s) {
-                    pd.dismiss();
-                }
-            });
         }
+    }
+
+    private void updateOrderStatus() {
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        int status = StringUtils.toInt(orderStatus, 0);
+        params.put("status", StringUtils.toString(++status));
+        params.put("di_id", diId);
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_SET_STATUS, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+        http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                pd.dismiss();
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
+            }
+        });
     }
 
     private void initDataView() {
