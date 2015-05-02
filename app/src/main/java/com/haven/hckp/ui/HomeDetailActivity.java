@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,9 +20,10 @@ import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.adapter.DispathDetailAdapter;
+import com.haven.hckp.adapter.StatusExpandAdapter;
 import com.haven.hckp.api.ApiClient;
-import com.haven.hckp.bean.Dispath;
-import com.haven.hckp.bean.News;
+import com.haven.hckp.bean.OneStatusEntity;
+import com.haven.hckp.bean.TwoStatusEntity;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
@@ -36,6 +37,7 @@ import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,11 +72,16 @@ public class HomeDetailActivity extends BaseActivity {
     @ViewInject(R.id.lv)
     private ListView lv;
 
+    @ViewInject(R.id.expandlist)
+    private ExpandableListView expandlistView;
+
     @ViewInject(R.id.button)
     private BootstrapButton button;
 
     private Intent intent;
     private Bundle bundle;
+    private List<OneStatusEntity> oneList;
+    private StatusExpandAdapter statusAdapter;
 
     private String orderStatus = null;
     private String diId = null;
@@ -171,7 +178,8 @@ public class HomeDetailActivity extends BaseActivity {
                         if (code.equals("1")) {
                             renderBaseView((Map<String, Object>) obj.get("data"));
                             renderListView((Map<String, Object>) obj.get("data"));
-
+                            //訂單狀態
+                            putTimeLineInitData();
                         } else {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                             AppManager.getAppManager().finishActivity();
@@ -183,6 +191,90 @@ public class HomeDetailActivity extends BaseActivity {
                         pd.dismiss();
                     }
                 });
+    }
+
+
+    private void putTimeLineInitData() {
+
+        String[] strArray = new String[]{"订单处理", "配送"};
+        String[] str1 = new String[]{"订单下发", "未报价", "报价处理", "订单接收"};
+        String[] str2 = new String[]{"准备配送", "配送中", "配送完成", "货主签收", "完成"};
+        String[] timeStr1;
+        String[] timeStr2;
+        switch (StringUtils.toInt(orderStatus)) {
+            case 1:
+                button.setText("下单");
+                timeStr1 = new String[]{"1111", "", "", ""};
+                timeStr2 = new String[]{"", "", "", "", ""};
+                break;
+            case 2:
+                button.setText("接收运单");
+                timeStr1 = new String[]{"1111", "", "", ""};
+                timeStr2 = new String[]{"", "", "", "", ""};
+                break;
+            case 3:
+                button.setText("开始运输");
+                timeStr1 = new String[]{"1111", "111", "", ""};
+                timeStr2 = new String[]{"", "", "", "", ""};
+                break;
+            case 4:
+                button.setText("完成");
+                timeStr1 = new String[]{"1111", "111", "111", "111"};
+                timeStr2 = new String[]{"111", "", "", "", ""};
+                break;
+            default:
+                button.setClickable(false);
+                button.setText("结束");
+                timeStr1 = new String[]{"1111", "111", "111", "111"};
+                timeStr2 = new String[]{"11", "11", "11", "11", "111"};
+                break;
+        }
+
+        oneList = new ArrayList<OneStatusEntity>();
+        for (int i = 0; i < strArray.length; i++) {
+            OneStatusEntity one = new OneStatusEntity();
+            one.setStatusName(strArray[i]);
+            List<TwoStatusEntity> twoList = new ArrayList<TwoStatusEntity>();
+            String[] order = str1;
+            String[] time = timeStr1;
+            switch (i) {
+                case 0:
+                    order = str1;
+                    time = timeStr1;
+                    break;
+                case 1:
+                    order = str2;
+                    time = timeStr2;
+                    break;
+            }
+
+            for (int j = 0; j < order.length; j++) {
+                TwoStatusEntity two = new TwoStatusEntity();
+                two.setStatusName(order[j]);
+                if (time[j].equals("")) {
+                    two.setCompleteTime("待执行");
+                    two.setIsfinished(false);
+                } else {
+                    two.setCompleteTime("完成");
+                    two.setIsfinished(true);
+                }
+
+                twoList.add(two);
+            }
+            one.setTwoList(twoList);
+            oneList.add(one);
+        }
+
+        statusAdapter = new StatusExpandAdapter(appContext, oneList);
+        expandlistView.setAdapter(statusAdapter);
+        expandlistView.setGroupIndicator(null); // 去掉默认带的箭头
+
+        // 遍历所有group,将所有项设置成默认展开
+        int groupCount = expandlistView.getCount();
+        for (int i = 0; i < groupCount; i++) {
+            expandlistView.expandGroup(i);
+        }
+
     }
 
     private void renderListView(Map<String, Object> data) {
@@ -217,11 +309,11 @@ public class HomeDetailActivity extends BaseActivity {
         diSn.setText(StringUtils.toString(dispatchInfo.get("tp_di_sn")));
         diStartdate.setText(StringUtils.toString(dispatchInfo.get("tp_di_startdate")));
         diEnddate.setText(StringUtils.toString(dispatchInfo.get("tp_di_enddate")));
-        String dsipathStatus = getDispathStatus(StringUtils.toString(dispatchInfo.get("tp_di_status")));
+        orderStatus = StringUtils.toString(dispatchInfo.get("tp_di_status"));
+        String dsipathStatus = getDispathStatus(orderStatus);
         diStatus.setText(dsipathStatus);
         diRemark.setText(StringUtils.toString(dispatchInfo.get("tp_di_remark")));
 
-        orderStatus = dsipathStatus;
         diId = StringUtils.toString(dispatchInfo.get("tp_di_id"));
 
     }
