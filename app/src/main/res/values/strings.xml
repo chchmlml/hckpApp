@@ -38,7 +38,8 @@
 
     <!--调度单详情-->
     <string name="dispath_detail_title1">调度单</string>
-    <string name="dispath_detail_title2">运输单</string>
+    <string name="dispath_detail_title2">订单包含的运输单</string>
+    <string name="dispath_detail_title3">订单状态</string>
     <string name="dispath_detail_tag1">调度单号：</string>
     <string name="dispath_detail_tag2">状态：</string>
     <string name="dispath_detail_tag3">发货时间：</string>

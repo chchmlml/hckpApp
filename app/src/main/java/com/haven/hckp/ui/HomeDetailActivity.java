@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ import com.haven.hckp.bean.TwoStatusEntity;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.widght.TopIndicator;
+import com.haven.hckp.widght.TopIndicatorForState;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -44,7 +47,7 @@ import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class HomeDetailActivity extends BaseActivity {
+public class HomeDetailActivity extends BaseActivity  implements TopIndicatorForState.OnTopIndicatorListener {
 
     private AppContext appContext;
 
@@ -69,6 +72,12 @@ public class HomeDetailActivity extends BaseActivity {
     @ViewInject(R.id.tp_di_remark)
     private TextView diRemark;
 
+    @ViewInject(R.id.linear_desc)
+    private LinearLayout linearDesc;
+
+    @ViewInject(R.id.linear_desc2)
+    private LinearLayout linearDesc2;
+
     @ViewInject(R.id.lv)
     private ListView lv;
 
@@ -85,6 +94,7 @@ public class HomeDetailActivity extends BaseActivity {
 
     private String orderStatus = null;
     private String diId = null;
+    private TopIndicatorForState mTopIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +112,24 @@ public class HomeDetailActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         initDataView();
+
+        mTopIndicator = (TopIndicatorForState) this.findViewById(R.id.top_indicator);
+        mTopIndicator.setOnTopIndicatorListener(this);
+    }
+
+    @Override
+    public void onIndicatorSelected(int index) {
+        switch (index){
+            case 0:
+                linearDesc.setVisibility(View.VISIBLE);
+                linearDesc2.setVisibility(View.GONE);
+                break;
+            case 1:
+                linearDesc.setVisibility(View.GONE);
+                linearDesc2.setVisibility(View.VISIBLE);
+                break;
+        }
+        mTopIndicator.setTabsDisplay(null,index);
     }
 
     @OnClick({R.id.button, R.id.back_img})
