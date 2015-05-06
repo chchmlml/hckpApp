@@ -224,37 +224,37 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
 
     private void putTimeLineInitData() {
 
-        String[] strArray = new String[]{"订单处理", "配送"};
-        String[] str1 = new String[]{"订单下发", "未报价", "报价处理", "订单接收"};
-        String[] str2 = new String[]{"准备配送", "配送中", "配送完成", "货主签收", "完成"};
+        String[] strArray = new String[]{"订单指派", "收货"};
+        String[] str1 = new String[]{"接受订单", "装货", "发货，开始配送", "送达"};
+        String[] str2 = new String[]{ "完成"};
         String[] timeStr1;
         String[] timeStr2;
         switch (StringUtils.toInt(orderStatus)) {
             case 1:
                 button.setText("下单");
                 timeStr1 = new String[]{"1111", "", "", ""};
-                timeStr2 = new String[]{"", "", "", "", ""};
+                timeStr2 = new String[]{""};
                 break;
             case 2:
                 button.setText("接收运单");
                 timeStr1 = new String[]{"1111", "", "", ""};
-                timeStr2 = new String[]{"", "", "", "", ""};
+                timeStr2 = new String[]{""};
                 break;
             case 3:
                 button.setText("开始运输");
                 timeStr1 = new String[]{"1111", "111", "", ""};
-                timeStr2 = new String[]{"", "", "", "", ""};
+                timeStr2 = new String[]{""};
                 break;
             case 4:
                 button.setText("完成");
                 timeStr1 = new String[]{"1111", "111", "111", "111"};
-                timeStr2 = new String[]{"111", "", "", "", ""};
+                timeStr2 = new String[]{""};
                 break;
             default:
                 button.setClickable(false);
                 button.setText("结束");
                 timeStr1 = new String[]{"1111", "111", "111", "111"};
-                timeStr2 = new String[]{"11", "11", "11", "11", "111"};
+                timeStr2 = new String[]{""};
                 break;
         }
 
@@ -349,27 +349,16 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
 
     private String getDispathStatus(String s) {
         switch (StringUtils.toInt(s)) {
-            case 1:
-                button.setText("下单");
-                return "未下单";
             case 2:
                 button.setText("接收运单");
-                return "已下单";
+                return "未接受";
             case 3:
                 button.setText("开始运输");
                 return "已接受";
-            case 4:
-                button.setText("完成");
-                return "运输中";
-            case 5:
-                button.setClickable(false);
-                button.setText("结束");
-                return "已完成";
-            case 6:
-                button.setClickable(false);
-                button.setText("结束");
-                return "已中断";
+            default:
+                button.setVisibility(View.GONE);
+                break;
         }
-        return "null";
+        return "未知";
     }
 }

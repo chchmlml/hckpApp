@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
@@ -48,6 +50,25 @@ public class HomeDispathDetailActivity extends BaseActivity {
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
+
+    @ViewInject(R.id.getweight_1)
+    private BootstrapEditText getweight_1;
+
+    @ViewInject(R.id.getweight_2)
+    private BootstrapEditText getweight_2;
+
+    @ViewInject(R.id.getnums_1)
+    private BootstrapEditText getnums_1;
+
+    @ViewInject(R.id.getnums_2)
+    private BootstrapEditText getnums_2;
+
+    @ViewInject(R.id.transport_btn_1)
+    private BootstrapButton transport_btn_1;
+
+    @ViewInject(R.id.transport_btn_2)
+    private BootstrapButton transport_btn_2;
+
     private Intent intent;
     private Bundle bundle;
 
@@ -70,13 +91,103 @@ public class HomeDispathDetailActivity extends BaseActivity {
         renderBaseView(bundle);
     }
 
-    @OnClick({R.id.button, R.id.back_img})
+    @OnClick({R.id.back_img, R.id.transport_btn_1, R.id.transport_btn_2})
     public void buttonClick(View v) {
-        if (v.getId() == R.id.back_img) {
-            AppManager.getAppManager().finishActivity();
+        switch (v.getId()) {
+            case R.id.back_img:
+                AppManager.getAppManager().finishActivity();
+                break;
+            case R.id.transport_btn_1:
+                ShippingTransport();
+                break;
+            case R.id.transport_btn_2:
+                SendTransport();
+                break;
         }
     }
 
+    /**
+     * 装货报备
+     */
+    private void ShippingTransport() {
+
+        String getweight = StringUtils.toString(getweight_1.getText());
+        String getnums = StringUtils.toString(getnums_1.getText());
+        if (StringUtils.isEmpty(getweight) || StringUtils.isEmpty(getnums)) {
+            UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
+            return;
+        }
+        String newUrl = ApiClient._MakeURL(URLs.ShippingTransport_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
+        params.addBodyParameter("tp_tt_getweight", getweight);
+        params.addBodyParameter("tp_tt_getnums", getnums);
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+
+        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                pd.dismiss();
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
+            }
+        });
+
+    }
+
+
+    /**
+     * 装货报备
+     */
+    private void SendTransport() {
+
+        String getweight = StringUtils.toString(getweight_2.getText());
+        String getnums = StringUtils.toString(getnums_2.getText());
+        if (StringUtils.isEmpty(getweight) || StringUtils.isEmpty(getnums)) {
+            UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
+            return;
+        }
+        String newUrl = ApiClient._MakeURL(URLs.SendTransport_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
+        params.addBodyParameter("tp_tt_getweight", getweight);
+        params.addBodyParameter("tp_tt_getnums", getnums);
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+
+        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                pd.dismiss();
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
+            }
+        });
+
+    }
 
     @ViewInject(R.id.tp_o_sn)
     private TextView sn;
@@ -106,6 +217,13 @@ public class HomeDispathDetailActivity extends BaseActivity {
         ogNums.setText(bundle.getString("tp_og_nums"));
         ogGoodspack.setText(bundle.getString("tp_og_goodspack"));
         status.setText(getDispathStatus(bundle.getString("tp_tt_status")));
+
+
+        getweight_1.setText(bundle.getString("tp_tt_getweight"));
+        getnums_1.setText(bundle.getString("tp_tt_getnums"));
+        getweight_2.setText(bundle.getString("tp_tt_sendweight"));
+        getnums_2.setText(bundle.getString("tp_tt_sendnums"));
+
         String typew = "";
         switch (StringUtils.toInt(bundle.getString("tp_tt_type"))) {
             case 1:

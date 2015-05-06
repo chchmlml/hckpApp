@@ -20,6 +20,7 @@ import com.haven.hckp.AppManager;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
+import com.haven.hckp.common.DateUtils;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
 import com.lidroid.xutils.HttpUtils;
@@ -31,8 +32,12 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+import org.apache.commons.httpclient.util.DateUtil;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class OrderDetailActivity extends BaseActivity {
 
@@ -58,6 +63,9 @@ public class OrderDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.end_time)
     private TextView endTime;
+
+    @ViewInject(R.id.order_end_time)
+    private TextView orderEndTime;
 
     @ViewInject(R.id.desc)
     private TextView desc;
@@ -97,13 +105,25 @@ public class OrderDetailActivity extends BaseActivity {
     @OnClick({R.id.button, R.id.back_img})
     public void buttonClick(View v) {
         if (v.getId() == R.id.button) {
-            String priceStr = priceInput.getText().toString();
-            if (!StringUtils.isEmpty(priceStr)) {
-                Double price = Double.parseDouble(priceStr);
-                getPricePort(price);
-            } else {
-                UIHelper.ToastMessage(appContext, R.string.error_input);
-            }
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("您确定报价？")
+                    .setConfirmText("确定")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            String priceStr = priceInput.getText().toString();
+                            if (!StringUtils.isEmpty(priceStr)) {
+                                Double price = Double.parseDouble(priceStr);
+                                getPricePort(price);
+                            } else {
+                                UIHelper.ToastMessage(appContext, R.string.error_input);
+                            }
+                        }
+                    })
+                    .showCancelButton(true)
+                    .setCancelText("取消")
+                    .setCancelClickListener(null)
+                    .show();
         } else if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
         }
@@ -175,9 +195,11 @@ public class OrderDetailActivity extends BaseActivity {
         startTime.setText(StringUtils.toString(news.get("tp_diy_startdate")));
         endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
         desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
-        String categoryType = StringUtils.toString(news.get("tp_diy_category"));
-        this.orderType = categoryType;
-        if ("2".equals(categoryType)) {
+
+        orderEndTime.setText(DateUtils.getDateToString(StringUtils.toString(news.get("tp_diy_endtime"))));
+        String tpType = StringUtils.toString(news.get("tp_diy_type"));
+        this.orderType = tpType;
+        if ("2".equals(tpType)) {
             priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
             priceInput.setCursorVisible(false);
             priceInput.setFocusable(false);

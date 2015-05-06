@@ -310,4 +310,5 @@ public class StringUtils {
     public static String randomNum(){
         return String.valueOf((int)(Math.random() * 10000));
     }
+
 }

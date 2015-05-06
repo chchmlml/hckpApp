@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrapbutton="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graywhite"
@@ -332,6 +334,105 @@
             </LinearLayout>
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/order_border"
+        android:layout_above="@+id/linear_form"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="@dimen/padding_10px"
+        android:orientation="horizontal">
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:hint="数量"
+            android:id="@+id/getweight_1"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            bootstrap:be_roundedCorners="true"
+            android:gravity="center"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:hint="重量"
+            android:id="@+id/getnums_1"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            bootstrap:be_roundedCorners="true"
+            android:gravity="center"
+            bootstrapbutton:be_state="success"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            bootstrap:bb_type="success"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            android:text="装货报备"
+            android:layout_weight="1"
+            android:id="@+id/transport_btn_1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/order_border"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="@dimen/padding_10px"
+        android:orientation="horizontal">
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/getweight_2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:hint="数量"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            bootstrap:be_roundedCorners="true"
+            android:gravity="center"
+            bootstrapbutton:be_state="success"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:hint="重量"
+            android:id="@+id/getnums_2"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"
+            bootstrap:be_roundedCorners="true"
+            android:gravity="center"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            bootstrap:bb_type="success"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            android:text="妥投报备"
+            android:layout_weight="1"
+            android:id="@+id/transport_btn_2" />
     </LinearLayout>
 
 </RelativeLayout>

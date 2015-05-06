@@ -210,7 +210,7 @@
             <TextView
                 style="@style/order_detail_style"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dispath_detail_title2" />
         </LinearLayout>
