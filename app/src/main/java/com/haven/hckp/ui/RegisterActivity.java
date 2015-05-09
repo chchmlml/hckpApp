@@ -55,6 +55,9 @@ public class RegisterActivity extends BaseActivity {
     @ViewInject(R.id.input_username)
     private EditText inputUsername;
 
+    @ViewInject(R.id.input_realname)
+    private EditText inputRealname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,7 @@ public class RegisterActivity extends BaseActivity {
         String pwd = StringUtils.toString(inputPwd.getText());
         String pwd2 = StringUtils.toString(inputPwd2.getText());
         String username = StringUtils.toString(inputUsername.getText());
+        String realname = StringUtils.toString(inputRealname.getText());
 
         if (StringUtils.isEmpty(phone)) {
             UIHelper.ToastMessage(appContext,R.string.register_param1_is_null);
@@ -104,6 +108,11 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
+        if (StringUtils.isEmpty(realname)) {
+            UIHelper.ToastMessage(appContext,R.string.register_param7_is_null);
+            return;
+        }
+
         if(!pwd.equals(pwd2)){
             UIHelper.ToastMessage(appContext,R.string.register_param5_is_null);
             return;
@@ -114,6 +123,7 @@ public class RegisterActivity extends BaseActivity {
         params.addBodyParameter("phone", phone);
         params.addBodyParameter("pwd", pwd);
         params.addBodyParameter("username", username);
+        params.addBodyParameter("realname", realname);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this,null,"请稍后...");
 

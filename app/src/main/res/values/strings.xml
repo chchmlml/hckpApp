@@ -100,6 +100,7 @@
     <string name="login_phone">手机号</string>
     <string name="login_email">账号/手机/电子邮箱</string>
     <string name="login_username">用户名</string>
+    <string name="login_realname">真实姓名</string>
     <string name="old_password">旧密码</string>
     <string name="login_password">密码</string>
     <string name="login_password2">确认密码</string>
@@ -116,6 +117,7 @@
     <string name="register_param2_is_null">密码不能为空</string>
     <string name="register_param3_is_null">确认密码不能为空</string>
     <string name="register_param4_is_null">用户名不能为空</string>
+    <string name="register_param7_is_null">真实姓名不能为空</string>
     <string name="register_param5_is_null">两次密码不同，请确认</string>
     <string name="register_param6_is_null">旧密码不正确，请确认</string>
 

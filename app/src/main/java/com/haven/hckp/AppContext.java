@@ -42,6 +42,8 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         PgyCrashManager.register(this, AppConfig.APP_ID);
+        //注册App异常崩溃处理器
+        Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
     }
 
 

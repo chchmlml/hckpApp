@@ -142,10 +142,6 @@ public class PersonalActivity extends BaseActivity {
                 break;
             case R.id.btn_logout:
 
-                LogUtils.i("stop service --->");
-                Intent i = new Intent("com.haven.hckp.location");
-                stopService(i);
-
                 try {
                     ApiClient.logout(appContext);
                     UIHelper.ToastMessage(appContext, R.string.logont_success);

@@ -767,7 +767,7 @@ public class ApiClient {
     public static void logout(AppContext appContext) throws AppException {
         appContext.setProperty("userId", "");
         appContext.setProperty("userName", "");
-        appContext.setProperty("userPhone", "");
+        //appContext.setProperty("userPhone", "");
         appContext.setProperty("sessionId", "");
 
     }

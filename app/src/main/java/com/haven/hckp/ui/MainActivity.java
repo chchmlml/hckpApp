@@ -1,17 +1,11 @@
 package com.haven.hckp.ui;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -22,19 +16,16 @@ import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.ConstantValues;
-import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.common.UpdateManager;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
-
 import java.util.HashMap;
-import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -73,10 +64,10 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
         // 检查新版本
         if (appContext.isCheckUp()) {
-            //UpdateManager.getUpdateManager().checkAppUpdate(this, false);
+            UpdateManager.getUpdateManager().checkAppUpdate(this, false);
         }
         //定位
-        startLocation();
+        //startLocation();
     }
 
     /**

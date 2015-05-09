@@ -81,6 +81,11 @@ public class login2Activity extends BaseActivity {
             e.printStackTrace();
         }
 
+
+        String username = appContext.getProperty("userPhone");
+        if(!StringUtils.isEmpty(username)){
+            textEmail.setText(username);
+        }
     }
 
     @OnClick({R.id.btn_login, R.id.btn_register, R.id.back_img})
@@ -88,9 +93,6 @@ public class login2Activity extends BaseActivity {
 
         switch (v.getId()) {
             case R.id.btn_login:
-                LogUtils.i("start service --->");
-                Intent i = new Intent("com.haven.hckp.location");
-                startService(i);
                 loginAction();
                 break;
             case R.id.btn_register:
@@ -118,6 +120,7 @@ public class login2Activity extends BaseActivity {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 pd.dismiss();
+                LogUtils.i(objectResponseInfo.result);
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {

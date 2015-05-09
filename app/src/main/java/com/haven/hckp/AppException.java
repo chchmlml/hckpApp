@@ -3,8 +3,11 @@ package com.haven.hckp;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.os.Environment;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.haven.hckp.common.UIHelper;
 
 import org.apache.http.HttpException;
 
@@ -220,14 +223,14 @@ public class AppException extends Exception implements UncaughtExceptionHandler 
 		final String crashReport = getCrashReport(context, ex);
         Log.e(TAG,crashReport);
 		//显示异常信息&发送报告
-//		new Thread() {
-//			public void run() {
-//				Looper.prepare();
-//				//UIHelper.sendAppCrashReport(context, crashReport);
-//				Looper.loop();
-//			}
-//
-//		}.start();
+		new Thread() {
+			public void run() {
+				Looper.prepare();
+				UIHelper.sendAppCrashReport(context, crashReport);
+				Looper.loop();
+			}
+
+		}.start();
 		return true;
 	}
 	/**

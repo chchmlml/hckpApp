@@ -27,7 +27,6 @@
             android:layout_marginRight="5.0dip" />
 
         <EditText
-            android:text="dayunlong"
             android:id="@+id/btn_email"
             android:background="@null"
             android:layout_width="fill_parent"
@@ -61,7 +60,6 @@
         <EditText
             android:id="@+id/btn_pwd"
             android:background="@null"
-            android:text="841025"
             android:textColor="@color/gray"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

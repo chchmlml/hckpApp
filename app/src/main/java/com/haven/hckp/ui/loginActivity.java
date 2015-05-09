@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.haven.hckp.AppContext;
+import com.haven.hckp.AppException;
 import com.haven.hckp.R;
 import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.URLs;
@@ -67,7 +68,20 @@ public class loginActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
+        try {
+            if (AppContext.isLogin(appContext)) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        } catch (AppException e) {
+            e.printStackTrace();
+        }
 
+        String username = appContext.getProperty("userPhone");
+        if(!StringUtils.isEmpty(username)){
+            textEmail.setText(username);
+        }
     }
 
     @OnClick({R.id.btn_login, R.id.btn_register, R.id.back_img})
@@ -106,6 +120,7 @@ public class loginActivity extends BaseActivity {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 pd.dismiss();
+                LogUtils.i(objectResponseInfo.result);
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {

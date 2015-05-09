@@ -135,6 +135,32 @@
                 android:hint="@string/login_username"
                 android:maxLines="1"/>
         </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:background="@drawable/general_img_inputbox"
+            android:padding="5.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:layout_margin="10.0dip">
+
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/user_icon"
+                android:layout_width="20.0dip"
+                android:layout_height="20.0dip"
+                android:layout_marginRight="5.0dip" />
+
+            <EditText
+                android:id="@+id/input_realname"
+                android:textColorHint="@color/grayslate"
+                android:background="@null"
+                android:textColor="@color/black"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:singleLine="true"
+                android:hint="@string/login_realname"
+                android:maxLines="1"/>
+        </LinearLayout>
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/btn_submit"
