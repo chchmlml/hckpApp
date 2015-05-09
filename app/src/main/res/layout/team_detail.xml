@@ -231,12 +231,12 @@
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             bootstrap:bb_icon_left="fa-remove"
             bootstrap:bb_roundedCorners="true"
             bootstrap:bb_size="small"
-            bootstrap:bb_type="success"
+            bootstrap:bb_type="warning"
             android:text="@string/del_team"
             android:id="@+id/button" />
         />

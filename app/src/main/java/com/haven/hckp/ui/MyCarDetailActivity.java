@@ -26,6 +26,7 @@ import com.haven.hckp.common.UIHelper;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
@@ -36,6 +37,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MyCarDetailActivity extends BaseActivity {
 
@@ -88,7 +91,7 @@ public class MyCarDetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.back_img,R.id.right_img})
+    @OnClick({R.id.back_img, R.id.right_img, R.id.button})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -96,10 +99,58 @@ public class MyCarDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.right_img:
-                UIHelper.showMyEditAddRedirect(appContext,bundle);
+                UIHelper.showMyEditAddRedirect(appContext, bundle);
                 finish();
                 break;
+            case R.id.button:
+                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("您确定删除？")
+                        .setConfirmText("确定")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                deleteCar();
+                            }
+                        })
+                        .showCancelButton(true)
+                        .setCancelText("取消")
+                        .setCancelClickListener(null)
+                        .show();
+                break;
         }
+    }
+
+    private void deleteCar() {
+        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        RequestParams params = new RequestParams();
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+
+        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                pd.dismiss();
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    Map<String, Object> userObj = (Map<String, Object>) obj.get("data");
+                    appContext.setProperty("userId", StringUtils.toString(userObj.get("user_id")));
+                    appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
+                    appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
+                    appContext.setProperty("sessionId", StringUtils.toString(userObj.get("session_id")));
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
+            }
+        });
+
     }
 
     private void renderBaseView() {

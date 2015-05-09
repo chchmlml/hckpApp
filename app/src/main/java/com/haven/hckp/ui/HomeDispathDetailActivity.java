@@ -162,8 +162,8 @@ public class HomeDispathDetailActivity extends BaseActivity {
         String newUrl = ApiClient._MakeURL(URLs.SendTransport_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
         RequestParams params = new RequestParams();
         params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
-        params.addBodyParameter("tp_tt_getweight", getweight);
-        params.addBodyParameter("tp_tt_getnums", getnums);
+        params.addBodyParameter("tp_tt_sendweight", getweight);
+        params.addBodyParameter("tp_tt_sendnums", getnums);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
@@ -219,10 +219,10 @@ public class HomeDispathDetailActivity extends BaseActivity {
         status.setText(getDispathStatus(bundle.getString("tp_tt_status")));
 
 
-        getweight_1.setText(bundle.getString("tp_tt_getweight"));
-        getnums_1.setText(bundle.getString("tp_tt_getnums"));
-        getweight_2.setText(bundle.getString("tp_tt_sendweight"));
-        getnums_2.setText(bundle.getString("tp_tt_sendnums"));
+        getweight_1.setText(formatInt(bundle.getString("tp_tt_getweight")));
+        getnums_1.setText(formatInt(bundle.getString("tp_tt_getnums")));
+        getweight_2.setText(formatInt(bundle.getString("tp_tt_sendweight")));
+        getnums_2.setText(formatInt(bundle.getString("tp_tt_sendnums")));
 
         String typew = "";
         switch (StringUtils.toInt(bundle.getString("tp_tt_type"))) {
@@ -234,6 +234,10 @@ public class HomeDispathDetailActivity extends BaseActivity {
                 break;
         }
         type.setText(typew);
+    }
+
+    private String formatInt(String obj) {
+        return obj.equals("0") ? "" : obj;
     }
 
     private String getDispathStatus(String s) {
