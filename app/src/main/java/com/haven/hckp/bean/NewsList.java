@@ -23,6 +23,11 @@ public class NewsList extends Entity {
 
     private int catalog;
     private int pageSize;
+
+    public void setNewsCount(int newsCount) {
+        this.newsCount = newsCount;
+    }
+
     private int newsCount;
     private List<News> newslist = new ArrayList<News>();
 
@@ -49,9 +54,12 @@ public class NewsList extends Entity {
         JSONObject jsonStr = JSON.parseObject(str);
         String code = jsonStr.getString("code");
         String msg = jsonStr.getString("msg");
+        int msgCount = StringUtils.toInt(jsonStr.getString("nums"));
+        newslist.setNewsCount(msgCount);
         Notice notice = new Notice();
         notice.setMsg(code);
         notice.setMsg(msg);
+        notice.setMsgCount(msgCount);
         newslist.setNotice(notice);
         List<Map<String, Object>> data = (List<Map<String, Object>>) jsonStr.get("data");
         if (data != null) {

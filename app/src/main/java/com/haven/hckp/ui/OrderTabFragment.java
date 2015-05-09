@@ -285,7 +285,7 @@ public class OrderTabFragment extends BaseFragment {
                             break;
                     }
                     NewsList list = appContext.getNewsList(pageIndex, isRefresh,params);
-                    msg.what = 0;
+                    msg.what = list.getNewsCount();
                     msg.obj = list;
                 } catch (AppException e) {
                     e.printStackTrace();
