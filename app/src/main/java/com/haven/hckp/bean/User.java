@@ -9,6 +9,16 @@ public class User extends Entity {
     private String userPhone;
     private String userHeadpic;
     private String sessionId;
+    private String ts_u_headpic;
+
+    public String getHeadpic() {
+        return ts_u_headpic;
+    }
+
+    public void setHeadpic(String ts_u_headpic) {
+        this.ts_u_headpic = ts_u_headpic;
+    }
+
 
     public String getUserIid() {
         return userId;

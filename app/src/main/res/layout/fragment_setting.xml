@@ -50,7 +50,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/icon_defult_userimage"
-                    bootstrap:bct_size="large"/>
+                    bootstrap:bct_image="@drawable/icon_defult_userimage"
+                    bootstrap:bct_size="default"/>
 
 
                 <TextView

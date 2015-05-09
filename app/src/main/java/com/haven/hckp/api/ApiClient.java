@@ -756,6 +756,8 @@ public class ApiClient {
         u.setUserUsername(appContext.getProperty("userName"));
         u.setUserPhone(appContext.getProperty("userPhone"));
         u.setSessionId(appContext.getProperty("sessionId"));
+        u.setHeadpic(appContext.getProperty("headpic"));
+        LogUtils.i("headpic:" + appContext.getProperty("headpic"));
         return u;
     }
 

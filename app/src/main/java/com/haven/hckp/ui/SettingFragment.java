@@ -1,6 +1,8 @@
 package com.haven.hckp.ui;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
@@ -15,7 +18,11 @@ import com.haven.hckp.api.ApiClient;
 import com.haven.hckp.bean.User;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -42,6 +49,10 @@ public class SettingFragment extends BaseFragment {
 
     @ViewInject(R.id.user_name)
 	private TextView userName;
+
+
+	@ViewInject(R.id.user_thumb)
+	private BootstrapCircleThumbnail userThumb;
 
 	public static SettingFragment newInstance() {
 		return new SettingFragment();
@@ -108,10 +119,22 @@ public class SettingFragment extends BaseFragment {
     private void initUser() {
         try {
             User u = ApiClient.getUser(appContext);
-            if(!StringUtils.isEmpty(u.getUserUsername())){
+            if(!StringUtils.isEmpty(u.getUserPhone())){
                 userName.setText(u.getUserUsername());
 				userName.setVisibility(View.VISIBLE);
 				userNameHode.setVisibility(View.GONE);
+				BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+				bitmapUtils.display(userThumb, u.getHeadpic(), new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
+					@Override
+					public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
+						userThumb.setImage(bitmap);
+					}
+
+					@Override
+					public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
+						UIHelper.ToastMessage(appContext, "头像加载失败");
+					}
+				});
             }else{
 				userName.setVisibility(View.GONE);
 				userNameHode.setVisibility(View.VISIBLE);

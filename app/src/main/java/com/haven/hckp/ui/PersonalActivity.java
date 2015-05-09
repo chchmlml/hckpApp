@@ -3,6 +3,8 @@ package com.haven.hckp.ui;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.AppManager;
@@ -25,8 +28,12 @@ import com.haven.hckp.bean.URLs;
 import com.haven.hckp.bean.User;
 import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -54,6 +61,9 @@ public class PersonalActivity extends BaseActivity {
 
     @ViewInject(R.id.ts_u_username)
     private TextView username;
+
+    @ViewInject(R.id.user_info_userface)
+    private BootstrapCircleThumbnail userInfoUserface;
 
     @ViewInject(R.id.ts_u_phone)
     private TextView phone;
@@ -130,7 +140,18 @@ public class PersonalActivity extends BaseActivity {
         phone.setText(StringUtils.toString(data.get("ts_u_phone")));
         realName.setText(StringUtils.toString(data.get("ts_real_name")));
         regtime.setText(StringUtils.toString(data.get("ts_u_regtime")));
+        BitmapUtils bitmapUtils = new BitmapUtils(this);
+        bitmapUtils.display(userInfoUserface, StringUtils.toString(data.get("ts_u_headpic")), new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
+            @Override
+            public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
+                userInfoUserface.setImage(bitmap);
+            }
 
+            @Override
+            public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
+                UIHelper.ToastMessage(appContext, "头像加载失败");
+            }
+        });
     }
 
     @OnClick({R.id.btn_logout, R.id.back_img, R.id.right_img})

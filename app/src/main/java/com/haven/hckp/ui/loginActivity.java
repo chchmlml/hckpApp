@@ -129,6 +129,7 @@ public class loginActivity extends BaseActivity {
                     appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
                     appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
                     appContext.setProperty("sessionId",  StringUtils.toString(userObj.get("session_id")));
+                    appContext.setProperty("headpic",  StringUtils.toString(userObj.get("user_headpic")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                     finish();
                 } else {

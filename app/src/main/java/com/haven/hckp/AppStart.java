@@ -35,7 +35,7 @@ public class AppStart extends Activity {
                 redirectTo();
                 finish();
             }
-        }, 1000);
+        }, 2500);
 
         //是否登录
         AppContext appContext = (AppContext) getApplication();
