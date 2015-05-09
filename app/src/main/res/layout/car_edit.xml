@@ -93,6 +93,7 @@
                 android:textColor="@color/black"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:inputType="number"
                 android:hint="@string/my_car_detail_tag2"
                 android:maxLines="1" />
         </LinearLayout>
@@ -115,6 +116,7 @@
                 android:background="@null"
                 android:singleLine="true"
                 android:textColor="@color/black"
+                android:inputType="number"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:hint="@string/my_car_detail_tag3"
@@ -140,6 +142,7 @@
                 android:textColor="@color/black"
                 android:singleLine="true"
                 android:layout_width="fill_parent"
+                android:inputType="number"
                 android:layout_height="fill_parent"
                 android:hint="@string/my_car_detail_tag4"
                 android:maxLines="1" />
@@ -163,6 +166,7 @@
                 android:textColor="@color/black"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:inputType="number"
                 android:singleLine="true"
                 android:hint="@string/my_car_detail_tag5"
                 android:maxLines="1" />
@@ -189,6 +193,7 @@
                 android:layout_height="fill_parent"
                 android:singleLine="true"
                 android:layout_weight="1"
+                android:inputType="date"
                 android:enabled="false"
                 android:hint="@string/my_car_detail_tag6"
                 android:maxLines="1" />

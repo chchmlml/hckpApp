@@ -358,7 +358,7 @@ public class TeamFindActivity extends BaseActivity {
         String newUrl = ApiClient._MakeURL(URLs.TEAM_ADD_POST, new HashMap<String, Object>() {{
             put("tc_id", TeamFindActivity.this.driverTcId);
             put("tc_d_type", TeamFindActivity.this.driverType);
-        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        }},appContext);
         HttpUtils http = new HttpUtils();
         http.send(HttpRequest.HttpMethod.GET, newUrl, null, new RequestCallBack<String>() {
             @Override

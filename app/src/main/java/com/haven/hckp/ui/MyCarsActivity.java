@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
@@ -72,7 +73,19 @@ public class MyCarsActivity extends BaseActivity {
         initViews();
     }
 
-    @OnClick({ R.id.back_img,R.id.right_img})
+    @Override
+    protected void onResume() {
+        LogUtils.i("--------------onResume---------------");
+        super.onResume();
+        loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
+    }
+
+    @OnClick({R.id.back_img, R.id.right_img})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -96,6 +109,7 @@ public class MyCarsActivity extends BaseActivity {
      * 初始化所有ListView数据
      */
     public void initFrameListViewData() {
+        LogUtils.i("initFrameListViewData---->");
         // 初始化Handler
         lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter, lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
         // 加载资讯数据
@@ -267,7 +281,7 @@ public class MyCarsActivity extends BaseActivity {
                     isRefresh = true;
                 try {
                     //额外参数
-                    Map<String,Object> params = new HashMap<String, Object>();
+                    Map<String, Object> params = new HashMap<String, Object>();
                     CarList list = appContext.getCarList(pageIndex, isRefresh, params);
                     msg.what = 0;
                     msg.obj = list;

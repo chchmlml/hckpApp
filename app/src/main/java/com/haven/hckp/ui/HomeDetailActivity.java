@@ -161,7 +161,7 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
         int status = StringUtils.toInt(orderStatus, 0);
         params.put("status", StringUtils.toString(++status));
         params.put("di_id", diId);
-        String newUrl = ApiClient._MakeURL(URLs.DISPARH_SET_STATUS, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_SET_STATUS, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
@@ -190,7 +190,7 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("di_id", newsId);
         params.put("r", StringUtils.randomNum());
-        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params,  appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

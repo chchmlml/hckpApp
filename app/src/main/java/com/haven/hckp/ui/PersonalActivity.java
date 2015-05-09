@@ -96,7 +96,7 @@ public class PersonalActivity extends BaseActivity {
             e.printStackTrace();
         }
         params.put("uid", u.getUserIid());
-        String newUrl = ApiClient._MakeURL(URLs.USER_DETAIL, params, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.USER_DETAIL, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

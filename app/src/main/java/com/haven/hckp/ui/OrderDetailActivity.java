@@ -134,7 +134,7 @@ public class OrderDetailActivity extends BaseActivity {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
         params.put("diy_price", price);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params,appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         http.send(HttpRequest.HttpMethod.GET,
@@ -162,7 +162,7 @@ public class OrderDetailActivity extends BaseActivity {
         String newsId = bundle.getString("news_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params,appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

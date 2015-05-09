@@ -138,7 +138,7 @@ public class MyCarEditActivity extends BaseActivity {
         p.put("car_outdate", StringUtils.toString(carOutdate.getText()));
         params.addBodyParameter("car_name", StringUtils.toString(carName.getText()));
         p.put("car_name", StringUtils.toString(carName.getText()));
-        String newUrl = ApiClient._MakeURL(URLs.EDIT_CAR, p, (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.EDIT_CAR, p,appContext);
         //LogUtils.i(JSON.toJSONString(params));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");

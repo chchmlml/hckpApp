@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.telephony.TelephonyManager;
+
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.bean.CarList;
@@ -18,6 +19,7 @@ import com.haven.hckp.bean.User;
 import com.haven.hckp.bean.WellcomeImage;
 import com.haven.hckp.common.FileUtils;
 import com.haven.hckp.common.ImageUtils;
+import com.haven.hckp.common.MD5Util;
 import com.haven.hckp.common.StringUtils;
 import com.lidroid.xutils.util.LogUtils;
 
@@ -123,14 +125,18 @@ public class ApiClient {
         return httpPost;
     }
 
-    public static String _MakeURL(String p_url, Map<String, Object> params,TelephonyManager tm) {
+    public static String _MakeURL(String p_url, Map<String, Object> params, AppContext appContext) {
 
         //获取设备信息
 //        Build bd = new Build();
 //        params.put("model",bd.MODEL);
 //        params.put("androidVersion", android.os.Build.VERSION.RELEASE);
-//        params.put("DeviceId", tm.getDeviceId());
-
+        final TelephonyManager tm = (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE);
+        String deviceId = tm.getDeviceId();
+        String sessionId = appContext.getProperty("sessionId");
+        params.put("DeviceId", deviceId);
+        params.put("session_id", sessionId);
+        params.put("token", getToken(deviceId, sessionId));
         StringBuilder url = new StringBuilder(p_url);
         if (url.indexOf("?") < 0)
             url.append('?');
@@ -150,6 +156,10 @@ public class ApiClient {
         String newUrl = url.toString().replace("?&", "?");
         LogUtils.i("newUrl:" + newUrl);
         return newUrl;
+    }
+
+    private static String getToken(String deviceId, String sessionId) {
+        return MD5Util.MD5(deviceId + sessionId + URLs.KEY);
     }
 
     /**
@@ -646,7 +656,7 @@ public class ApiClient {
     public static NewsList getNewsList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
         params.put("page", pageIndex);
         params.put("len", pageSize);
-        String newUrl = _MakeURL(URLs.NEWS_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = _MakeURL(URLs.NEWS_LIST, params, appContext);
         try {
             return NewsList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -655,10 +665,11 @@ public class ApiClient {
             throw AppException.network(e);
         }
     }
+
     public static CarList getCarList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
         params.put("page", pageIndex);
         params.put("len", pageSize);
-        String newUrl = _MakeURL(URLs.CAR_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = _MakeURL(URLs.CAR_LIST, params, appContext);
         try {
             return CarList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -678,7 +689,7 @@ public class ApiClient {
         String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>() {{
             put("page", pageIndex);
             put("len", pageSize);
-        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        }}, appContext);
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -687,11 +698,12 @@ public class ApiClient {
             throw AppException.network(e);
         }
     }
+
     public static CarList getCarList(AppContext appContext, final int pageIndex, final int pageSize) throws AppException {
         String newUrl = _MakeURL(URLs.TEAM_LIST, new HashMap<String, Object>() {{
             put("page", pageIndex);
             put("len", pageSize);
-        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        }}, appContext);
         try {
             return CarList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -705,7 +717,7 @@ public class ApiClient {
         String newUrl = "";
         newUrl = _MakeURL(URLs.TEAM_LIST_SEARCH, new HashMap<String, Object>() {{
             put("tc_name", tcName);
-        }},(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        }}, appContext);
         try {
             return TeamList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {
@@ -723,7 +735,7 @@ public class ApiClient {
     public static DispathList getDispathList(AppContext appContext, final int pageIndex, final int pageSize, Map<String, Object> params) throws AppException {
         params.put("page", pageIndex);
         params.put("len", pageSize);
-        String newUrl = _MakeURL(URLs.DISPARH_LIST, params,(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = _MakeURL(URLs.DISPARH_LIST, params, appContext);
         try {
             return DispathList.parse(http_get(appContext, newUrl));
         } catch (Exception e) {

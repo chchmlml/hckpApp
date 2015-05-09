@@ -215,6 +215,7 @@ public class UIHelper {
         Intent intent = new Intent(context, MyCarDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
+        b.putString("car_id", StringUtils.toString(car.getTp_car_id()));
         b.putString("car_no", StringUtils.toString(car.getTp_car_no()));
         b.putString("car_name", StringUtils.toString(car.getTp_car_name()));
         b.putString("car_height", StringUtils.toString(car.getTp_car_hight()));

@@ -104,7 +104,7 @@ public class TeamDetailActivity extends BaseActivity {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
                             final ProgressDialog pd = ProgressDialog.show(TeamDetailActivity.this, null, "请稍后...");
-                            String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+                            String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(), appContext);
                             RequestParams params = new RequestParams();
                             params.addBodyParameter("tc_id", bundle.getString("tc_id"));
                             HttpUtils http = new HttpUtils();

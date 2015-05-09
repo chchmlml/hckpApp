@@ -15,6 +15,8 @@ import java.net.URLEncoder;
  */
 public class URLs implements Serializable {
 
+	public final static String KEY = "HCKP2015";
+
 	public final static String HOST = "182.92.219.85";
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
@@ -30,6 +32,7 @@ public class URLs implements Serializable {
 	public final static String CAR_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=MyCar";
 	public final static String CREATE_CAR = URL_API_HOST+"index.php?apikey=app_driver&entrance=AddCar";
 	public final static String EDIT_CAR = URL_API_HOST+"index.php?apikey=app_driver&entrance=EditCar";
+	public final static String DEL_CAR = URL_API_HOST+"index.php?apikey=app_driver&entrance=DeleteDriverCar";
 
 	public final static String TEAM_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myMotorcade";
 	public final static String TEAM_LIST_SEARCH = URL_API_HOST+"index.php?apikey=app_driver&entrance=GetTcompany";
@@ -39,6 +42,8 @@ public class URLs implements Serializable {
     public final static String LOGIN_POST = URL_API_HOST+"index.php?apikey=app_login";
     public final static String REGISTER_POST = URL_API_HOST+"index.php?apikey=app_regist";
     public final static String USER_DETAIL = URL_API_HOST+"index.php?apikey=user_get";
+
+    public final static String LOCATION_DRIVER = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveTrack";
 
 
 	public final static String ShippingTransport_POST = URL_API_HOST+"index.php?apikey=app_driver&entrance=ShippingTransport";

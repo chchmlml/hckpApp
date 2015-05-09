@@ -121,28 +121,20 @@ public class MyCarDetailActivity extends BaseActivity {
     }
 
     private void deleteCar() {
-        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
-        RequestParams params = new RequestParams();
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("car_id", bundle.getString("car_id"));
+        String newUrl = ApiClient._MakeURL(URLs.DEL_CAR, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
-
-        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+        http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 pd.dismiss();
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                String code = obj.get("code").toString();
-                if (code.equals("1")) {
-                    Map<String, Object> userObj = (Map<String, Object>) obj.get("data");
-                    appContext.setProperty("userId", StringUtils.toString(userObj.get("user_id")));
-                    appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
-                    appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
-                    appContext.setProperty("sessionId", StringUtils.toString(userObj.get("session_id")));
-                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    finish();
-                } else {
-                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                }
+                //String code = obj.get("code").toString();
+                UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                finish();
             }
 
             @Override

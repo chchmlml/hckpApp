@@ -109,7 +109,7 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
-        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(),(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(),appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("phone", phone);
         params.addBodyParameter("pwd", pwd);

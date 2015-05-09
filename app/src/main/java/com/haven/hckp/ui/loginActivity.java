@@ -95,7 +95,7 @@ public class loginActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, R.string.login_param_is_null);
             return;
         }
-        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>(),(TelephonyManager)appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.LOGIN_POST, new HashMap<String, Object>(),appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("email", emailStr);
         params.addBodyParameter("pwd", pwdStr);

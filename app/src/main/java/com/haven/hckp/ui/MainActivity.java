@@ -1,12 +1,17 @@
 package com.haven.hckp.ui;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -14,13 +19,22 @@ import com.baidu.location.LocationClientOption;
 import com.haven.hckp.AppContext;
 import com.haven.hckp.AppException;
 import com.haven.hckp.R;
+import com.haven.hckp.api.ApiClient;
+import com.haven.hckp.bean.URLs;
 import com.haven.hckp.common.ConstantValues;
+import com.haven.hckp.common.StringUtils;
 import com.haven.hckp.common.UIHelper;
 import com.haven.hckp.widght.MyTabWidget;
 import com.haven.hckp.widght.MyTabWidget.OnTabSelectedListener;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -62,7 +76,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
             //UpdateManager.getUpdateManager().checkAppUpdate(this, false);
         }
         //定位
-        //startLocation();
+        startLocation();
     }
 
     /**
@@ -74,7 +88,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);//设置定位模式
         option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(1000);//设置发起定位请求的间隔时间为5000ms
+        option.setScanSpan(10000);//设置发起定位请求的间隔时间为5000ms
         option.setIsNeedAddress(true);//返回的定位结果包含地址信息
         //option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
         mLocationClient.setLocOption(option);
@@ -95,19 +109,37 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
             sb.append(location.getLatitude());
             sb.append("\nlontitude : ");
             sb.append(location.getLongitude());
-            sb.append("\nradius : ");
-            sb.append(location.getRadius());
-            if (location.getLocType() == BDLocation.TypeGpsLocation) {
-                sb.append("\nspeed : ");
-                sb.append(location.getSpeed());
-                sb.append("\nsatellite : ");
-                sb.append(location.getSatelliteNumber());
-            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
-                sb.append("\naddr : ");
-                sb.append(location.getAddrStr());
-            }
+//            sb.append("\nradius : ");
+//            sb.append(location.getRadius());
+//            if (location.getLocType() == BDLocation.TypeGpsLocation) {
+//                sb.append("\nspeed : ");
+//                sb.append(location.getSpeed());
+//                sb.append("\nsatellite : ");
+//                sb.append(location.getSatelliteNumber());
+//            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
+//                sb.append("\naddr : ");
+//                sb.append(location.getAddrStr());
+//            }
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("latitude", location.getLatitude());
+            params.put("longitude", location.getLongitude());
+            params.put("code", location.getLocType());
+            params.put("time", location.getTime());
+            //地址投递
+            String newUrl = ApiClient._MakeURL(URLs.LOCATION_DRIVER, params, appContext);
+            HttpUtils http = new HttpUtils();
+            http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
+                @Override
+                public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                    Log.i("location---->", "success");
+                }
 
-            Log.i("location---->", sb.toString());
+                @Override
+                public void onFailure(HttpException e, String s) {
+                    Log.i("location---->", "failure");
+                }
+            });
+
         }
     }
 

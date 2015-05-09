@@ -117,7 +117,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
             return;
         }
-        String newUrl = ApiClient._MakeURL(URLs.ShippingTransport_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.ShippingTransport_POST, new HashMap<String, Object>(), appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
         params.addBodyParameter("tp_tt_getweight", getweight);
@@ -159,7 +159,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
             return;
         }
-        String newUrl = ApiClient._MakeURL(URLs.SendTransport_POST, new HashMap<String, Object>(), (TelephonyManager) appContext.getSystemService(Context.TELEPHONY_SERVICE));
+        String newUrl = ApiClient._MakeURL(URLs.SendTransport_POST, new HashMap<String, Object>(),  appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
         params.addBodyParameter("tp_tt_sendweight", getweight);
