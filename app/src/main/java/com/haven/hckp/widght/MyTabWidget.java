@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 首页tab
  */
 public class MyTabWidget extends LinearLayout {
 
-    private static final String TAG = "MyTabWidget";
     private int[] mDrawableIds = new int[]{R.drawable.bg_home,
             R.drawable.bg_category, R.drawable.bg_collect,
             R.drawable.bg_setting};
@@ -38,11 +38,8 @@ public class MyTabWidget extends LinearLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.TabWidget, defStyle, 0);
-
         mLabels = a.getTextArray(R.styleable.TabWidget_bottom_labels);
-
         a.recycle();
-
         init(context);
     }
 

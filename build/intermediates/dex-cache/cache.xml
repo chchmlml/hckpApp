@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e2b978a7240e7b4152dbf3a771db19edfe56c2f3">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/fastjson-1.1.15-04ec46091c7c3b3ad824f6b10060d964abd37a0a.jar" />
+    </item>
+    <item
         jar="/Users/haven/Development/github/hckpApp/app/libs/commons-httpclient-3.1.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -14,6 +21,27 @@
         revision="22.0.1"
         sha1="317941290928203bdceaa763e87a0ec0924fba78">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-e7a3fb4da91f34f430b01de33a99a3c8ec08e95d.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fe75606aa9485cd20177894c204291a79a0cc7ab">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-c87dd16be94d23625346424918e98112c079e5f0.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/cn.pedant.sweetalert/library/1.3/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0c3529d9491be892952749d252ae1defa9b1f937">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-6ed237d5baa81c981028519f4302d70dbcd11bdd.jar" />
     </item>
     <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
@@ -30,46 +58,18 @@
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4ed9a66b633712072af746e0c0d6118d55091f36.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-00bed9c56e7abf61508eb7c1c43a1e35be994cc6.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8b7e856a4fbceb7bbdfd7679d18c43deb902ae1a">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-7035e42cd7d139086e06b29433baa91f492a3ed5.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e2b978a7240e7b4152dbf3a771db19edfe56c2f3">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/fastjson-1.1.15-04ec46091c7c3b3ad824f6b10060d964abd37a0a.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/cn.pedant.sweetalert/library/1.3/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="0c3529d9491be892952749d252ae1defa9b1f937">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-6ed237d5baa81c981028519f4302d70dbcd11bdd.jar" />
-    </item>
-    <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.0/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="57487745ce450899f9f250d5ae5c092a682cd041">
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-beb5aa0f3092062db51b966f2e14deb03fb31a81.jar" />
+    </item>
+    <item
+        jar="/Users/haven/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-00bed9c56e7abf61508eb7c1c43a1e35be994cc6.jar" />
     </item>
     <item
         jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
@@ -86,11 +86,11 @@
         <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-758b53abb6defba3e318b6aa7a16f517cc4cc5ae.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/xUtils-2.6.14.jar"
+        jar="/Users/haven/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/xUtils-2.6.14-29c0ff9b041530b07af86182a5c86e96edb8fb57.jar" />
+        sha1="8b7e856a4fbceb7bbdfd7679d18c43deb902ae1a">
+        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-7035e42cd7d139086e06b29433baa91f492a3ed5.jar" />
     </item>
 
 </items>

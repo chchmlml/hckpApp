@@ -57,7 +57,13 @@
 
         <!-- 首页 -->
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.MainActivity2"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.HomeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

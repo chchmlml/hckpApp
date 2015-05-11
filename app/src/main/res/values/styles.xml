@@ -139,4 +139,27 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+    <style name="text_home_style1">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+
+    <style name="text_home_style2">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">@color/home_myctrip</item>
+    </style>
+
+    <style name="text_home_style3">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">#80ffffff</item>
+    </style>
+
+    <style name="text_home_style4">
+        <item name="android:textSize">15.0dip</item>
+        <item name="android:textColor">#aaffffff</item>
+    </style>
+    <style name="text_10_ffffff_a65">
+        <item name="android:textSize">10.0dip</item>
+        <item name="android:textColor">#a6ffffff</item>
+    </style>
 </resources>

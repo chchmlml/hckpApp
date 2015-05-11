@@ -4,8 +4,8 @@
     <!-- 首页导航 -->
     <string-array name="bottom_bar_labels">
         <item>@string/home</item>
+        <item>@string/list</item>
         <item>@string/order</item>
-        <item>@string/team</item>
         <item>@string/setting</item>
     </string-array>
 

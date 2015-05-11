@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:paddingBottom="10.0dip"
+    android:paddingLeft="10.0dip"
+    android:paddingRight="10.0dip"
+    android:paddingTop="10.0dip">
+
+    <LinearLayout
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="296.0"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.haven.hckp.widght.HomeButton
+            android:id="@+id/list_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="216.0"
+            android:background="@color/home_color_plane"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/icon_home_plane"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="货源" />
+        </com.haven.hckp.widght.HomeButton>
+
+        <com.haven.hckp.widght.HomeButton
+            android:id="@+id/order_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_weight="256.0"
+            android:background="@color/home_color_hotel"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/icon_home_hotel"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="订单" />
+
+            <View
+                android:layout_width="23.0dip"
+                android:layout_height="14.0dip"
+                android:layout_gravity="bottom|right|center"
+                android:background="@drawable/icon_home_hotelphone2" />
+
+            <View
+                android:layout_width="23.0dip"
+                android:layout_height="14.0dip"
+                android:layout_gravity="bottom|right|center"
+                android:background="@drawable/icon_home_hotelphone" />
+
+            <TextView
+                style="@style/text_10_ffffff_a65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:text="222222"
+                android:visibility="visible" />
+        </com.haven.hckp.widght.HomeButton>
+
+        <com.haven.hckp.widght.HomeButton
+            android:id="@+id/person_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_weight="256.0"
+            android:background="@color/home_color_hotel"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/icon_home_hotel"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="个人设置" />
+
+            <View
+                android:layout_width="23.0dip"
+                android:layout_height="14.0dip"
+                android:layout_gravity="bottom|right|center"
+                android:background="@drawable/icon_home_hotelphone2" />
+
+            <View
+                android:layout_width="23.0dip"
+                android:layout_height="14.0dip"
+                android:layout_gravity="bottom|right|center"
+                android:background="@drawable/icon_home_hotelphone" />
+
+            <TextView
+                style="@style/text_10_ffffff_a65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:text="222222"
+                android:visibility="visible" />
+        </com.haven.hckp.widght.HomeButton>
+    </LinearLayout>
+
+</LinearLayout>

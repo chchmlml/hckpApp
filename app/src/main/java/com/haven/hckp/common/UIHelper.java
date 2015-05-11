@@ -16,8 +16,11 @@ import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
 import com.haven.hckp.bean.Notice;
 import com.haven.hckp.bean.Team;
+import com.haven.hckp.ui.HomeActivity;
 import com.haven.hckp.ui.HomeDetailActivity;
 import com.haven.hckp.ui.HomeDispathDetailActivity;
+import com.haven.hckp.ui.MainActivity;
+import com.haven.hckp.ui.MainActivity2;
 import com.haven.hckp.ui.MyCarCreateActivity;
 import com.haven.hckp.ui.MyCarDetailActivity;
 import com.haven.hckp.ui.MyCarEditActivity;
@@ -196,9 +199,19 @@ public class UIHelper {
     // }
     //
 
-    /**
-     * 新闻超链接点击跳转
-     */
+
+    public static void showHomeRedirect(Context context) {
+        Intent intent = new Intent(context, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+    public static void showMainRedirect(Context context,int index) {
+        Intent intent = new Intent(context, MainActivity2.class);
+        intent.putExtra("index", index);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
     public static void showNewsRedirect(Context context, News news) {
         Intent intent = new Intent(context, OrderDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

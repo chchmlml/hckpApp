@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import com.haven.hckp.common.UIHelper;
+import com.haven.hckp.ui.HomeActivity;
 import com.haven.hckp.ui.MainActivity;
 import com.haven.hckp.widght.LoadingView;
 import com.lidroid.xutils.ViewUtils;
@@ -72,7 +73,7 @@ public class AppStart extends Activity {
      * 跳转到...
      */
     private void redirectTo() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }

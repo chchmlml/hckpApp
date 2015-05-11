@@ -5,4 +5,7 @@
         <attr name="bottom_labels" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="home_button">
+        <attr name="doAnim" format="boolean" />
+    </declare-styleable>
 </resources>

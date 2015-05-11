@@ -62,4 +62,22 @@
     <color name="transparent">#00000000</color>
     <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="viewfinder_mask">#60000000</color>
+
+
+    <color name="home_bg">#ffe7f8ff</color>
+    <color name="home_color_around">#ff22ac38</color>
+    <color name="home_color_car">#ff9556f3</color>
+    <color name="home_color_dest">#ffe3b600</color>
+    <color name="home_color_gift">#ffff864a</color>
+    <color name="home_color_group">#ffff6779</color>
+    <color name="home_color_hotel">#ff0fc4d9</color>
+    <color name="home_color_local">#ff22ac38</color>
+    <color name="home_color_plane">#ff368ff4</color>
+    <color name="home_color_selectedmerchant">#ffff9966</color>
+    <color name="home_color_ticket">#fff3b613</color>
+    <color name="home_color_train">#ff747ae8</color>
+    <color name="home_color_travel">#ff84d018</color>
+    <color name="home_color_weekendtravel">#ff22ac38</color>
+    <color name="fragment_bg">#EDEDED</color>
+    <color name="home_myctrip">#ffff9913</color>
 </resources>
