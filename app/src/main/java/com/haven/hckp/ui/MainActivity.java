@@ -187,8 +187,8 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
                 break;
             case ConstantValues.COLLECT_FRAGMENT_INDEX:
                 //if (null == mTeamFragment) {
-                mTeamFragment = new TeamFragment();
-                transaction.add(R.id.center_layout, mTeamFragment);
+                //mTeamFragment = new TeamFragment();
+                //transaction.add(R.id.center_layout, mTeamFragment);
                 //} else {
                 //transaction.show(mTeamFragment);
                 //}
@@ -217,7 +217,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
             transaction.hide(mOrderFragment);
         }
         if (null != mTeamFragment) {
-            transaction.hide(mTeamFragment);
+            //transaction.hide(mTeamFragment);
         }
         if (null != mSettingFragment) {
             transaction.hide(mSettingFragment);

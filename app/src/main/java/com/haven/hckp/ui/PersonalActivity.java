@@ -62,18 +62,8 @@ public class PersonalActivity extends BaseActivity {
     @ViewInject(R.id.ts_u_username)
     private TextView username;
 
-    @ViewInject(R.id.user_info_userface)
-    private BootstrapCircleThumbnail userInfoUserface;
-
     @ViewInject(R.id.ts_u_phone)
     private TextView phone;
-
-    @ViewInject(R.id.ts_real_name)
-    private TextView realName;
-
-    @ViewInject(R.id.ts_u_regtime)
-    private TextView regtime;
-
     private Intent intent;
     private Bundle bundle;
 
@@ -88,8 +78,8 @@ public class PersonalActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
-        editBtn.setVisibility(View.VISIBLE);
-        editBtn.setImageDrawable(getResources().getDrawable(R.drawable.edit_btn));
+//        editBtn.setVisibility(View.VISIBLE);
+//        editBtn.setImageDrawable(getResources().getDrawable(R.drawable.edit_btn));
         initDataView();
     }
 
@@ -138,23 +128,9 @@ public class PersonalActivity extends BaseActivity {
     private void renderBaseView(Map<String, Object> data) {
         username.setText(StringUtils.toString(data.get("ts_u_username")));
         phone.setText(StringUtils.toString(data.get("ts_u_phone")));
-        realName.setText(StringUtils.toString(data.get("ts_real_name")));
-        regtime.setText(StringUtils.toString(data.get("ts_u_regtime")));
-        BitmapUtils bitmapUtils = new BitmapUtils(this);
-        bitmapUtils.display(userInfoUserface, StringUtils.toString(data.get("ts_u_headpic")), new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
-            @Override
-            public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
-                userInfoUserface.setImage(bitmap);
-            }
-
-            @Override
-            public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
-                UIHelper.ToastMessage(appContext, "头像加载失败");
-            }
-        });
     }
 
-    @OnClick({R.id.btn_logout, R.id.back_img, R.id.right_img})
+    @OnClick({R.id.btn_logout, R.id.back_img,R.id.change_pwd_btn})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -172,7 +148,7 @@ public class PersonalActivity extends BaseActivity {
                 }
                 break;
 
-            case R.id.right_img:
+            case R.id.change_pwd_btn:
                 UIHelper.showPersonalEditAddRedirect(appContext, userData);
                 finish();
                 break;

@@ -226,9 +226,9 @@ public class MainActivity2 extends BaseActivity implements OnTabSelectedListener
         if (null != mOrderFragment) {
             transaction.hide(mOrderFragment);
         }
-        if (null != mTeamFragment) {
-            transaction.hide(mTeamFragment);
-        }
+//        if (null != mTeamFragment) {
+//            transaction.hide(mTeamFragment);
+//        }
         if (null != mSettingFragment) {
             transaction.hide(mSettingFragment);
         }

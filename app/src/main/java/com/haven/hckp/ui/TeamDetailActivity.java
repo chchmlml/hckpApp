@@ -60,12 +60,12 @@ public class TeamDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.tc_phone)
     private TextView tcPhone;
-
-    @ViewInject(R.id.tc_fax)
-    private TextView tcFax;
-
-    @ViewInject(R.id.tc_status)
-    private TextView tcStatus;
+//
+//    @ViewInject(R.id.tc_fax)
+//    private TextView tcFax;
+//
+//    @ViewInject(R.id.tc_status)
+//    private TextView tcStatus;
 
     @ViewInject(R.id.button)
     private BootstrapButton button;
@@ -134,35 +134,8 @@ public class TeamDetailActivity extends BaseActivity {
         tcName.setText(bundle.getString("tc_name"));
         tcUser.setText(bundle.getString("tc_user"));
         tcPhone.setText(bundle.getString("tc_phone"));
-        tcFax.setText(bundle.getString("tc_fax"));
-        tcStatus.setText(bundle.getString("tc_status"));
+//        tcFax.setText(bundle.getString("tc_fax"));
+//        tcStatus.setText(bundle.getString("tc_status"));
 
-    }
-
-
-    private String getDispathStatus(String s) {
-        switch (StringUtils.toInt(s)) {
-            case 1:
-                button.setText("下单");
-                return "未下单";
-            case 2:
-                button.setText("接收运单");
-                return "已下单";
-            case 3:
-                button.setText("开始运输");
-                return "已接受";
-            case 4:
-                button.setText("完成");
-                return "运输中";
-            case 5:
-                button.setClickable(false);
-                button.setText("结束");
-                return "已完成";
-            case 6:
-                button.setClickable(false);
-                button.setText("结束");
-                return "已中断";
-        }
-        return "null";
     }
 }

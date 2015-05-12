@@ -35,7 +35,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamFragment extends BaseFragment {
+public class TeamFragment extends BaseActivity {
 
     private Activity mActivity;
     private TextView mTitleTv;
@@ -59,9 +59,16 @@ public class TeamFragment extends BaseFragment {
     @ViewInject(R.id.right_img)
     private ImageView rightImg;
 
-    public static TeamFragment newInstance() {
-        TeamFragment OrderFragment = new TeamFragment();
-        return OrderFragment;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_team);
+        ViewUtils.inject(this);
+        rightImg.setVisibility(View.VISIBLE);
+        appContext = (AppContext) getApplicationContext();
+        initViews();
+
     }
 
     @OnClick({R.id.right_img})
@@ -75,50 +82,9 @@ public class TeamFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtils.i("onActivityResult requestCode:" + requestCode + " resultCode:" + resultCode);
-        if (REQUEST_CODE == requestCode) {
-            this.initFrameListView();
-        }
-    }
+    private void initViews() {
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.mActivity = activity;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.inflater = inflater;
-        mView = this.inflater.inflate(R.layout.fragment_team, container, false);
-        ViewUtils.inject(this, mView);
-        rightImg.setVisibility(View.VISIBLE);
-        appContext = (AppContext) this.mActivity.getApplicationContext();
-        return mView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViews(view);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
-
-    private void initViews(View view) {
-
-        mTitleTv = (TextView) view.findViewById(R.id.title_tv);
+        mTitleTv = (TextView) findViewById(R.id.title_tv);
         mTitleTv.setText(R.string.team);
         this.initFrameListView();
     }
@@ -270,13 +236,13 @@ public class TeamFragment extends BaseFragment {
      */
     private void initNewsListView() {
 
-        lvNews_footer = this.inflater.inflate(R.layout.listview_footer, null);
+        lvNews_footer = getLayoutInflater().inflate(R.layout.listview_footer, null);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
         lvNews_foot_more = (TextView) lvNews_footer.findViewById(R.id.listview_foot_more);
         lvNews_foot_progress = (ProgressBar) lvNews_footer.findViewById(R.id.listview_foot_progress);
-        lvNewsAdapter = new TeamViewNewsAdapter(mActivity, lvNewsData, R.layout.team_list_item);
+        lvNewsAdapter = new TeamViewNewsAdapter(this, lvNewsData, R.layout.team_list_item);
 
-        lvNews = (PullToRefreshListView) mView.findViewById(R.id.listview_order);
+        lvNews = (PullToRefreshListView) findViewById(R.id.listview_order);
         lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
         lvNews.setAdapter(lvNewsAdapter);
 

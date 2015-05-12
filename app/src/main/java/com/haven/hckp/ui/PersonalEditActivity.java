@@ -41,9 +41,6 @@ public class PersonalEditActivity extends BaseActivity {
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
-    @ViewInject(R.id.input_phone)
-    private EditText inputPhone;
-
     @ViewInject(R.id.input_old_pwd)
     private EditText inputOldPwd;
 
@@ -52,9 +49,6 @@ public class PersonalEditActivity extends BaseActivity {
 
     @ViewInject(R.id.input_pwd2)
     private EditText inputPwd2;
-
-    @ViewInject(R.id.input_username)
-    private EditText inputUsername;
 
     private Intent intent;
     private Bundle bundle;
@@ -74,7 +68,6 @@ public class PersonalEditActivity extends BaseActivity {
         mTitleTv.setText(R.string.personal_edit);
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
-        renderBaseView();
     }
 
 
@@ -92,46 +85,30 @@ public class PersonalEditActivity extends BaseActivity {
     }
 
     private void updateUser() {
-        String username = StringUtils.toString(inputUsername.getText());
-        String phone = StringUtils.toString(inputPhone.getText());
         String pwd = StringUtils.toString(inputPwd.getText());
         String oldPwd = StringUtils.toString(inputOldPwd.getText());
         String pwd2 = StringUtils.toString(inputPwd2.getText());
-
-        if (StringUtils.isEmpty(username)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param4_is_null);
-            return;
-        }
-        if (StringUtils.isEmpty(phone)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param1_is_null);
-            return;
-        }
         if (StringUtils.isEmpty(oldPwd)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param2_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param2_is_null);
             return;
         }
         if (StringUtils.isEmpty(pwd)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param2_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param2_is_null);
             return;
         }
         if (StringUtils.isEmpty(pwd2)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param3_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param3_is_null);
             return;
         }
-
-//        if(!oldPwd.equals(bundle.getString("oldPwd"))){
-//            UIHelper.ToastMessage(appContext,R.string.register_param6_is_null);
-//            return;
-//        }
-        if(!pwd.equals(pwd2)){
-            UIHelper.ToastMessage(appContext,R.string.register_param5_is_null);
+        if (!pwd.equals(pwd2)) {
+            UIHelper.ToastMessage(appContext, R.string.register_param5_is_null);
             return;
         }
 
         HashMap<String, Object> p = new HashMap<String, Object>();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("name", username);
-        params.addBodyParameter("phone", phone);
+        params.addBodyParameter("name", bundle.getString("username"));
+        params.addBodyParameter("phone", bundle.getString("phone"));
         params.addBodyParameter("pwd", pwd);
         String newUrl = ApiClient._MakeURL(URLs.EDIT_CAR, p, appContext);
         HttpUtils http = new HttpUtils();
@@ -156,10 +133,5 @@ public class PersonalEditActivity extends BaseActivity {
                 pd.dismiss();
             }
         });
-    }
-
-    private void renderBaseView() {
-        inputUsername.setText(bundle.getString("username"));
-        inputPhone.setText(bundle.getString("phone"));
     }
 }

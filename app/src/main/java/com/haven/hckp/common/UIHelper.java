@@ -32,6 +32,7 @@ import com.haven.hckp.ui.PersonalEditActivity;
 import com.haven.hckp.ui.RegisterActivity;
 import com.haven.hckp.ui.TeamDetailActivity;
 import com.haven.hckp.ui.TeamFindActivity;
+import com.haven.hckp.ui.TeamFragment;
 import com.haven.hckp.ui.login2Activity;
 import com.haven.hckp.ui.loginActivity;
 
@@ -345,6 +346,11 @@ public class UIHelper {
 
     public static void showTeamfindRedirect(Context context) {
         Intent intent = new Intent(context, TeamFindActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+    public static void showTeamRedirect(Context context) {
+        Intent intent = new Intent(context, TeamFragment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

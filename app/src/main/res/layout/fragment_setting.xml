@@ -14,10 +14,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1.0"
-        android:paddingBottom="20dip"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="20dip">
+        android:paddingBottom="20dip">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -75,16 +72,22 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/setting_bg"
                 android:layout_marginBottom="20dip"
                 android:orientation="vertical">
 
                 <!-- 反馈意见 -->
 
+                <View
+                    android:layout_height="1px"
+                    android:layout_width="match_parent"
+                    android:background="@color/gray2" />
+
                 <RelativeLayout
                     android:id="@+id/setting_cars"
+                    android:background="@color/white"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
@@ -113,12 +116,14 @@
                 </RelativeLayout>
 
                 <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dip"
-                    android:background="@color/graywhite" />
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/dimen_30px"
+                    android:layout_width="match_parent"
+                    android:background="@color/gray2"/>
 
                 <RelativeLayout
                     android:id="@+id/setting_info"
+                    android:background="@color/white"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
@@ -147,13 +152,50 @@
                 </RelativeLayout>
 
                 <View
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/dimen_30px"
+                    android:layout_width="match_parent"
+                    android:background="@color/gray2" />
+
+                <RelativeLayout
+                    android:id="@+id/team_info"
+                    android:background="@color/white"
                     android:layout_width="fill_parent"
-                    android:layout_height="1dip"
-                    android:background="@color/graywhite" />
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dip"
+                        android:src="@drawable/che" />
+
+                    <TextView
+                        style="@style/setting_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dip"
+                        android:text="我的车队" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dip"
+                        android:src="@drawable/setting_arrow" />
+                </RelativeLayout>
+
+                <!--<View-->
+                    <!--android:layout_height="1px"-->
+                    <!--android:layout_marginLeft="@dimen/dimen_30px"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:background="@color/gray2" />-->
 
                 <!--<RelativeLayout-->
-                    <!--android:id="@+id/setting_other"-->
                     <!--android:layout_width="fill_parent"-->
+                    <!--android:background="@color/white"-->
                     <!--android:layout_height="wrap_content">-->
 
                     <!--<ImageView-->
@@ -162,14 +204,14 @@
                         <!--android:layout_alignParentLeft="true"-->
                         <!--android:layout_centerVertical="true"-->
                         <!--android:layout_marginLeft="20dip"-->
-                        <!--android:src="@drawable/shezhi" />-->
+                        <!--android:src="@drawable/geren" />-->
 
                     <!--<TextView-->
                         <!--style="@style/setting_text_style"-->
                         <!--android:layout_width="wrap_content"-->
                         <!--android:layout_height="wrap_content"-->
                         <!--android:layout_marginLeft="40dip"-->
-                        <!--android:text="@string/other" />-->
+                        <!--android:text="设置" />-->
 
                     <!--<ImageView-->
                         <!--android:layout_width="wrap_content"-->
@@ -180,19 +222,12 @@
                         <!--android:src="@drawable/setting_arrow" />-->
                 <!--</RelativeLayout>-->
 
-            </LinearLayout>
+                <View
+                    android:layout_height="1px"
+                    android:layout_width="match_parent"
+                    android:background="@color/gray2" />
 
-            <!--<Button-->
-            <!--android:id="@+id/logout_btn"-->
-            <!--android:textSize="18.0dip"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:background="@drawable/btn_ok_selector"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="45.0dip"-->
-            <!--android:layout_margin="5.0dip"-->
-            <!--android:layout_marginTop="20.0dip"-->
-            <!--android:text="@string/logout_btn"-->
-            <!--android:onClick="viewClick" />-->
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
