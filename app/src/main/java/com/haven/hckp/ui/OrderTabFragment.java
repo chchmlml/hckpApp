@@ -213,7 +213,7 @@ public class OrderTabFragment extends BaseFragment {
                     news = (News) view.getTag();
                 } else {
                     TextView tv = (TextView) view
-                            .findViewById(R.id.order_title);
+                            .findViewById(R.id.end_time);
                     news = (News) tv.getTag();
                 }
                 if (news == null)

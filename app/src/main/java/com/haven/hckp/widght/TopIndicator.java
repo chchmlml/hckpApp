@@ -28,8 +28,7 @@ public class TopIndicator extends LinearLayout {
             R.drawable.bg_setting};
     private List<CheckedTextView> mCheckedList = new ArrayList<CheckedTextView>();
     private List<View> mViewList = new ArrayList<View>();
-    private CharSequence[] mLabels = new CharSequence[]{"全部订单", "执行中", "未执行","未确认",
-            "已完成"};
+    private CharSequence[] mLabels = new CharSequence[]{"当前订单", "历史订单"};
     private int mScreenWidth;
     private int mUnderLineWidth;
     private View mUnderLine;

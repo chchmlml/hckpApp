@@ -21,13 +21,10 @@ public class ListViewNewsAdapter extends BaseAdapter {
     private int itemViewResource;// 自定义项视图源
 
     static class ListItemView { // 自定义控件集合
-        public TextView orderTitle;
-        public TextView orderTitle2;
-        public ImageView orderType;
-        public TextView orderDesc;
-        public TextView orderStarttime;
-        public TextView orderEndtime;
-        public TextView orderLength;
+        public TextView endtime;
+        public TextView startPlace;
+        public TextView endPlace;
+        public TextView desc;
     }
 
     /**
@@ -71,13 +68,10 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
             listItemView = new ListItemView();
             // 获取控件对象
-            listItemView.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
-            listItemView.orderTitle2 = (TextView) convertView.findViewById(R.id.order_title2);
-            listItemView.orderType = (ImageView) convertView.findViewById(R.id.order_type);
-            listItemView.orderDesc = (TextView) convertView.findViewById(R.id.order_desc);
-            listItemView.orderStarttime = (TextView) convertView.findViewById(R.id.order_starttime);
-            listItemView.orderEndtime = (TextView) convertView.findViewById(R.id.order_endtime);
-            listItemView.orderLength = (TextView) convertView.findViewById(R.id.order_length);
+            listItemView.endtime = (TextView) convertView.findViewById(R.id.end_time);
+            listItemView.startPlace = (TextView) convertView.findViewById(R.id.start_place);
+            listItemView.endPlace = (TextView) convertView.findViewById(R.id.end_place);
+            listItemView.desc = (TextView) convertView.findViewById(R.id.desc);
 
             // 设置控件集到convertView
             convertView.setTag(listItemView);
@@ -88,18 +82,11 @@ public class ListViewNewsAdapter extends BaseAdapter {
         // 设置文字和图片
         News news = listItems.get(position);
 
-        listItemView.orderTitle.setText(news.getTp_diy_start_city() + "-" + news.getTp_diy_end_city());
-        listItemView.orderTitle.setTag(news);
-        listItemView.orderDesc.setText(news.getTp_diy_desc());
-        if ("1".equals(news.getTp_diy_type())) {
-            listItemView.orderType.setVisibility(View.GONE);
-        } else {
-            listItemView.orderType.setVisibility(View.VISIBLE);
-        }
-        listItemView.orderStarttime.setText(news.getTp_diy_startdate());
-        listItemView.orderEndtime.setText(news.getTp_diy_enddate());
-        listItemView.orderLength.setText(news.getTp_diy_kms());
-        listItemView.orderTitle2.setText(news.getTp_tc_name());
+        listItemView.endtime.setText(news.getTp_diy_enddate());
+        listItemView.endtime.setTag(news);
+        listItemView.startPlace.setText(news.getTp_diy_start_city());
+        listItemView.endPlace.setText(news.getTp_diy_end_city());
+        listItemView.desc.setText(news.getTp_diy_desc());
 
         return convertView;
     }

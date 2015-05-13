@@ -47,7 +47,7 @@ import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class HomeDetailActivity extends BaseActivity  implements TopIndicatorForState.OnTopIndicatorListener {
+public class HomeDetailActivity extends BaseActivity {
 
     private AppContext appContext;
 
@@ -63,11 +63,6 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
     @ViewInject(R.id.tp_di_startdate)
     private TextView diStartdate;
 
-    @ViewInject(R.id.tp_di_enddate)
-    private TextView diEnddate;
-
-    @ViewInject(R.id.tp_di_status)
-    private TextView diStatus;
 
     @ViewInject(R.id.tp_di_remark)
     private TextView diRemark;
@@ -75,14 +70,9 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
     @ViewInject(R.id.linear_desc)
     private LinearLayout linearDesc;
 
-    @ViewInject(R.id.linear_desc2)
-    private LinearLayout linearDesc2;
 
     @ViewInject(R.id.lv)
     private ListView lv;
-
-    @ViewInject(R.id.expandlist)
-    private ExpandableListView expandlistView;
 
     @ViewInject(R.id.button)
     private BootstrapButton button;
@@ -112,24 +102,6 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         initDataView();
-
-        mTopIndicator = (TopIndicatorForState) this.findViewById(R.id.top_indicator);
-        mTopIndicator.setOnTopIndicatorListener(this);
-    }
-
-    @Override
-    public void onIndicatorSelected(int index) {
-        switch (index){
-            case 0:
-                linearDesc.setVisibility(View.VISIBLE);
-                linearDesc2.setVisibility(View.GONE);
-                break;
-            case 1:
-                linearDesc.setVisibility(View.GONE);
-                linearDesc2.setVisibility(View.VISIBLE);
-                break;
-        }
-        mTopIndicator.setTabsDisplay(null,index);
     }
 
     @OnClick({R.id.button, R.id.back_img})
@@ -206,8 +178,6 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
                         if (code.equals("1")) {
                             renderBaseView((Map<String, Object>) obj.get("data"));
                             renderListView((Map<String, Object>) obj.get("data"));
-                            //訂單狀態
-                            putTimeLineInitData();
                         } else {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                             AppManager.getAppManager().finishActivity();
@@ -221,89 +191,6 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
                 });
     }
 
-
-    private void putTimeLineInitData() {
-
-        String[] strArray = new String[]{"订单指派", "收货"};
-        String[] str1 = new String[]{"接受订单", "装货", "发货，开始配送", "送达"};
-        String[] str2 = new String[]{ "完成"};
-        String[] timeStr1;
-        String[] timeStr2;
-        switch (StringUtils.toInt(orderStatus)) {
-            case 1:
-                button.setText("下单");
-                timeStr1 = new String[]{"1111", "", "", ""};
-                timeStr2 = new String[]{""};
-                break;
-            case 2:
-                button.setText("接收运单");
-                timeStr1 = new String[]{"1111", "", "", ""};
-                timeStr2 = new String[]{""};
-                break;
-            case 3:
-                button.setText("开始运输");
-                timeStr1 = new String[]{"1111", "111", "", ""};
-                timeStr2 = new String[]{""};
-                break;
-            case 4:
-                button.setText("完成");
-                timeStr1 = new String[]{"1111", "111", "111", "111"};
-                timeStr2 = new String[]{""};
-                break;
-            default:
-                button.setClickable(false);
-                button.setText("结束");
-                timeStr1 = new String[]{"1111", "111", "111", "111"};
-                timeStr2 = new String[]{""};
-                break;
-        }
-
-        oneList = new ArrayList<OneStatusEntity>();
-        for (int i = 0; i < strArray.length; i++) {
-            OneStatusEntity one = new OneStatusEntity();
-            one.setStatusName(strArray[i]);
-            List<TwoStatusEntity> twoList = new ArrayList<TwoStatusEntity>();
-            String[] order = str1;
-            String[] time = timeStr1;
-            switch (i) {
-                case 0:
-                    order = str1;
-                    time = timeStr1;
-                    break;
-                case 1:
-                    order = str2;
-                    time = timeStr2;
-                    break;
-            }
-
-            for (int j = 0; j < order.length; j++) {
-                TwoStatusEntity two = new TwoStatusEntity();
-                two.setStatusName(order[j]);
-                if (time[j].equals("")) {
-                    two.setCompleteTime("待执行");
-                    two.setIsfinished(false);
-                } else {
-                    two.setCompleteTime("完成");
-                    two.setIsfinished(true);
-                }
-
-                twoList.add(two);
-            }
-            one.setTwoList(twoList);
-            oneList.add(one);
-        }
-
-        statusAdapter = new StatusExpandAdapter(appContext, oneList);
-        expandlistView.setAdapter(statusAdapter);
-        expandlistView.setGroupIndicator(null); // 去掉默认带的箭头
-
-        // 遍历所有group,将所有项设置成默认展开
-        int groupCount = expandlistView.getCount();
-        for (int i = 0; i < groupCount; i++) {
-            expandlistView.expandGroup(i);
-        }
-
-    }
 
     private void renderListView(Map<String, Object> data) {
         List<Map<String, Object>> transportList = (List<Map<String, Object>>) data.get("transport_list");
@@ -336,10 +223,8 @@ public class HomeDetailActivity extends BaseActivity  implements TopIndicatorFor
         Map<String, Object> dispatchInfo = (Map<String, Object>) data.get("dispatch_info");
         diSn.setText(StringUtils.toString(dispatchInfo.get("tp_di_sn")));
         diStartdate.setText(StringUtils.toString(dispatchInfo.get("tp_di_startdate")));
-        diEnddate.setText(StringUtils.toString(dispatchInfo.get("tp_di_enddate")));
         orderStatus = StringUtils.toString(dispatchInfo.get("tp_di_status"));
         String dsipathStatus = getDispathStatus(orderStatus);
-        diStatus.setText(dsipathStatus);
         diRemark.setText(StringUtils.toString(dispatchInfo.get("tp_di_remark")));
 
         diId = StringUtils.toString(dispatchInfo.get("tp_di_id"));

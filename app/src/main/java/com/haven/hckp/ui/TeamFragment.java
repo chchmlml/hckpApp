@@ -200,9 +200,9 @@ public class TeamFragment extends BaseActivity {
                 if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
                     // 提示新加载数据
                     if (newdata > 0) {
-                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_message, newdata)).show();
+                        NewDataToast.makeText(this, getString(R.string.new_data_toast_message, newdata)).show();
                     } else {
-                        NewDataToast.makeText(mActivity, getString(R.string.new_data_toast_none, false)).show();
+                        NewDataToast.makeText(this, getString(R.string.new_data_toast_none, false)).show();
                     }
                 }
                 break;

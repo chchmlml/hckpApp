@@ -23,6 +23,7 @@ public class CarViewNewsAdapter extends BaseAdapter {
         public TextView carNo;
         public TextView carName;
         public TextView carWeight;
+        public TextView carLength;
     }
 
     /**
@@ -66,9 +67,10 @@ public class CarViewNewsAdapter extends BaseAdapter {
 
             listItemView = new ListItemView();
             // 获取控件对象
-            listItemView.carName = (TextView) convertView.findViewById(R.id.car_name);
+            //listItemView.carName = (TextView) convertView.findViewById(R.id.car_name);
             listItemView.carNo = (TextView) convertView.findViewById(R.id.car_no);
             listItemView.carWeight = (TextView) convertView.findViewById(R.id.car_weight);
+            listItemView.carLength = (TextView) convertView.findViewById(R.id.car_length);
 
             // 设置控件集到convertView
             convertView.setTag(listItemView);

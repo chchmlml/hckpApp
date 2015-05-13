@@ -47,7 +47,7 @@
     <string name="dispath_detail_tag2">状态：</string>
     <string name="dispath_detail_tag3">发货时间：</string>
     <string name="dispath_detail_tag4">送达时间：</string>
-    <string name="dispath_detail_tag5">备注：</string>
+    <string name="dispath_detail_tag5">订单备注：</string>
 
     <!--车队详情-->
     <string name="team_detail_tag1">车队名称：</string>

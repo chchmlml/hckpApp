@@ -228,7 +228,7 @@ public class HomeTabFragment extends BaseFragment {
                 if (view instanceof TextView) {
                     news = (Dispath) view.getTag();
                 } else {
-                    TextView tv = (TextView) view.findViewById(R.id.tp_di_sn);
+                    TextView tv = (TextView) view.findViewById(R.id.tp_tc_phone);
                     news = (Dispath) tv.getTag();
                 }
                 if (news == null)

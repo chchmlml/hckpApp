@@ -24,7 +24,7 @@ public class TopIndicatorOrder extends LinearLayout {
 
     private List<CheckedTextView> mCheckedList = new ArrayList<CheckedTextView>();
     private List<View> mViewList = new ArrayList<View>();
-    private CharSequence[] mLabels = new CharSequence[]{"全部", "未报价", "已报价"};
+    private CharSequence[] mLabels = new CharSequence[]{"全部", "已报价"};
     private int mScreenWidth;
     private int mUnderLineWidth;
     private View mUnderLine;

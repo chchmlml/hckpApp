@@ -52,23 +52,24 @@ public class OrderDetailActivity extends BaseActivity {
     @ViewInject(R.id.linear_form)
     private LinearLayout linearForm;
 
-    @ViewInject(R.id.location_info)
-    private TextView locationInfo;
 
-    @ViewInject(R.id.carteam_name)
-    private TextView carTeam;
+    @ViewInject(R.id.start_city)
+    private TextView startCity;
 
-    @ViewInject(R.id.start_time)
-    private TextView startTime;
-
-    @ViewInject(R.id.end_time)
-    private TextView endTime;
+    @ViewInject(R.id.end_city)
+    private TextView endCity;
 
     @ViewInject(R.id.order_end_time)
     private TextView orderEndTime;
 
-    @ViewInject(R.id.desc)
-    private TextView desc;
+    @ViewInject(R.id.order_kms)
+    private TextView orderKims;
+
+    @ViewInject(R.id.order_desc)
+    private TextView orderDesc;
+
+    @ViewInject(R.id.tc_name)
+    private TextView tcName;
 
     @ViewInject(R.id.button)
     private BootstrapButton button;
@@ -190,13 +191,13 @@ public class OrderDetailActivity extends BaseActivity {
     }
 
     private void renderView(Map<String, Object> news) {
-        locationInfo.setText(news.get("tp_diy_start_city") + "-" + news.get("tp_diy_end_city"));
-        carTeam.setText(StringUtils.toString(news.get("tp_tc_name")));
-        startTime.setText(StringUtils.toString(news.get("tp_diy_startdate")));
-        endTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
-        desc.setText(StringUtils.toString(news.get("tp_diy_desc")));
+        startCity.setText(StringUtils.toString(news.get("tp_diy_start_city")));
+        endCity.setText(StringUtils.toString(news.get("tp_diy_end_city")));
+        orderEndTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
+        orderKims.setText(StringUtils.toString(news.get("tp_diy_kms")));
+        orderDesc.setText(StringUtils.toString(news.get("tp_diy_desc")));
+        tcName.setText(StringUtils.toString(news.get("tp_tc_name")));
 
-        orderEndTime.setText(DateUtils.getDateToString(StringUtils.toString(news.get("tp_diy_endtime"))));
         String tpType = StringUtils.toString(news.get("tp_diy_type"));
         this.orderType = tpType;
         if ("2".equals(tpType)) {

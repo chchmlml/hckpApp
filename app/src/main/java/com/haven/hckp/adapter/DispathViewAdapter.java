@@ -20,7 +20,7 @@ public class DispathViewAdapter extends BaseAdapter {
 	private int itemViewResource;// 自定义项视图源
 
 	static class ListItemView { // 自定义控件集合
-		public TextView tpDiSn;
+		public TextView tpTcPhone;
 		public TextView tpTcName;
         public TextView tpDiEnddate;
 	}
@@ -66,9 +66,9 @@ public class DispathViewAdapter extends BaseAdapter {
 
 			listItemView = new ListItemView();
 			// 获取控件对象
-            listItemView.tpDiSn = (TextView) convertView.findViewById(R.id.tp_di_sn);
+            listItemView.tpTcPhone = (TextView) convertView.findViewById(R.id.tp_tc_phone);
             listItemView.tpTcName = (TextView) convertView.findViewById(R.id.tp_tc_name);
-            listItemView.tpDiEnddate = (TextView) convertView.findViewById(R.id.tp_di_enddate);
+            //listItemView.tpDiEnddate = (TextView) convertView.findViewById(R.id.tp_di_enddate);
 
 			// 设置控件集到convertView
 			convertView.setTag(listItemView);
@@ -78,10 +78,10 @@ public class DispathViewAdapter extends BaseAdapter {
 
 		// 设置文字和图片
 		Dispath news = listItems.get(position);
-        listItemView.tpDiSn.setText(news.getTp_di_sn());
-        listItemView.tpDiSn.setTag(news);
+        listItemView.tpTcPhone.setText(news.getTp_tc_phone());
+        listItemView.tpTcPhone.setTag(news);
         listItemView.tpTcName.setText(news.getTp_tc_name());
-        listItemView.tpDiEnddate.setText(news.getTp_di_enddate());
+        //listItemView.tpDiEnddate.setText(news.getTp_di_enddate());
 
 		return convertView;
 	}
