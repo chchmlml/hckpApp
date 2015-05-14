@@ -6,8 +6,9 @@
     android:orientation="vertical">
 
     <com.haven.hckp.widght.PullToRefreshListView
-    android:id="@+id/listview_dispatch"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"/>
+        android:id="@+id/listview_dispatch"
+        android:layout_width="fill_parent"
+        android:listSelector="@color/graywhite"
+        android:layout_height="fill_parent" />
 
 </LinearLayout>
