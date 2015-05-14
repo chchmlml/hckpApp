@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
-    xmlns:bootstrapbutton="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graywhite"
@@ -11,428 +10,351 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
+
     <LinearLayout
-        android:id="@+id/linear_desc"
-        android:layout_below="@+id/title_bar"
-        android:layout_width="match_parent"
+        android:id="@+id/liner1"
+        android:layout_below="@id/title_bar"
+        android:background="@color/white"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <View
+            android:layout_height="1px"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_5px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <ImageView
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="30dip"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:src="@drawable/start_place" />
+
+
+            <TextView
+                android:id="@+id/start_city"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_marginLeft="60dip"
+                android:layout_weight="1"
+                android:text="" />
 
-                <TextView
-                    android:id="@+id/tp_o_sn"
-                    style="@style/order_detail_style"
-                    android:singleLine="true"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <View
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+
+            <ImageView
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="30dip"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:src="@drawable/end_place" />
+
+            <TextView
+                android:id="@+id/end_city"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_marginLeft="60dip"
+                android:layout_weight="1"
+                android:text="" />
 
-                <TextView
-                    android:id="@+id/tp_o_getuser"
-                    style="@style/order_detail_style"
-                    android:singleLine="true"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <View
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tip_enddate"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title3" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tp_o_loaddate"
-                    style="@style/order_detail_style"
-                    android:singleLine="true"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
+                android:text="发货时间" />
 
 
-        <LinearLayout
+            <TextView
+                android:id="@+id/reach_date"
+                android:layout_toRightOf="@id/tip_enddate"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_alignParentRight="true"
+                style="@style/detail_text_style"
+                android:layout_marginRight="20dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="配送中" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_height="1px"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:background="@color/gray2" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title4" />
-            </LinearLayout>
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tp_o_reachdate"
-                    style="@style/order_detail_style"
-                    android:singleLine="true"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_below="@id/liner1"
+        android:background="@color/white"
+        android:layout_marginTop="20dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <View
+            android:layout_height="1px"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tip_kms"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title5" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:text="货物数" />
 
-                <TextView
-                    android:id="@+id/tp_og_name"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
+            <TextView
+                android:id="@+id/goods_weight"
+                android:layout_toRightOf="@+id/tip_kms"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tip_desc"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:text="货物重量" />
 
-                <TextView
-                    android:id="@+id/tp_og_nums"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
+            <TextView
+                android:id="@+id/goods_num"
+                android:layout_toRightOf="@id/tip_desc"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+        </RelativeLayout>
+        <View
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
             android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tip_remark"
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title7" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:text="备注" />
 
-                <TextView
-                    android:id="@+id/tp_og_goodspack"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
+            <TextView
+                android:id="@+id/remark"
+                android:layout_toRightOf="@id/tip_remark"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_height="1px"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
+            android:background="@color/gray2" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tp_tt_status"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_dispath_title9" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tp_tt_type"
-                    style="@style/order_detail_style"
-                    android:singleLine="false"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="" />
-            </LinearLayout>
-        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/liner3"
+        android:layout_below="@+id/liner2"
+        android:background="@color/white"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/order_border"
-        android:layout_above="@+id/linear_form"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="@dimen/padding_10px"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dip"
+        android:layout_marginBottom="20dip"
+        android:orientation="vertical">
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:hint="数量"
-            android:id="@+id/getweight_1"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            bootstrap:be_roundedCorners="true"
-            android:gravity="center"
-            />
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
+        <RelativeLayout
+            android:id="@+id/goods_input_1"
+            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:hint="重量"
-            android:id="@+id/getnums_1"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            bootstrap:be_roundedCorners="true"
-            android:gravity="center"
-            bootstrapbutton:be_state="success"
-            />
+            android:layout_height="wrap_content">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            bootstrap:bb_type="success"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            bootstrap:bb_roundedCorners="true"
-            bootstrap:bb_size="small"
-            android:text="装货报备"
-            android:layout_weight="1"
-            android:id="@+id/transport_btn_1" />
+            <TextView
+                android:id="@+id/tip_goods_1"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="收货" />
+
+            <TextView
+                android:id="@+id/goods_get"
+                style="@style/setting_text_style2"
+                android:layout_toRightOf="@+id/tip_goods_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="20/50" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_form"
-        android:layout_width="match_parent"
+        android:id="@+id/liner4"
+        android:layout_below="@+id/liner3"
+        android:background="@color/white"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/order_border"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="@dimen/padding_10px"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/getweight_2"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            android:hint="数量"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            bootstrap:be_roundedCorners="true"
-            android:gravity="center"
-            bootstrapbutton:be_state="success"
-            />
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
+        <RelativeLayout
+            android:id="@+id/goods_input_2"
+            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            android:hint="重量"
-            android:id="@+id/getnums_2"
-            android:inputType="numberDecimal"
-            android:layout_weight="1"
-            bootstrap:be_roundedCorners="true"
-            android:gravity="center"
-            />
+            android:layout_height="wrap_content">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            bootstrap:bb_type="success"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            bootstrap:bb_roundedCorners="true"
-            bootstrap:bb_size="small"
-            android:text="妥投报备"
-            android:layout_weight="1"
-            android:id="@+id/transport_btn_2" />
+            <TextView
+                android:id="@+id/tip_goods_2"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="签收" />
+
+            <TextView
+                android:id="@+id/goods_send"
+                style="@style/setting_text_style2"
+                android:layout_toRightOf="@+id/tip_goods_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="20/50" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+
     </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linear_form"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/order_border"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:gravity="center_horizontal|center_vertical"-->
+        <!--android:padding="@dimen/padding_10px"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--bootstrap:bb_type="success"-->
+            <!--bootstrap:bb_roundedCorners="true"-->
+            <!--bootstrap:bb_size="small"-->
+            <!--android:text="@string/report_price"-->
+            <!--android:id="@+id/button" />-->
+    <!--</LinearLayout>-->
 
 </RelativeLayout>

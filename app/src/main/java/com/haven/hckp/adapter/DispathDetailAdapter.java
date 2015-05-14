@@ -18,10 +18,10 @@ public class DispathDetailAdapter extends BaseAdapter {
     private int itemViewResource;// 自定义项视图源
 
     static class ListItemView { // 自定义控件集合
-        public TextView sn;
         public TextView reachdate;
         public TextView status;
-        public TextView type;
+        public TextView startcity;
+        public TextView endcity;
     }
 
     /**
@@ -61,10 +61,10 @@ public class DispathDetailAdapter extends BaseAdapter {
             convertView = listContainer.inflate(this.itemViewResource, null);
             listItemView = new ListItemView();
             // 获取控件对象
-            listItemView.sn = (TextView) convertView.findViewById(R.id.tp_tt_sn);
-            listItemView.reachdate = (TextView) convertView.findViewById(R.id.tp_o_reachdate);
-            listItemView.status = (TextView) convertView.findViewById(R.id.tp_o_status);
-            listItemView.type = (TextView) convertView.findViewById(R.id.tp_o_type);
+            listItemView.reachdate = (TextView) convertView.findViewById(R.id.reachdate);
+            listItemView.status = (TextView) convertView.findViewById(R.id.status);
+            listItemView.startcity = (TextView) convertView.findViewById(R.id.start_city);
+            listItemView.endcity = (TextView) convertView.findViewById(R.id.end_city);
 
             // 设置控件集到convertView
             convertView.setTag(listItemView);
@@ -75,46 +75,12 @@ public class DispathDetailAdapter extends BaseAdapter {
         // 设置文字和图片
         Map<String, Object> news = listItems.get(position);
 
-        listItemView.sn.setText(StringUtils.toString(news.get("tp_tt_sn")));
-        listItemView.sn.setTag(news);
         listItemView.reachdate.setText(StringUtils.toString(news.get("tp_o_reachdate")));
-        String starus = "";
-        switch (StringUtils.toInt(news.get("tp_o_status")))
-        {
-            case 1:
-                starus = "未提交";
-                break;
-            case 2:
-                starus = "未接受";
-                break;
-            case 3:
-                starus = "已接受";
-                break;
-            case 4:
-                starus = "已发货";
-                break;
-            case 5:
-                starus = "运输中";
-                break;
-            case 6:
-                starus = "已签收";
-                break;
-            case 7:
-                starus = "中断";
-                break;
-        }
-        listItemView.status.setText(starus);
-        String type = "";
-        switch (StringUtils.toInt(news.get("tp_o_type")))
-        {
-            case 1:
-                type = "正常";
-                break;
-            case 2:
-                type = "转交";
-                break;
-        }
-        listItemView.type.setText(type);
+        listItemView.reachdate.setTag(news);
+        listItemView.status.setText(StringUtils.toString(news.get("tp_o_status")));
+
+        listItemView.startcity.setText(StringUtils.toString(news.get("tp_o_start_city")));
+        listItemView.endcity.setText(StringUtils.toString(news.get("tp_o_end_city")));
         return convertView;
     }
 }

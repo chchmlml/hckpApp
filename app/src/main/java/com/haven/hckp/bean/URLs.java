@@ -45,10 +45,10 @@ public class URLs implements Serializable {
 
     public final static String LOCATION_DRIVER = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveTrack";
 
-
 	public final static String ShippingTransport_POST = URL_API_HOST+"index.php?apikey=app_driver&entrance=ShippingTransport";
 	public final static String SendTransport_POST = URL_API_HOST+"index.php?apikey=app_driver&entrance=SendTransport";
 
+	public final static String TRANSDETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=GetTransportDetail";
 
 	public final static String DISPARH_LIST = URL_API_HOST+"index.php?apikey=app_driver&entrance=myDispatch";
 	public final static String DISPARH_DETAIL = URL_API_HOST+"index.php?apikey=app_driver&entrance=DispatchInfo";

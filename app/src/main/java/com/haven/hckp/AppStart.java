@@ -61,7 +61,6 @@ public class AppStart extends Activity {
         } catch (AppException e) {
             e.printStackTrace();
         }
-        startLocation();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -69,6 +68,7 @@ public class AppStart extends Activity {
                 finish();
             }
         }, 1500);
+        startLocation();
     }
 
     /**
@@ -111,15 +111,12 @@ public class AppStart extends Activity {
             http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
                 @Override
                 public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                    Log.i("location---->", "success");
                 }
 
                 @Override
                 public void onFailure(HttpException e, String s) {
-                    Log.i("location---->", "failure");
                 }
             });
-
         }
     }
 

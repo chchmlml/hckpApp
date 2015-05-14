@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite">
+
+    <include layout="@layout/title_bar" />
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:orientation="vertical">
+
+        <!-- 反馈意见 -->
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:paddingLeft="100dip"
+                android:layout_gravity="right"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:focusable="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray"
+                android:focusableInTouchMode="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="货物数" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/form_car_no"
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <EditText
+                android:id="@+id/nums"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:paddingLeft="100dip"
+                android:layout_gravity="right"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:focusable="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/gray"
+                android:focusableInTouchMode="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="货物重量" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linear_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/order_border"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="@dimen/padding_10px"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="success"
+            android:text="确定"
+            android:id="@+id/button" />
+    </LinearLayout>
+
+</LinearLayout>

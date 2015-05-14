@@ -23,7 +23,6 @@
             android:background="@color/white"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
             android:layout_marginBottom="20dip"
             android:orientation="vertical">
 
@@ -168,6 +167,7 @@
 
         <ListView
             android:id="@+id/lv"
+            android:listSelector="@color/graywhite"
             android:background="@color/graywhite"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />

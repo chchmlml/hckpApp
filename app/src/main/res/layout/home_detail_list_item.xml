@@ -1,82 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="20dip"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/padding_10px"
-    android:background="#ffffff"
     android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/padding_5px"
+        android:background="@color/white"
         android:layout_weight="1">
 
-        <LinearLayout
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="8dip"
+                android:layout_marginLeft="10dip"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:src="@drawable/rili" />
+
             <TextView
-                android:id="@+id/tp_tt_sn"
-                style="@style/order_title_style"
+                android:id="@+id/label1"
+                style="@style/order_text_style"
+                android:layout_marginLeft="40dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xxs2030422xx1234"/>
+                android:text="发货时间" />
+
             <TextView
-                android:id="@+id/tp_o_type"
+                android:id="@+id/reachdate"
+                style="@style/order_text_style"
+                android:layout_toRightOf="@+id/label1"
+                android:layout_marginLeft="@dimen/padding_20px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2014-09-09" />
+
+            <TextView
+                android:id="@+id/status"
                 style="@style/order_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="正常" />
-        </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:text="状态" />
+        </RelativeLayout>
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:background="@color/gray2" />
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:background="@color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:paddingLeft="2dip"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/zhong" />
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tp_o_reachdate"
-                    style="@style/order_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2015-04-08" />
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_marginTop="8dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_width="20dip"
+                        android:layout_height="20dip"
+                        android:src="@drawable/start_place" />
+
+                    <TextView
+                        android:id="@+id/start_city"
+                        style="@style/order_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dip"
+                        android:layout_weight="1"
+                        android:text="北京" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_marginTop="8dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_width="20dip"
+                        android:layout_height="20dip"
+                        android:src="@drawable/end_place" />
+
+                    <TextView
+                        android:id="@+id/end_city"
+                        android:layout_marginLeft="40dip"
+                        style="@style/order_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上海" />
+
+                    <TextView
+                        android:id="@+id/icon_status"
+                        style="@style/order_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="[审]"
+                        android:textColor="@color/blue" />
+                </RelativeLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tp_o_status"
-                    android:paddingLeft="3dip"
-                    style="@style/order_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="未接受"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true" />
-            </LinearLayout>
-
         </LinearLayout>
+
     </LinearLayout>
 
 
@@ -84,8 +136,10 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:paddingRight="@dimen/padding_10px"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -51,24 +51,6 @@ public class HomeDispathDetailActivity extends BaseActivity {
     private ImageView backBtn;
 
 
-    @ViewInject(R.id.getweight_1)
-    private BootstrapEditText getweight_1;
-
-    @ViewInject(R.id.getweight_2)
-    private BootstrapEditText getweight_2;
-
-    @ViewInject(R.id.getnums_1)
-    private BootstrapEditText getnums_1;
-
-    @ViewInject(R.id.getnums_2)
-    private BootstrapEditText getnums_2;
-
-    @ViewInject(R.id.transport_btn_1)
-    private BootstrapButton transport_btn_1;
-
-    @ViewInject(R.id.transport_btn_2)
-    private BootstrapButton transport_btn_2;
-
     private Intent intent;
     private Bundle bundle;
 
@@ -91,16 +73,16 @@ public class HomeDispathDetailActivity extends BaseActivity {
         renderBaseView(bundle);
     }
 
-    @OnClick({R.id.back_img, R.id.transport_btn_1, R.id.transport_btn_2})
+    @OnClick({R.id.back_img, R.id.goods_input_1, R.id.goods_input_2})
     public void buttonClick(View v) {
         switch (v.getId()) {
             case R.id.back_img:
                 AppManager.getAppManager().finishActivity();
                 break;
-            case R.id.transport_btn_1:
+            case R.id.goods_input_1:
                 ShippingTransport();
                 break;
-            case R.id.transport_btn_2:
+            case R.id.goods_input_2:
                 SendTransport();
                 break;
         }
@@ -110,41 +92,17 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void ShippingTransport() {
-
-        String getweight = StringUtils.toString(getweight_1.getText());
-        String getnums = StringUtils.toString(getnums_1.getText());
-        if (StringUtils.isEmpty(getweight) || StringUtils.isEmpty(getnums)) {
-            UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
-            return;
-        }
-        String newUrl = ApiClient._MakeURL(URLs.ShippingTransport_POST, new HashMap<String, Object>(), appContext);
-        RequestParams params = new RequestParams();
-        params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
-        params.addBodyParameter("tp_tt_getweight", getweight);
-        params.addBodyParameter("tp_tt_getnums", getnums);
-        HttpUtils http = new HttpUtils();
-        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
-
-        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
-            @Override
-            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-                pd.dismiss();
-                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-                String code = obj.get("code").toString();
-                if (code.equals("1")) {
-                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    finish();
-                } else {
-                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                }
-            }
-
-            @Override
-            public void onFailure(HttpException e, String s) {
-                pd.dismiss();
-            }
-        });
-
+        Intent intent = new Intent(appContext, GoodsInputActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
+        b.putString("type", "get");
+        String[] WeightNums = StringUtils.toString(goodsGet.getText()).split("/");
+        b.putString("weight", WeightNums[0]);
+        b.putString("nums", WeightNums[1]);
+        intent.putExtras(b);
+        appContext.startActivity(intent);
+        finish();
     }
 
 
@@ -152,30 +110,74 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void SendTransport() {
+        Intent intent = new Intent(appContext, GoodsInputActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putString("type", "send");
+        b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
+        String[] WeightNums = StringUtils.toString(goodsSend.getText()).split("/");
+        b.putString("weight", WeightNums[0]);
+        b.putString("nums", WeightNums[1]);
+        intent.putExtras(b);
+        appContext.startActivity(intent);
+        finish();
+    }
 
-        String getweight = StringUtils.toString(getweight_2.getText());
-        String getnums = StringUtils.toString(getnums_2.getText());
-        if (StringUtils.isEmpty(getweight) || StringUtils.isEmpty(getnums)) {
-            UIHelper.ToastMessage(appContext, "请填写数量和重量信息");
-            return;
-        }
-        String newUrl = ApiClient._MakeURL(URLs.SendTransport_POST, new HashMap<String, Object>(),  appContext);
-        RequestParams params = new RequestParams();
-        params.addBodyParameter("tp_tt_id", bundle.getString("tp_tt_id"));
-        params.addBodyParameter("tp_tt_sendweight", getweight);
-        params.addBodyParameter("tp_tt_sendnums", getnums);
+    @ViewInject(R.id.start_city)
+    private TextView startCity;
+
+    @ViewInject(R.id.end_city)
+    private TextView endCity;
+
+    @ViewInject(R.id.reach_date)
+    private TextView reachDate;
+
+    @ViewInject(R.id.status)
+    private TextView status;
+
+    @ViewInject(R.id.goods_weight)
+    private TextView goodsWeight;
+
+    @ViewInject(R.id.goods_num)
+    private TextView goodsNum;
+
+    @ViewInject(R.id.remark)
+    private TextView remark;
+
+    @ViewInject(R.id.goods_get)
+    private TextView goodsGet;
+
+    @ViewInject(R.id.goods_send)
+    private TextView goodsSend;
+
+    private void renderBaseView(Bundle bundle) {
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("tt_id", bundle.getString("tt_id"));
+        params.put("r", StringUtils.randomNum());
+        String newUrl = ApiClient._MakeURL(URLs.TRANSDETAIL, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
-        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+        http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 pd.dismiss();
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
-                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    finish();
+                    Map<String, Object> transObj = (Map<String, Object>) obj.get("data");
+                    startCity.setText(StringUtils.toString(transObj.get("tp_o_start_city")));
+                    endCity.setText(StringUtils.toString(transObj.get("tp_o_end_city")));
+                    reachDate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")));
+                    status.setText(StringUtils.toString(transObj.get("tp_o_status")));
+                    goodsWeight.setText(StringUtils.toString(transObj.get("tp_tt_weight")));
+                    goodsNum.setText(StringUtils.toString(transObj.get("tp_tt_nums")));
+                    remark.setText(StringUtils.toString(transObj.get("tp_o_remark")));
+                    String getGoods = StringUtils.toString(transObj.get("tp_tt_getweight")) + "/" + StringUtils.toString(transObj.get("tp_tt_getnums"));
+                    goodsGet.setText(getGoods);
+                    String sendGoods = StringUtils.toString(transObj.get("tp_tt_sendweight")) + "/" + StringUtils.toString(transObj.get("tp_tt_sendnums"));
+                    goodsSend.setText(sendGoods);
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                 }
@@ -188,74 +190,4 @@ public class HomeDispathDetailActivity extends BaseActivity {
         });
 
     }
-
-    @ViewInject(R.id.tp_o_sn)
-    private TextView sn;
-    @ViewInject(R.id.tp_o_getuser)
-    private TextView getuser;
-    @ViewInject(R.id.tp_o_loaddate)
-    private TextView loaddate;
-    @ViewInject(R.id.tp_o_reachdate)
-    private TextView reachdate;
-    @ViewInject(R.id.tp_og_name)
-    private TextView ogName;
-    @ViewInject(R.id.tp_og_nums)
-    private TextView ogNums;
-    @ViewInject(R.id.tp_og_goodspack)
-    private TextView ogGoodspack;
-    @ViewInject(R.id.tp_tt_status)
-    private TextView status;
-    @ViewInject(R.id.tp_tt_type)
-    private TextView type;
-
-    private void renderBaseView(Bundle bundle) {
-        sn.setText(bundle.getString("tp_o_sn"));
-        getuser.setText(bundle.getString("tp_o_getuser"));
-        loaddate.setText(bundle.getString("tp_o_loaddate"));
-        reachdate.setText(bundle.getString("tp_o_reachdate"));
-        ogName.setText(bundle.getString("tp_og_name"));
-        ogNums.setText(bundle.getString("tp_og_nums"));
-        ogGoodspack.setText(bundle.getString("tp_og_goodspack"));
-        status.setText(getDispathStatus(bundle.getString("tp_tt_status")));
-
-
-        getweight_1.setText(formatInt(bundle.getString("tp_tt_getweight")));
-        getnums_1.setText(formatInt(bundle.getString("tp_tt_getnums")));
-        getweight_2.setText(formatInt(bundle.getString("tp_tt_sendweight")));
-        getnums_2.setText(formatInt(bundle.getString("tp_tt_sendnums")));
-
-        String typew = "";
-        switch (StringUtils.toInt(bundle.getString("tp_tt_type"))) {
-            case 1:
-                typew = "正常";
-                break;
-            case 2:
-                typew = "转交";
-                break;
-        }
-        type.setText(typew);
-    }
-
-    private String formatInt(String obj) {
-        return obj.equals("0") ? "" : obj;
-    }
-
-    private String getDispathStatus(String s) {
-        switch (StringUtils.toInt(s)) {
-            case 1:
-                return "未下单";
-            case 2:
-                return "已下单";
-            case 3:
-                return "已接受";
-            case 4:
-                return "运输中";
-            case 5:
-                return "已完成";
-            case 6:
-                return "已中断";
-        }
-        return "null";
-    }
-
 }

@@ -205,8 +205,7 @@ public class HomeDetailActivity extends BaseActivity {
                     if (view instanceof TextView) {
                         news = (Map<String, Object>) view.getTag();
                     } else {
-                        TextView tv = (TextView) view
-                                .findViewById(R.id.tp_tt_sn);
+                        TextView tv = (TextView) view.findViewById(R.id.reachdate);
                         news = (Map<String, Object>) tv.getTag();
                     }
                     if (news == null)

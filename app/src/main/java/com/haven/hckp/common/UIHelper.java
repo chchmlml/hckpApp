@@ -252,22 +252,22 @@ public class UIHelper {
         Intent intent = new Intent(context, HomeDispathDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
-        b.putString("tp_tt_id", StringUtils.toString(news.get("tp_tt_id")));
-        b.putString("tp_o_sn", StringUtils.toString(news.get("tp_o_sn")));
-        b.putString("tp_o_getuser", StringUtils.toString(news.get("tp_o_getuser")));
-        b.putString("tp_o_loaddate", StringUtils.toString(news.get("tp_o_loaddate")));
-        b.putString("tp_o_reachdate", StringUtils.toString(news.get("tp_o_reachdate")));
-        b.putString("tp_og_name", StringUtils.toString(news.get("tp_og_name")));
-        b.putString("tp_og_nums", StringUtils.toString(news.get("tp_og_nums")));
-        b.putString("tp_og_goodspack", StringUtils.toString(news.get("tp_og_goodspack")));
-        b.putString("tp_tt_status", StringUtils.toString(news.get("tp_tt_status")));
-        b.putString("tp_tt_type", StringUtils.toString(news.get("tp_tt_type")));
-        b.putString("tp_di_id", StringUtils.toString(news.get("tp_di_id")));
-
-        b.putString("tp_tt_getweight", StringUtils.toString(news.get("tp_tt_getweight")));
-        b.putString("tp_tt_getnums", StringUtils.toString(news.get("tp_tt_getnums")));
-        b.putString("tp_tt_sendweight", StringUtils.toString(news.get("tp_tt_sendweight")));
-        b.putString("tp_tt_sendnums", StringUtils.toString(news.get("tp_tt_sendnums")));
+        b.putString("tt_id", StringUtils.toString(news.get("tp_tt_id")));
+//        b.putString("tp_o_sn", StringUtils.toString(news.get("tp_o_sn")));
+//        b.putString("tp_o_getuser", StringUtils.toString(news.get("tp_o_getuser")));
+//        b.putString("tp_o_loaddate", StringUtils.toString(news.get("tp_o_loaddate")));
+//        b.putString("tp_o_reachdate", StringUtils.toString(news.get("tp_o_reachdate")));
+//        b.putString("tp_og_name", StringUtils.toString(news.get("tp_og_name")));
+//        b.putString("tp_og_nums", StringUtils.toString(news.get("tp_og_nums")));
+//        b.putString("tp_og_goodspack", StringUtils.toString(news.get("tp_og_goodspack")));
+//        b.putString("tp_tt_status", StringUtils.toString(news.get("tp_tt_status")));
+//        b.putString("tp_tt_type", StringUtils.toString(news.get("tp_tt_type")));
+//        b.putString("tp_di_id", StringUtils.toString(news.get("tp_di_id")));
+//
+//        b.putString("tp_tt_getweight", StringUtils.toString(news.get("tp_tt_getweight")));
+//        b.putString("tp_tt_getnums", StringUtils.toString(news.get("tp_tt_getnums")));
+//        b.putString("tp_tt_sendweight", StringUtils.toString(news.get("tp_tt_sendweight")));
+//        b.putString("tp_tt_sendnums", StringUtils.toString(news.get("tp_tt_sendnums")));
 
         intent.putExtras(b);
         context.startActivity(intent);
