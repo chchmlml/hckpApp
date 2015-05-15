@@ -163,4 +163,8 @@
 		501～700：key验证失败\n</string>
     <string name="qa_callback">问题反馈方法</string>
     <string name="qa_callback_mail">mapapi@baidu.com</string>
+    <string name="title_activity_select_pictuer">SelectPictuerActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

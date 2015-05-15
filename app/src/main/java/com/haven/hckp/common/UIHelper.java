@@ -30,6 +30,7 @@ import com.haven.hckp.ui.OrderFilterActivity;
 import com.haven.hckp.ui.PersonalActivity;
 import com.haven.hckp.ui.PersonalEditActivity;
 import com.haven.hckp.ui.RegisterActivity;
+import com.haven.hckp.ui.SelectPictuerActivity;
 import com.haven.hckp.ui.TeamDetailActivity;
 import com.haven.hckp.ui.TeamFindActivity;
 import com.haven.hckp.ui.TeamFragment;
@@ -299,6 +300,12 @@ public class UIHelper {
         Intent intent = new Intent(context, MyCarEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public static void showTakephotoRedirect(Context context) {
+        Intent intent = new Intent(context, SelectPictuerActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 

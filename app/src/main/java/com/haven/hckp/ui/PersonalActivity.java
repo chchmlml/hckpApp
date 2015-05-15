@@ -130,11 +130,15 @@ public class PersonalActivity extends BaseActivity {
         phone.setText(StringUtils.toString(data.get("ts_u_phone")));
     }
 
-    @OnClick({R.id.btn_logout, R.id.back_img,R.id.change_pwd_btn})
+    @OnClick({R.id.btn_logout, R.id.back_img,R.id.change_pwd_btn,R.id.form_car_id})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
             case R.id.back_img:
+                this.finish();
+                break;
+            case R.id.form_car_id:
+                UIHelper.showTakephotoRedirect(appContext);
                 this.finish();
                 break;
             case R.id.btn_logout:
