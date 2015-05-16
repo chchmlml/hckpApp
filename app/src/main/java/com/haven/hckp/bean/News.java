@@ -38,6 +38,7 @@ public class News extends Entity {
     private String tp_diy_type;
     //指定价格
     private String tp_diy_price;
+    private String tp_diyp_price;
     //1广播 2指定司机
     private String tp_diy_category;
     private String tp_diy_kms;
@@ -51,6 +52,15 @@ public class News extends Entity {
 
     public void setTp_diy_startdate(String tp_diy_startdate) {
         this.tp_diy_startdate = tp_diy_startdate;
+    }
+
+
+    public String getTp_diyp_price() {
+        return tp_diyp_price;
+    }
+
+    public void setTp_diyp_price(String tp_diyp_price) {
+        this.tp_diyp_price = tp_diyp_price;
     }
 
     public String getTp_diy_id() {

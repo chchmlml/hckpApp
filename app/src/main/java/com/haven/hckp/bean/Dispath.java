@@ -18,6 +18,16 @@ public class Dispath extends Entity {
     private String tp_di_enddate;
     private String tp_tc_name;
 
+    public String getTp_di_status() {
+        return tp_di_status;
+    }
+
+    public void setTp_di_status(String tp_di_status) {
+        this.tp_di_status = tp_di_status;
+    }
+
+    private String tp_di_status;
+
     public String getTp_tc_phone() {
         return tp_tc_phone;
     }

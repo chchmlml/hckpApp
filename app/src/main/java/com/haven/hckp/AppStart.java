@@ -32,8 +32,8 @@ import java.util.HashMap;
  */
 public class AppStart extends Activity {
 
-    @ViewInject(R.id.main_imageview)
-    private LoadingView mainImageview;
+//    @ViewInject(R.id.main_imageview)
+//    private LoadingView mainImageview;
 
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
@@ -49,18 +49,7 @@ public class AppStart extends Activity {
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
         ViewUtils.inject(this);
-        initLoadingImages();
-
-        //是否登录
-        AppContext appContext = (AppContext) getApplication();
-        try {
-            if (!AppContext.isLogin(appContext)) {
-                UIHelper.showLogin2Redirect(appContext);
-                finish();
-            }
-        } catch (AppException e) {
-            e.printStackTrace();
-        }
+        //initLoadingImages();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -121,23 +110,23 @@ public class AppStart extends Activity {
     }
 
 
-    private void initLoadingImages() {
-        int[] imageIds = new int[6];
-        imageIds[0] = R.drawable.loader_frame_1;
-        imageIds[1] = R.drawable.loader_frame_2;
-        imageIds[2] = R.drawable.loader_frame_3;
-        imageIds[3] = R.drawable.loader_frame_4;
-        imageIds[4] = R.drawable.loader_frame_5;
-        imageIds[5] = R.drawable.loader_frame_6;
-
-        mainImageview.setImageIds(imageIds);
-        new Thread() {
-            @Override
-            public void run() {
-                mainImageview.startAnim();
-            }
-        }.start();
-    }
+//    private void initLoadingImages() {
+//        int[] imageIds = new int[6];
+//        imageIds[0] = R.drawable.loader_frame_1;
+//        imageIds[1] = R.drawable.loader_frame_2;
+//        imageIds[2] = R.drawable.loader_frame_3;
+//        imageIds[3] = R.drawable.loader_frame_4;
+//        imageIds[4] = R.drawable.loader_frame_5;
+//        imageIds[5] = R.drawable.loader_frame_6;
+//
+//        mainImageview.setImageIds(imageIds);
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                mainImageview.startAnim();
+//            }
+//        }.start();
+//    }
 
     /**
      * 跳转到...

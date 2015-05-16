@@ -160,7 +160,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
         //登陆判断
         try {
             if (!AppContext.isLogin(appContext)) {
-                UIHelper.showLogin2Redirect(appContext);
+                UIHelper.showLoginRedirect(appContext);
                 finish();
             }
         } catch (AppException e) {

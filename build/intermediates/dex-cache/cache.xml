@@ -2,95 +2,95 @@
 <items version="2" >
 
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e2b978a7240e7b4152dbf3a771db19edfe56c2f3">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/fastjson-1.1.15-04ec46091c7c3b3ad824f6b10060d964abd37a0a.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/commons-httpclient-3.1.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/commons-httpclient-3.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="964cd74171f427720480efdec40a7c7f6e58426a">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/commons-httpclient-3.1-6d7e63900e9fdd02bc24bb5e43325e4492839af0.jar" />
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/commons-httpclient-3.1-8b7137d7bca9ab15782bb5797076e4fe0dc0070c.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.lsjwzh/materialloadingprogressbar/0.5.3-RELEASE/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="317941290928203bdceaa763e87a0ec0924fba78">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-e7a3fb4da91f34f430b01de33a99a3c8ec08e95d.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-442503c6c0a49b76ae5e96b10a105f9fe99aea8b.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="fe75606aa9485cd20177894c204291a79a0cc7ab">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-c87dd16be94d23625346424918e98112c079e5f0.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/cn.pedant.sweetalert/library/1.3/classes.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/cn.pedant.sweetalert/library/1.3/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="0c3529d9491be892952749d252ae1defa9b1f937">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-6ed237d5baa81c981028519f4302d70dbcd11bdd.jar" />
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-932c842750e8db7aeb7d07a01e82b3be176a14a7.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-678246fea6f76611c17b46cab6a01b89ce352c60.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4ed9a66b633712072af746e0c0d6118d55091f36.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.0/classes.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.0/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="57487745ce450899f9f250d5ae5c092a682cd041">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-beb5aa0f3092062db51b966f2e14deb03fb31a81.jar" />
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-00a2c2a5451f7a04c34b5cee50c6f45cd588e0a3.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-00bed9c56e7abf61508eb7c1c43a1e35be994cc6.jar" />
-    </item>
-    <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-c196a3122e4eab3fbca20f596bcac70923b6fea5.jar" />
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-dbea6f2ce195c1b437b37631917621a9e7edf774.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.beardedhen/androidbootstrap/1.2.1/classes.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.jiechic.library/xUtils/2.6.14/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="5b26560d38c480aa5c8413a9f43bd205afb123d7">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-758b53abb6defba3e318b6aa7a16f517cc4cc5ae.jar" />
+        sha1="fe75606aa9485cd20177894c204291a79a0cc7ab">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-a243489bfb55a65718b5d3e64ef35543a03c46fa.jar" />
     </item>
     <item
-        jar="/Users/haven/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-72a270dd2ff652faa11bf1d3cfb55c5986be5b53.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/fastjson-1.1.15.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e2b978a7240e7b4152dbf3a771db19edfe56c2f3">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/fastjson-1.1.15-85f745c6f6190a02a743d99dc1b80757ced19b55.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.lsjwzh/materialloadingprogressbar/0.5.3-RELEASE/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="317941290928203bdceaa763e87a0ec0924fba78">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-b4fa34ccee8e4c554c7a5712a03aa7d19ab71fec.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="8b7e856a4fbceb7bbdfd7679d18c43deb902ae1a">
-        <dex dex="/Users/haven/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-7035e42cd7d139086e06b29433baa91f492a3ed5.jar" />
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/pgyer_sdk_2.0-bc9473d26ff594d342cb680699de11c56112b377.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-3d31a1f98a74c0d630e9980656206ca8fd3e4e45.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.beardedhen/androidbootstrap/1.2.1/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b26560d38c480aa5c8413a9f43bd205afb123d7">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-80483960f21e809796fdce11dd12e40e962f09d9.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-c6a65fbd5cf8491ab81c81b4ae2a404c4db0b655.jar" />
+    </item>
+    <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-0eec2a74629b66030b636bb22946636f671d57f0.jar" />
     </item>
 
 </items>

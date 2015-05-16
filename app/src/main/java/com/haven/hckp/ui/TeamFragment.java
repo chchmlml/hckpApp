@@ -76,7 +76,7 @@ public class TeamFragment extends BaseActivity {
         switch (v.getId()) {
             case R.id.right_img:
                 //UIHelper.showTeamfindRedirect(appContext);
-                Intent intent = new Intent(mActivity, TeamFindActivity.class);
+                Intent intent = new Intent(this, TeamFindActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
         }
@@ -85,7 +85,7 @@ public class TeamFragment extends BaseActivity {
     private void initViews() {
 
         mTitleTv = (TextView) findViewById(R.id.title_tv);
-        mTitleTv.setText(R.string.team);
+        mTitleTv.setText("我的车队");
         this.initFrameListView();
     }
 

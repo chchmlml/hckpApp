@@ -149,13 +149,6 @@ public class SelectPictuerActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        finish();
-        return super.onTouchEvent(event);
-    }
-
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             doPhoto(requestCode, data);

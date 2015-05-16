@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.haven.hckp.R;
 import com.haven.hckp.common.StringUtils;
@@ -19,7 +20,7 @@ public class DispathDetailAdapter extends BaseAdapter {
 
     static class ListItemView { // 自定义控件集合
         public TextView reachdate;
-        public TextView status;
+        public ImageView status;
         public TextView startcity;
         public TextView endcity;
     }
@@ -62,7 +63,7 @@ public class DispathDetailAdapter extends BaseAdapter {
             listItemView = new ListItemView();
             // 获取控件对象
             listItemView.reachdate = (TextView) convertView.findViewById(R.id.reachdate);
-            listItemView.status = (TextView) convertView.findViewById(R.id.status);
+            listItemView.status = (ImageView) convertView.findViewById(R.id.status_icon);
             listItemView.startcity = (TextView) convertView.findViewById(R.id.start_city);
             listItemView.endcity = (TextView) convertView.findViewById(R.id.end_city);
 
@@ -77,10 +78,30 @@ public class DispathDetailAdapter extends BaseAdapter {
 
         listItemView.reachdate.setText(StringUtils.toString(news.get("tp_o_reachdate")));
         listItemView.reachdate.setTag(news);
-        listItemView.status.setText(StringUtils.toString(news.get("tp_o_status")));
+        //listItemView.status.setText(StringUtils.toString(news.get("tp_o_status")));
 
         listItemView.startcity.setText(StringUtils.toString(news.get("tp_o_start_city")));
         listItemView.endcity.setText(StringUtils.toString(news.get("tp_o_end_city")));
+
+        int status = StringUtils.toInt(StringUtils.toString(news.get("tp_o_status")));
+        switch (status)
+        {
+            case 1:
+            case 2:
+                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_3));
+                break;
+            case 3:
+            case 4:
+                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_0));
+                break;
+            case 5:
+                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
+                break;
+            case 6:
+            case 7:
+                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_2));
+                break;
+        }
         return convertView;
     }
 }

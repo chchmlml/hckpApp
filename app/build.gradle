@@ -5,7 +5,7 @@ android {
         hckp {
             keyAlias 'hckp.keystore'
             keyPassword '201314'
-            storeFile file('/Users/haven/Development/github/hckpApp/hckp.keystore')
+            storeFile file('/Volumes/MacBackup/Development/github/hckpApp/hckp.keystore')
             storePassword '201314'
         }
     }

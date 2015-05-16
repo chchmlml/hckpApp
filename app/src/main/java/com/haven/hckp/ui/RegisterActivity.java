@@ -70,7 +70,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_submit,R.id.back_img})
+    @OnClick({R.id.btn_submit, R.id.back_img, R.id.btn_login})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -79,6 +79,9 @@ public class RegisterActivity extends BaseActivity {
                 break;
             case R.id.btn_submit:
                 loginAction();
+                break;
+            case R.id.btn_login:
+                UIHelper.showLoginRedirect(appContext);
                 break;
         }
     }
@@ -92,40 +95,40 @@ public class RegisterActivity extends BaseActivity {
         String realname = StringUtils.toString(inputRealname.getText());
 
         if (StringUtils.isEmpty(phone)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param1_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param1_is_null);
             return;
         }
         if (StringUtils.isEmpty(pwd)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param2_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param2_is_null);
             return;
         }
         if (StringUtils.isEmpty(pwd2)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param3_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param3_is_null);
             return;
         }
         if (StringUtils.isEmpty(username)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param4_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param4_is_null);
             return;
         }
 
         if (StringUtils.isEmpty(realname)) {
-            UIHelper.ToastMessage(appContext,R.string.register_param7_is_null);
+            UIHelper.ToastMessage(appContext, R.string.register_param7_is_null);
             return;
         }
 
-        if(!pwd.equals(pwd2)){
-            UIHelper.ToastMessage(appContext,R.string.register_param5_is_null);
+        if (!pwd.equals(pwd2)) {
+            UIHelper.ToastMessage(appContext, R.string.register_param5_is_null);
             return;
         }
 
-        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(),appContext);
+        String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(), appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("phone", phone);
         params.addBodyParameter("pwd", pwd);
         params.addBodyParameter("username", username);
         params.addBodyParameter("realname", realname);
         HttpUtils http = new HttpUtils();
-        final ProgressDialog pd = ProgressDialog.show(this,null,"请稍后...");
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
         http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
             @Override
@@ -134,12 +137,12 @@ public class RegisterActivity extends BaseActivity {
                 JSONObject obj = JSON.parseObject(objectResponseInfo.result);
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
-                    Map<String,Object> userObj = (Map<String, Object>) obj.get("data");
+                    Map<String, Object> userObj = (Map<String, Object>) obj.get("data");
                     appContext.setProperty("userId", StringUtils.toString(userObj.get("user_id")));
                     appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
                     appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
-                    appContext.setProperty("sessionId",  StringUtils.toString(userObj.get("session_id")));
-                    appContext.setProperty("headpic",  StringUtils.toString(userObj.get("ts_u_headpic")));
+                    appContext.setProperty("sessionId", StringUtils.toString(userObj.get("session_id")));
+                    appContext.setProperty("headpic", StringUtils.toString(userObj.get("ts_u_headpic")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);

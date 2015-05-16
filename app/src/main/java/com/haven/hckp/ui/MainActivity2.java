@@ -56,6 +56,15 @@ public class MainActivity2 extends BaseActivity implements OnTabSelectedListener
         if (!appContext.isNetworkConnected())
             UIHelper.ToastMessage(this, R.string.network_not_connected);
 
+        try {
+            if (!AppContext.isLogin(appContext)) {
+                UIHelper.showLoginRedirect(appContext);
+                finish();
+            }
+        } catch (AppException e) {
+
+        }
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         mIndex = bundle.getInt("index");
@@ -94,7 +103,7 @@ public class MainActivity2 extends BaseActivity implements OnTabSelectedListener
         //登陆判断
         try {
             if (!AppContext.isLogin(appContext)) {
-                UIHelper.showLogin2Redirect(appContext);
+                UIHelper.showLoginRedirect(appContext);
                 finish();
             }
         } catch (AppException e) {
@@ -183,23 +192,23 @@ public class MainActivity2 extends BaseActivity implements OnTabSelectedListener
     /**
      * 监听返回--是否退出程序
      */
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
-                    .setTitleText("确定退出吗？")
-                    .setContentText("点击确认，我们将无法定位您的位置信息，影响正常配送。")
-                    .setConfirmText("确定")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            System.exit(0);
-                        }
-                    })
-                    .showCancelButton(true)
-                    .setCancelText("取消")
-                    .setCancelClickListener(null)
-                    .show();
-        }
-        return false;
-    }
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            new SweetAlertDialog(this, SweetAlertDialog.NORMAL_TYPE)
+//                    .setTitleText("确定退出吗？")
+//                    .setContentText("点击确认，我们将无法定位您的位置信息，影响正常配送。")
+//                    .setConfirmText("确定")
+//                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                        @Override
+//                        public void onClick(SweetAlertDialog sDialog) {
+//                            System.exit(0);
+//                        }
+//                    })
+//                    .showCancelButton(true)
+//                    .setCancelText("取消")
+//                    .setCancelClickListener(null)
+//                    .show();
+//        }
+//        return false;
+//    }
 }

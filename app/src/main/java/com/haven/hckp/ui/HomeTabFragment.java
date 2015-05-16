@@ -291,16 +291,7 @@ public class HomeTabFragment extends BaseFragment {
                     Map<String,Object> params = new HashMap<String, Object>();
                     switch (listType){
                         case 1:
-                            params.put("status","1");
-                            break;
-                        case 2:
-                            params.put("status","2");
-                            break;
-                        case 3:
-                            params.put("status","3");
-                            break;
-                        case 4:
-                            params.put("status","4");
+                            params.put("status","7");
                             break;
                     }
                     DispathList list = appContext.getDispathList(pageIndex, isRefresh,params);

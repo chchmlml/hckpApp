@@ -39,8 +39,8 @@ import java.util.Map;
 
 public class loginActivity extends BaseActivity {
 
-    @ViewInject(R.id.title_tv)
-    private TextView mTitleTv;
+//    @ViewInject(R.id.title_tv)
+//    private TextView mTitleTv;
 
     @ViewInject(R.id.btn_email)
     private TextView textEmail;
@@ -48,14 +48,14 @@ public class loginActivity extends BaseActivity {
     @ViewInject(R.id.btn_pwd)
     private TextView textPwd;
 
-    @ViewInject(R.id.btn_login)
-    private BootstrapButton btnLogin;
+//    @ViewInject(R.id.btn_login)
+//    private BootstrapButton btnLogin;
 
     @ViewInject(R.id.btn_register)
     private Button btnRegister;
 
-    @ViewInject(R.id.back_img)
-    private ImageView backBtn;
+//    @ViewInject(R.id.back_img)
+//    private ImageView backBtn;
 
     private AppContext appContext;
 
@@ -64,9 +64,9 @@ public class loginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ViewUtils.inject(this);
-        mTitleTv.setText(R.string.login_page);
+        //mTitleTv.setText(R.string.login_page);
         //显示返回按钮
-        backBtn.setVisibility(View.VISIBLE);
+        //backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
         try {
             if (AppContext.isLogin(appContext)) {
@@ -88,9 +88,9 @@ public class loginActivity extends BaseActivity {
     public void buttonClick(View v) {
 
         switch (v.getId()) {
-            case R.id.back_img:
-                this.finish();
-                break;
+//            case R.id.back_img:
+//                this.finish();
+//                break;
             case R.id.btn_login:
                 loginAction();
                 break;
@@ -129,8 +129,9 @@ public class loginActivity extends BaseActivity {
                     appContext.setProperty("userName", StringUtils.toString(userObj.get("user_username")));
                     appContext.setProperty("userPhone", StringUtils.toString(userObj.get("user_phone")));
                     appContext.setProperty("sessionId",  StringUtils.toString(userObj.get("session_id")));
-                    appContext.setProperty("headpic",  StringUtils.toString(userObj.get("user_headpic")));
+                    appContext.setProperty("headpic", StringUtils.toString(userObj.get("user_headpic")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    UIHelper.showLoginRedirect(appContext);
                     finish();
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());

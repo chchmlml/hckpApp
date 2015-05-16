@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.haven.hckp.R;
 import com.haven.hckp.bean.Dispath;
 import com.haven.hckp.bean.News;
+import com.haven.hckp.common.StringUtils;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class DispathViewAdapter extends BaseAdapter {
 		public TextView tpTcPhone;
 		public TextView tpTcName;
         public TextView tpDiEnddate;
+        public ImageView status;
 	}
 
 	/**
@@ -68,6 +71,7 @@ public class DispathViewAdapter extends BaseAdapter {
 			// 获取控件对象
             listItemView.tpTcPhone = (TextView) convertView.findViewById(R.id.tp_tc_phone);
             listItemView.tpTcName = (TextView) convertView.findViewById(R.id.tp_tc_name);
+            listItemView.status = (ImageView) convertView.findViewById(R.id.status_icon);
             //listItemView.tpDiEnddate = (TextView) convertView.findViewById(R.id.tp_di_enddate);
 
 			// 设置控件集到convertView
@@ -82,6 +86,25 @@ public class DispathViewAdapter extends BaseAdapter {
         listItemView.tpTcPhone.setTag(news);
         listItemView.tpTcName.setText(news.getTp_tc_name());
         //listItemView.tpDiEnddate.setText(news.getTp_di_enddate());
+		int status = StringUtils.toInt(news.getTp_di_status());
+		switch (status)
+		{
+			case 1:
+			case 2:
+				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_3));
+				break;
+			case 3:
+			case 4:
+				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_0));
+				break;
+			case 5:
+				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
+				break;
+			case 6:
+			case 7:
+				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_2));
+				break;
+		}
 
 		return convertView;
 	}

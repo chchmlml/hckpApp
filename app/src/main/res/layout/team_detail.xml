@@ -48,14 +48,6 @@
                 android:layout_marginLeft="10dip"
                 android:layout_weight="1"
                 android:text="车队名" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dip"
-                android:src="@drawable/setting_arrow" />
         </RelativeLayout>
 
         <View
@@ -88,13 +80,6 @@
                 android:layout_weight="1"
                 android:text="联系人" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dip"
-                android:src="@drawable/setting_arrow" />
         </RelativeLayout>
 
         <View
@@ -127,13 +112,6 @@
                 android:layout_weight="1"
                 android:text="联系人手机" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dip"
-                android:src="@drawable/setting_arrow" />
         </RelativeLayout>
 
         <View
@@ -149,21 +127,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <!--<LinearLayout-->
-            <!--android:background="@color/grayslate"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="@dimen/padding_5px"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--<TextView-->
-                <!--style="@style/order_detail_style2"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/dispath_detail_title2" />-->
-        <!--</LinearLayout>-->
     </LinearLayout>
 
 

@@ -5,12 +5,12 @@
     android:layout_height="fill_parent"
     android:background="@drawable/splash">
 
-    <com.haven.hckp.widght.LoadingView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/main_imageview"
-        android:layout_marginBottom="100dp"
-        android:src="@drawable/loader_frame_1"></com.haven.hckp.widght.LoadingView>
+    <!--<com.haven.hckp.widght.LoadingView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:id="@+id/main_imageview"-->
+        <!--android:layout_marginBottom="100dp"-->
+        <!--android:src="@drawable/loader_frame_1"></com.haven.hckp.widght.LoadingView>-->
 
 </RelativeLayout>

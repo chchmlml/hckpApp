@@ -25,6 +25,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
         public TextView startPlace;
         public TextView endPlace;
         public TextView desc;
+        public ImageView priceBtn;
+        public ImageView statusIcon;
     }
 
     /**
@@ -72,6 +74,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
             listItemView.startPlace = (TextView) convertView.findViewById(R.id.start_place);
             listItemView.endPlace = (TextView) convertView.findViewById(R.id.end_place);
             listItemView.desc = (TextView) convertView.findViewById(R.id.desc);
+            listItemView.priceBtn = (ImageView) convertView.findViewById(R.id.send_price_btn);
+            listItemView.statusIcon = (ImageView) convertView.findViewById(R.id.status_icon);
 
             // 设置控件集到convertView
             convertView.setTag(listItemView);
@@ -81,12 +85,21 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         // 设置文字和图片
         News news = listItems.get(position);
-
         listItemView.endtime.setText(news.getTp_diy_enddate());
         listItemView.endtime.setTag(news);
         listItemView.startPlace.setText(news.getTp_diy_start_city());
         listItemView.endPlace.setText(news.getTp_diy_end_city());
         listItemView.desc.setText(news.getTp_diy_desc());
+        if("2".equals(news.getTp_diy_category())){
+            listItemView.statusIcon.setVisibility(View.VISIBLE);
+        }else{
+            listItemView.statusIcon.setVisibility(View.GONE);
+        }
+        if(!StringUtils.isEmpty(news.getTp_diyp_price())){
+            listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_unbaojia));
+        }else{
+            listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_baojia));
+        }
 
         return convertView;
     }

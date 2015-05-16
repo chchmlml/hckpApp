@@ -6,9 +6,17 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/graywhite">
+    android:background="@drawable/login_bg">
 
-    <include layout="@layout/title_bar" />
+    <!--<include layout="@layout/title_bar" />-->
+
+    <ImageView
+        android:layout_marginTop="20dip"
+        android:layout_marginBottom="20dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_logo" />
+
 
     <LinearLayout
         android:gravity="center"

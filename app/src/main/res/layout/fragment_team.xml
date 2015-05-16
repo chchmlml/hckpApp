@@ -25,6 +25,7 @@
 
     <com.haven.hckp.widght.PullToRefreshListView
         android:id="@+id/listview_order"
+        android:listSelector="@color/graywhite"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
