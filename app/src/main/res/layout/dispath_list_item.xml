@@ -74,7 +74,7 @@
 
                     <TextView
                         android:id="@+id/tip_tc_name"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dip"
@@ -84,7 +84,7 @@
                     <TextView
                         android:id="@+id/tp_tc_name"
                         android:layout_toRightOf="@id/tip_tc_name"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dip"
@@ -99,7 +99,7 @@
 
                     <TextView
                         android:id="@+id/tip_tc_name2"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dip"
@@ -109,7 +109,7 @@
                     <TextView
                         android:id="@+id/tp_tc_phone"
                         android:layout_toRightOf="@id/tip_tc_name2"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dip"

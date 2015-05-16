@@ -132,8 +132,8 @@ public class HomeDispathDetailActivity extends BaseActivity {
     @ViewInject(R.id.reach_date)
     private TextView reachDate;
 
-    @ViewInject(R.id.status)
-    private TextView status;
+    @ViewInject(R.id.status_icon)
+    private ImageView status;
 
     @ViewInject(R.id.goods_weight)
     private TextView goodsWeight;
@@ -170,7 +170,6 @@ public class HomeDispathDetailActivity extends BaseActivity {
                     startCity.setText(StringUtils.toString(transObj.get("tp_o_start_city")));
                     endCity.setText(StringUtils.toString(transObj.get("tp_o_end_city")));
                     reachDate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")));
-                    status.setText(StringUtils.toString(transObj.get("tp_o_status")));
                     goodsWeight.setText(StringUtils.toString(transObj.get("tp_tt_weight")));
                     goodsNum.setText(StringUtils.toString(transObj.get("tp_tt_nums")));
                     remark.setText(StringUtils.toString(transObj.get("tp_o_remark")));
@@ -178,6 +177,25 @@ public class HomeDispathDetailActivity extends BaseActivity {
                     goodsGet.setText(getGoods);
                     String sendGoods = StringUtils.toString(transObj.get("tp_tt_sendweight")) + "/" + StringUtils.toString(transObj.get("tp_tt_sendnums"));
                     goodsSend.setText(sendGoods);
+                    int statusCode = StringUtils.toInt(transObj.get("tp_o_status"));
+                    switch (statusCode)
+                    {
+                        case 1:
+                        case 2:
+                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_3));
+                            break;
+                        case 3:
+                        case 4:
+                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_0));
+                            break;
+                        case 5:
+                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_1));
+                            break;
+                        case 6:
+                        case 7:
+                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_2));
+                            break;
+                    }
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
                 }

@@ -39,12 +39,12 @@
 
             <TextView
                 android:id="@+id/start_city"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dip"
                 android:layout_weight="1"
-                android:text="" />
+                android:text="222222" />
 
         </RelativeLayout>
 
@@ -69,12 +69,12 @@
 
             <TextView
                 android:id="@+id/end_city"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dip"
                 android:layout_weight="1"
-                android:text="" />
+                android:text="33333" />
 
         </RelativeLayout>
 
@@ -100,7 +100,7 @@
             <TextView
                 android:id="@+id/order_end_time"
                 android:layout_toRightOf="@id/tip_enddate"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />
@@ -146,7 +146,7 @@
             <TextView
                 android:id="@+id/order_kms"
                 android:layout_toRightOf="@+id/tip_kms"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />
@@ -175,7 +175,7 @@
             <TextView
                 android:id="@+id/order_desc"
                 android:layout_toRightOf="@id/tip_desc"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />
@@ -221,7 +221,7 @@
             <TextView
                 android:id="@+id/tc_name"
                 android:layout_toRightOf="@+id/tip_tc"
-                style="@style/detail_text_style"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />

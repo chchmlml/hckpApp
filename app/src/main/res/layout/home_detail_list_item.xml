@@ -80,7 +80,7 @@
 
                     <TextView
                         android:id="@+id/start_city"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dip"
@@ -105,7 +105,7 @@
                     <TextView
                         android:id="@+id/end_city"
                         android:layout_marginLeft="40dip"
-                        style="@style/order_text_style"
+                        style="@style/order_text_style2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="上海" />

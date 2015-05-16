@@ -29,7 +29,7 @@
 
                 <TextView
                     android:id="@+id/car_no"
-                    style="@style/setting_text_style2"
+                    style="@style/setting_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dip"

@@ -135,7 +135,7 @@ public class SettingFragment extends BaseFragment {
 
                     @Override
                     public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
-                        UIHelper.ToastMessage(appContext, "头像加载失败");
+                        //UIHelper.ToastMessage(appContext, "头像加载失败");
                     }
                 });
             } else {

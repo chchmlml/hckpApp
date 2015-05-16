@@ -47,7 +47,7 @@
                 <TextView
                     android:id="@+id/tp_di_sn"
                     android:layout_toRightOf="@id/tip1"
-                    style="@style/detail_text_style"
+                    style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -76,7 +76,7 @@
                 <TextView
                     android:id="@+id/tp_di_startdate"
                     android:layout_toRightOf="@id/tip2"
-                    style="@style/detail_text_style"
+                    style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -105,7 +105,7 @@
                 <TextView
                     android:id="@+id/order_detail_style"
                     android:layout_toRightOf="@id/tip3"
-                    style="@style/detail_text_style"
+                    style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="" />
@@ -135,7 +135,7 @@
                 <TextView
                     android:id="@+id/tp_di_remark"
                     android:layout_toRightOf="@id/tip4"
-                    style="@style/detail_text_style"
+                    style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="" />
