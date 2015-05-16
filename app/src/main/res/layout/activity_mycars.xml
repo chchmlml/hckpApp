@@ -9,7 +9,7 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
-    <com.haven.hckp.widght.PullToRefreshListView
+    <com.instway.app.widght.PullToRefreshListView
         android:id="@+id/listview_cars"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>

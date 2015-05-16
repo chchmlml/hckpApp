@@ -23,7 +23,7 @@
             <!--android:src="@drawable/search_bg" />-->
     <!--</LinearLayout>-->
 
-    <com.haven.hckp.widght.PullToRefreshListView
+    <com.instway.app.widght.PullToRefreshListView
         android:id="@+id/listview_order"
         android:listSelector="@color/graywhite"
         android:layout_width="fill_parent"

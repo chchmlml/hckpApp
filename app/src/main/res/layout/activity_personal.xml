@@ -131,6 +131,7 @@
             android:background="@color/gray2" />
 
         <RelativeLayout
+            android:id="@+id/form_person_id"
             android:background="@color/white"
             android:paddingTop="20dip"
             android:paddingBottom="20dip"
@@ -177,6 +178,7 @@
             android:background="@color/gray2" />
 
         <RelativeLayout
+            android:id="@+id/form_drive_id"
             android:background="@color/white"
             android:paddingTop="20dip"
             android:paddingBottom="20dip"

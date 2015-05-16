@@ -9,10 +9,10 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
-    <com.haven.hckp.widght.TopIndicatorOrder
+    <com.instway.app.widght.TopIndicatorOrder
         android:id="@+id/top_indicator_order"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></com.haven.hckp.widght.TopIndicatorOrder>
+        android:layout_height="wrap_content"></com.instway.app.widght.TopIndicatorOrder>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_order"

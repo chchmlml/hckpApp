@@ -45,7 +45,7 @@
 	   	android:layout_width="fill_parent" 
 	   	android:layout_height="fill_parent">
 
-		<com.haven.hckp.widght.PullToRefreshListView
+		<com.instway.app.widght.PullToRefreshListView
 			android:id="@+id/listview_order"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent" />

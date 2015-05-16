@@ -10,16 +10,16 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_weight="1"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
             android:src="@drawable/home_banner" />
     </LinearLayout>
 
@@ -30,11 +30,11 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.haven.hckp.widght.HomeButton
+        <com.instway.app.widght.HomeButton
             android:id="@+id/l1"
-            android:layout_margin="10dip"
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
+            android:layout_margin="10dip"
             android:layout_weight="1"
             android:background="@color/home_color_plane"
             myapp:doAnim="true">
@@ -50,13 +50,13 @@
             <ImageView
                 android:layout_width="50dip"
                 android:layout_height="50dip"
-                android:scaleType="fitXY"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
                 android:src="@drawable/home_huowu" />
 
-        </com.haven.hckp.widght.HomeButton>
+        </com.instway.app.widght.HomeButton>
 
-        <com.haven.hckp.widght.HomeButton
+        <com.instway.app.widght.HomeButton
             android:id="@+id/l2"
             android:layout_width="fill_parent"
             android:layout_height="0.0dip"
@@ -78,8 +78,8 @@
             <ImageView
                 android:layout_width="40dip"
                 android:layout_height="40dip"
-                android:scaleType="fitXY"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
                 android:src="@drawable/home_dingdan" />
 
             <TextView
@@ -93,12 +93,21 @@
                 android:text="222222"
                 android:visibility="gone" />
 
-        </com.haven.hckp.widght.HomeButton>
+        </com.instway.app.widght.HomeButton>
 
-        <com.haven.hckp.widght.HomeButton
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.instway.app.widght.HomeButton
             android:id="@+id/l3"
             android:layout_width="fill_parent"
-            android:layout_height="0.0dip"
+            android:layout_height="fill_parent"
             android:layout_margin="10dip"
             android:layout_marginTop="0dip"
             android:layout_weight="1"
@@ -117,10 +126,39 @@
             <ImageView
                 android:layout_width="40dip"
                 android:layout_height="40dip"
-                android:scaleType="fitXY"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
                 android:src="@drawable/home_gerenshiwu" />
-        </com.haven.hckp.widght.HomeButton>
+        </com.instway.app.widght.HomeButton>
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip"
+            android:layout_weight="1"
+            android:background="@color/home_color_selectedmerchant"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="我的车队" />
+
+
+            <ImageView
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_chedui" />
+        </com.instway.app.widght.HomeButton>
+
     </LinearLayout>
 
 </LinearLayout>

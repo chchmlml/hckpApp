@@ -12,7 +12,7 @@
         android:layout_weight="1.0" >
     </FrameLayout>
 
-    <com.haven.hckp.widght.MyTabWidget
+    <com.instway.app.widght.MyTabWidget
         android:id="@+id/tab_widget"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

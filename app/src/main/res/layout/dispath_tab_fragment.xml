@@ -5,7 +5,7 @@
     android:background="@color/graywhite"
     android:orientation="vertical">
 
-    <com.haven.hckp.widght.PullToRefreshListView
+    <com.instway.app.widght.PullToRefreshListView
         android:id="@+id/listview_dispatch"
         android:layout_width="fill_parent"
         android:listSelector="@color/graywhite"

@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/gray" />
 
-    <com.haven.hckp.widght.CustomRelativeLayout
+    <com.instway.app.widght.CustomRelativeLayout
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1.0"
@@ -47,6 +47,6 @@
             android:gravity="center"
             android:padding="20dip"
             android:src="@drawable/hckp_icon" />
-    </com.haven.hckp.widght.CustomRelativeLayout>
+    </com.instway.app.widght.CustomRelativeLayout>
 
 </LinearLayout>
