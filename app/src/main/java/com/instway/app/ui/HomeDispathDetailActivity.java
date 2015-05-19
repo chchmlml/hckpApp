@@ -74,7 +74,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
                 SendTransport();
                 break;
             case R.id.goods_input_3:
-                UIHelper.showTakephotoRedirect(appContext, 5);
+                UIHelper.showTakephotoRedirect(appContext, 5, "");
                 break;
         }
     }

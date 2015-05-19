@@ -309,15 +309,18 @@ public class UIHelper {
         b.putString("car_no", car.getTp_car_no());
         b.putString("car_weight", car.getTp_car_weight());
         b.putString("car_length", car.getTp_car_length());
+        b.putString("car_width", car.getTp_car_width());
+        b.putString("car_height", car.getTp_car_hight());
         intent.putExtras(b);
         context.startActivity(intent);
     }
 
-    public static void showTakephotoRedirect(Context context, int type) {
+    public static void showTakephotoRedirect(Context context, int type, String src) {
         Intent intent = new Intent(context, SelectPictuerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putInt("pic_type", type);
+        b.putString("src", src);
         intent.putExtras(b);
         context.startActivity(intent);
     }

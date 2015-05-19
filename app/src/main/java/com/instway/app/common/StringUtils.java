@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -308,7 +309,16 @@ public class StringUtils {
      * @return
      */
     public static String randomNum(){
-        return String.valueOf((int)(Math.random() * 10000));
+        return String.valueOf((int) (Math.random() * 10000));
     }
 
+    /**
+     * 是否是车牌
+     * @return
+     */
+    public static boolean isCarNo(String val){
+        Pattern pattern = Pattern.compile("[\\u4e00-\\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}");
+        Matcher matcher = pattern.matcher(val);
+        return matcher.matches();
+    }
 }

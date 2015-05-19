@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -16,14 +17,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.instway.app.AppContext;
+import com.instway.app.AppManager;
 import com.instway.app.R;
+import com.instway.app.api.ApiClient;
+import com.instway.app.bean.URLs;
 import com.instway.app.common.ImageUtil;
 import com.instway.app.common.StringUtils;
 import com.instway.app.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -34,6 +44,8 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SelectPictuerActivity extends BaseActivity {
     public static final int SELECT_PIC_BY_TACK_PHOTO = 1;
@@ -85,6 +97,24 @@ public class SelectPictuerActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         lastIntent = getIntent();
+
+
+        Bundle bundle = lastIntent.getExtras();
+        String src = bundle.getString("src");
+        if (!StringUtils.isEmpty(src)) {
+            BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+            bitmapUtils.display(imageView, src, new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
+                @Override
+                public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
+                    imageView.setImage(bitmap);
+                }
+
+                @Override
+                public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
+                    //UIHelper.ToastMessage(appContext, "头像加载失败");
+                }
+            });
+        }
     }
 
 
@@ -193,15 +223,17 @@ public class SelectPictuerActivity extends BaseActivity {
         //上传类型
         Bundle bundle = lastIntent.getExtras();
         int picType = bundle.getInt("pic_type");
-        switch (picType)
-        {
+        HashMap<String, Object> p = new HashMap<String, Object>();
+        switch (picType) {
             case 1:
                 LogUtils.i("--->头像");
                 break;
             case 2:
+                p.put("pic_type", "idcard");
                 LogUtils.i("--->身份证");
                 break;
             case 3:
+                p.put("pic_type", "drilic");
                 LogUtils.i("--->驾驶证");
                 break;
             case 4:
@@ -215,14 +247,14 @@ public class SelectPictuerActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, "请选择图片...");
             return;
         }
-
+        String newUrl = ApiClient._MakeURL(URLs.UPLOAD_PIC_ID, p, appContext);
         RequestParams params = new RequestParams();
-        params.addBodyParameter("name", "value");
-        params.addBodyParameter("file", new File(picPath));
+        //params.addBodyParameter("input_name", "filename");
+        params.addBodyParameter("pic_key", new File(picPath));
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "正在上传图片...");
         http.send(HttpRequest.HttpMethod.POST,
-                "uploadUrl....",
+                newUrl,
                 params,
                 new RequestCallBack<String>() {
 
@@ -241,6 +273,15 @@ public class SelectPictuerActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
+                        JSONObject obj = JSON.parseObject(responseInfo.result);
+                        String code = obj.get("code").toString();
+                        String msg = obj.get("msg").toString();
+                        if (code.equals("1")) {
+                            UIHelper.ToastMessage(appContext, msg);
+                            finish();
+                        } else {
+                            UIHelper.ToastMessage(appContext, msg);
+                        }
                         pd.dismiss();
                     }
 
@@ -248,6 +289,7 @@ public class SelectPictuerActivity extends BaseActivity {
                     public void onFailure(HttpException e, String s) {
                         pd.dismiss();
                         UIHelper.ToastMessage(appContext, "图片上传失败：" + e.getMessage());
+                        UIHelper.ToastMessage(appContext, "图片上传失败：" + s);
                     }
                 });
     }

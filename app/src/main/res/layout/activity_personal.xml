@@ -108,6 +108,7 @@
 
 
             <ImageView
+                android:id="@+id/head_thumb"
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:layout_alignParentRight="true"
@@ -155,6 +156,7 @@
 
 
             <ImageView
+                android:id="@+id/ID_thumb"
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:layout_alignParentRight="true"
@@ -202,6 +204,7 @@
 
 
             <ImageView
+                android:id="@+id/drive_thumb"
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:layout_alignParentRight="true"

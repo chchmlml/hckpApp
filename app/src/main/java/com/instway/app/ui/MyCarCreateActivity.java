@@ -122,7 +122,7 @@ public class MyCarCreateActivity extends BaseActivity {
             }
             break;
             case R.id.form_car_id:
-                UIHelper.showTakephotoRedirect(appContext,4);
+                UIHelper.showTakephotoRedirect(appContext,4, "");
                 break;
         }
     }

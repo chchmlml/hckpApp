@@ -29,6 +29,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.HashMap;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MyCarEditActivity extends BaseActivity {
 
     private AppContext appContext;
@@ -38,6 +40,9 @@ public class MyCarEditActivity extends BaseActivity {
 
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
+
+    @ViewInject(R.id.right_img)
+    private ImageView delBtn;
 
     @ViewInject(R.id.car_no)
     private TextView carNo;
@@ -74,13 +79,10 @@ public class MyCarEditActivity extends BaseActivity {
         mTitleTv.setText(R.string.my_cars_add);
         renderBaseView();
         //显示返回按钮
-        backBtn.setVisibility(View.VISIBLE);
     }
 
 
-
-
-    @OnClick({R.id.back_img, R.id.button, R.id.form_car_no, R.id.form_car_weight, R.id.form_car_length, R.id.form_car_id, R.id.form_car_height, R.id.form_car_width})
+    @OnClick({R.id.back_img, R.id.button,R.id.delbtn, R.id.form_car_no, R.id.form_car_weight, R.id.form_car_length, R.id.form_car_id, R.id.form_car_height, R.id.form_car_width})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -89,6 +91,21 @@ public class MyCarEditActivity extends BaseActivity {
                 break;
             case R.id.button:
                 createCar();
+                break;
+            case R.id.delbtn:
+                new SweetAlertDialog(appContext, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("您确定删除这辆车？")
+                        .setConfirmText("确定")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                delCar();
+                            }
+                        })
+                        .showCancelButton(true)
+                        .setCancelText("取消")
+                        .setCancelClickListener(null)
+                        .show();
                 break;
             case R.id.form_car_no: {
             }
@@ -154,12 +171,46 @@ public class MyCarEditActivity extends BaseActivity {
             }
             break;
             case R.id.form_car_id:
-                UIHelper.showTakephotoRedirect(appContext,4);
+                UIHelper.showTakephotoRedirect(appContext, 4, "");
                 break;
         }
     }
 
+    private void delCar() {
+        HashMap<String, Object> p = new HashMap<String, Object>();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("car_id", carId);
+        p.put("car_id", carId);
+        String newUrl = ApiClient._MakeURL(URLs.DEL_CAR, p, appContext);
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+
+        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                pd.dismiss();
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                    finish();
+                } else {
+                    UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                pd.dismiss();
+            }
+        });
+    }
+
     private void createCar() {
+        if (!StringUtils.isCarNo(StringUtils.toString(carNo.getText()))) {
+            UIHelper.ToastMessage(appContext, "请输入合法的车牌号");
+            return;
+        }
         HashMap<String, Object> p = new HashMap<String, Object>();
         RequestParams params = new RequestParams();
         params.addBodyParameter("car_id", carId);
@@ -175,9 +226,9 @@ public class MyCarEditActivity extends BaseActivity {
         params.addBodyParameter("car_width", StringUtils.toString(carWidth.getText()));
         p.put("car_width", StringUtils.toString(carWidth.getText()));
         StringBuilder url = new StringBuilder();
-        if(StringUtils.isEmpty(carId)){
+        if (StringUtils.isEmpty(carId)) {
             url.append(URLs.CREATE_CAR);
-        }else{
+        } else {
             url.append(URLs.EDIT_CAR);
         }
         String newUrl = ApiClient._MakeURL(url.toString(), p, appContext);
@@ -209,8 +260,8 @@ public class MyCarEditActivity extends BaseActivity {
         carNo.setText(bundle.getString("car_no"));
         carWeight.setText(bundle.getString("car_weight"));
         carLength.setText(bundle.getString("car_length"));
-        carWeight.setText(bundle.getString("car_width"));
-        carLength.setText(bundle.getString("car_height"));
+        carWidth.setText(bundle.getString("car_width"));
+        carHeight.setText(bundle.getString("car_height"));
         carId = bundle.getString("car_id");
     }
 }

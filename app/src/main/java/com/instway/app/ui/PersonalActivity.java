@@ -2,6 +2,8 @@ package com.instway.app.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.instway.app.AppContext;
 import com.instway.app.AppException;
 import com.instway.app.AppManager;
@@ -18,8 +21,12 @@ import com.instway.app.bean.URLs;
 import com.instway.app.bean.User;
 import com.instway.app.common.StringUtils;
 import com.instway.app.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
@@ -46,6 +53,15 @@ public class PersonalActivity extends BaseActivity {
     @ViewInject(R.id.ts_u_username)
     private TextView username;
 
+    @ViewInject(R.id.ID_thumb)
+    private ImageView IDThumb;
+
+    @ViewInject(R.id.head_thumb)
+    private ImageView headThumb;
+
+    @ViewInject(R.id.drive_thumb)
+    private ImageView driveThumb;
+
     @ViewInject(R.id.ts_u_phone)
     private TextView phone;
     private Intent intent;
@@ -67,6 +83,12 @@ public class PersonalActivity extends BaseActivity {
         initDataView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initDataView();
+    }
+
     private void initDataView() {
         Map<String, Object> params = new HashMap<String, Object>();
         User u = null;
@@ -80,6 +102,7 @@ public class PersonalActivity extends BaseActivity {
             e.printStackTrace();
         }
         params.put("uid", u.getUserIid());
+        params.put("r", StringUtils.randomNum());
         String newUrl = ApiClient._MakeURL(URLs.USER_DETAIL, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
@@ -109,9 +132,27 @@ public class PersonalActivity extends BaseActivity {
                 });
     }
 
+    String headSrc;
+    String idSrc;
+    String driveId;
+
     private void renderBaseView(Map<String, Object> data) {
         username.setText(StringUtils.toString(data.get("ts_u_username")));
         phone.setText(StringUtils.toString(data.get("ts_u_phone")));
+        //身份证 头像 驾驶证
+        BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+        headSrc = StringUtils.toString(data.get("ts_u_headpic"));
+        if (!StringUtils.isEmpty(headSrc)) {
+            bitmapUtils.display(headThumb, headSrc);
+        }
+        idSrc = StringUtils.toString(data.get("tp_d_idcard"));
+        if (!StringUtils.isEmpty(idSrc)) {
+            bitmapUtils.display(IDThumb, idSrc);
+        }
+        driveId = StringUtils.toString(data.get("tp_d_drilic"));
+        if (!StringUtils.isEmpty(driveId)) {
+            bitmapUtils.display(driveThumb, driveId);
+        }
     }
 
     @OnClick({R.id.btn_logout, R.id.back_img, R.id.change_pwd_btn, R.id.form_car_id, R.id.form_person_id, R.id.form_drive_id})
@@ -122,16 +163,13 @@ public class PersonalActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.form_car_id:
-                UIHelper.showTakephotoRedirect(appContext, 1);
-                this.finish();
+                UIHelper.showTakephotoRedirect(appContext, 1, headSrc);
                 break;
             case R.id.form_person_id:
-                UIHelper.showTakephotoRedirect(appContext, 2);
-                this.finish();
+                UIHelper.showTakephotoRedirect(appContext, 2,idSrc);
                 break;
             case R.id.form_drive_id:
-                UIHelper.showTakephotoRedirect(appContext, 3);
-                this.finish();
+                UIHelper.showTakephotoRedirect(appContext, 3,driveId);
                 break;
             case R.id.btn_logout:
 
@@ -146,7 +184,6 @@ public class PersonalActivity extends BaseActivity {
 
             case R.id.change_pwd_btn:
                 UIHelper.showPersonalEditAddRedirect(appContext, userData);
-                finish();
                 break;
         }
     }
