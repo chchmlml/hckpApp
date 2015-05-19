@@ -49,28 +49,35 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/car_weight"
+                    android:id="@+id/tip1"
                     android:layout_marginLeft="10dip"
+                    style="@style/setting_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="载重" />
+                <TextView
+                    android:id="@+id/car_weight"
+                    android:layout_toRightOf="@+id/tip1"
                     style="@style/setting_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="50吨" />
 
                 <TextView
+                    android:id="@+id/tip2"
+                    android:layout_toRightOf="@id/car_weight"
+                    style="@style/setting_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车长" />
+                <TextView
                     android:id="@+id/car_length"
-                    android:layout_toRightOf="@+id/car_weight"
+                    android:layout_toRightOf="@+id/tip2"
                     style="@style/setting_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="16米" />
-
-
             </RelativeLayout>
-
-            <View
-                android:layout_height="1px"
-                android:layout_width="match_parent"
-                android:background="@color/gray2" />
 
         </LinearLayout>
     </LinearLayout>

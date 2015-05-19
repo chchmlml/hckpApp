@@ -17,8 +17,7 @@ import com.instway.app.bean.Team;
 import com.instway.app.ui.HomeActivity;
 import com.instway.app.ui.HomeDetailActivity;
 import com.instway.app.ui.HomeDispathDetailActivity;
-import com.instway.app.ui.MainActivity2;
-import com.instway.app.ui.MyCarCreateActivity;
+import com.instway.app.ui.MainActivity;
 import com.instway.app.ui.MyCarDetailActivity;
 import com.instway.app.ui.MyCarEditActivity;
 import com.instway.app.ui.MyCarsActivity;
@@ -205,7 +204,7 @@ public class UIHelper {
     }
 
     public static void showMainRedirect(Context context, int index) {
-        Intent intent = new Intent(context, MainActivity2.class);
+        Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("index", index);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
@@ -291,15 +290,26 @@ public class UIHelper {
 
 
     public static void showMyCarAddRedirect(Context context) {
-        Intent intent = new Intent(context, MyCarCreateActivity.class);
+        Intent intent = new Intent(context, MyCarEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putString("car_id", "");
+        b.putString("car_no", "");
+        b.putString("car_weight", "");
+        b.putString("car_length", "");
+        intent.putExtras(b);
         context.startActivity(intent);
     }
 
-    public static void showMyEditAddRedirect(Context context, Bundle bundle) {
+    public static void showMyEditAddRedirect(Context context, Car car) {
         Intent intent = new Intent(context, MyCarEditActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtras(bundle);
+        Bundle b = new Bundle();
+        b.putString("car_id", car.getTp_car_id());
+        b.putString("car_no", car.getTp_car_no());
+        b.putString("car_weight", car.getTp_car_weight());
+        b.putString("car_length", car.getTp_car_length());
+        intent.putExtras(b);
         context.startActivity(intent);
     }
 
@@ -327,7 +337,6 @@ public class UIHelper {
      * 发送通知广播
      *
      * @param context
-     * @param notice
      */
     public static void sendBroadCast(Context context) {
         Intent intent = new Intent("com.instway.app.action.APPWIDGET_UPDATE");

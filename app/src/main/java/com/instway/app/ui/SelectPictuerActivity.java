@@ -207,6 +207,9 @@ public class SelectPictuerActivity extends BaseActivity {
             case 4:
                 LogUtils.i("--->行驶证");
                 break;
+            case 5:
+                LogUtils.i("--->签收拍照");
+                break;
         }
         if (StringUtils.isEmpty(picPath)) {
             UIHelper.ToastMessage(appContext, "请选择图片...");

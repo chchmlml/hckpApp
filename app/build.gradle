@@ -12,7 +12,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion '22.0.1'
     defaultConfig {
-        applicationId "com.haven.hckp"
+        applicationId "com.instway.app"
         minSdkVersion 9
         targetSdkVersion 14
         versionCode 1

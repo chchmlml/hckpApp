@@ -51,13 +51,19 @@
 
         <service android:name=".service.LocationService" >
             <intent-filter>
-                <action android:name="com.haven.hckp.location" />
+                <action android:name="com.instway.app.location" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.TipsService" >
+            <intent-filter>
+                <action android:name="com.instway.app.tips" />
             </intent-filter>
         </service>
 
         <!-- 首页 -->
         <activity
-            android:name=".ui.MainActivity2"
+            android:name=".ui.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

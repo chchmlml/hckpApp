@@ -91,12 +91,12 @@ public class DispathDetailAdapter extends BaseAdapter {
                 listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_3));
                 break;
             case 3:
+                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
+                break;
             case 4:
                 listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_0));
                 break;
             case 5:
-                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
-                break;
             case 6:
             case 7:
                 listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_2));

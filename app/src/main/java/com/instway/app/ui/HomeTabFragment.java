@@ -288,6 +288,9 @@ public class HomeTabFragment extends BaseFragment {
                         case 1:
                             params.put("status","7");
                             break;
+                        default:
+                            params.put("status","");
+                            break;
                     }
                     DispathList list = appContext.getDispathList(pageIndex, isRefresh,params);
                     msg.what = 0;

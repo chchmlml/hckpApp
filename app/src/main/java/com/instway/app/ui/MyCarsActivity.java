@@ -226,7 +226,8 @@ public class MyCarsActivity extends BaseActivity {
                     return;
 
                 // 跳转到新闻详情
-                UIHelper.showCarDetailRedirect(appContext, news);
+                //UIHelper.showCarDetailRedirect(appContext, news);
+                UIHelper.showMyEditAddRedirect(appContext, news);
             }
         });
         lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {

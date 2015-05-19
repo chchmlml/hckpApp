@@ -1,22 +1,12 @@
 package com.instway.app.service;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.util.LogUtils;
 
 import java.io.FileDescriptor;
@@ -24,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LocationService extends Service {
+public class TipsService extends Service {
 
 
     @Override
@@ -37,7 +27,6 @@ public class LocationService extends Service {
         public void handleMessage(Message msg) {
 
             if (msg.what == 1) {
-                LogUtils.i("go thread...");
 
             }
             super.handleMessage(msg);
@@ -56,12 +45,13 @@ public class LocationService extends Service {
     };
 
     @Override
-        public void onCreate() {
+    public void onCreate() {
 
         timer.schedule(task, 1000, 1000); // 1s后执行task,经过1s再次执行
     }
 
     private int TIME = 1000;
+
     @Override
     protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         super.dump(fd, writer, args);

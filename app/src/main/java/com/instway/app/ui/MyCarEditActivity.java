@@ -1,6 +1,8 @@
 package com.instway.app.ui;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -46,14 +48,16 @@ public class MyCarEditActivity extends BaseActivity {
     @ViewInject(R.id.car_length)
     private TextView carLength;
 
+    @ViewInject(R.id.car_width)
+    private TextView carWidth;
+
+    @ViewInject(R.id.car_height)
+    private TextView carHeight;
+
+    String carId;
+
     private Intent intent;
     private Bundle bundle;
-
-    private int mYear;
-    private int mMonth;
-    private int mDay;
-    private int mHour;
-    private int mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +72,15 @@ public class MyCarEditActivity extends BaseActivity {
         bundle = intent.getExtras();
 
         mTitleTv.setText(R.string.my_cars_add);
+        renderBaseView();
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
     }
 
 
-    @OnClick({R.id.back_img, R.id.button})
+
+
+    @OnClick({R.id.back_img, R.id.button, R.id.form_car_no, R.id.form_car_weight, R.id.form_car_length, R.id.form_car_id, R.id.form_car_height, R.id.form_car_width})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -83,6 +90,69 @@ public class MyCarEditActivity extends BaseActivity {
             case R.id.button:
                 createCar();
                 break;
+            case R.id.form_car_no: {
+            }
+            break;
+            case R.id.form_car_weight: {
+                final String[] items = getResources().getStringArray(
+                        R.array.item_car_weight);
+                new AlertDialog.Builder(this)
+                        .setTitle("请点击选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                carWeight.setText(items[which]);
+
+                            }
+                        }).show();
+            }
+            break;
+            case R.id.form_car_length: {
+                final String[] items = getResources().getStringArray(
+                        R.array.item_car_length);
+                new AlertDialog.Builder(this)
+                        .setTitle("请点击选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                carLength.setText(items[which]);
+
+                            }
+                        }).show();
+            }
+            break;
+            case R.id.form_car_width: {
+                final String[] items = getResources().getStringArray(
+                        R.array.item_car_width);
+                new AlertDialog.Builder(this)
+                        .setTitle("请点击选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                carWidth.setText(items[which]);
+
+                            }
+                        }).show();
+            }
+            break;
+            case R.id.form_car_height: {
+                final String[] items = getResources().getStringArray(
+                        R.array.item_car_height);
+                new AlertDialog.Builder(this)
+                        .setTitle("请点击选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                carHeight.setText(items[which]);
+
+                            }
+                        }).show();
+            }
+            break;
             case R.id.form_car_id:
                 UIHelper.showTakephotoRedirect(appContext,4);
                 break;
@@ -92,13 +162,25 @@ public class MyCarEditActivity extends BaseActivity {
     private void createCar() {
         HashMap<String, Object> p = new HashMap<String, Object>();
         RequestParams params = new RequestParams();
+        params.addBodyParameter("car_id", carId);
+        p.put("car_id", carId);
         params.addBodyParameter("car_no", StringUtils.toString(carNo.getText()));
         p.put("car_no", StringUtils.toString(carNo.getText()));
         params.addBodyParameter("car_weight", StringUtils.toString(carWeight.getText()));
         p.put("car_weight", StringUtils.toString(carWeight.getText()));
         params.addBodyParameter("car_length", StringUtils.toString(carLength.getText()));
-        p.put("car_length", StringUtils.toString(carLength.getText()));
-        String newUrl = ApiClient._MakeURL(URLs.CREATE_CAR, p, appContext);
+        p.put("car_hight", StringUtils.toString(carLength.getText()));
+        params.addBodyParameter("car_hight", StringUtils.toString(carHeight.getText()));
+        p.put("car_height", StringUtils.toString(carHeight.getText()));
+        params.addBodyParameter("car_width", StringUtils.toString(carWidth.getText()));
+        p.put("car_width", StringUtils.toString(carWidth.getText()));
+        StringBuilder url = new StringBuilder();
+        if(StringUtils.isEmpty(carId)){
+            url.append(URLs.CREATE_CAR);
+        }else{
+            url.append(URLs.EDIT_CAR);
+        }
+        String newUrl = ApiClient._MakeURL(url.toString(), p, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
@@ -127,5 +209,8 @@ public class MyCarEditActivity extends BaseActivity {
         carNo.setText(bundle.getString("car_no"));
         carWeight.setText(bundle.getString("car_weight"));
         carLength.setText(bundle.getString("car_length"));
+        carWeight.setText(bundle.getString("car_width"));
+        carLength.setText(bundle.getString("car_height"));
+        carId = bundle.getString("car_id");
     }
 }

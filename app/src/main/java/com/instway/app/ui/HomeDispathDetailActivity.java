@@ -61,7 +61,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
         renderBaseView(bundle);
     }
 
-    @OnClick({R.id.back_img, R.id.goods_input_1, R.id.goods_input_2})
+    @OnClick({R.id.back_img, R.id.goods_input_1, R.id.goods_input_2, R.id.goods_input_3})
     public void buttonClick(View v) {
         switch (v.getId()) {
             case R.id.back_img:
@@ -72,6 +72,9 @@ public class HomeDispathDetailActivity extends BaseActivity {
                 break;
             case R.id.goods_input_2:
                 SendTransport();
+                break;
+            case R.id.goods_input_3:
+                UIHelper.showTakephotoRedirect(appContext, 5);
                 break;
         }
     }
@@ -173,12 +176,12 @@ public class HomeDispathDetailActivity extends BaseActivity {
                             status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_3));
                             break;
                         case 3:
+                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_1));
+                            break;
                         case 4:
                             status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_0));
                             break;
                         case 5:
-                            status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_1));
-                            break;
                         case 6:
                         case 7:
                             status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_2));

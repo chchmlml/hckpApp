@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.instway.app.R;
 import com.instway.app.api.ApiClient;
 import com.instway.app.bean.URLs;
 import com.instway.app.ui.HomeActivity;
@@ -54,6 +52,9 @@ public class AppStart extends Activity {
             }
         }, 1500);
         startLocation();
+
+        Intent intent = new Intent("com.instway.app.tips");
+        startService(intent);
     }
 
     /**

@@ -82,7 +82,7 @@ public class CarViewNewsAdapter extends BaseAdapter {
 
         listItemView.carNo.setText(news.getTp_car_no());
         listItemView.carNo.setTag(news);
-        listItemView.carName.setText(news.getTp_car_name());
+        //listItemView.carName.setText(news.getTp_car_name());
         listItemView.carWeight.setText(news.getTp_car_weight()+"t");
 
         return convertView;

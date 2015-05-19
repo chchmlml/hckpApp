@@ -10,6 +10,21 @@
     </string-array>
 
 
+    <string-array name="item_car_height">
+        <item>1.2m-2m</item>
+        <item>2m-2.5m</item>
+        <item>2.5m-2.3m</item>
+        <item>>=3m</item>
+    </string-array>
+
+
+    <string-array name="item_car_width">
+        <item>1.2m-1.8m</item>
+        <item>1.8m-2.2m</item>
+        <item>2.2m-2.5m</item>
+        <item>>=2.5m</item>
+    </string-array>
+
     <string-array name="item_car_length">
         <item>4.2m</item>
         <item>5.2m</item>

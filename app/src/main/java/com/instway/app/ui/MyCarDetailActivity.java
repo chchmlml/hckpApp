@@ -86,7 +86,7 @@ public class MyCarDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.right_img:
-                UIHelper.showMyEditAddRedirect(appContext, bundle);
+               // UIHelper.showMyEditAddRedirect(appContext, bundle);
                 finish();
                 break;
             case R.id.button:
