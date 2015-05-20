@@ -212,19 +212,12 @@ public class MyCarEditActivity extends BaseActivity {
             return;
         }
         HashMap<String, Object> p = new HashMap<String, Object>();
-        RequestParams params = new RequestParams();
-        params.addBodyParameter("car_id", carId);
         p.put("car_id", carId);
-        params.addBodyParameter("car_no", StringUtils.toString(carNo.getText()));
         p.put("car_no", StringUtils.toString(carNo.getText()));
-        params.addBodyParameter("car_weight", StringUtils.toString(carWeight.getText()));
         p.put("car_weight", StringUtils.toString(carWeight.getText()));
-        params.addBodyParameter("car_length", StringUtils.toString(carLength.getText()));
-        p.put("car_hight", StringUtils.toString(carLength.getText()));
-        params.addBodyParameter("car_hight", StringUtils.toString(carHeight.getText()));
-        p.put("car_height", StringUtils.toString(carHeight.getText()));
-        params.addBodyParameter("car_width", StringUtils.toString(carWidth.getText()));
+        p.put("car_height", StringUtils.toString(carLength.getText()));
         p.put("car_width", StringUtils.toString(carWidth.getText()));
+        p.put("car_hight", StringUtils.toString(carHeight.getText()));
         StringBuilder url = new StringBuilder();
         if (StringUtils.isEmpty(carId)) {
             url.append(URLs.CREATE_CAR);
@@ -235,7 +228,7 @@ public class MyCarEditActivity extends BaseActivity {
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
-        http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
+        http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> objectResponseInfo) {
                 pd.dismiss();
