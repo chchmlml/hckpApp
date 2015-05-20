@@ -6,12 +6,16 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -78,6 +82,14 @@ public class SelectPictuerActivity extends BaseActivity {
     private Intent lastIntent;
     private Uri photoUri;
 
+    Bitmap bp = null;
+    ImageView imageview;
+    float scaleWidth;
+    float scaleHeight;
+
+    int h;
+    boolean num = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,8 +109,6 @@ public class SelectPictuerActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         lastIntent = getIntent();
-
-
         Bundle bundle = lastIntent.getExtras();
         String src = bundle.getString("src");
         if (!StringUtils.isEmpty(src)) {
@@ -115,6 +125,47 @@ public class SelectPictuerActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+//        Bundle bundle = lastIntent.getExtras();
+//        String src = bundle.getString("src");
+//        if (!StringUtils.isEmpty(src)) {
+//            Display display = getWindowManager().getDefaultDisplay();
+//            imageview = (ImageView) findViewById(R.id.img_lancher);
+//            bp = imageView.get;
+//            int width = bp.getWidth();
+//            int height = bp.getHeight();
+//            int w = display.getWidth();
+//            int h = display.getHeight();
+//            scaleWidth = ((float) w) / width;
+//            scaleHeight = ((float) h) / height;
+//            imageview.setImageBitmap(bp);
+//
+//            switch (event.getAction()) {
+//
+//                case MotionEvent.ACTION_DOWN:
+//                    if (num == true) {
+//                        Matrix matrix = new Matrix();
+//                        matrix.postScale(scaleWidth, scaleHeight);
+//
+//                        Bitmap newBitmap = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
+//                        imageview.setImageBitmap(newBitmap);
+//                        num = false;
+//                    } else {
+//                        Matrix matrix = new Matrix();
+//                        matrix.postScale(1.0f, 1.0f);
+//                        Bitmap newBitmap = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
+//                        imageview.setImageBitmap(newBitmap);
+//                        num = true;
+//                    }
+//                    break;
+//            }
+//
+//        }
+        return super.onTouchEvent(event);
     }
 
 
@@ -224,19 +275,25 @@ public class SelectPictuerActivity extends BaseActivity {
         Bundle bundle = lastIntent.getExtras();
         int picType = bundle.getInt("pic_type");
         HashMap<String, Object> p = new HashMap<String, Object>();
+        String newUrl = "";
         switch (picType) {
             case 1:
+                newUrl = ApiClient._MakeURL(URLs.UPLOAD_HEADPIC_ID, p, appContext);
                 LogUtils.i("--->头像");
                 break;
             case 2:
                 p.put("pic_type", "idcard");
+                newUrl = ApiClient._MakeURL(URLs.UPLOAD_PIC_ID, p, appContext);
                 LogUtils.i("--->身份证");
                 break;
             case 3:
                 p.put("pic_type", "drilic");
+                newUrl = ApiClient._MakeURL(URLs.UPLOAD_PIC_ID, p, appContext);
                 LogUtils.i("--->驾驶证");
                 break;
             case 4:
+                p.put("car_id", bundle.getString("car_id"));
+                newUrl = ApiClient._MakeURL(URLs.UPLOAD_CAR_ID, p, appContext);
                 LogUtils.i("--->行驶证");
                 break;
             case 5:
@@ -247,7 +304,6 @@ public class SelectPictuerActivity extends BaseActivity {
             UIHelper.ToastMessage(appContext, "请选择图片...");
             return;
         }
-        String newUrl = ApiClient._MakeURL(URLs.UPLOAD_PIC_ID, p, appContext);
         RequestParams params = new RequestParams();
         //params.addBodyParameter("input_name", "filename");
         params.addBodyParameter("pic_key", new File(picPath));

@@ -18,7 +18,6 @@ import com.instway.app.ui.HomeActivity;
 import com.instway.app.ui.HomeDetailActivity;
 import com.instway.app.ui.HomeDispathDetailActivity;
 import com.instway.app.ui.MainActivity;
-import com.instway.app.ui.MyCarDetailActivity;
 import com.instway.app.ui.MyCarEditActivity;
 import com.instway.app.ui.MyCarsActivity;
 import com.instway.app.ui.OrderDetailActivity;
@@ -229,21 +228,21 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
-    public static void showCarDetailRedirect(Context context, Car car) {
-        Intent intent = new Intent(context, MyCarDetailActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Bundle b = new Bundle();
-        b.putString("car_id", StringUtils.toString(car.getTp_car_id()));
-        b.putString("car_no", StringUtils.toString(car.getTp_car_no()));
-        b.putString("car_name", StringUtils.toString(car.getTp_car_name()));
-        b.putString("car_height", StringUtils.toString(car.getTp_car_hight()));
-        b.putString("car_width", StringUtils.toString(car.getTp_car_width()));
-        b.putString("car_weight", StringUtils.toString(car.getTp_car_weight()));
-        b.putString("car_outdate", StringUtils.toString(car.getTp_car_outdate()));
-        b.putString("car_length", StringUtils.toString(car.getTp_car_length()));
-        intent.putExtras(b);
-        context.startActivity(intent);
-    }
+//    public static void showCarDetailRedirect(Context context, Car car) {
+//        Intent intent = new Intent(context, MyCarDetailActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        Bundle b = new Bundle();
+//        b.putString("car_id", StringUtils.toString(car.getTp_car_id()));
+//        b.putString("car_no", StringUtils.toString(car.getTp_car_no()));
+//        b.putString("car_name", StringUtils.toString(car.getTp_car_name()));
+//        b.putString("car_height", StringUtils.toString(car.getTp_car_hight()));
+//        b.putString("car_width", StringUtils.toString(car.getTp_car_width()));
+//        b.putString("car_weight", StringUtils.toString(car.getTp_car_weight()));
+//        b.putString("car_outdate", StringUtils.toString(car.getTp_car_outdate()));
+//        b.putString("car_length", StringUtils.toString(car.getTp_car_length()));
+//        intent.putExtras(b);
+//        context.startActivity(intent);
+//    }
 
     public static void showDispathDetailRedirect(Context context, Map<String, Object> news) {
         Intent intent = new Intent(context, HomeDispathDetailActivity.class);
@@ -311,6 +310,7 @@ public class UIHelper {
         b.putString("car_length", car.getTp_car_length());
         b.putString("car_width", car.getTp_car_width());
         b.putString("car_height", car.getTp_car_hight());
+        b.putString("car_drivingpic", car.getTp_car_drivingpic());
         intent.putExtras(b);
         context.startActivity(intent);
     }
@@ -321,6 +321,16 @@ public class UIHelper {
         Bundle b = new Bundle();
         b.putInt("pic_type", type);
         b.putString("src", src);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
+    public static void showTakephotoRedirect2(Context context, int type, String carId) {
+        Intent intent = new Intent(context, SelectPictuerActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putInt("pic_type", type);
+        b.putString("car_id", carId);
         intent.putExtras(b);
         context.startActivity(intent);
     }

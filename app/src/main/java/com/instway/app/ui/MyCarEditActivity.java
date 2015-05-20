@@ -17,6 +17,7 @@ import com.instway.app.api.ApiClient;
 import com.instway.app.bean.URLs;
 import com.instway.app.common.StringUtils;
 import com.instway.app.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -58,6 +59,9 @@ public class MyCarEditActivity extends BaseActivity {
 
     @ViewInject(R.id.car_height)
     private TextView carHeight;
+
+    @ViewInject(R.id.car_pic)
+    private ImageView carPic;
 
     String carId;
 
@@ -171,7 +175,7 @@ public class MyCarEditActivity extends BaseActivity {
             }
             break;
             case R.id.form_car_id:
-                UIHelper.showTakephotoRedirect(appContext, 4, "");
+                UIHelper.showTakephotoRedirect2(appContext, 4, carId);
                 break;
         }
     }
@@ -215,7 +219,7 @@ public class MyCarEditActivity extends BaseActivity {
         p.put("car_id", carId);
         p.put("car_no", StringUtils.toString(carNo.getText()));
         p.put("car_weight", StringUtils.toString(carWeight.getText()));
-        p.put("car_height", StringUtils.toString(carLength.getText()));
+        p.put("car_length", StringUtils.toString(carLength.getText()));
         p.put("car_width", StringUtils.toString(carWidth.getText()));
         p.put("car_hight", StringUtils.toString(carHeight.getText()));
         StringBuilder url = new StringBuilder();
@@ -256,5 +260,11 @@ public class MyCarEditActivity extends BaseActivity {
         carWidth.setText(bundle.getString("car_width"));
         carHeight.setText(bundle.getString("car_height"));
         carId = bundle.getString("car_id");
+
+        BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+        String headSrc = StringUtils.toString(bundle.getString("car_drivingpic"));
+        if (!StringUtils.isEmpty(headSrc)) {
+            bitmapUtils.display(carPic, headSrc);
+        }
     }
 }

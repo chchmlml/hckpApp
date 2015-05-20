@@ -117,4 +117,9 @@
             android:text="开始上传"
             android:id="@+id/upload_btn" />
     </LinearLayout>
+    <ImageView
+        android:id="@+id/img_lancher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

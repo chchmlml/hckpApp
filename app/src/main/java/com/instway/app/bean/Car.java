@@ -27,6 +27,17 @@ public class Car extends Entity {
     private String tp_car_name;
     private String tp_car_width;
 
+    public String getTp_car_drivingpic() {
+        return tp_car_drivingpic;
+    }
+
+    public void setTp_car_drivingpic(String tp_car_drivingpic) {
+        this.tp_car_drivingpic = tp_car_drivingpic;
+    }
+
+    private String tp_car_drivingpic;
+
+
     public String getTp_d_c_id() {
         return tp_d_c_id;
     }
