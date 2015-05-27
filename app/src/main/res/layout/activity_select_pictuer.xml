@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrapthumbnail="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="fill_parent"
@@ -10,14 +11,21 @@
     <include layout="@layout/title_bar" />
 
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/image_view"-->
+        <!--android:layout_marginTop="20dip"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--bootstrap:bt_roundedCorners="false"-->
+        <!--bootstrap:bct_size="xlarge"/>-->
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="200dip"
         android:id="@+id/image_view"
-        android:layout_marginTop="20dip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        bootstrap:bt_roundedCorners="false"
-        bootstrap:bct_size="xlarge"/>
+        android:scaleType="center"
+        />
 
     <LinearLayout
         android:background="@color/white"

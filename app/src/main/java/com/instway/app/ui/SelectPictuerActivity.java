@@ -72,7 +72,7 @@ public class SelectPictuerActivity extends BaseActivity {
     private TextView mTitleTv;
 
     @ViewInject(R.id.image_view)
-    private BootstrapCircleThumbnail imageView;
+    private ImageView imageView;
 
     private AppContext appContext;
     /**
@@ -113,17 +113,18 @@ public class SelectPictuerActivity extends BaseActivity {
         String src = bundle.getString("src");
         if (!StringUtils.isEmpty(src)) {
             BitmapUtils bitmapUtils = new BitmapUtils(appContext);
-            bitmapUtils.display(imageView, src, new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
-                @Override
-                public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
-                    imageView.setImage(bitmap);
-                }
-
-                @Override
-                public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
-                    //UIHelper.ToastMessage(appContext, "头像加载失败");
-                }
-            });
+            bitmapUtils.display(imageView, src);
+//            bitmapUtils.display(imageView, src, new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
+//                @Override
+//                public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
+//                    imageView.setImageBitmap(bitmap);
+//                }
+//
+//                @Override
+//                public void onLoadFailed(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Drawable drawable) {
+//                    //UIHelper.ToastMessage(appContext, "头像加载失败");
+//                }
+//            });
         }
     }
 
@@ -264,7 +265,7 @@ public class SelectPictuerActivity extends BaseActivity {
 //            finish();
 
             Bitmap bm = ImageUtil.getimage(picPath);
-            imageView.setImage(bm);
+            imageView.setImageBitmap(bm);
         } else {
             Toast.makeText(this, "选择图片文件不正确", Toast.LENGTH_LONG).show();
         }

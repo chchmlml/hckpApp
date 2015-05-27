@@ -17,7 +17,8 @@ public class URLs implements Serializable {
 
 	public final static String KEY = "HCKP2015";
 
-	public final static String HOST = "182.92.219.85";
+	//public final static String HOST = "182.92.219.85";
+	public final static String HOST = "www.instway.com";
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
 
