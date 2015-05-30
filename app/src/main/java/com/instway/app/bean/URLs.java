@@ -9,9 +9,6 @@ import java.net.URLEncoder;
 
 /**
  * 接口URL实体类
- * @author liux (http://my.oschina.net/liux)
- * @version 1.0
- * @created 2012-3-21
  */
 public class URLs implements Serializable {
 
@@ -47,6 +44,7 @@ public class URLs implements Serializable {
 	public final static String UPLOAD_PIC_ID = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveDriverPic";
 	public final static String UPLOAD_HEADPIC_ID = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveUserHeadPic";
 	public final static String UPLOAD_CAR_ID = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveCarPic";
+	public final static String UPLOAD_GET_GOODS = URL_API_HOST+"index.php?apikey=app_driver&entrance=SendTransportPic";
 
     public final static String LOCATION_DRIVER = URL_API_HOST+"index.php?apikey=app_driver&entrance=SaveTrack";
 

@@ -3,10 +3,10 @@ package com.instway.app.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -19,6 +19,7 @@ import com.instway.app.api.ApiClient;
 import com.instway.app.bean.URLs;
 import com.instway.app.common.StringUtils;
 import com.instway.app.common.UIHelper;
+import com.instway.app.widght.MySwipeRefreshLayout;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -37,15 +38,11 @@ public class OrderDetailActivity extends BaseActivity {
 
     private AppContext appContext;
 
+    @ViewInject(R.id.swip_container)
+    private MySwipeRefreshLayout swipContainer;
+
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
-
-    @ViewInject(R.id.linear_desc)
-    private LinearLayout linearDesc;
-
-    @ViewInject(R.id.linear_form)
-    private LinearLayout linearForm;
-
 
     @ViewInject(R.id.start_city)
     private TextView startCity;
@@ -95,6 +92,15 @@ public class OrderDetailActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         initDataView();
+
+        swipContainer.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
+        swipContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+
+            @Override
+            public void onRefresh() {
+                initDataView();
+            }
+        });
     }
 
     @OnClick({R.id.button, R.id.back_img})
@@ -129,7 +135,7 @@ public class OrderDetailActivity extends BaseActivity {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
         params.put("diy_price", price);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params,appContext);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL_POST, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
         http.send(HttpRequest.HttpMethod.GET,
@@ -157,7 +163,7 @@ public class OrderDetailActivity extends BaseActivity {
         String newsId = bundle.getString("news_id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("diy_id", newsId);
-        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params,appContext);
+        String newUrl = ApiClient._MakeURL(URLs.NEWS_DETAIL + "&r=" + StringUtils.randomNum(), params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

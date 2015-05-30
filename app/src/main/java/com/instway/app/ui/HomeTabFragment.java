@@ -286,7 +286,7 @@ public class HomeTabFragment extends BaseFragment {
                     Map<String,Object> params = new HashMap<String, Object>();
                     switch (listType){
                         case 1:
-                            params.put("status","7");
+                            params.put("status","5");
                             break;
                         default:
                             params.put("status","");

@@ -66,6 +66,14 @@ public class TeamFragment extends BaseActivity {
         setContentView(R.layout.fragment_team);
         ViewUtils.inject(this);
 
+        try {
+            if (!AppContext.isLogin(appContext)) {
+                UIHelper.showLoginRedirect(appContext);
+                finish();
+            }
+        } catch (AppException e) {
+
+        }
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         rightImg.setVisibility(View.VISIBLE);

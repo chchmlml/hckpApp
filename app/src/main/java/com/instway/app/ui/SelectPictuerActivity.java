@@ -113,7 +113,7 @@ public class SelectPictuerActivity extends BaseActivity {
         String src = bundle.getString("src");
         if (!StringUtils.isEmpty(src)) {
             BitmapUtils bitmapUtils = new BitmapUtils(appContext);
-            bitmapUtils.display(imageView, src);
+            bitmapUtils.display(imageView, src + "?r=" + StringUtils.randomNum());
 //            bitmapUtils.display(imageView, src, new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
 //                @Override
 //                public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
@@ -298,6 +298,9 @@ public class SelectPictuerActivity extends BaseActivity {
                 LogUtils.i("--->行驶证");
                 break;
             case 5:
+                p.put("tp_tt_id", bundle.getString("tp_tt_id"));
+                p.put("type", bundle.getString("tkType"));
+                newUrl = ApiClient._MakeURL(URLs.UPLOAD_GET_GOODS, p, appContext);
                 LogUtils.i("--->签收拍照");
                 break;
         }

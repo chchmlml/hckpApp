@@ -48,6 +48,8 @@ public class GoodsInputActivity extends BaseActivity {
     private Intent intent;
     private Bundle bundle;
 
+    private boolean enableEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,15 +64,15 @@ public class GoodsInputActivity extends BaseActivity {
             mTitleTv.setText("签收编辑");
         }
 
-        weight.setText(bundle.getString("weight"));
-        nums.setText(bundle.getString("nums"));
-
+        weight.setText("0".equals(bundle.getString("weight")) ? "" : bundle.getString("weight"));
+        nums.setText("0".equals(bundle.getString("nums")) ? "" : bundle.getString("nums"));
+        enableEdit = ("0".equals(bundle.getString("weight")) || "0".equals(bundle.getString("nums"))) ? true : false;
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         appContext = (AppContext) getApplicationContext();
     }
 
-    @OnClick({R.id.button, R.id.back_img})
+    @OnClick({R.id.button, R.id.back_img, R.id.goods_input_3})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -79,6 +81,13 @@ public class GoodsInputActivity extends BaseActivity {
                 break;
             case R.id.button:
                 saveTransGoodsDetail();
+                break;
+            case R.id.goods_input_3:
+                if (enableEdit) {
+                    UIHelper.showTakephotoRedirect3(appContext, 5, bundle.getString("tt_id"), bundle.getString("type"));
+                } else {
+                    UIHelper.ToastMessage(appContext, "您已经编辑过，不能再编辑了");
+                }
                 break;
         }
     }

@@ -69,6 +69,7 @@ public class DispathList extends Entity {
                 news.setTp_tc_phone(d.get("tp_tc_phone").toString());
                 news.setTp_di_enddate(d.get("tp_di_enddate").toString());
                 news.setTp_di_status(d.get("tp_di_status").toString());
+                news.setTp_di_startdate(d.get("tp_di_startdate").toString());
                 newslist.newslist.add(news);
             }
         }

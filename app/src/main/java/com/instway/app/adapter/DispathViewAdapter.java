@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.instway.app.R;
 import com.instway.app.bean.Dispath;
 import com.instway.app.common.StringUtils;
+import com.instway.app.common.UIHelper;
 
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class DispathViewAdapter extends BaseAdapter {
             listItemView.tpTcPhone = (TextView) convertView.findViewById(R.id.tp_tc_phone);
             listItemView.tpTcName = (TextView) convertView.findViewById(R.id.tp_tc_name);
             listItemView.status = (ImageView) convertView.findViewById(R.id.status_icon);
-            //listItemView.tpDiEnddate = (TextView) convertView.findViewById(R.id.tp_di_enddate);
+            listItemView.tpDiEnddate = (TextView) convertView.findViewById(R.id.tp_o_reachdate);
 
 			// 设置控件集到convertView
 			convertView.setTag(listItemView);
@@ -84,26 +85,9 @@ public class DispathViewAdapter extends BaseAdapter {
         listItemView.tpTcPhone.setText(news.getTp_tc_phone());
         listItemView.tpTcPhone.setTag(news);
         listItemView.tpTcName.setText(news.getTp_tc_name());
-        //listItemView.tpDiEnddate.setText(news.getTp_di_enddate());
+        listItemView.tpDiEnddate.setText(news.getTp_di_startdate());
 		int status = StringUtils.toInt(news.getTp_di_status());
-		switch (status)
-		{
-			case 1:
-			case 2:
-				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_3));
-				break;
-			case 3:
-				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
-				break;
-			case 4:
-				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_0));
-				break;
-			case 5:
-			case 6:
-			case 7:
-				listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_2));
-				break;
-		}
+		listItemView.status.setImageDrawable(UIHelper.getIconByStatus(context,status));
 
 		return convertView;
 	}

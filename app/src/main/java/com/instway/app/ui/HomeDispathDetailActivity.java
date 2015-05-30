@@ -61,7 +61,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
         renderBaseView(bundle);
     }
 
-    @OnClick({R.id.back_img, R.id.goods_input_1, R.id.goods_input_2, R.id.goods_input_3})
+    @OnClick({R.id.back_img, R.id.goods_input_1, R.id.goods_input_2, R.id.call_load, R.id.call_get})
     public void buttonClick(View v) {
         switch (v.getId()) {
             case R.id.back_img:
@@ -73,9 +73,13 @@ public class HomeDispathDetailActivity extends BaseActivity {
             case R.id.goods_input_2:
                 SendTransport();
                 break;
-            case R.id.goods_input_3:
-                UIHelper.showTakephotoRedirect(appContext, 5, "");
+            case R.id.call_load:
+                UIHelper.callPhone(appContext, loadPhone);
                 break;
+            case R.id.call_get:
+                UIHelper.callPhone(appContext, getPhone);
+                break;
+
         }
     }
 
@@ -120,8 +124,29 @@ public class HomeDispathDetailActivity extends BaseActivity {
     @ViewInject(R.id.end_city)
     private TextView endCity;
 
-    @ViewInject(R.id.reach_date)
-    private TextView reachDate;
+    @ViewInject(R.id.load_user)
+    private TextView load_user;
+
+    @ViewInject(R.id.reachdate)
+    private TextView reachdate;
+
+    @ViewInject(R.id.getaddress)
+    private TextView getaddress;
+
+    @ViewInject(R.id.getuser)
+    private TextView getuser;
+
+    @ViewInject(R.id.category)
+    private TextView category;
+
+    @ViewInject(R.id.goodspack)
+    private TextView goodspack;
+
+    @ViewInject(R.id.loaddate)
+    private TextView loaddate;
+
+    @ViewInject(R.id.loadaddress)
+    private TextView loadaddress;
 
     @ViewInject(R.id.status_icon)
     private ImageView status;
@@ -141,6 +166,10 @@ public class HomeDispathDetailActivity extends BaseActivity {
     @ViewInject(R.id.goods_send)
     private TextView goodsSend;
 
+    String loadPhone;
+    String getPhone;
+    String tp_tt_id;
+
     private void renderBaseView(Bundle bundle) {
 
         HashMap<String, Object> params = new HashMap<String, Object>();
@@ -158,9 +187,23 @@ public class HomeDispathDetailActivity extends BaseActivity {
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
                     Map<String, Object> transObj = (Map<String, Object>) obj.get("data");
+                    tp_tt_id = StringUtils.toString(transObj.get("tp_tt_id"));
+                    load_user.setText(StringUtils.toString(transObj.get("tp_o_loaduser")) + "  " + StringUtils.toString(transObj.get("tp_o_loadphone")));
+                    loaddate.setText(StringUtils.toString(transObj.get("tp_o_loaddate")) + "  " + StringUtils.toString(transObj.get("tp_o_loadhour")));
+                    loadaddress.setText(StringUtils.toString(transObj.get("tp_o_loadaddress")));
+                    loadPhone = StringUtils.toString(transObj.get("tp_o_loadphone"));
+
+                    getuser.setText(StringUtils.toString(transObj.get("tp_o_getuser")) + "  " + StringUtils.toString(transObj.get("tp_o_getphone")));
+                    reachdate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")) + "  " + StringUtils.toString(transObj.get("tp_o_reachhour")));
+                    getaddress.setText(StringUtils.toString(transObj.get("tp_o_getaddress")));
+                    getPhone = StringUtils.toString(transObj.get("tp_o_getphone"));
+
+                    category.setText(StringUtils.toString(transObj.get("tp_og_category")));
+                    goodspack.setText(StringUtils.toString(transObj.get("tp_og_goodspack")));
+
                     startCity.setText(StringUtils.toString(transObj.get("tp_o_start_city")));
                     endCity.setText(StringUtils.toString(transObj.get("tp_o_end_city")));
-                    reachDate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")));
+                    //reachDate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")));
                     goodsWeight.setText(StringUtils.toString(transObj.get("tp_tt_weight")));
                     goodsNum.setText(StringUtils.toString(transObj.get("tp_tt_nums")));
                     remark.setText(StringUtils.toString(transObj.get("tp_o_remark")));
@@ -169,8 +212,7 @@ public class HomeDispathDetailActivity extends BaseActivity {
                     String sendGoods = StringUtils.toString(transObj.get("tp_tt_sendweight")) + "/" + StringUtils.toString(transObj.get("tp_tt_sendnums"));
                     goodsSend.setText(sendGoods);
                     int statusCode = StringUtils.toInt(transObj.get("tp_o_status"));
-                    switch (statusCode)
-                    {
+                    switch (statusCode) {
                         case 1:
                         case 2:
                             status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_3));

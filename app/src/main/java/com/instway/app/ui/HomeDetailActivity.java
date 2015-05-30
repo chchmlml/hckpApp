@@ -57,6 +57,9 @@ public class HomeDetailActivity extends BaseActivity {
     private TextView diStartdate;
 
 
+    @ViewInject(R.id.car_team)
+    private TextView car_team;
+
     @ViewInject(R.id.tp_di_remark)
     private TextView diRemark;
 
@@ -97,7 +100,9 @@ public class HomeDetailActivity extends BaseActivity {
         initDataView();
     }
 
-    @OnClick({R.id.button, R.id.back_img})
+    String phone;
+
+    @OnClick({R.id.button, R.id.back_img, R.id.call_btn})
     public void buttonClick(View v) {
         if (v.getId() == R.id.back_img) {
             AppManager.getAppManager().finishActivity();
@@ -117,6 +122,9 @@ public class HomeDetailActivity extends BaseActivity {
                     .setCancelClickListener(null)
                     .show();
 
+        }
+        if (v.getId() == R.id.call_btn) {
+            UIHelper.callPhone(appContext, phone);
         }
     }
 
@@ -155,7 +163,7 @@ public class HomeDetailActivity extends BaseActivity {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("di_id", newsId);
         params.put("r", StringUtils.randomNum());
-        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params,  appContext);
+        String newUrl = ApiClient._MakeURL(URLs.DISPARH_DETAIL, params, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
@@ -218,9 +226,11 @@ public class HomeDetailActivity extends BaseActivity {
         orderStatus = StringUtils.toString(dispatchInfo.get("tp_di_status"));
         String dsipathStatus = getDispathStatus(orderStatus);
         diRemark.setText(StringUtils.toString(dispatchInfo.get("tp_di_remark")));
-
+        car_team.setText(StringUtils.toString(dispatchInfo.get("tp_tc_name")));
+        //car_team.setText(StringUtils.toString(dispatchInfo.get("tp_tc_name")) + " " + StringUtils.toString(dispatchInfo.get("tp_tc_phone")));
         diId = StringUtils.toString(dispatchInfo.get("tp_di_id"));
 
+        phone = StringUtils.toString(dispatchInfo.get("tp_tc_phone"));
     }
 
 

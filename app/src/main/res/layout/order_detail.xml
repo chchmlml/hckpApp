@@ -1,326 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.instway.app.widght.MySwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swip_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/graywhite"
-    android:orientation="vertical">
-    <!-- title bar -->
-    <include
-        android:id="@+id/title_bar"
-        layout="@layout/title_bar" />
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:id="@+id/liner1"
-        android:layout_below="@id/title_bar"
-        android:background="@color/white"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_marginTop="10dip"
-                android:layout_marginLeft="30dip"
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:src="@drawable/start_place" />
-
-
-            <TextView
-                android:id="@+id/start_city"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dip"
-                android:layout_weight="1"
-                android:text="222222" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_marginLeft="30dip"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-
-            <ImageView
-                android:layout_marginTop="10dip"
-                android:layout_marginLeft="30dip"
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:src="@drawable/end_place" />
-
-            <TextView
-                android:id="@+id/end_city"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dip"
-                android:layout_weight="1"
-                android:text="33333" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_marginLeft="30dip"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tip_enddate"
-                style="@style/detail_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发货时间" />
-
-
-            <TextView
-                android:id="@+id/order_end_time"
-                android:layout_toRightOf="@id/tip_enddate"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/liner2"
-        android:layout_below="@id/liner1"
-        android:background="@color/white"
-        android:layout_marginTop="20dip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tip_kms"
-                style="@style/detail_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="配送距离" />
-
-
-            <TextView
-                android:id="@+id/order_kms"
-                android:layout_toRightOf="@+id/tip_kms"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_marginLeft="30dip"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tip_desc"
-                style="@style/detail_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="订单备注" />
-
-
-            <TextView
-                android:id="@+id/order_desc"
-                android:layout_toRightOf="@id/tip_desc"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/liner3"
-        android:layout_below="@id/liner2"
-        android:background="@color/white"
-        android:layout_marginTop="20dip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tip_tc"
-                style="@style/detail_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="所属车队" />
-
-
-            <TextView
-                android:id="@+id/tc_name"
-                android:layout_toRightOf="@+id/tip_tc"
-                style="@style/detail_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/liner4"
-        android:layout_below="@+id/liner3"
-        android:background="@color/white"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:layout_marginBottom="20dip"
-        android:orientation="vertical">
-
-        <!-- 反馈意见 -->
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-        <RelativeLayout
-            android:id="@+id/form_car_no"
-            android:background="@color/white"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-
-            <EditText
-                android:id="@+id/edit_input"
-                android:layout_width="fill_parent"
-                android:layout_height="45dip"
-                android:paddingLeft="100dip"
-                android:layout_gravity="right"
-                android:background="@color/white"
-                android:focusable="true"
-                android:textColor="@color/gray"
-                android:focusableInTouchMode="true"
-                android:layout_alignParentRight="true"
-                android:textColorHint="@color/gray"
-                android:hint="@string/input_hint"
-                android:inputType="numberDecimal"
-                android:singleLine="true" />
-
-            <TextView
-                style="@style/setting_text_style2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_weight="1"
-                android:text="报价" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dip"
-                android:src="@drawable/setting_arrow" />
-        </RelativeLayout>
-
-
-        <View
-            android:layout_height="1px"
-            android:layout_width="match_parent"
-            android:background="@color/gray2" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_form"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/order_border"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="@dimen/padding_10px"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/graywhite"
+        android:orientation="vertical">
+        <!-- title bar -->
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/title_bar" />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+
+        <LinearLayout
+            android:id="@+id/liner1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            bootstrap:bb_type="success"
-            bootstrap:bb_roundedCorners="true"
-            bootstrap:bb_size="small"
-            android:text="@string/report_price"
-            android:id="@+id/button" />
-    </LinearLayout>
+            android:layout_below="@id/title_bar"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="30dip"
+                    android:layout_marginTop="10dip"
+                    android:src="@drawable/start_place" />
+
+
+                <TextView
+                    android:id="@+id/start_city"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dip"
+                    android:layout_weight="1"
+                    android:text="222222" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="30dip"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="30dip"
+                    android:layout_marginTop="10dip"
+                    android:src="@drawable/end_place" />
+
+                <TextView
+                    android:id="@+id/end_city"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dip"
+                    android:layout_weight="1"
+                    android:text="33333" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="30dip"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tip_enddate"
+                    style="@style/detail_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发货时间" />
+
+
+                <TextView
+                    android:id="@+id/order_end_time"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:text="" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/liner2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/liner1"
+            android:layout_marginTop="20dip"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tip_kms"
+                    style="@style/detail_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配送距离" />
+
+
+                <TextView
+                    android:id="@+id/order_kms"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:text="" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="30dip"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tip_desc"
+                    style="@style/detail_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单备注" />
+
+
+                <TextView
+                    android:id="@+id/order_desc"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:text="" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/liner3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/liner2"
+            android:layout_marginTop="20dip"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tip_tc"
+                    style="@style/detail_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所属车队" />
+
+
+                <TextView
+                    android:id="@+id/tc_name"
+                    style="@style/detail_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:text="" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/liner4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/liner3"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="20dip"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!-- 反馈意见 -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:id="@+id/form_car_no"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+
+                <EditText
+                    android:id="@+id/edit_input"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:layout_height="45dip"
+                    android:layout_gravity="right"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/input_hint"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="100dip"
+                    android:singleLine="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/gray" />
+
+                <TextView
+                    style="@style/setting_text_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="报价" />
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/order_border"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_10px">
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/report_price"
+                bootstrap:bb_roundedCorners="true"
+                bootstrap:bb_size="small"
+                bootstrap:bb_type="success" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</com.instway.app.widght.MySwipeRefreshLayout>

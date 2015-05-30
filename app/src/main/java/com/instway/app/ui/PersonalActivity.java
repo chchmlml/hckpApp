@@ -140,19 +140,23 @@ public class PersonalActivity extends BaseActivity {
         username.setText(StringUtils.toString(data.get("ts_u_username")));
         phone.setText(StringUtils.toString(data.get("ts_u_phone")));
         //身份证 头像 驾驶证
-        BitmapUtils bitmapUtils = new BitmapUtils(appContext);
         headSrc = StringUtils.toString(data.get("ts_u_headpic"));
         if (!StringUtils.isEmpty(headSrc)) {
-            bitmapUtils.display(headThumb, headSrc);
+            takeThumb(headThumb, headSrc);
         }
         idSrc = StringUtils.toString(data.get("tp_d_idcard"));
         if (!StringUtils.isEmpty(idSrc)) {
-            bitmapUtils.display(IDThumb, idSrc);
+            takeThumb(IDThumb, idSrc);
         }
         driveId = StringUtils.toString(data.get("tp_d_drilic"));
         if (!StringUtils.isEmpty(driveId)) {
-            bitmapUtils.display(driveThumb, driveId);
+            takeThumb(driveThumb, driveId);
         }
+    }
+
+    private void takeThumb(ImageView headThumb, String headSrc) {
+        BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+        bitmapUtils.display(headThumb, headSrc + "?" + StringUtils.randomNum());
     }
 
     @OnClick({R.id.btn_logout, R.id.back_img, R.id.change_pwd_btn, R.id.form_car_id, R.id.form_person_id, R.id.form_drive_id})
@@ -166,10 +170,10 @@ public class PersonalActivity extends BaseActivity {
                 UIHelper.showTakephotoRedirect(appContext, 1, headSrc);
                 break;
             case R.id.form_person_id:
-                UIHelper.showTakephotoRedirect(appContext, 2,idSrc);
+                UIHelper.showTakephotoRedirect(appContext, 2, idSrc);
                 break;
             case R.id.form_drive_id:
-                UIHelper.showTakephotoRedirect(appContext, 3,driveId);
+                UIHelper.showTakephotoRedirect(appContext, 3, driveId);
                 break;
             case R.id.btn_logout:
 

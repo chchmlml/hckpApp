@@ -3,6 +3,8 @@ package com.instway.app.common;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -325,12 +327,29 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
+    public static void callPhone(Context context, String number) {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
     public static void showTakephotoRedirect2(Context context, int type, String carId) {
         Intent intent = new Intent(context, SelectPictuerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putInt("pic_type", type);
         b.putString("car_id", carId);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
+    public static void showTakephotoRedirect3(Context context, int type, String tp_tt_id, String tkType) {
+        Intent intent = new Intent(context, SelectPictuerActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle b = new Bundle();
+        b.putInt("pic_type", type);
+        b.putString("tp_tt_id", tp_tt_id);
+        b.putString("tkType", tkType);
         intent.putExtras(b);
         context.startActivity(intent);
     }
@@ -1696,6 +1715,28 @@ public class UIHelper {
                     }
                 })
                 .show();
+    }
+
+    public static Drawable getIconByStatus(Context context, int status) {
+        Drawable dDrawable = null;
+        switch (status) {
+            case 1:
+            case 2:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_3);
+                break;
+            case 3:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_1);
+                break;
+            case 4:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_0);
+                break;
+            case 5:
+            case 6:
+            case 7:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_2);
+                break;
+        }
+        return dDrawable;
     }
     //
     // /**

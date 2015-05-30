@@ -46,11 +46,12 @@
 
                 <TextView
                     android:id="@+id/tp_di_sn"
-                    android:layout_toRightOf="@id/tip1"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
+                    android:text="11111" />
 
             </RelativeLayout>
 
@@ -75,7 +76,8 @@
 
                 <TextView
                     android:id="@+id/tp_di_startdate"
-                    android:layout_toRightOf="@id/tip2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,16 +101,25 @@
                     style="@style/detail_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/dispath_detail_tag4" />
+                    android:text="车队信息：" />
 
 
                 <TextView
-                    android:id="@+id/order_detail_style"
-                    android:layout_toRightOf="@id/tip3"
+                    android:id="@+id/car_team"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dip"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text="22" />
+                <ImageView
+                    android:id="@+id/call_btn"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/call_btn"/>
 
             </RelativeLayout>
 
@@ -134,7 +145,8 @@
 
                 <TextView
                     android:id="@+id/tp_di_remark"
-                    android:layout_toRightOf="@id/tip4"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dip"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

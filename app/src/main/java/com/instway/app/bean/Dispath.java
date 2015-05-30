@@ -15,8 +15,17 @@ public class Dispath extends Entity {
 
     private String tp_di_id;
     private String tp_di_sn;
+    private String tp_di_startdate;
     private String tp_di_enddate;
     private String tp_tc_name;
+
+    public String getTp_di_startdate() {
+        return tp_di_startdate;
+    }
+
+    public void setTp_di_startdate(String tp_di_startdate) {
+        this.tp_di_startdate = tp_di_startdate;
+    }
 
     public String getTp_di_status() {
         return tp_di_status;

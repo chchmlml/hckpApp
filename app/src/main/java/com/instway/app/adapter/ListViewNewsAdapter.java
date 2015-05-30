@@ -95,7 +95,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }else{
             listItemView.statusIcon.setVisibility(View.GONE);
         }
-        if(!StringUtils.isEmpty(news.getTp_diyp_price())){
+        if(StringUtils.isEmpty(news.getTp_diyp_price())){
             listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_unbaojia));
         }else{
             listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_baojia));

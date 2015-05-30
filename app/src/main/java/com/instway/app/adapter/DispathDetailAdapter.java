@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.instway.app.R;
 import com.instway.app.common.StringUtils;
+import com.instway.app.common.UIHelper;
+
 import java.util.List;
 import java.util.Map;
 
@@ -83,25 +85,8 @@ public class DispathDetailAdapter extends BaseAdapter {
         listItemView.startcity.setText(StringUtils.toString(news.get("tp_o_start_city")));
         listItemView.endcity.setText(StringUtils.toString(news.get("tp_o_end_city")));
 
-        int status = StringUtils.toInt(StringUtils.toString(news.get("tp_o_status")));
-        switch (status)
-        {
-            case 1:
-            case 2:
-                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_3));
-                break;
-            case 3:
-                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_1));
-                break;
-            case 4:
-                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_0));
-                break;
-            case 5:
-            case 6:
-            case 7:
-                listItemView.status.setImageDrawable(context.getResources().getDrawable(R.drawable.trans_status_2));
-                break;
-        }
+        int status = StringUtils.toInt(StringUtils.toString(news.get("tp_tt_status")));
+        listItemView.status.setImageDrawable(UIHelper.getIconByStatus(context, status));
         return convertView;
     }
 }
