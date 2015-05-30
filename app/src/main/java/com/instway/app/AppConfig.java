@@ -21,7 +21,7 @@ public class AppConfig {
 
     private final static String APP_CONFIG = "config";
 
-    public final static String APP_ID = "5e33a32b9b1a20586cd8b78270461371";
+    public final static String APP_ID = "a563894adadc36cf105f69a4602c413f";
 
     public final static String TEMP_TWEET = "temp_tweet";
     public final static String TEMP_TWEET_IMAGE = "temp_tweet_image";

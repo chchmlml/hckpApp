@@ -2,10 +2,12 @@ package com.instway.app.ui;
 
 import android.os.Bundle;
 
+import com.instway.app.AppConfig;
 import com.instway.app.AppContext;
 import com.instway.app.R;
 import com.instway.app.common.UIHelper;
 import com.instway.app.widght.HomeButton;
+import com.pgyersdk.update.PgyUpdateManager;
 
 /**
  * 首页
@@ -19,7 +21,10 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         appContext = (AppContext) getApplicationContext();
+        PgyUpdateManager.register(this, AppConfig.APP_ID);
+
         ((HomeButton) findViewById(R.id.l1)).setHomeBtbOnClickListener(this);
         ((HomeButton) findViewById(R.id.l2)).setHomeBtbOnClickListener(this);
         ((HomeButton) findViewById(R.id.l3)).setHomeBtbOnClickListener(this);

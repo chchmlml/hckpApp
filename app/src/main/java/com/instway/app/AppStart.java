@@ -20,6 +20,7 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.pgyersdk.update.PgyUpdateManager;
 
 import java.util.HashMap;
 
@@ -43,7 +44,6 @@ public class AppStart extends Activity {
         super.onCreate(savedInstanceState);
 
         appContext = (AppContext) getApplicationContext();
-
         final View view = View.inflate(this, R.layout.activity_start, null);
         setContentView(view);
         ViewUtils.inject(this);

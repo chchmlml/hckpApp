@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.instway.app.AppConfig;
 import com.instway.app.AppContext;
 import com.instway.app.AppException;
 import com.instway.app.R;
@@ -12,6 +13,7 @@ import com.instway.app.common.ConstantValues;
 import com.instway.app.common.UIHelper;
 import com.instway.app.widght.MyTabWidget;
 import com.instway.app.widght.MyTabWidget.OnTabSelectedListener;
+import com.pgyersdk.update.PgyUpdateManager;
 
 /**
  *
