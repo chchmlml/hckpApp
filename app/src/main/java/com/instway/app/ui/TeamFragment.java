@@ -66,6 +66,7 @@ public class TeamFragment extends BaseActivity {
         setContentView(R.layout.fragment_team);
         ViewUtils.inject(this);
 
+        appContext = (AppContext) getApplicationContext();
         try {
             if (!AppContext.isLogin(appContext)) {
                 UIHelper.showLoginRedirect(appContext);
@@ -77,7 +78,6 @@ public class TeamFragment extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         rightImg.setVisibility(View.VISIBLE);
-        appContext = (AppContext) getApplicationContext();
         initViews();
 
     }

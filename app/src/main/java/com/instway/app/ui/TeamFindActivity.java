@@ -356,9 +356,7 @@ public class TeamFindActivity extends BaseActivity {
                 String code = obj.get("code").toString();
                 if (code.equals("1")) {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    Intent intent = new Intent(TeamFindActivity.this, MainActivity.class);
-                    setResult(REQUEST_CODE, intent);
-                    LogUtils.i("setResult(" + REQUEST_CODE + ",intent)");
+                    UIHelper.showTeamRedirect(appContext);
                     TeamFindActivity.this.finish();
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());

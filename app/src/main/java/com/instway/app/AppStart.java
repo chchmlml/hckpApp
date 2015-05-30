@@ -11,6 +11,8 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.instway.app.api.ApiClient;
 import com.instway.app.bean.URLs;
+import com.instway.app.common.StringUtils;
+import com.instway.app.common.UIHelper;
 import com.instway.app.ui.HomeActivity;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -20,6 +22,8 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.HashMap;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * 启动界面
@@ -53,8 +57,8 @@ public class AppStart extends Activity {
         }, 1500);
         startLocation();
 
-        Intent intent = new Intent("com.instway.app.tips");
-        startService(intent);
+//        Intent intent = new Intent("com.instway.app.tips");
+//        startService(intent);
     }
 
     /**
@@ -65,9 +69,9 @@ public class AppStart extends Activity {
         mLocationClient.registerLocationListener(myListener);    //注册监听函数
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);//设置定位模式
-        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(60000);//设置发起定位请求的间隔时间为5000ms
-        option.setIsNeedAddress(true);//返回的定位结果包含地址信息
+        option.setCoorType("bd09ll");
+        option.setScanSpan(1000 * 60 * 10);
+        option.setIsNeedAddress(true);
         mLocationClient.setLocOption(option);
         mLocationClient.start();
     }
@@ -77,6 +81,24 @@ public class AppStart extends Activity {
         public void onReceiveLocation(BDLocation location) {
             if (location == null)
                 return;
+            if(location.getLocType() == 62 || location.getLocType() == 63){
+                new SweetAlertDialog(appContext, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("抱歉，定位失败，去 设置 检查下？")
+                        .setConfirmText("确定")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                                startActivity(intent);
+                            }
+                        })
+                        .showCancelButton(true)
+                        .setCancelText("取消")
+                        .setCancelClickListener(null)
+                        .show();
+                return;
+            }
             StringBuffer sb = new StringBuffer(256);
             sb.append("time : ");
             sb.append(location.getTime());
