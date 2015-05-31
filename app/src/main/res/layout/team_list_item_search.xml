@@ -1,81 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/padding_10px"
-    android:background="#ffffff"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_5px"
-        android:layout_weight="3">
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/white">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/team_title"
+                style="@style/setting_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:gravity="left|center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_marginRight="@dimen/padding_5px"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/icon_car" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="5dip"
-                android:layout_marginBottom="5dip"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="left|center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:text="修改密码" />
 
-                <TextView
-                    android:id="@+id/team_title"
-                    style="@style/order_title_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="北京-上海"/>
-
-                <TextView
-                    android:id="@+id/team_desc"
-                    style="@style/order_title_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="这是描述"
-                    android:layout_centerInParent="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/team_sj"
+                android:layout_toRightOf="@id/team_title"
+                style="@style/setting_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:gravity="left|center_vertical"
-                android:layout_marginRight="@dimen/padding_10px"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="HKSJ" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/btn_team_add" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/status_icon"
+                android:layout_width="60dip"
+                android:layout_height="20dip"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dip"
+                android:layout_toRightOf="@+id/team_title"
+                android:src="@drawable/team_status_1"/>
+        </RelativeLayout>
 
-            </LinearLayout>
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/team_user"
+                style="@style/setting_text_style3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="况天佑" />
+
+            <TextView
+                android:id="@+id/team_desc"
+                style="@style/setting_text_style3"
+                android:layout_toRightOf="@id/team_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是描述" />
+
+            <TextView
+                android:id="@+id/icon_status"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[审]"
+                android:textColor="@color/blue"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="20dip"
+        android:paddingRight="@dimen/padding_10px">
+
+        <ImageView
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:src="@drawable/btn_favor" />
     </LinearLayout>
 </LinearLayout>

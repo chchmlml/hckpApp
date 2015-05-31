@@ -226,7 +226,8 @@ public class UIHelper {
         intent.putExtra("tc_user", news.getTp_tc_user());
         intent.putExtra("tc_phone", news.getTp_tc_phone());
         intent.putExtra("tc_fax", news.getTp_tc_fax());
-        intent.putExtra("tc_status", news.getTp_tc_status());
+        intent.putExtra("tc_sj", news.getTp_tc_sj());
+        intent.putExtra("tc_status", news.getTp_tc_d_status());
         context.startActivity(intent);
     }
 

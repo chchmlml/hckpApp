@@ -17,11 +17,14 @@ public class Team extends Entity {
     private String tp_d_id;
     private String tp_tc_id;
     private String tp_tc_d_type;
-    private String tp_tc_status;
+
+    private String tp_tc_d_status;
     private String tp_tc_name;
     private String tp_tc_phone;
     private String tp_tc_fax;
     private String tp_tc_user;
+
+    private String tp_tc_sj;
     private String tp_tc_taxcertificate;
     private String tp_tc_orgcode;
     private String tp_tc_busilicense;
@@ -29,6 +32,22 @@ public class Team extends Entity {
     private String tp_tc_type;
     private String tp_u_id;
 
+
+    public String getTp_tc_sj() {
+        return tp_tc_sj;
+    }
+
+    public void setTp_tc_sj(String tp_tc_sj) {
+        this.tp_tc_sj = tp_tc_sj;
+    }
+
+    public String getTp_tc_d_status() {
+        return tp_tc_d_status;
+    }
+
+    public void setTp_tc_d_status(String tp_tc_d_status) {
+        this.tp_tc_d_status = tp_tc_d_status;
+    }
     public String getTp_tc_d_id() {
         return tp_tc_d_id;
     }
@@ -62,11 +81,11 @@ public class Team extends Entity {
     }
 
     public String getTp_tc_status() {
-        return tp_tc_status;
+        return tp_tc_d_status;
     }
 
     public void setTp_tc_status(String tp_tc_status) {
-        this.tp_tc_status = tp_tc_status;
+        this.tp_tc_d_status = tp_tc_status;
     }
 
     public String getTp_tc_name() {

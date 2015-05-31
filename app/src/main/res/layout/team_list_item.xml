@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingBottom="20dip">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -17,14 +16,35 @@
             android:layout_height="wrap_content"
             android:background="@color/white">
 
+            <ImageView
+                android:id="@+id/status_icon"
+                android:layout_width="60dip"
+                android:layout_height="20dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dip"
+                android:src="@drawable/team_status_1" />
+
             <TextView
                 android:id="@+id/team_title"
                 style="@style/setting_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@+id/status_icon"
                 android:layout_weight="1"
                 android:text="修改密码" />
+
+            <TextView
+                android:id="@+id/team_sj"
+                android:visibility="gone"
+                style="@style/setting_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@id/team_title"
+                android:layout_weight="1"
+                android:text="HKSJ" />
+
         </RelativeLayout>
 
         <View
@@ -39,11 +59,19 @@
             android:background="@color/white">
 
             <TextView
-                android:id="@+id/team_desc"
-                style="@style/setting_text_style2"
+                android:id="@+id/team_user"
+                style="@style/setting_text_style3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
+                android:text="况天佑" />
+
+            <TextView
+                android:id="@+id/team_desc"
+                style="@style/setting_text_style3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/team_user"
                 android:text="这是描述" />
 
             <TextView

@@ -1,14 +1,18 @@
 package com.instway.app.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.instway.app.R;
 import com.instway.app.bean.Team;
+import com.instway.app.common.StringUtils;
+import com.instway.app.common.UIHelper;
 
 import java.util.List;
 
@@ -21,6 +25,9 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 	static class ListItemView { // 自定义控件集合
 		public TextView teamTitle;
 		public TextView teamDesc;
+		public TextView teamUser;
+		public TextView teamSj;
+		public ImageView status;
 	}
 
 	/**
@@ -66,7 +73,9 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 			// 获取控件对象
             listItemView.teamTitle = (TextView) convertView.findViewById(R.id.team_title);
             listItemView.teamDesc = (TextView) convertView.findViewById(R.id.team_desc);
-
+            listItemView.teamUser = (TextView) convertView.findViewById(R.id.team_user);
+            listItemView.teamSj = (TextView) convertView.findViewById(R.id.team_sj);
+			listItemView.status = (ImageView) convertView.findViewById(R.id.status_icon);
 			// 设置控件集到convertView
 			convertView.setTag(listItemView);
 		} else {
@@ -79,69 +88,21 @@ public class TeamViewNewsAdapter extends BaseAdapter {
 		listItemView.teamTitle.setText(news.getTp_tc_name());
 		listItemView.teamTitle.setTag(news);
         listItemView.teamDesc.setText(news.getTp_tc_phone());
+        listItemView.teamUser.setText(news.getTp_tc_user());
+        listItemView.teamSj.setText(news.getTp_tc_sj());
 		//审核按钮
-		TextView textStatus = (TextView) convertView.findViewById(R.id.icon_status);
-		if(textStatus != null){
-			if("1".equals(news.getTp_tc_status())){
-				textStatus.setVisibility(View.VISIBLE);
-			}else{
-				textStatus.setVisibility(View.GONE);
-			}
+
+		int status = StringUtils.toInt(news.getTp_tc_d_status());
+		Drawable dDrawable = null;
+		switch (status) {
+			case 1:
+				dDrawable = context.getResources().getDrawable(R.drawable.team_status_1);
+				break;
+			case 2:
+				dDrawable = context.getResources().getDrawable(R.drawable.team_status_2);
+				break;
 		}
-		//解挂靠按钮
-		final String tcId = news.getTp_tc_id();
-//		ImageView btn = (ImageView) convertView.findViewById(R.id.button2);
-//		if(btn != null){
-//			btn.setOnClickListener(new View.OnClickListener() {
-//				@Override
-//				public void onClick(View v) {
-//
-//					CustomDialog.Builder builder = new CustomDialog.Builder(TeamViewNewsAdapter.this.context);
-//					builder.setTitle("提示");
-//					builder.setMessage("您确定解除挂靠此车队吗？");
-//					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//						public void onClick(DialogInterface dialog, int which) {
-//							final ProgressDialog pd = ProgressDialog.show(context,null,"请稍后...");
-//							String newUrl = ApiClient._MakeURL(URLs.TEAM_DEL_POST, new HashMap<String, Object>(),(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
-//							RequestParams params = new RequestParams();
-//							params.addBodyParameter("tc_id", tcId);
-//							HttpUtils http = new HttpUtils();
-//							http.send(HttpRequest.HttpMethod.POST, newUrl, params, new RequestCallBack<String>() {
-//								@Override
-//								public void onSuccess(ResponseInfo<String> objectResponseInfo) {
-//									pd.dismiss();
-//									JSONObject obj = JSON.parseObject(objectResponseInfo.result);
-//									String code = obj.get("code").toString();
-//									if (code.equals("1")) {
-//										TeamViewNewsAdapter.this.listItems.remove(position);
-//										TeamViewNewsAdapter.this.notifyDataSetChanged();
-//										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-//									} else {
-//										UIHelper.ToastMessage(TeamViewNewsAdapter.this.context, obj.get("msg").toString());
-//									}
-//								}
-//
-//								@Override
-//								public void onFailure(HttpException e, String s) {
-//									pd.dismiss();
-//								}
-//							});
-//							dialog.dismiss();
-//						}
-//					});
-//
-//					builder.setNegativeButton("取消",
-//							new android.content.DialogInterface.OnClickListener() {
-//								public void onClick(DialogInterface dialog, int which) {
-//									dialog.dismiss();
-//								}
-//							});
-//
-//					builder.create().show();
-//
-//				}
-//			});
-//		}
+		listItemView.status.setImageDrawable(dDrawable);
 		return convertView;
 	}
 }

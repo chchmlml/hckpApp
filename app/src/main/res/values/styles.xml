@@ -50,6 +50,13 @@
         <item name="android:paddingTop">12dip</item>
         <item name="android:paddingBottom">12dip</item>
     </style>
+    <style name="setting_text_style3">
+        <item name="android:textSize">12.0dip</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:paddingLeft">20dip</item>
+        <item name="android:paddingTop">12dip</item>
+        <item name="android:paddingBottom">12dip</item>
+    </style>
     <style name="detail_text_style">
         <item name="android:textSize">14.0dip</item>
         <item name="android:textColor">@color/black</item>

@@ -12,14 +12,14 @@
 	   	android:gravity="center_vertical"
 	   	android:paddingLeft="10dip"
    		android:paddingRight="10dip"
-		android:paddingTop="5dip"
-		android:paddingBottom="5dip"
+		android:paddingTop="10dip"
+		android:paddingBottom="10dip"
 	   	android:orientation="horizontal"
 	   	android:background="@drawable/widget_head_bg">
 		<EditText
 	        android:id="@+id/search_editer"
 	        android:layout_width="fill_parent"
-	        android:layout_height="30dip"
+	        android:layout_height="40dip"
 	        android:layout_gravity="left|center"
 	        android:layout_marginRight="36dip"
 	        android:singleLine="true"
@@ -28,28 +28,30 @@
 			android:textColor="@color/gray"
 			android:textColorHint="@color/gray"
 	        android:focusableInTouchMode="true"
+            android:textSize="14dip"
 	        android:imeOptions="actionSearch"
-	        android:background="@drawable/edit_search_bg"
-	        android:hint="输入搜索内容"/>			
-	   	<Button 
+			android:background="@color/white"
+	        android:hint="输入搜索内容"/>
+	   	<Button
 	   		android:id="@+id/search_btn"
-		   	android:layout_width="35dip"
-	      	android:layout_height="32dip"
+		   	android:layout_width="50dip"
+	      	android:layout_height="40dip"
 	      	android:layout_gravity="right|center"
 	      	android:background="@drawable/btn_search_bg"/>
 	</FrameLayout>
 
 	<LinearLayout
-	    android:id="@+id/search_ll" 
-	   	android:orientation="vertical" 
-	   	android:layout_width="fill_parent" 
+	    android:id="@+id/search_ll"
+	   	android:orientation="vertical"
+		android:background="@color/graywhite"
+	   	android:layout_width="fill_parent"
 	   	android:layout_height="fill_parent">
 
 		<com.instway.app.widght.PullToRefreshListView
 			android:id="@+id/listview_order"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent" />
-		
+
 	</LinearLayout>
-   	
+
 </LinearLayout>

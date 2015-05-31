@@ -12,31 +12,74 @@
 
 
     <LinearLayout
-        android:layout_below="@+id/title_bar"
-        android:background="@color/white"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/title_bar"
         android:layout_marginTop="10dip"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <!-- 反馈意见 -->
 
         <View
-            android:layout_height="1px"
             android:layout_width="match_parent"
+            android:layout_height="1px"
             android:background="@color/gray2" />
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <TextView
-                style="@style/setting_text_style2"
                 android:id="@+id/tc_name"
-                android:layout_alignParentRight="true"
+                style="@style/setting_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dip"
+                android:text="22" />
+
+
+            <TextView
+                style="@style/setting_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="车队名" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/status_icon"
+                android:layout_width="60dip"
+                android:layout_height="20dip"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30dip"
+                android:layout_toLeftOf="@+id/tc_name"
+                android:src="@drawable/team_status_1" />
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/dimen_30px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tc_sj"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_marginRight="40dip"
                 android:text="" />
 
@@ -47,27 +90,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:layout_weight="1"
-                android:text="车队名" />
+                android:text="车队简称" />
         </RelativeLayout>
 
         <View
+            android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="@dimen/dimen_30px"
-            android:layout_width="match_parent"
             android:background="@color/gray2" />
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
 
             <TextView
-                style="@style/setting_text_style2"
                 android:id="@+id/tc_user"
-                android:layout_alignParentRight="true"
+                style="@style/setting_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_marginRight="40dip"
                 android:text="" />
 
@@ -83,26 +126,33 @@
         </RelativeLayout>
 
         <View
+            android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="@dimen/dimen_30px"
-            android:layout_width="match_parent"
             android:background="@color/gray2" />
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <TextView
-                style="@style/setting_text_style2"
                 android:id="@+id/tc_phone"
-                android:layout_alignParentRight="true"
+                style="@style/setting_text_style2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dip"
-                android:text="" />
+                android:layout_marginRight="10dip"
+                android:layout_toLeftOf="@+id/call_btn"
+                android:text="222" />
 
+            <ImageView
+                android:id="@+id/call_btn"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/call_btn" />
 
             <TextView
                 style="@style/setting_text_style"
@@ -115,41 +165,39 @@
         </RelativeLayout>
 
         <View
-            android:layout_height="1px"
             android:layout_width="match_parent"
+            android:layout_height="1px"
             android:background="@color/gray2" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_below="@+id/linear_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_below="@+id/linear_desc"
+        android:orientation="vertical"></LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/linear_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/order_border"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/order_border"
         android:gravity="center_horizontal|center_vertical"
-        android:padding="@dimen/padding_10px"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_10px">
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="@string/del_team"
             bootstrap:bb_icon_left="fa-remove"
             bootstrap:bb_roundedCorners="true"
             bootstrap:bb_size="small"
-            bootstrap:bb_type="warning"
-            android:text="@string/del_team"
-            android:id="@+id/button" />
-        />
+            bootstrap:bb_type="warning" />
     </LinearLayout>
 </RelativeLayout>
