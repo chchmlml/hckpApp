@@ -107,7 +107,10 @@ public class PersonalEditActivity extends BaseActivity {
         params.addBodyParameter("name", bundle.getString("username"));
         params.addBodyParameter("phone", bundle.getString("phone"));
         params.addBodyParameter("pwd", pwd);
-        String newUrl = ApiClient._MakeURL(URLs.EDIT_CAR, p, appContext);
+        p.put("name", bundle.getString("username"));
+        p.put("phone", bundle.getString("phone"));
+        p.put("pwd", pwd);
+        String newUrl = ApiClient._MakeURL(URLs.USER_EDIT, p, appContext);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 

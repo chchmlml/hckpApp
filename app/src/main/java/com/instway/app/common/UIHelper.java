@@ -334,12 +334,13 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
-    public static void showTakephotoRedirect2(Context context, int type, String carId) {
+    public static void showTakephotoRedirect2(Context context, int type, String carId, String src) {
         Intent intent = new Intent(context, SelectPictuerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putInt("pic_type", type);
         b.putString("car_id", carId);
+        b.putString("src", src);
         intent.putExtras(b);
         context.startActivity(intent);
     }

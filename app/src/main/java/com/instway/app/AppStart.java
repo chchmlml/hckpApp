@@ -82,22 +82,23 @@ public class AppStart extends Activity {
             if (location == null)
                 return;
             if(location.getLocType() == 62 || location.getLocType() == 63){
-                new SweetAlertDialog(appContext, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("抱歉，定位失败，去 设置 检查下？")
-                        .setConfirmText("确定")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                Intent intent = new Intent(Intent.ACTION_MAIN);
-                                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
-                                startActivity(intent);
-                            }
-                        })
-                        .showCancelButton(true)
-                        .setCancelText("取消")
-                        .setCancelClickListener(null)
-                        .show();
-                return;
+//                new SweetAlertDialog(appContext, SweetAlertDialog.WARNING_TYPE)
+//                        .setTitleText("抱歉，定位失败，去 设置 检查下？")
+//                        .setConfirmText("确定")
+//                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                            @Override
+//                            public void onClick(SweetAlertDialog sDialog) {
+//                                Intent intent = new Intent(Intent.ACTION_MAIN);
+//                                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+//                                startActivity(intent);
+//                            }
+//                        })
+//                        .showCancelButton(true)
+//                        .setCancelText("取消")
+//                        .setCancelClickListener(null)
+//                        .show();
+//                return;
+                UIHelper.ToastMessage(appContext, "抱歉，定位失败，去 设置 检查下？");
             }
             StringBuffer sb = new StringBuffer(256);
             sb.append("time : ");

@@ -71,6 +71,8 @@ public class CarList extends Entity {
                 news.setTp_car_outdate(StringUtils.toString(d.get("tp_car_outdate")));
                 news.setTp_tc_id(StringUtils.toString(d.get("tp_tc_id")));
                 news.setTp_car_name(StringUtils.toString(d.get("tp_car_name")));
+                news.setTp_car_drivingpic(StringUtils.toString(d.get("tp_car_drivingpic")));
+
                 newslist.newslist.add(news);
             }
         }

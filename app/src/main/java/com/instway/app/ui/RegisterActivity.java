@@ -140,7 +140,7 @@ public class RegisterActivity extends BaseActivity {
                     appContext.setProperty("sessionId", StringUtils.toString(userObj.get("session_id")));
                     appContext.setProperty("headpic", StringUtils.toString(userObj.get("ts_u_headpic")));
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

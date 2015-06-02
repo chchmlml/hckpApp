@@ -85,7 +85,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         // 设置文字和图片
         News news = listItems.get(position);
-        listItemView.endtime.setText(news.getTp_diy_enddate());
+        listItemView.endtime.setText(news.getTp_diy_startdate());
         listItemView.endtime.setTag(news);
         listItemView.startPlace.setText(news.getTp_diy_start_city());
         listItemView.endPlace.setText(news.getTp_diy_end_city());

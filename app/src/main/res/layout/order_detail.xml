@@ -184,6 +184,7 @@
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxWidth="240dip"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dip"
                     android:text="" />

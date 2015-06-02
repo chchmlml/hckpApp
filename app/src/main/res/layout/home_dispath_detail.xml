@@ -184,6 +184,7 @@
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxWidth="220dip"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="40dip"
                     android:text="" />
@@ -284,6 +285,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="40dip"
+                    android:maxWidth="220dip"
                     android:text="" />
             </RelativeLayout>
 
@@ -322,7 +324,7 @@
 
 
                 <TextView
-                    android:id="@+id/goods_weight"
+                    android:id="@+id/goods_num"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -352,7 +354,7 @@
 
 
                 <TextView
-                    android:id="@+id/goods_num"
+                    android:id="@+id/goods_weight"
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -443,6 +445,7 @@
                     style="@style/detail_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxWidth="220dip"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="40dip"
                     android:text="" />

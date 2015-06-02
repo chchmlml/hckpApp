@@ -78,7 +78,7 @@ public class DispathDetailAdapter extends BaseAdapter {
         // 设置文字和图片
         Map<String, Object> news = listItems.get(position);
 
-        listItemView.reachdate.setText(StringUtils.toString(news.get("tp_o_reachdate")));
+        listItemView.reachdate.setText(StringUtils.toString(news.get("tp_o_loaddate")));
         listItemView.reachdate.setTag(news);
         //listItemView.status.setText(StringUtils.toString(news.get("tp_o_status")));
 

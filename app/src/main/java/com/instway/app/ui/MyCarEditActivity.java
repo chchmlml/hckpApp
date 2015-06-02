@@ -67,6 +67,7 @@ public class MyCarEditActivity extends BaseActivity {
 
     private Intent intent;
     private Bundle bundle;
+    private String carSrc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +98,7 @@ public class MyCarEditActivity extends BaseActivity {
                 createCar();
                 break;
             case R.id.delbtn:
-                new SweetAlertDialog(appContext, SweetAlertDialog.WARNING_TYPE)
+                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("您确定删除这辆车？")
                         .setConfirmText("确定")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -175,7 +176,7 @@ public class MyCarEditActivity extends BaseActivity {
             }
             break;
             case R.id.form_car_id:
-                UIHelper.showTakephotoRedirect2(appContext, 4, carId);
+                UIHelper.showTakephotoRedirect2(appContext, 4, carId, carSrc);
                 break;
         }
     }
@@ -262,9 +263,9 @@ public class MyCarEditActivity extends BaseActivity {
         carId = bundle.getString("car_id");
 
         BitmapUtils bitmapUtils = new BitmapUtils(appContext);
-        String headSrc = StringUtils.toString(bundle.getString("car_drivingpic"));
-        if (!StringUtils.isEmpty(headSrc)) {
-            bitmapUtils.display(carPic, headSrc);
+        carSrc = StringUtils.toString(bundle.getString("car_drivingpic"));
+        if (!StringUtils.isEmpty(carSrc)) {
+            bitmapUtils.display(carPic, carSrc);
         }
     }
 }

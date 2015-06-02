@@ -193,7 +193,7 @@ public class OrderDetailActivity extends BaseActivity {
     private void renderView(Map<String, Object> news) {
         startCity.setText(StringUtils.toString(news.get("tp_diy_start_city")));
         endCity.setText(StringUtils.toString(news.get("tp_diy_end_city")));
-        orderEndTime.setText(StringUtils.toString(news.get("tp_diy_enddate")));
+        orderEndTime.setText(StringUtils.toString(news.get("tp_diy_startdate")));
         orderKims.setText(StringUtils.toString(news.get("tp_diy_kms")));
         orderDesc.setText(StringUtils.toString(news.get("tp_diy_desc")));
         tcName.setText(StringUtils.toString(news.get("tp_tc_name")));
