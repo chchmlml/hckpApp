@@ -1,9 +1,12 @@
 package com.instway.app.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.instway.app.AppManager;
 
@@ -86,6 +89,16 @@ public class BaseActivity extends FragmentActivity {
     public void setAllowDestroy(boolean allowDestroy, View view) {
         this.allowDestroy = allowDestroy;
         this.view = view;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        View view = getWindow().peekDecorView();
+        if (view != null) {
+            InputMethodManager inputmanger = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override

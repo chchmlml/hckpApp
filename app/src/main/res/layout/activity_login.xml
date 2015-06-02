@@ -1,125 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@drawable/login_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!--<include layout="@layout/title_bar" />-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="20dip"
+        android:src="@drawable/login_logo" />
+
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/login_bg"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="50.0dip"
+        android:layout_margin="10.0dip"
+        android:layout_marginTop="@dimen/padding_10px"
+        android:background="@drawable/general_img_inputbox"
+        android:gravity="center"
+        android:padding="5.0dip">
 
-        <!--<include layout="@layout/title_bar" />-->
+        <TextView
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_marginRight="5.0dip"
+            android:background="@drawable/username_icon"
+            android:gravity="center" />
 
-        <ImageView
+        <EditText
+            android:id="@+id/btn_email"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@null"
+            android:hint="@string/login_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/grayslate"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/general_img_inputbox"
+        android:gravity="center"
+        android:padding="5.0dip">
+
+        <TextView
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_marginRight="5.0dip"
+            android:background="@drawable/password_icon"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/btn_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@null"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/grayslate" />
+    </LinearLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:layout_margin="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:onClick="viewClick"
+        android:text="@string/login_btn"
+        bootstrap:bb_roundedCorners="true"
+        bootstrap:bb_size="small"
+        bootstrap:bb_type="success" />
+    />
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip"
+        android:paddingTop="5.0dip">
+
+        <Button
+            android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dip"
-            android:layout_marginTop="20dip"
-            android:src="@drawable/login_logo" />
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50.0dip"
-            android:layout_margin="10.0dip"
-            android:layout_marginTop="@dimen/padding_10px"
-            android:background="@drawable/general_img_inputbox"
-            android:gravity="center"
-            android:padding="5.0dip">
-
-            <TextView
-                android:layout_width="20.0dip"
-                android:layout_height="20.0dip"
-                android:layout_marginRight="5.0dip"
-                android:background="@drawable/username_icon"
-                android:gravity="center" />
-
-            <EditText
-                android:id="@+id/btn_email"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:hint="@string/login_email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/grayslate"></EditText>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50.0dip"
-            android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="10.0dip"
-            android:layout_marginRight="10.0dip"
-            android:layout_marginTop="5.0dip"
-            android:background="@drawable/general_img_inputbox"
-            android:gravity="center"
-            android:padding="5.0dip">
-
-            <TextView
-                android:layout_width="20.0dip"
-                android:layout_height="20.0dip"
-                android:layout_marginRight="5.0dip"
-                android:background="@drawable/password_icon"
-                android:gravity="center" />
-
-            <EditText
-                android:id="@+id/btn_pwd"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:hint="@string/login_password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/grayslate" />
-        </LinearLayout>
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
-            android:layout_height="45.0dip"
-            android:layout_margin="10.0dip"
-            android:layout_marginTop="10.0dip"
+            android:background="@null"
             android:onClick="viewClick"
-            android:text="@string/login_btn"
-            bootstrap:bb_roundedCorners="true"
-            bootstrap:bb_size="small"
-            bootstrap:bb_type="success" />
-        />
+            android:layout_marginLeft="10dip"
+            android:text="@string/login_register"
+            android:textColor="@color/gray"
+            android:textSize="16.0dip" />
 
+        <!--<Button-->
+        <!--android:textSize="16.0dip"-->
+        <!--android:textColor="@color/gray"-->
+        <!--android:background="@null"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/login_forget"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:onClick="viewClick" />-->
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5.0dip"
-            android:paddingRight="5.0dip"
-            android:paddingTop="5.0dip">
-
-            <Button
-                android:id="@+id/btn_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:onClick="viewClick"
-                android:text="@string/login_register"
-                android:textColor="@color/gray"
-                android:textSize="16.0dip" />
-
-            <!--<Button-->
-            <!--android:textSize="16.0dip"-->
-            <!--android:textColor="@color/gray"-->
-            <!--android:background="@null"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/login_forget"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:onClick="viewClick" />-->
-        </RelativeLayout>
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

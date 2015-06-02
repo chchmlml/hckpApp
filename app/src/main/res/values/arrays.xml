@@ -13,7 +13,7 @@
     <string-array name="item_car_height">
         <item>1.2m-2m</item>
         <item>2m-2.5m</item>
-        <item>2.5m-2.3m</item>
+        <item>2.5m-3m</item>
         <item>>=3m</item>
     </string-array>
 

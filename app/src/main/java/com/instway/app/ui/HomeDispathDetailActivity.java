@@ -87,12 +87,16 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void ShippingTransport() {
+        String[] WeightNums = StringUtils.toString(goodsGet.getText()).split("/");
+        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
+            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
+            return;
+        }
         Intent intent = new Intent(appContext, GoodsInputActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
         b.putString("type", "get");
-        String[] WeightNums = StringUtils.toString(goodsGet.getText()).split("/");
         b.putString("weight", WeightNums[0]);
         b.putString("nums", WeightNums[1]);
         intent.putExtras(b);
@@ -105,12 +109,16 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void SendTransport() {
+        String[] WeightNums = StringUtils.toString(goodsSend.getText()).split("/");
+        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
+            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
+            return;
+        }
         Intent intent = new Intent(appContext, GoodsInputActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putString("type", "send");
         b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
-        String[] WeightNums = StringUtils.toString(goodsSend.getText()).split("/");
         b.putString("weight", WeightNums[0]);
         b.putString("nums", WeightNums[1]);
         intent.putExtras(b);

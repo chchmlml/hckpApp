@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.instway.app.AppContext;
 import com.instway.app.R;
 import com.instway.app.api.ApiClient;
@@ -28,6 +29,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -51,8 +54,18 @@ public class RegisterActivity extends BaseActivity {
     @ViewInject(R.id.input_username)
     private EditText inputUsername;
 
+    @ViewInject(R.id.input_code)
+    private EditText inputCode;
+
     @ViewInject(R.id.input_realname)
     private EditText inputRealname;
+
+    @ViewInject(R.id.code_btn)
+    private BootstrapButton codeBtn;
+
+    private int time = 120;
+    private Timer timer = new Timer();
+    TimerTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +79,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_submit, R.id.back_img, R.id.btn_login})
+    @OnClick({R.id.btn_submit, R.id.back_img, R.id.btn_login, R.id.code_btn})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -79,7 +92,66 @@ public class RegisterActivity extends BaseActivity {
             case R.id.btn_login:
                 UIHelper.showLoginRedirect(appContext);
                 break;
+            case R.id.code_btn:
+                sendCode();
+                break;
         }
+    }
+
+    private void sendCode() {
+        String phone = StringUtils.toString(inputPhone.getText());
+        if (StringUtils.isEmpty(phone)) {
+            UIHelper.ToastMessage(appContext, R.string.register_param1_is_null);
+            return;
+        }
+        codeBtn.setEnabled(false);
+        task = new TimerTask() {
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() { // UI thread
+                    @Override
+                    public void run() {
+                        if (time <= 0) {
+                            codeBtn.setEnabled(true);
+                            codeBtn.setText("获取验证码");
+                            task.cancel();
+                        } else {
+                            codeBtn.setText(time + "s后重发");
+                        }
+                        time--;
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 0, 1000);
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("phone", phone);
+        String newUrl = ApiClient._MakeURL(URLs.SMS_POST, params, appContext);
+        HttpUtils http = new HttpUtils();
+        final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
+        http.send(HttpRequest.HttpMethod.POST, newUrl, null, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+                JSONObject obj = JSON.parseObject(objectResponseInfo.result);
+                String code = obj.get("code").toString();
+                if (code.equals("1")) {
+                    pd.dismiss();
+
+                } else {
+                    pd.dismiss();
+                    codeBtn.setEnabled(true);
+                    codeBtn.setText("获取验证码");
+                    UIHelper.ToastMessage(appContext, "验证码发送失败，请重试");
+                    task.cancel();
+                }
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+            }
+        });
+
     }
 
     private void loginAction() {
@@ -89,6 +161,7 @@ public class RegisterActivity extends BaseActivity {
         String pwd2 = StringUtils.toString(inputPwd2.getText());
         String username = StringUtils.toString(inputUsername.getText());
         String realname = StringUtils.toString(inputRealname.getText());
+        String code = StringUtils.toString(inputCode.getText());
 
         if (StringUtils.isEmpty(phone)) {
             UIHelper.ToastMessage(appContext, R.string.register_param1_is_null);
@@ -117,12 +190,18 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
+        if (StringUtils.isEmpty(code)) {
+            UIHelper.ToastMessage(appContext, "验证码不能为空");
+            return;
+        }
+
         String newUrl = ApiClient._MakeURL(URLs.REGISTER_POST, new HashMap<String, Object>(), appContext);
         RequestParams params = new RequestParams();
         params.addBodyParameter("phone", phone);
         params.addBodyParameter("pwd", pwd);
         params.addBodyParameter("username", username);
         params.addBodyParameter("realname", realname);
+        params.addBodyParameter("sms_code", code);
         HttpUtils http = new HttpUtils();
         final ProgressDialog pd = ProgressDialog.show(this, null, "请稍后...");
 
