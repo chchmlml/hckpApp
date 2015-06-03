@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:src="@drawable/home_banner" />
@@ -26,17 +26,20 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <com.instway.app.widght.HomeButton
             android:id="@+id/l1"
             android:layout_width="fill_parent"
-            android:layout_height="0.0dip"
-            android:layout_margin="10dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@color/home_color_plane"
+            android:background="#368ff5"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="5dip"
             myapp:doAnim="true">
 
             <TextView
@@ -59,11 +62,13 @@
         <com.instway.app.widght.HomeButton
             android:id="@+id/l2"
             android:layout_width="fill_parent"
-            android:layout_height="0.0dip"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@color/home_color_local"
+            android:background="#fe864a"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="5dip"
             myapp:doAnim="true">
 
             <TextView
@@ -100,7 +105,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="3"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -108,10 +113,12 @@
             android:id="@+id/l3"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="10dip"
-            android:layout_marginTop="0dip"
             android:layout_weight="1"
-            android:background="@color/home_color_dest"
+            android:background="#0fc4d9"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="10dip"
             myapp:doAnim="true">
 
             <TextView
@@ -135,11 +142,12 @@
             android:id="@+id/l4"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="10dip"
-            android:layout_marginRight="10dip"
-            android:layout_marginTop="10dip"
             android:layout_weight="1"
-            android:background="@color/home_color_selectedmerchant"
+            android:background="#9656f3"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="10dip"
             myapp:doAnim="true">
 
             <TextView
