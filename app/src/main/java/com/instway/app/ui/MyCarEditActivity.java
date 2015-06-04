@@ -80,7 +80,7 @@ public class MyCarEditActivity extends BaseActivity {
 
         intent = this.getIntent();
         bundle = intent.getExtras();
-
+        backBtn.setVisibility(View.VISIBLE);
         mTitleTv.setText(R.string.my_cars_add);
         renderBaseView();
         //显示返回按钮

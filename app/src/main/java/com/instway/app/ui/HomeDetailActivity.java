@@ -66,6 +66,8 @@ public class HomeDetailActivity extends BaseActivity {
     @ViewInject(R.id.linear_desc)
     private LinearLayout linearDesc;
 
+    @ViewInject(R.id.linear_form)
+    private LinearLayout lineaFrorm;
 
     @ViewInject(R.id.lv)
     private ListView lv;
@@ -243,7 +245,8 @@ public class HomeDetailActivity extends BaseActivity {
                 button.setText("开始运输");
                 return "已接受";
             default:
-                button.setVisibility(View.GONE);
+                lineaFrorm.setVisibility(View.GONE);
+                //button.setVisibility(View.GONE);
                 break;
         }
         return "未知";
