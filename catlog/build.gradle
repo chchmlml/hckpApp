@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 10
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        applicationId "com.nolanlawson.logcat"
+        minSdkVersion 3
+        targetSdkVersion 10
+
+        testApplicationId "com.nolanlawson.logcat.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard.cfg'
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Volumes/MacBackup/Development/github/hckpApp/catlog/src/main/res/values-large/dimensions.xml -->
+    <eat-comment/>
+    <dimen name="pid_width">115dp</dimen>
+    <dimen name="tag_width">100dp</dimen>
+</resources>

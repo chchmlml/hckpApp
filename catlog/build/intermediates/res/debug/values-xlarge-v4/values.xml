@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Volumes/MacBackup/Development/github/hckpApp/catlog/src/main/res/values-xlarge/dimensions.xml -->
+    <eat-comment/>
+    <dimen name="log_level_width">20dp</dimen>
+    <dimen name="main_button_height">60dp</dimen>
+    <dimen name="main_button_width">65dp</dimen>
+    <dimen name="pid_width">190dp</dimen>
+    <dimen name="tag_width">170dp</dimen>
+</resources>
