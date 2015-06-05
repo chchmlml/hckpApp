@@ -93,6 +93,12 @@ public class OrderTabFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onResume() {
+        this.initFrameListViewData();
+        super.onResume();
+    }
+
     public void initViews() {
         //表格初始化
         this.initNewsListView();
@@ -106,9 +112,9 @@ public class OrderTabFragment extends BaseFragment {
         // 初始化Handler
         lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter, lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
         // 加载资讯数据
-        if (lvNewsData.isEmpty()) {
+        //if (lvNewsData.isEmpty()) {
             loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
-        }
+        //}
     }
 
     /**
@@ -278,10 +284,7 @@ public class OrderTabFragment extends BaseFragment {
                         case 0:
                             break;
                         case 1:
-                            params.put("diy_category","2");
-                            break;
-                        case 2:
-                            params.put("driver_price","1");
+                            params.put("i_type","1");
                             break;
                     }
                     NewsList list = appContext.getNewsList(pageIndex, isRefresh,params);

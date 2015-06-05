@@ -119,6 +119,7 @@ public class TeamDetailActivity extends BaseActivity {
                                     pd.dismiss();
                                 }
                             });
+                            sDialog.dismiss();
                         }
                     })
                     .showCancelButton(true)

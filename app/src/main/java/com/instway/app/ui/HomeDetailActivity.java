@@ -117,6 +117,7 @@ public class HomeDetailActivity extends BaseActivity {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
                             updateOrderStatus();
+                            sDialog.dismiss();
                         }
                     })
                     .showCancelButton(true)

@@ -98,7 +98,11 @@ public class HomeTabFragment extends BaseFragment {
         this.initFrameButton();
         this.initFrameListView();
 	}
-
+    @Override
+    public void onResume() {
+        this.initFrameListViewData();
+        super.onResume();
+    }
     /**
      * 初始化所有ListView
      */
@@ -117,9 +121,9 @@ public class HomeTabFragment extends BaseFragment {
         lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter, lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
 
         // 加载资讯数据
-        if (lvNewsData.isEmpty()) {
+        //if (lvNewsData.isEmpty()) {
             loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
-        }
+        //}
     }
 
     /**

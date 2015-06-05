@@ -127,7 +127,7 @@ public class SettingFragment extends BaseFragment {
                 userName.setVisibility(View.VISIBLE);
                 userNameHode.setVisibility(View.GONE);
                 BitmapUtils bitmapUtils = new BitmapUtils(appContext);
-                bitmapUtils.display(userThumb, u.getHeadpic(), new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
+                bitmapUtils.display(userThumb, u.getHeadpic()+ "?" + StringUtils.randomNum(), new BitmapLoadCallBack<BootstrapCircleThumbnail>() {
                     @Override
                     public void onLoadCompleted(BootstrapCircleThumbnail bootstrapCircleThumbnail, String s, Bitmap bitmap, BitmapDisplayConfig bitmapDisplayConfig, BitmapLoadFrom bitmapLoadFrom) {
                         userThumb.setImage(bitmap);

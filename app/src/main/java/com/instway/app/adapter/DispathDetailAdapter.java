@@ -86,7 +86,7 @@ public class DispathDetailAdapter extends BaseAdapter {
         listItemView.endcity.setText(StringUtils.toString(news.get("tp_o_end_city")));
 
         int status = StringUtils.toInt(StringUtils.toString(news.get("tp_tt_status")));
-        listItemView.status.setImageDrawable(UIHelper.getIconByStatus(context, status));
+        listItemView.status.setImageDrawable(UIHelper.getIconByStatus2(context, status));
         return convertView;
     }
 }

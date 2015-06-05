@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="40dip"
-                    android:text="1" />
+                    android:text="" />
 
                 <ImageView
                     android:id="@+id/call_load"
@@ -256,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dip"
-                    android:text="33333" />
+                    android:text="" />
             </RelativeLayout>
 
             <View
@@ -286,7 +286,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dip"
                     android:maxWidth="220dip"
-                    android:text="3333333333333333333333333333333333333333333333333333333333333333333333" />
+                    android:text="" />
             </RelativeLayout>
 
             <View
@@ -487,17 +487,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dip"
                     android:layout_weight="1"
-                    android:text="收货(货物重量/货物数量)" />
+                    android:text="发货(重量/货物)" />
 
                 <TextView
-                    android:id="@+id/goods_get"
+                    android:id="@+id/goods_send"
                     style="@style/setting_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="50dip"
                     android:layout_weight="1"
-                    android:text="20/50" />
+                    android:text="0/0" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -528,17 +528,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dip"
                     android:layout_weight="1"
-                    android:text="签收(货物重量/货物数量)" />
+                    android:text="签收(重量/数量)" />
 
                 <TextView
-                    android:id="@+id/goods_send"
+                    android:id="@+id/goods_get"
                     style="@style/setting_text_style2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="50dip"
                     android:layout_weight="1"
-                    android:text="20/50" />
+                    android:text="0/0" />
 
                 <ImageView
                     android:layout_width="wrap_content"

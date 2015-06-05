@@ -122,6 +122,7 @@ public class OrderDetailActivity extends BaseActivity {
                             } else {
                                 UIHelper.ToastMessage(appContext, R.string.error_input);
                             }
+                            sDialog.dismiss();
                         }
                     })
                     .showCancelButton(true)
@@ -151,8 +152,10 @@ public class OrderDetailActivity extends BaseActivity {
                         String code = obj.get("code").toString();
                         if (code.equals("1")) {
                             AppManager.getAppManager().finishActivity();
+                            UIHelper.ToastMessage(appContext, R.string.success_input);
+                        }else{
+                            UIHelper.ToastMessage(appContext,  obj.get("msg").toString());
                         }
-                        UIHelper.ToastMessage(appContext, R.string.success_input);
                     }
 
                     @Override
@@ -160,6 +163,7 @@ public class OrderDetailActivity extends BaseActivity {
                         pd.dismiss();
                     }
                 });
+        return;
     }
 
     private void initDataView() {
@@ -204,7 +208,7 @@ public class OrderDetailActivity extends BaseActivity {
         String tpType = StringUtils.toString(news.get("tp_diy_type"));
         this.orderType = tpType;
         if ("2".equals(tpType)) {
-            priceInput.setText(StringUtils.toString(news.get("tp_diyp_price")));
+            priceInput.setText(StringUtils.toString(news.get("tp_diy_price")));
             priceInput.setCursorVisible(false);
             priceInput.setFocusable(false);
             priceInput.setFocusableInTouchMode(false);

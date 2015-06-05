@@ -105,6 +105,7 @@ public class MyCarEditActivity extends BaseActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 delCar();
+                                sDialog.dismiss();
                             }
                         })
                         .showCancelButton(true)

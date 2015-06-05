@@ -44,6 +44,13 @@
         <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-b4fa34ccee8e4c554c7a5712a03aa7d19ab71fec.jar" />
     </item>
     <item
+        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.beardedhen/androidbootstrap/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="77b95e865c2385169e44b7ca1478ab461f043dcb">
+        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-38a91716bf3e2d912776048dba85f6517db65d20.jar" />
+    </item>
+    <item
         jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/pgyer_sdk_2.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -65,25 +72,11 @@
         <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-3d31a1f98a74c0d630e9980656206ca8fd3e4e45.jar" />
     </item>
     <item
-        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.beardedhen/androidbootstrap/1.2.1/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5b26560d38c480aa5c8413a9f43bd205afb123d7">
-        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-80483960f21e809796fdce11dd12e40e962f09d9.jar" />
-    </item>
-    <item
         jar="/Volumes/MacBackup/Development/github/hckpApp/app/libs/locSDK_5.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
         <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/locSDK_5.1-c6a65fbd5cf8491ab81c81b4ae2a404c4db0b655.jar" />
-    </item>
-    <item
-        jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/com.readystatesoftware.ghostlog/ghostlog-integration/1.0.3/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d89182820762729b9e914d62ca2352299d9e93a9">
-        <dex dex="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/pre-dexed/debug/classes-76c8a5967802efb59715982c33b7886d63525b9e.jar" />
     </item>
     <item
         jar="/Volumes/MacBackup/Development/github/hckpApp/app/build/intermediates/exploded-aar/cn.pedant.sweetalert/library/1.3/classes.jar"

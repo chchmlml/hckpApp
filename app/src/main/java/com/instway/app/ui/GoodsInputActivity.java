@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.instway.app.AppContext;
 import com.instway.app.R;
 import com.instway.app.api.ApiClient;
@@ -43,6 +44,9 @@ public class GoodsInputActivity extends BaseActivity {
     @ViewInject(R.id.nums)
     private EditText nums;
 
+    @ViewInject(R.id.button)
+    private BootstrapButton button;
+
     private AppContext appContext;
 
     private Intent intent;
@@ -58,7 +62,7 @@ public class GoodsInputActivity extends BaseActivity {
         intent = this.getIntent();
         bundle = intent.getExtras();
 
-        if (bundle.getString("type").equals("get")) {
+        if (bundle.getString("type").equals("send")) {
             mTitleTv.setText("收货编辑");
         } else {
             mTitleTv.setText("签收编辑");
@@ -80,14 +84,14 @@ public class GoodsInputActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.button:
-                saveTransGoodsDetail();
-                break;
-            case R.id.goods_input_3:
                 if (enableEdit) {
-                    UIHelper.showTakephotoRedirect3(appContext, 5, bundle.getString("tt_id"), bundle.getString("type"));
+                    saveTransGoodsDetail();
                 } else {
                     UIHelper.ToastMessage(appContext, "您已经编辑过，不能再编辑了");
                 }
+                break;
+            case R.id.goods_input_3:
+                UIHelper.showTakephotoRedirect3(appContext, 5, bundle.getString("tt_id"), bundle.getString("type"));
                 break;
         }
     }
@@ -103,14 +107,12 @@ public class GoodsInputActivity extends BaseActivity {
         RequestParams params = new RequestParams();
         params.addBodyParameter("tp_tt_id", bundle.getString("tt_id"));
         if (bundle.getString("type").equals("get")) {
-            params.addBodyParameter("tp_tt_getweight", getweight);
-            params.addBodyParameter("tp_tt_getnums", getnums);
             url = URLs.ShippingTransport_POST;
         } else {
-            params.addBodyParameter("tp_tt_sendweight", getweight);
-            params.addBodyParameter("tp_tt_sendnums", getnums);
             url = URLs.SendTransport_POST;
         }
+        params.addBodyParameter("weight", getweight);
+        params.addBodyParameter("nums", getnums);
         String newUrl = ApiClient._MakeURL(url, new HashMap<String, Object>(), appContext);
 
         HttpUtils http = new HttpUtils();

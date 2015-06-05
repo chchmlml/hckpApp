@@ -34,7 +34,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dip"
                 android:layout_weight="1"
-                android:text="货物重量" />
+                android:text="重量(吨)" />
 
 
             <EditText
@@ -46,6 +46,7 @@
                 android:background="@color/white"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
+                android:inputType="numberDecimal"
                 android:hint="请输入"
                 android:singleLine="true"
                 android:textColor="@color/gray"
@@ -80,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:layout_weight="1"
-                android:text="货物数" />
+                android:text="数量(件)" />
 
             <EditText
                 android:id="@+id/nums"
@@ -91,6 +92,7 @@
                 android:layout_marginRight="30dip"
                 android:background="@color/white"
                 android:focusable="true"
+                android:inputType="number"
                 android:focusableInTouchMode="true"
                 android:hint="请输入"
                 android:singleLine="true"

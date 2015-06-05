@@ -42,6 +42,8 @@ public class HomeDispathDetailActivity extends BaseActivity {
     private Intent intent;
     private Bundle bundle;
 
+    //3才能发货，5才能签收
+    private String ttStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,16 +89,16 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void ShippingTransport() {
-        String[] WeightNums = StringUtils.toString(goodsGet.getText()).split("/");
-        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
-            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
-            return;
-        }
+        String[] WeightNums = StringUtils.toString(goodsSend.getText()).split("/");
+//        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
+//            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
+//            return;
+//        }
         Intent intent = new Intent(appContext, GoodsInputActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
         b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
-        b.putString("type", "get");
+        b.putString("type", "send");
         b.putString("weight", WeightNums[0]);
         b.putString("nums", WeightNums[1]);
         intent.putExtras(b);
@@ -109,15 +111,15 @@ public class HomeDispathDetailActivity extends BaseActivity {
      * 装货报备
      */
     private void SendTransport() {
-        String[] WeightNums = StringUtils.toString(goodsSend.getText()).split("/");
-        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
-            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
-            return;
-        }
+        String[] WeightNums = StringUtils.toString(goodsGet.getText()).split("/");
+//        if (!"0".equals(WeightNums[0]) && !"0".equals(WeightNums[1])) {
+//            UIHelper.ToastMessage(appContext,"您已经更新了，不用再更新了");
+//            return;
+//        }
         Intent intent = new Intent(appContext, GoodsInputActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = new Bundle();
-        b.putString("type", "send");
+        b.putString("type", "get");
         b.putString("tt_id", StringUtils.toString(bundle.getString("tt_id")));
         b.putString("weight", WeightNums[0]);
         b.putString("nums", WeightNums[1]);
@@ -205,6 +207,8 @@ public class HomeDispathDetailActivity extends BaseActivity {
                     reachdate.setText(StringUtils.toString(transObj.get("tp_o_reachdate")) + "  " + StringUtils.toString(transObj.get("tp_o_reachhour")));
                     getaddress.setText(StringUtils.toString(transObj.get("tp_o_getaddress")));
                     getPhone = StringUtils.toString(transObj.get("tp_o_getphone"));
+
+                    ttStatus = StringUtils.toString(transObj.get("tp_tt_status"));
 
                     category.setText(StringUtils.toString(transObj.get("tp_og_category")));
                     goodspack.setText(StringUtils.toString(transObj.get("tp_og_goodspack")));

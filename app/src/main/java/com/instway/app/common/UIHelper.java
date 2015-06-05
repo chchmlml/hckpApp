@@ -1740,6 +1740,27 @@ public class UIHelper {
         }
         return dDrawable;
     }
+
+    public static Drawable getIconByStatus2(Context context, int status) {
+        Drawable dDrawable = null;
+        switch (status) {
+            case 1:
+            case 2:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_3);
+                break;
+            case 3:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_1);
+                break;
+            case 5:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_0);
+                break;
+            case 6:
+            case 7:
+                dDrawable = context.getResources().getDrawable(R.drawable.trans_status_2);
+                break;
+        }
+        return dDrawable;
+    }
     //
     // /**
     // * 退出程序

@@ -121,6 +121,11 @@ public class PersonalActivity extends BaseActivity {
                             renderBaseView(userData);
                         } else {
                             UIHelper.ToastMessage(appContext, obj.get("msg").toString());
+                            try {
+                                AppContext.logout(appContext);
+                            } catch (AppException e) {
+
+                            }
                             AppManager.getAppManager().finishActivity();
                         }
                     }
@@ -143,6 +148,7 @@ public class PersonalActivity extends BaseActivity {
         headSrc = StringUtils.toString(data.get("ts_u_headpic"));
         if (!StringUtils.isEmpty(headSrc)) {
             takeThumb(headThumb, headSrc);
+            appContext.setProperty("headpic", headSrc);
         }
         idSrc = StringUtils.toString(data.get("tp_d_idcard"));
         if (!StringUtils.isEmpty(idSrc)) {
