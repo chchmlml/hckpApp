@@ -17,7 +17,6 @@ import com.instway.app.AppContext;
 import com.instway.app.AppManager;
 import com.instway.app.R;
 import com.instway.app.adapter.DispathDetailAdapter;
-import com.instway.app.adapter.StatusExpandAdapter;
 import com.instway.app.api.ApiClient;
 import com.instway.app.bean.OneStatusEntity;
 import com.instway.app.bean.URLs;
@@ -78,7 +77,6 @@ public class HomeDetailActivity extends BaseActivity {
     private Intent intent;
     private Bundle bundle;
     private List<OneStatusEntity> oneList;
-    private StatusExpandAdapter statusAdapter;
 
     private String orderStatus = null;
     private String diId = null;

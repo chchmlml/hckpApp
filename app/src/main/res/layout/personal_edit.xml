@@ -111,8 +111,7 @@
             bootstrap:bb_roundedCorners="true"
             bootstrap:bb_size="small"
             bootstrap:bb_type="success"
-            android:text="更新信息"
-            android:onClick="viewClick" />
+            android:text="更新信息" />
     </LinearLayout>
 
     <LinearLayout

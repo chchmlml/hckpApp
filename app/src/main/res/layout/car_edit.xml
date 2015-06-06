@@ -40,6 +40,7 @@
                 android:background="@color/white"
                 android:singleLine="true"
                 android:focusable="true"
+                android:hint="请输入"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/gray"
                 android:focusableInTouchMode="true"

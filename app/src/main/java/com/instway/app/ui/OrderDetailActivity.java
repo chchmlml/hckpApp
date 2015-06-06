@@ -41,9 +41,6 @@ public class OrderDetailActivity extends BaseActivity {
 
     private AppContext appContext;
 
-    @ViewInject(R.id.swip_container)
-    private MySwipeRefreshLayout swipContainer;
-
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
 
@@ -95,15 +92,6 @@ public class OrderDetailActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
         initDataView();
-
-        swipContainer.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
-        swipContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
-
-            @Override
-            public void onRefresh() {
-                initDataView();
-            }
-        });
     }
 
     @OnClick({R.id.button, R.id.back_img})

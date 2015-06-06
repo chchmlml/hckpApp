@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.instway.app" >
+    package="com.instway.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -29,7 +29,7 @@
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon" >
+        tools:replace="android:icon">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="GVpICeYD4Oqb8DR9G6s0tgib" />
@@ -37,13 +37,12 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
-        </service>
+            android:process=":remote"></service>
         <!-- 启动页 -->
         <activity
             android:name=".AppStart"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,12 +50,16 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.LocationService" >
+        <service
+            android:name=".service.LocationService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.instway.app.location" />
             </intent-filter>
         </service>
-        <service android:name=".service.TipsService" >
+        <service
+            android:name=".service.TipsService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.instway.app.tips" />
             </intent-filter>
@@ -163,13 +166,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <!-- 车辆详情详情 -->
-        <!-- <activity -->
-        <!-- android:name=".ui.MyCarDetailActivity" -->
-        <!-- android:configChanges="keyboardHidden|orientation" -->
-        <!-- android:launchMode="singleTask" -->
-        <!-- android:screenOrientation="portrait" -->
-        <!-- android:windowSoftInputMode="stateAlwaysHidden|adjustPan" /> -->
         <activity
             android:name=".ui.MyCarEditActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -194,10 +190,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity
-            android:name=".ui.LogActivity"
-            android:label="@string/title_activity_log" >
-        </activity>
     </application>
 
 </manifest>

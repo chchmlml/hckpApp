@@ -28,7 +28,7 @@
 			android:textColor="@color/gray"
 			android:textColorHint="@color/gray"
 	        android:focusableInTouchMode="true"
-            android:textSize="14dip"
+            android:textSize="14sp"
 	        android:imeOptions="actionSearch"
 			android:background="@color/white"
 	        android:hint="输入搜索内容"/>

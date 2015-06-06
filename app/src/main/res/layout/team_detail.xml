@@ -18,6 +18,8 @@
         android:layout_marginTop="10dip"
         android:background="@color/white"
         android:orientation="vertical">
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/gray2" />
@@ -46,14 +48,14 @@
                 android:text="车队名" />
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/status_icon"
                 android:layout_width="60dip"
                 android:layout_height="20dip"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="30dip"
                 android:layout_toLeftOf="@+id/tc_name"
-                android:src="@drawable/team_status_1" />
+                android:src="@drawable/team_status_1"
+                android:visibility="gone" />
 
 
         </RelativeLayout>
@@ -166,15 +168,6 @@
             android:background="@color/gray2" />
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_desc"
-        android:orientation="vertical"></LinearLayout>
-
-
     <LinearLayout
         android:id="@+id/linear_form"
         android:layout_width="match_parent"

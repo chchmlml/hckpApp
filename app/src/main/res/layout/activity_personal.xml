@@ -39,7 +39,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
-                android:layout_weight="1"
                 android:text="用户名" />
         </RelativeLayout>
 
@@ -70,7 +69,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
-                android:layout_weight="1"
                 android:text="手机号" />
         </RelativeLayout>
 
@@ -251,7 +249,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
-                android:layout_weight="1"
                 android:text="修改密码" />
 
             <ImageView

@@ -1,564 +1,559 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/graywhite"
-        android:layout_marginBottom="40dip"
-        android:orientation="vertical"
-        android:verticalScrollbarPosition="right">
-            android:id="@+id/title_bar"
-            layout="@layout/title_bar" />
-
-
-        <LinearLayout
-            android:id="@+id/liner1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_bar"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <ImageView
-                    android:layout_width="20dip"
-                    android:layout_height="20dip"
-                    android:layout_marginLeft="30dip"
-                    android:layout_marginTop="10dip"
-                    android:src="@drawable/start_place" />
-
-
-                <TextView
-                    android:id="@+id/start_city"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dip"
-                    android:layout_weight="1"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-
-                <ImageView
-                    android:layout_width="20dip"
-                    android:layout_height="20dip"
-                    android:layout_marginLeft="30dip"
-                    android:layout_marginTop="10dip"
-                    android:src="@drawable/end_place" />
-
-                <TextView
-                    android:id="@+id/end_city"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dip"
-                    android:layout_weight="1"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_loaduser"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="发货人" />
-
-
-                <TextView
-                    android:id="@+id/load_user"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dip"
-                    android:text="" />
-
-                <ImageView
-                    android:id="@+id/call_load"
-                    android:layout_width="25dip"
-                    android:layout_height="25dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dip"
-                    android:layout_marginRight="10dip"
-                    android:src="@drawable/call_btn"/>
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_enddate"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="发货时间" />
-
-
-                <TextView
-                    android:id="@+id/loaddate"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-
-                <ImageView
-                    android:id="@+id/status_icon"
-                    android:layout_width="35dip"
-                    android:layout_height="35dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dip"
-                    android:layout_marginTop="5dip"
-                    android:src="@drawable/trans_status_0"
-                    android:visibility="gone" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_start_address"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="发货地址" />
-
-                <TextView
-                    android:id="@+id/loadaddress"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="220dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_getuser"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="收货人" />
-
-
-                <TextView
-                    android:id="@+id/getuser"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dip"
-                    android:text="" />
-
-
-
-                <ImageView
-                    android:id="@+id/call_get"
-                    android:layout_width="25dip"
-                    android:layout_height="25dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dip"
-                    android:layout_marginRight="10dip"
-                    android:src="@drawable/call_btn"/>
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_reachdate"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="收货时间" />
-
-
-                <TextView
-                    android:id="@+id/reachdate"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_get_address"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="收货地址" />
-
-
-                <TextView
-                    android:id="@+id/getaddress"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:maxWidth="220dip"
-                    android:text="" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/liner2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/liner1"
-            android:layout_marginTop="20dip"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_kms"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="货物数" />
-
-
-                <TextView
-                    android:id="@+id/goods_num"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_desc"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="货物重量" />
-
-
-                <TextView
-                    android:id="@+id/goods_weight"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_category"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="规格" />
-
-                <TextView
-                    android:id="@+id/category"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_goodspack"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="包装" />
-
-                <TextView
-                    android:id="@+id/goodspack"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dip"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_remark"
-                    style="@style/detail_text_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="备注" />
-
-                <TextView
-                    android:id="@+id/remark"
-                    style="@style/detail_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="220dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"
-                    android:text="" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/liner3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/liner2"
-            android:layout_marginTop="20dip"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:id="@+id/goods_input_1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_goods_1"
-                    style="@style/setting_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:layout_weight="1"
-                    android:text="发货(重量/货物)" />
-
-                <TextView
-                    android:id="@+id/goods_send"
-                    style="@style/setting_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="50dip"
-                    android:layout_weight="1"
-                    android:text="0/0" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dip"
-                    android:src="@drawable/setting_arrow" />
-            </RelativeLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="30dip"
-                android:background="@color/gray2" />
-
-            <RelativeLayout
-                android:id="@+id/goods_input_2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/tip_goods_2"
-                    style="@style/setting_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:layout_weight="1"
-                    android:text="签收(重量/数量)" />
-
-                <TextView
-                    android:id="@+id/goods_get"
-                    style="@style/setting_text_style2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="50dip"
-                    android:layout_weight="1"
-                    android:text="0/0" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dip"
-                    android:src="@drawable/setting_arrow" />
-            </RelativeLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray2" />
-
-        </LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="40dip"
+    android:background="@color/graywhite"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <View
-            android:layout_below="@+id/liner3"
             android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:background="@null" />
-    </RelativeLayout>
-</ScrollView>
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginLeft="30dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/start_place" />
+
+
+            <TextView
+                android:id="@+id/start_city"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:layout_weight="1"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginLeft="30dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/end_place" />
+
+            <TextView
+                android:id="@+id/end_city"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dip"
+                android:layout_weight="1"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_loaduser"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发货人" />
+
+
+            <TextView
+                android:id="@+id/load_user"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dip"
+                android:text="" />
+
+            <ImageView
+                android:id="@+id/call_load"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/call_btn" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_enddate"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发货时间" />
+
+
+            <TextView
+                android:id="@+id/loaddate"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:text="" />
+
+            <ImageView
+                android:id="@+id/status_icon"
+                android:layout_width="35dip"
+                android:layout_height="35dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="5dip"
+                android:src="@drawable/trans_status_0"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_start_address"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发货地址" />
+
+            <TextView
+                android:id="@+id/loadaddress"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:maxWidth="220dip"
+                android:text="" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_getuser"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收货人" />
+
+
+            <TextView
+                android:id="@+id/getuser"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dip"
+                android:text="" />
+
+
+            <ImageView
+                android:id="@+id/call_get"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/call_btn" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_reachdate"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收货时间" />
+
+
+            <TextView
+                android:id="@+id/reachdate"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:text="" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_get_address"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收货地址" />
+
+
+            <TextView
+                android:id="@+id/getaddress"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:maxWidth="220dip"
+                android:text="" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/liner1"
+        android:layout_marginTop="20dip"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_kms"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="货物数" />
+
+
+            <TextView
+                android:id="@+id/goods_num"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_desc"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="货物重量" />
+
+
+            <TextView
+                android:id="@+id/goods_weight"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_category"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="规格" />
+
+            <TextView
+                android:id="@+id/category"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_goodspack"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="包装" />
+
+            <TextView
+                android:id="@+id/goodspack"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dip"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_remark"
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注" />
+
+            <TextView
+                android:id="@+id/remark"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dip"
+                android:maxWidth="220dip"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/liner2"
+        android:layout_marginTop="20dip"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:id="@+id/goods_input_1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_goods_1"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="发货(重量/货物)" />
+
+            <TextView
+                android:id="@+id/goods_send"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dip"
+                android:layout_weight="1"
+                android:text="0/0" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:id="@+id/goods_input_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tip_goods_2"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:text="签收(重量/数量)" />
+
+            <TextView
+                android:id="@+id/goods_get"
+                style="@style/setting_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dip"
+                android:layout_weight="1"
+                android:text="0/0" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_below="@+id/liner3"
+        android:background="@null" />
+
+</RelativeLayout>

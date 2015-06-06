@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_x="3px">
+                    android:layout_x="3dip">
 
                     <RadioButton
                         style="@style/order_text_style"

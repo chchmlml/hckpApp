@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.instway.app"
         minSdkVersion 9
-        targetSdkVersion 14
+        targetSdkVersion 19
         versionCode 1
         versionName "0.2.3"
     }
@@ -49,7 +49,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.lsjwzh:materialloadingprogressbar:0.5.3-RELEASE'
     compile 'cn.pedant.sweetalert:library:1.3'
-    compile 'com.beardedhen:androidbootstrap:+'
     compile 'com.jiechic.library:xUtils:2.6.14'
     compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.alibaba:fastjson:1.2.6'
+    compile 'com.beardedhen:androidbootstrap:1.2.2'
 }
