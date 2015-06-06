@@ -52,7 +52,11 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        mIndex = bundle.getInt("index");
+        if (null != bundle) {
+            mIndex = bundle.getInt("index");
+        } else {
+            mIndex = 1;
+        }
         init();
         initEvents();
 

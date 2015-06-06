@@ -8,8 +8,6 @@
     android:orientation="vertical">
 
     <include layout="@layout/title_bar" />
-
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,8 +33,6 @@
                 android:layout_marginLeft="10dip"
                 android:layout_weight="1"
                 android:text="重量(吨)" />
-
-
             <EditText
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
@@ -52,8 +48,6 @@
                 android:textColor="@color/gray"
                 android:textColorHint="@color/gray" />
         </RelativeLayout>
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -107,8 +101,6 @@
             android:background="@color/gray2" />
     </LinearLayout>
 
-
-
     <LinearLayout
         android:id="@+id/liner4"
         android:layout_width="fill_parent"
@@ -145,7 +137,6 @@
                 android:src="@drawable/setting_arrow" />
         </RelativeLayout>
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -163,8 +154,6 @@
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/padding_10px">
-
-
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/button"
             android:layout_width="fill_parent"

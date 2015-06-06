@@ -15,7 +15,6 @@
             android:id="@+id/title_bar"
             layout="@layout/title_bar" />
 
-
         <LinearLayout
             android:id="@+id/liner1"
             android:layout_width="fill_parent"
@@ -256,10 +255,6 @@
             android:layout_marginTop="20dip"
             android:background="@color/white"
             android:orientation="vertical">
-
-            <!-- 反馈意见 -->
-
-            <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/gray2" />

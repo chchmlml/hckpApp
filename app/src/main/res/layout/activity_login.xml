@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
@@ -7,8 +6,6 @@
     android:background="@drawable/login_bg"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
-    <!--<include layout="@layout/title_bar" />-->
 
     <ImageView
         android:layout_width="wrap_content"
@@ -87,8 +84,6 @@
         bootstrap:bb_roundedCorners="true"
         bootstrap:bb_size="small"
         bootstrap:bb_type="success" />
-    />
-
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -101,22 +96,12 @@
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
             android:background="@null"
             android:onClick="viewClick"
-            android:layout_marginLeft="10dip"
             android:text="@string/login_register"
             android:textColor="@color/gray"
             android:textSize="16.0dip" />
-
-        <!--<Button-->
-        <!--android:textSize="16.0dip"-->
-        <!--android:textColor="@color/gray"-->
-        <!--android:background="@null"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/login_forget"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:onClick="viewClick" />-->
     </RelativeLayout>
 
 </LinearLayout>

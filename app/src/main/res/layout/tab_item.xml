@@ -11,13 +11,4 @@
         android:gravity="center_horizontal"
         android:textSize="12sp" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/indicate_img"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="2dip"-->
-        <!--android:layout_toRightOf="@id/item_name"-->
-        <!--android:src="@drawable/update_hint"-->
-        <!--android:visibility="gone" />-->
-
 </RelativeLayout>

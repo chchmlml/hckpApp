@@ -11,11 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--<View-->
-            <!--android:layout_height="1px"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:background="@color/gray2" />-->
-
         <RelativeLayout
             android:background="@color/white"
             android:layout_width="fill_parent"

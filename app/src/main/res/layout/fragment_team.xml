@@ -8,21 +8,6 @@
     <!-- title bar -->
     <include layout="@layout/title_bar" />
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/to_find_linear"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/white"-->
-        <!--android:orientation="vertical">-->
-
-        <!--<ImageView-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:paddingLeft="@dimen/padding_10px"-->
-            <!--android:paddingRight="@dimen/padding_10px"-->
-            <!--android:src="@drawable/search_bg" />-->
-    <!--</LinearLayout>-->
-
     <com.instway.app.widght.PullToRefreshListView
         android:id="@+id/listview_order"
         android:listSelector="@color/graywhite"

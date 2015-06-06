@@ -186,42 +186,6 @@
                         android:layout_marginRight="15dip"
                         android:src="@drawable/setting_arrow" />
                 </RelativeLayout>
-
-                <!--<View-->
-                    <!--android:layout_height="1px"-->
-                    <!--android:layout_marginLeft="@dimen/dimen_30px"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:background="@color/gray2" />-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="fill_parent"-->
-                    <!--android:background="@color/white"-->
-                    <!--android:layout_height="wrap_content">-->
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentLeft="true"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:layout_marginLeft="20dip"-->
-                        <!--android:src="@drawable/geren" />-->
-
-                    <!--<TextView-->
-                        <!--style="@style/setting_text_style"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginLeft="40dip"-->
-                        <!--android:text="设置" />-->
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:layout_marginRight="15dip"-->
-                        <!--android:src="@drawable/setting_arrow" />-->
-                <!--</RelativeLayout>-->
-
                 <View
                     android:layout_height="1px"
                     android:layout_width="match_parent"

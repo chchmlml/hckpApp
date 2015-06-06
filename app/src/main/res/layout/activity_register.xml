@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
@@ -73,6 +72,7 @@
                 android:layout_gravity="right"
                 android:background="@color/white"
                 android:focusable="true"
+                android:inputType="textPassword"
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical|right"
                 android:paddingRight="60dip"
@@ -111,6 +111,7 @@
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical|right"
                 android:paddingRight="60dip"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/gray" />

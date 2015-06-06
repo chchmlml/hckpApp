@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView1"
@@ -15,17 +15,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -34,38 +34,38 @@
                     android:text=" 定位模式"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-		<RadioGroup
-		    android:id="@+id/selectMode"
-		    android:layout_width="wrap_content"
-		    android:layout_height="match_parent" >
-
-     		 <RadioButton
-     		     android:id="@+id/radio_hight"
-     		     android:layout_width="wrap_content"
-     		     android:layout_height="wrap_content"
-     		     android:checked="true"
-     		     android:text="高精度" />
-
-                <RadioButton
-                    android:id="@+id/radio_low"
+                <RadioGroup
+                    android:id="@+id/selectMode"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="低功耗" />
+                    android:layout_height="match_parent">
 
-                <RadioButton
-                    android:id="@+id/radio_device"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="仅设备" />
-</RadioGroup>
-              
+                    <RadioButton
+                        android:id="@+id/radio_hight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="高精度" />
+
+                    <RadioButton
+                        android:id="@+id/radio_low"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="低功耗" />
+
+                    <RadioButton
+                        android:id="@+id/radio_device"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="仅设备" />
+                </RadioGroup>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/TextView01"
@@ -73,30 +73,31 @@
                     android:layout_height="wrap_content"
                     android:text="坐标系"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-	<RadioGroup
-		    android:id="@+id/selectCoordinates"
-		    android:layout_width="wrap_content"
-		    android:layout_height="match_parent" >
 
-                <RadioButton
-                    android:id="@+id/radio_gcj02"
+                <RadioGroup
+                    android:id="@+id/selectCoordinates"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="gcj02(国测局加密经纬度坐标)" />
+                    android:layout_height="match_parent">
 
-                <RadioButton
-                    android:id="@+id/radio_bd09ll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="bd09ll(百度加密经纬度坐标)" />
+                    <RadioButton
+                        android:id="@+id/radio_gcj02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="gcj02(国测局加密经纬度坐标)" />
 
-                <RadioButton
-                    android:id="@+id/radio_bd09"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="bd09(百度加密墨卡托坐标)" />
-</RadioGroup>
+                    <RadioButton
+                        android:id="@+id/radio_bd09ll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bd09ll(百度加密经纬度坐标)" />
+
+                    <RadioButton
+                        android:id="@+id/radio_bd09"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bd09(百度加密墨卡托坐标)" />
+                </RadioGroup>
             </LinearLayout>
 
         </LinearLayout>
@@ -111,7 +112,7 @@
         <LinearLayout
             android:layout_width="278dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView3"
@@ -126,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="1000"
-                android:inputType="number" >
+                android:inputType="number">
 
                 <requestFocus />
             </EditText>
@@ -137,7 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.89"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/geofencelog"
@@ -160,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:gravity="center|top"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/addfence"

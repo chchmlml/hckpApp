@@ -4,11 +4,9 @@
     android:layout_height="match_parent"
     android:background="@color/graywhite"
     android:orientation="vertical">
-    <!-- title bar -->
     <include
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
-
     <com.instway.app.widght.PullToRefreshListView
         android:id="@+id/listview_cars"
         android:layout_width="fill_parent"

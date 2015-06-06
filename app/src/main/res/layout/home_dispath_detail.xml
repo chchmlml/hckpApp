@@ -10,8 +10,6 @@
         android:layout_marginBottom="40dip"
         android:orientation="vertical"
         android:verticalScrollbarPosition="right">
-        <!-- title bar -->
-        <include
             android:id="@+id/title_bar"
             layout="@layout/title_bar" />
 

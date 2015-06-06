@@ -8,8 +8,6 @@
     android:background="@color/graywhite">
 
     <include layout="@layout/title_bar" />
-
-
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -216,8 +214,6 @@
             android:layout_width="match_parent"
             android:background="@color/gray2" />
     </LinearLayout>
-
-
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -302,7 +298,6 @@
             bootstrap:bb_type="success"
             android:text="保存"
             android:id="@+id/button" />
-        />
     </LinearLayout>
 
     <LinearLayout

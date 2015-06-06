@@ -6,10 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/graywhite">
-
     <include layout="@layout/title_bar" />
-
-
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -294,7 +291,6 @@
             bootstrap:bb_type="warning"
             android:text="退出登录"
             android:id="@+id/btn_logout" />
-        />
     </LinearLayout>
 
 </LinearLayout>

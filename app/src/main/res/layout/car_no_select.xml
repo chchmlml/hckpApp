@@ -6,10 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/graywhite">
-
     <include layout="@layout/title_bar" />
-
-
     <LinearLayout
         android:background="@color/white"
         android:layout_width="fill_parent"
@@ -82,7 +79,6 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -91,7 +87,6 @@
             bootstrap:bb_type="success"
             android:text="确定"
             android:id="@+id/button" />
-        />
     </LinearLayout>
 
 </LinearLayout>
