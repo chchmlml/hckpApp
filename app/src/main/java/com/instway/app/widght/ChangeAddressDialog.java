@@ -48,8 +48,8 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 	private AddressTextAdapter provinceAdapter;
 	private AddressTextAdapter cityAdapter;
 
-	private String strProvince = "四川";
-	private String strCity = "成都";
+	private String strProvince = "北京市";
+	private String strCity = "东城区";
 	private OnAddressCListener onAddressCListener;
 
 	private int maxsize = 24;
@@ -240,7 +240,7 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 			int len = -1;
 			byte[] buf = new byte[1024];
 			while ((len = is.read(buf)) != -1) {
-				sb.append(new String(buf, 0, len, "gbk"));
+				sb.append(new String(buf, 0, len, "utf-8"));
 			}
 			is.close();
 			mJsonObj = new JSONObject(sb.toString());
@@ -260,7 +260,7 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 			mProvinceDatas = new String[jsonArray.length()];
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonP = jsonArray.getJSONObject(i);
-				String province = jsonP.getString("p");
+				String province = jsonP.getString("city_name");
 
 				mProvinceDatas[i] = province;
 
@@ -270,31 +270,14 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 					 * Throws JSONException if the mapping doesn't exist or is
 					 * not a JSONArray.
 					 */
-					jsonCs = jsonP.getJSONArray("c");
+					jsonCs = jsonP.getJSONArray("sun_city");
 				} catch (Exception e1) {
 					continue;
 				}
 				String[] mCitiesDatas = new String[jsonCs.length()];
 				for (int j = 0; j < jsonCs.length(); j++) {
-					JSONObject jsonCity = jsonCs.getJSONObject(j);
-					String city = jsonCity.getString("n");
+					String city = jsonCs.getString(j);
 					mCitiesDatas[j] = city;
-					JSONArray jsonAreas = null;
-					try {
-						/**
-						 * Throws JSONException if the mapping doesn't exist or
-						 * is not a JSONArray.
-						 */
-						jsonAreas = jsonCity.getJSONArray("a");
-					} catch (Exception e) {
-						continue;
-					}
-
-					String[] mAreasDatas = new String[jsonAreas.length()];
-					for (int k = 0; k < jsonAreas.length(); k++) {
-						String area = jsonAreas.getJSONObject(k).getString("s");
-						mAreasDatas[k] = area;
-					}
 				}
 				mCitisDatasMap.put(province, mCitiesDatas);
 			}
@@ -326,13 +309,6 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 			int length = citys.length;
 			for (int i = 0; i < length; i++) {
 				arrCitys.add(citys[i]);
-			}
-		} else {
-			String[] city = mCitisDatasMap.get("四川");
-			arrCitys.clear();
-			int length = city.length;
-			for (int i = 0; i < length; i++) {
-				arrCitys.add(city[i]);
 			}
 		}
 		if (arrCitys != null && arrCitys.size() > 0

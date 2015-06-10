@@ -57,6 +57,7 @@ public class OrderFilterActivity extends BaseActivity {
         switch (v.getId())
         {
             case R.id.back_img:
+                finish();
                 break;
             case R.id.select_1:
                 ChangeAddressDialog address1 = new ChangeAddressDialog(this);
