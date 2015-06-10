@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graywhite"
@@ -9,301 +10,158 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
+
     <LinearLayout
-        android:id="@+id/linear_desc"
-        android:layout_width="match_parent"
+        android:id="@+id/liner1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_20px"
-        android:layout_marginTop="50dip"
+        android:layout_below="@id/title_bar"
+        android:layout_marginTop="20dip"
+        android:background="@color/white"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+        <RelativeLayout
+            android:id="@+id/select_1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_20px"
-            android:padding="@dimen/padding_5px"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            android:background="@color/white">
 
-            <LinearLayout
+            <TextView
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center_vertical">
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_x="3dip">
-
-                    <RadioButton
-                        style="@style/order_text_style"
-                        android:id="@+id/radiobutton1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="@string/goods_attr1" />
-
-                    <RadioButton
-                        style="@style/order_text_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/goods_attr2"
-                        android:id="@+id/radioButton" />
-                </RadioGroup>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginBottom="1dip"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-
-                <EditText
-                    android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/bg_edittext"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="10dip"
-                    android:paddingLeft="2dip"
-                    android:textColorHint="@color/gray"
-                    android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
+                android:text="发货地址" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_5px"
-            android:background="@color/white"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/start_city"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag3" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dip"
+                android:text="" />
 
-                <EditText
-                    android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/bg_edittext"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="10dip"
-                    android:paddingLeft="2dip"
-                    android:textColorHint="@color/gray"
-                    android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginBottom="1dip"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag4" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
 
-                <EditText
-                    android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/bg_edittext"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="10dip"
-                    android:paddingLeft="2dip"
-                    android:textColorHint="@color/gray"
-                    android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
-
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_5px"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
 
-            <LinearLayout
+        <RelativeLayout
+            android:id="@+id/select_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                style="@style/detail_text_style"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag5" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:text="收货地址" />
 
-                <EditText
-                    android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/bg_edittext"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="10dip"
-                    android:paddingLeft="2dip"
-                    android:textColorHint="@color/gray"
-                    android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginBottom="1dip"
-            android:padding="@dimen/padding_5px"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/end_city"
+                style="@style/detail_text_style2"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/order_detail_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_filter_tag6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dip"
+                android:maxWidth="240dip"
+                android:text="" />
 
-                <EditText
-                    android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/bg_edittext"
-                    android:textColor="@color/black"
-                    android:layout_marginRight="10dip"
-                    android:paddingLeft="2dip"
-                    android:textColorHint="@color/gray"
-                    android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/linear_btn"
-            android:background="@color/white"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+
+        </RelativeLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_10px"
-            android:layout_marginTop="20dip"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_height="1px"
+            android:layout_marginLeft="30dip"
+            android:background="@color/gray2" />
 
-            <Button
-                android:layout_width="160dip"
-                android:layout_height="35dip"
-                android:layout_marginTop="5dip"
-                android:layout_marginRight="10dip"
-                android:layout_margin="0dip"
-                android:onClick="showAlertDialog"
-                android:background="@drawable/btn_ok_selector"
-                android:text="@string/btn_filter"
-                android:id="@+id/button" />
-        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/select_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                style="@style/detail_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发货时间" />
+
+
+            <TextView
+                android:id="@+id/start_date"
+                style="@style/detail_text_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50dip"
+                android:maxWidth="240dip"
+                android:text="" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:src="@drawable/setting_arrow" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray2" />
+
+
     </LinearLayout>
 
-
-
     <LinearLayout
-        android:id="@+id/linear_load"
+        android:id="@+id/linear_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/padding_20px"
-        android:visibility="gone"
-        android:layout_marginTop="50dip"
-        android:background="@color/viewfinder_mask"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/order_border"
         android:gravity="center_horizontal|center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_10px">
 
-        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="开始检索"
+            bootstrap:bb_roundedCorners="true"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="success" />
     </LinearLayout>
 
 </RelativeLayout>

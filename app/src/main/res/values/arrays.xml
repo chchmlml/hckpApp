@@ -25,6 +25,24 @@
         <item>>=2.5m</item>
     </string-array>
 
+
+    <string-array name="item_car_type">
+        <item>厢式车</item>
+        <item>平板车</item>
+        <item>高地板车</item>
+        <item>高栏车</item>
+        <item>中栏车</item>
+        <item>低栏车</item>
+        <item>罐式车</item>
+        <item>冷藏车</item>
+        <item>保温车</item>
+        <item>危险品车</item>
+        <item>铁笼车</item>
+        <item>集装箱</item>
+        <item>自卸货车</item>
+        <item>其他车型</item>
+    </string-array>
+
     <string-array name="item_car_length">
         <item>4.2m</item>
         <item>5.2m</item>

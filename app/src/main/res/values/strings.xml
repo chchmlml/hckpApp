@@ -13,7 +13,7 @@
     <string name="home_detail">调度单详情</string>
     <string name="car_detail">车队详情</string>
     <string name="home_dispath_detail">运输单详情</string>
-    <string name="order_filter">订单检索</string>
+    <string name="order_filter">寻找货源</string>
     <string name="login_page">用户登录</string>
     <string name="register_page">用户注册</string>
     <string name="search_team">搜索车队</string>

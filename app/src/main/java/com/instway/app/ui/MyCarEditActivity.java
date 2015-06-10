@@ -60,6 +60,9 @@ public class MyCarEditActivity extends BaseActivity {
     @ViewInject(R.id.car_height)
     private TextView carHeight;
 
+    @ViewInject(R.id.car_type)
+    private TextView carType;
+
     @ViewInject(R.id.car_pic)
     private ImageView carPic;
 
@@ -87,7 +90,7 @@ public class MyCarEditActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.back_img, R.id.button,R.id.delbtn, R.id.form_car_no, R.id.form_car_weight, R.id.form_car_length, R.id.form_car_id, R.id.form_car_height, R.id.form_car_width})
+    @OnClick({R.id.back_img, R.id.button,R.id.delbtn, R.id.form_car_no, R.id.form_car_weight,  R.id.form_car_type, R.id.form_car_length, R.id.form_car_id, R.id.form_car_height, R.id.form_car_width})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -160,6 +163,20 @@ public class MyCarEditActivity extends BaseActivity {
                             }
                         }).show();
             }
+            case R.id.form_car_type: {
+                final String[] items = getResources().getStringArray(
+                        R.array.item_car_type);
+                new AlertDialog.Builder(this)
+                        .setTitle("请点击选择")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                carType.setText(items[which]);
+
+                            }
+                        }).show();
+            }
             break;
             case R.id.form_car_height: {
                 final String[] items = getResources().getStringArray(
@@ -224,6 +241,7 @@ public class MyCarEditActivity extends BaseActivity {
         p.put("car_length", StringUtils.toString(carLength.getText()));
         p.put("car_width", StringUtils.toString(carWidth.getText()));
         p.put("car_hight", StringUtils.toString(carHeight.getText()));
+        p.put("car_type", StringUtils.toString(carType.getText()));
         StringBuilder url = new StringBuilder();
         if (StringUtils.isEmpty(carId)) {
             url.append(URLs.CREATE_CAR);
@@ -261,6 +279,7 @@ public class MyCarEditActivity extends BaseActivity {
         carLength.setText(bundle.getString("car_length"));
         carWidth.setText(bundle.getString("car_width"));
         carHeight.setText(bundle.getString("car_height"));
+        carHeight.setText(bundle.getString("car_type"));
         carId = bundle.getString("car_id");
 
         BitmapUtils bitmapUtils = new BitmapUtils(appContext);

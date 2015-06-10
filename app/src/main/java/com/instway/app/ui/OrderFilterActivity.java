@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.instway.app.AppContext;
 import com.instway.app.R;
+import com.instway.app.widght.ChangeAddressDialog;
+import com.instway.app.widght.ChangeBirthDialog;
 import com.instway.app.widght.CustomDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -25,6 +29,15 @@ public class OrderFilterActivity extends BaseActivity {
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
 
+    @ViewInject(R.id.start_city)
+    private TextView startCity;
+
+    @ViewInject(R.id.end_city)
+    private TextView endCity;
+
+    @ViewInject(R.id.start_date)
+    private TextView startDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,11 +52,49 @@ public class OrderFilterActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.back_img})
+    @OnClick({R.id.back_img,R.id.select_1,R.id.select_2,R.id.select_3})
     public void buttonClick(View v) {
-        if (v.getId() == R.id.back_img) {
-            OrderFilterActivity.this.finish();
+        switch (v.getId())
+        {
+            case R.id.back_img:
+                break;
+            case R.id.select_1:
+                ChangeAddressDialog address1 = new ChangeAddressDialog(this);
+                address1.show();
+                address1.setAddresskListener(new ChangeAddressDialog.OnAddressCListener() {
+                    @Override
+                    public void onClick(String province, String city) {
+                        startCity.setText(province + "-" + city);
+                    }
+                });
+                break;
+            case R.id.select_2:
+                ChangeAddressDialog address2 = new ChangeAddressDialog(this);
+                address2.show();
+                address2.setAddresskListener(new ChangeAddressDialog.OnAddressCListener() {
+                    @Override
+                    public void onClick(String province, String city) {
+                        endCity.setText(province + "-" + city);
+                    }
+                });
+                break;
+            case R.id.select_3:
+                ChangeBirthDialog mChangeBirthDialog = new ChangeBirthDialog(
+                        this);
+                mChangeBirthDialog.setDate(2015, 03, 29);
+                mChangeBirthDialog.show();
+                mChangeBirthDialog.setBirthdayListener(new ChangeBirthDialog.OnBirthListener() {
+
+                    @Override
+                    public void onClick(String year, String month, String day) {
+                        startDate.setText(year + "-" + month + "-" + day);
+                    }
+                });
+                break;
         }
+
+
+
     }
 
 
