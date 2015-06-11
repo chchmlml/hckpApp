@@ -89,6 +89,7 @@ public class HomeButton extends FrameLayout {
             case MotionEvent.ACTION_UP:
                 if (homeBtnOnClickListener != null) {
                     homeBtnOnClickListener.onClickUp(this);
+                    start_AnimUp();
                 } else {
                     return true;
                 }

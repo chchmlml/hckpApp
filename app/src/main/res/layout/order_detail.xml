@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dip"
                 android:layout_weight="1"
-                android:text="222222" />
+                android:text="" />
 
         </RelativeLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dip"
                 android:layout_weight="1"
-                android:text="33333" />
+                android:text="" />
 
         </RelativeLayout>
 
