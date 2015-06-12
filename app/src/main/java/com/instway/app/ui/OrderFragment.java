@@ -11,11 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.instway.app.R;
+import com.instway.app.common.StringUtils;
+import com.instway.app.common.UIHelper;
 import com.instway.app.widght.TopIndicatorOrder;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -29,6 +33,14 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
     private TopIndicatorOrder mTopIndicator;
 
     private ImageView rightImg;
+    private LinearLayout filterLiner;
+    private TextView clearFilter;
+
+    private String pStartProvince;
+    private String pStartCity;
+    private String pEndProvince;
+    private String pEndCity;
+    private String pDate;
 
     public static OrderFragment newInstance() {
         return new OrderFragment();
@@ -48,23 +60,59 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        pStartProvince = "";
+        pStartCity = "";
+        pEndProvince = "";
+        pEndCity = "";
+        pDate = "";
         return inflater.inflate(R.layout.fragment_order, container, false);
-        //ViewUtils.inject(this);
     }
+
+
+    private final int REQUEST_CODE = 0;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //ViewUtils.inject(view);
         rightImg = (ImageView) view.findViewById(R.id.right_img);
+        filterLiner = (LinearLayout) view.findViewById(R.id.filter_liner);
+        clearFilter = (TextView) view.findViewById(R.id.clear_filter);
+        clearFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pStartProvince = "";
+                pStartCity = "";
+                pEndProvince = "";
+                pEndCity = "";
+                pDate = "";
+                initDisplay();
+            }
+        });
+
         rightImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mActivity, OrderFilterActivity.class);
-                startActivityForResult(intent, REQUEST_CODE);
+                Intent intent = new Intent(getActivity(), OrderFilterActivity.class);
+                OrderFragment.this.startActivityForResult(intent, REQUEST_CODE);
             }
         });
         initViews(view);
+    }
+
+    /*
+   * (non-Javadoc)
+   */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bundle bundle = data.getExtras();
+        pStartProvince = bundle.getString("startProvince");
+        pStartCity = bundle.getString("startCity");
+        pEndProvince = bundle.getString("endProvince");
+        pEndCity = bundle.getString("endCity");
+        pDate = bundle.getString("date");
+        initDisplay();
     }
 
     @Override
@@ -87,12 +135,16 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
         mTopIndicator.setOnTopIndicatorListener(this);
     }
 
-    private final int REQUEST_CODE = 103;
-
     private void initDisplay() {
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.invalidate();
         mPagerAdapter.notifyDataSetChanged();
+        if (!StringUtils.isEmpty(pStartProvince) || !StringUtils.isEmpty(pStartCity)
+                || !StringUtils.isEmpty(pEndProvince) || !StringUtils.isEmpty(pEndCity) || !StringUtils.isEmpty(pDate)) {
+            filterLiner.setVisibility(View.VISIBLE);
+        } else {
+            filterLiner.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -119,7 +171,7 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
 
         @Override
         public Fragment getItem(int position) {
-            OrderTabFragment fragment = OrderTabFragment.newInstance(position);
+            OrderTabFragment fragment = OrderTabFragment.newInstance(position, pStartProvince, pStartCity, pEndProvince, pEndCity, pDate);
             return fragment;
         }
 

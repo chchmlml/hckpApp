@@ -279,7 +279,7 @@ public class MyCarEditActivity extends BaseActivity {
         carLength.setText(bundle.getString("car_length"));
         carWidth.setText(bundle.getString("car_width"));
         carHeight.setText(bundle.getString("car_height"));
-        carHeight.setText(bundle.getString("car_type"));
+        carType.setText(bundle.getString("car_type"));
         carId = bundle.getString("car_id");
 
         BitmapUtils bitmapUtils = new BitmapUtils(appContext);

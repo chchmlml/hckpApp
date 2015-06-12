@@ -312,6 +312,7 @@ public class UIHelper {
         b.putString("car_weight", car.getTp_car_weight());
         b.putString("car_length", car.getTp_car_length());
         b.putString("car_width", car.getTp_car_width());
+        b.putString("car_type", car.getTp_car_type());
         b.putString("car_height", car.getTp_car_hight());
         b.putString("car_drivingpic", car.getTp_car_drivingpic());
         intent.putExtras(b);

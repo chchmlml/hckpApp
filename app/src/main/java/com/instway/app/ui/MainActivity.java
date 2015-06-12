@@ -1,5 +1,6 @@
 package com.instway.app.ui;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -77,6 +78,10 @@ public class MainActivity extends BaseActivity implements OnTabSelectedListener 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /*在这里，我们通过碎片管理器中的Tag，就是每个碎片的名称，来获取对应的fragment*/
+        /*然后在碎片中调用重写的onActivityResult方法*/
+        //mOrderFragment.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

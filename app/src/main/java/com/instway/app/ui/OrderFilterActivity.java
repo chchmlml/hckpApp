@@ -38,6 +38,12 @@ public class OrderFilterActivity extends BaseActivity {
     @ViewInject(R.id.start_date)
     private TextView startDate;
 
+    private String pStartProvince;
+    private String pStartCity;
+    private String pEndProvince;
+    private String pEndCity;
+    private String pDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,12 +56,16 @@ public class OrderFilterActivity extends BaseActivity {
         //显示返回按钮
         backBtn.setVisibility(View.VISIBLE);
 
+        pStartProvince = "";
+        pStartCity = "";
+        pEndProvince = "";
+        pEndCity = "";
+        pDate = "";
     }
 
-    @OnClick({R.id.back_img,R.id.select_1,R.id.select_2,R.id.select_3})
+    @OnClick({R.id.back_img, R.id.select_1, R.id.select_2, R.id.select_3, R.id.button})
     public void buttonClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.back_img:
                 finish();
                 break;
@@ -66,6 +76,8 @@ public class OrderFilterActivity extends BaseActivity {
                     @Override
                     public void onClick(String province, String city) {
                         startCity.setText(province + "-" + city);
+                        pStartProvince = province;
+                        pStartCity = city;
                     }
                 });
                 break;
@@ -76,6 +88,8 @@ public class OrderFilterActivity extends BaseActivity {
                     @Override
                     public void onClick(String province, String city) {
                         endCity.setText(province + "-" + city);
+                        pEndProvince = province;
+                        pEndCity = city;
                     }
                 });
                 break;
@@ -88,37 +102,30 @@ public class OrderFilterActivity extends BaseActivity {
 
                     @Override
                     public void onClick(String year, String month, String day) {
-                        startDate.setText(year + "-" + month + "-" + day);
+                        pDate = year + "-" + month + "-" + day;
+                        startDate.setText(pDate);
                     }
                 });
                 break;
+            case R.id.button:
+                showAlertDialog();
+                break;
         }
-
-
 
     }
 
 
-    public void showAlertDialog(View view) {
+    public static final int RESULT_CODE = 1;
 
-        CustomDialog.Builder builder = new CustomDialog.Builder(this);
-        builder.setMessage("确认搜索");
-        builder.setTitle("提示");
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builder.setNegativeButton("取消",
-                new android.content.DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.create().show();
-
+    public void showAlertDialog() {
+        Intent intent = new Intent();
+        intent.putExtra("startProvince", pStartProvince);
+        intent.putExtra("startCity", pStartCity);
+        intent.putExtra("endProvince", pEndProvince);
+        intent.putExtra("endCity", pEndCity);
+        intent.putExtra("date", pDate);
+        setResult(RESULT_CODE, intent);
+        finish();
     }
 
 }

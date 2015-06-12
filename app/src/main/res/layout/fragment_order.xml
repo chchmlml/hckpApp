@@ -10,13 +10,15 @@
         layout="@layout/title_bar" />
 
     <LinearLayout
+        android:id="@+id/filter_liner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        android:background="@color/possible_result_points">
+        android:background="@color/listitem_yellow"
+        android:visibility="gone"
+        android:gravity="right">
 
         <TextView
-            android:id="@+id/label1"
+            android:id="@+id/clear_filter"
             style="@style/order_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

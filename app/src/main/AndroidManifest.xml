@@ -69,7 +69,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
+            android:launchMode="standard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
@@ -112,8 +112,8 @@
         <!-- 搜索 -->
         <activity
             android:name=".ui.OrderFilterActivity"
+            android:launchMode="standard"
             android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <!-- 登陆 -->

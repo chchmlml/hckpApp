@@ -1,6 +1,7 @@
 package com.instway.app.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -54,10 +55,21 @@ public class OrderTabFragment extends BaseFragment {
     private View mView;
 
     private int listType;
+    //筛选条件
+    private String pStartProvince;
+    private String pStartCity;
+    private String pEndProvince;
+    private String pEndCity;
+    private String pDate;
 
-    public static OrderTabFragment newInstance(int arg) {
+    public static OrderTabFragment newInstance(int arg, String pStartProvince, String pStartCity, String pEndProvince, String pEndCity, String pDate) {
         OrderTabFragment fragment = new OrderTabFragment();
         fragment.listType = arg;
+        fragment.pStartProvince = pStartProvince;
+        fragment.pStartCity = pStartCity;
+        fragment.pEndProvince = pEndProvince;
+        fragment.pEndCity = pEndCity;
+        fragment.pDate = pDate;
         return fragment;
     }
 
@@ -93,6 +105,21 @@ public class OrderTabFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /*
+ * (non-Javadoc)
+ */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        LogUtils.i("--------------------------");
+        //Bundle bundle = data.getExtras();
+//        pStartProvince = bundle.getString("startProvince");
+//        pStartCity = bundle.getString("startCity");
+//        pEndProvince = bundle.getString("endProvince");
+//        pEndCity = bundle.getString("endCity");
+//        pDate = bundle.getString("date");
+    }
+
     @Override
     public void onResume() {
         this.initFrameListViewData();
@@ -113,7 +140,7 @@ public class OrderTabFragment extends BaseFragment {
         lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter, lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
         // 加载资讯数据
         //if (lvNewsData.isEmpty()) {
-            loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
+        loadLvNewsData(0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_INIT);
         //}
     }
 
@@ -279,15 +306,20 @@ public class OrderTabFragment extends BaseFragment {
                     isRefresh = true;
                 try {
                     //额外参数
-                    Map<String,Object> params = new HashMap<String, Object>();
-                    switch (listType){
+                    Map<String, Object> params = new HashMap<String, Object>();
+                    switch (listType) {
                         case 0:
                             break;
                         case 1:
-                            params.put("i_type","1");
+                            params.put("i_type", "1");
                             break;
                     }
-                    NewsList list = appContext.getNewsList(pageIndex, isRefresh,params);
+                    params.put("pStartProvince", pStartProvince);
+                    params.put("pStartCity", pStartCity);
+                    params.put("pEndProvince", pEndProvince);
+                    params.put("pEndCity", pEndCity);
+                    params.put("pDate", pDate);
+                    NewsList list = appContext.getNewsList(pageIndex, isRefresh, params);
                     msg.what = list.getNewsCount();
                     msg.obj = list;
                 } catch (AppException e) {
