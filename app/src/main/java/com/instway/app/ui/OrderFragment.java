@@ -36,6 +36,8 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
     private LinearLayout filterLiner;
     private TextView clearFilter;
 
+    private OrderTabFragment fragment;
+
     private String pStartProvince;
     private String pStartCity;
     private String pEndProvince;
@@ -139,6 +141,7 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.invalidate();
         mPagerAdapter.notifyDataSetChanged();
+        //清除筛选条件
         if (!StringUtils.isEmpty(pStartProvince) || !StringUtils.isEmpty(pStartCity)
                 || !StringUtils.isEmpty(pEndProvince) || !StringUtils.isEmpty(pEndCity) || !StringUtils.isEmpty(pDate)) {
             filterLiner.setVisibility(View.VISIBLE);
@@ -171,7 +174,7 @@ public class OrderFragment extends BaseFragment implements TopIndicatorOrder.OnT
 
         @Override
         public Fragment getItem(int position) {
-            OrderTabFragment fragment = OrderTabFragment.newInstance(position, pStartProvince, pStartCity, pEndProvince, pEndCity, pDate);
+            fragment = OrderTabFragment.newInstance(position, pStartProvince, pStartCity, pEndProvince, pEndCity, pDate);
             return fragment;
         }
 

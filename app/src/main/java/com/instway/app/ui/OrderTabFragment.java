@@ -314,11 +314,11 @@ public class OrderTabFragment extends BaseFragment {
                             params.put("i_type", "1");
                             break;
                     }
-                    params.put("pStartProvince", pStartProvince);
-                    params.put("pStartCity", pStartCity);
-                    params.put("pEndProvince", pEndProvince);
-                    params.put("pEndCity", pEndCity);
-                    params.put("pDate", pDate);
+//                    params.put("pStartProvince", pStartProvince);
+                    params.put("send_city", pStartCity);
+//                    params.put("pEndProvince", pEndProvince);
+                    params.put("get_city", pEndCity);
+                    params.put("send_date", pDate);
                     NewsList list = appContext.getNewsList(pageIndex, isRefresh, params);
                     msg.what = list.getNewsCount();
                     msg.obj = list;

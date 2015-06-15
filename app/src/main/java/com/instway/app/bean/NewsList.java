@@ -75,6 +75,7 @@ public class NewsList extends Entity {
                 news.setTp_diy_type(StringUtils.toString(d.get("tp_diy_type")));
                 news.setTp_diyp_price(StringUtils.toString(d.get("tp_diyp_price")));
                 news.setTp_diy_category(StringUtils.toString(d.get("tp_diy_category")));
+                news.setTp_diyp_status(StringUtils.toString(d.get("tp_diyp_status")));
                 newslist.newslist.add(news);
             }
         }

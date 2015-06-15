@@ -45,6 +45,17 @@ public class News extends Entity {
     //车队名称
     private String tp_tc_name;
 
+    public String getTp_diyp_status() {
+        return tp_diyp_status;
+    }
+
+    public void setTp_diyp_status(String tp_diyp_status) {
+        this.tp_diyp_status = tp_diyp_status;
+    }
+
+    //已确认状态
+    private String tp_diyp_status;
+
     //车队id
     public String getTp_diy_startdate() {
         return tp_diy_startdate;

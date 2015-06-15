@@ -100,6 +100,9 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }else{
             listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_baojia));
         }
+        if("2".equals(news.getTp_diyp_status())){
+            listItemView.priceBtn.setImageDrawable(context.getResources().getDrawable(R.drawable.btn_confirm));
+        }
 
         return convertView;
     }
