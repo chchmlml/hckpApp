@@ -79,7 +79,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_submit, R.id.back_img, R.id.btn_login, R.id.code_btn})
+    @OnClick({R.id.btn_submit, R.id.back_img, R.id.btn_login, R.id.code_btn,R.id.xukeTxt})
     public void buttonClick(View v) {
 
         switch (v.getId()) {
@@ -91,6 +91,9 @@ public class RegisterActivity extends BaseActivity {
                 break;
             case R.id.btn_login:
                 UIHelper.showLoginRedirect(appContext);
+                break;
+            case R.id.xukeTxt:
+                UIHelper.showXukeRedirect(appContext);
                 break;
             case R.id.code_btn:
                 sendCode();

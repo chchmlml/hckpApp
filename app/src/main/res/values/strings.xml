@@ -100,7 +100,7 @@
     <string name="del_team">解挂此车队</string>
 
     <string name="login_phone">手机号</string>
-    <string name="login_email">账号/手机/电子邮箱</string>
+    <string name="login_email">账号</string>
     <string name="login_username">用户名</string>
     <string name="login_realname">真实姓名</string>
     <string name="old_password">旧密码</string>
@@ -126,7 +126,7 @@
     <string name="register_edit_yan">验证码</string>
     <string name="login_btn">登录</string>
     <string name="logout_btn">注销登录</string>
-    <string name="login_register">免费注册</string>
+    <string name="login_register">注册新用户</string>
     <string name="login_forget">忘记密码</string>
 
     <string name="pull_to_refresh_pull_label">下拉可以刷新</string>

@@ -32,6 +32,7 @@ import com.instway.app.ui.TeamDetailActivity;
 import com.instway.app.ui.TeamFindActivity;
 import com.instway.app.ui.TeamFragment;
 import com.instway.app.ui.loginActivity;
+import com.instway.app.ui.xukeActivity;
 
 import java.util.Map;
 
@@ -287,6 +288,12 @@ public class UIHelper {
         Bundle b = new Bundle();
         b.putString("index", "1");
         intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
+    public static void showXukeRedirect(Context context) {
+        Intent intent = new Intent(context, xukeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
