@@ -16,12 +16,14 @@ import com.instway.app.api.ApiClient;
 import com.instway.app.bean.URLs;
 import com.instway.app.common.StringUtils;
 import com.instway.app.common.UIHelper;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -173,6 +175,9 @@ public class HomeDispathDetailActivity extends BaseActivity {
     @ViewInject(R.id.goods_get)
     private TextView goodsGet;
 
+    @ViewInject(R.id.qbcode)
+    private ImageView qbcode;
+
     @ViewInject(R.id.goods_send)
     private TextView goodsSend;
 
@@ -240,6 +245,12 @@ public class HomeDispathDetailActivity extends BaseActivity {
                         case 7:
                             status.setImageDrawable(appContext.getResources().getDrawable(R.drawable.trans_status_2));
                             break;
+                    }
+                    String qbcodeSrc = StringUtils.toString(transObj.get("transport_pic"));
+                    LogUtils.i(qbcodeSrc);
+                    if(!StringUtils.isEmpty(qbcodeSrc)){
+                        BitmapUtils bitmapUtils = new BitmapUtils(appContext);
+                        bitmapUtils.display(qbcode, qbcodeSrc);
                     }
                 } else {
                     UIHelper.ToastMessage(appContext, obj.get("msg").toString());

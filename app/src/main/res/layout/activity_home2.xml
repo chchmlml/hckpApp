@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_banner" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#fe864a"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="5dip"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="订单" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_dingdan" />
+
+            <TextView
+                style="@style/text_10_ffffff_a65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:text="222222"
+                android:visibility="gone" />
+
+        </com.instway.app.widght.HomeButton>
+
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l4"
+            android:layout_width="300dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#9656f3"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="10dip"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="我的车队" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_chedui" />
+        </com.instway.app.widght.HomeButton>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#368ff5"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="5dip"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="货源" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_huowu" />
+
+        </com.instway.app.widght.HomeButton>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#fe864a"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="5dip"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="订单" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_dingdan" />
+
+            <TextView
+                style="@style/text_10_ffffff_a65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:text="222222"
+                android:visibility="gone" />
+
+        </com.instway.app.widght.HomeButton>
+
+        <com.instway.app.widght.HomeButton
+            android:id="@+id/l3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#0fc4d9"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="10dip"
+            myapp:doAnim="true">
+
+            <TextView
+                style="@style/text_home_style1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="8.0dip"
+                android:text="个人设置" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_gerenshiwu" />
+        </com.instway.app.widght.HomeButton>
+
+
+    </LinearLayout>
+
+</LinearLayout>

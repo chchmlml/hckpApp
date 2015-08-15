@@ -464,6 +464,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/liner2"
             android:layout_marginTop="20dip"
+            android:layout_marginBottom="40dip"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -551,15 +552,40 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
+                android:layout_marginLeft="30dip"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dip"
+                android:background="@color/white">
+
+
+
+                <ImageView
+                    android:id="@+id/qbcode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/gray2" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
+        <LinearLayout
+            android:id="@+id/liner4"
+            android:layout_width="fill_parent"
+            android:layout_height="10dip"
             android:layout_below="@+id/liner3"
-            android:background="@null" />
-
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dip"
+            android:background="@color/white"
+            android:orientation="vertical"></LinearLayout>
     </RelativeLayout>
 </ScrollView>

@@ -1,6 +1,8 @@
 package com.instway.app.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -37,6 +39,8 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
 
+    HomeButton l1,l2,l3,l4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +49,15 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
         appContext = (AppContext) getApplicationContext();
         PgyUpdateManager.register(this, AppConfig.APP_ID);
 
-        ((HomeButton) findViewById(R.id.l1)).setHomeBtbOnClickListener(this);
-        ((HomeButton) findViewById(R.id.l2)).setHomeBtbOnClickListener(this);
-        ((HomeButton) findViewById(R.id.l3)).setHomeBtbOnClickListener(this);
-        ((HomeButton) findViewById(R.id.l4)).setHomeBtbOnClickListener(this);
+        l1 = ((HomeButton) findViewById(R.id.l1));
+        l2 = ((HomeButton) findViewById(R.id.l2));
+        l3 = ((HomeButton) findViewById(R.id.l3));
+        l4 = ((HomeButton) findViewById(R.id.l4));
 
+        l1.setHomeBtbOnClickListener(this);
+        l2.setHomeBtbOnClickListener(this);
+        l3.setHomeBtbOnClickListener(this);
+        l4.setHomeBtbOnClickListener(this);
         //定位
         startLocation();
     }
