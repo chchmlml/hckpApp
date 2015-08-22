@@ -80,7 +80,7 @@ public class OrderFilterActivity extends BaseActivity {
                         LogUtils.i(province);
                         if(province == "全境" || StringUtils.isEmpty(city)){
                             startCity.setText("全境");
-                            pStartProvince = "全境";
+                            pStartProvince = "";
                             pStartCity = "";
                         }else{
                             startCity.setText(province + "-" + city);
@@ -98,7 +98,7 @@ public class OrderFilterActivity extends BaseActivity {
                     public void onClick(String province, String city) {
                         if(province == "全境"|| StringUtils.isEmpty(city)){
                             endCity.setText("全境");
-                            pEndProvince = "全境";
+                            pEndProvince = "";
                             pEndCity = "";
                         }else{
                             endCity.setText(province + "-" + city);
