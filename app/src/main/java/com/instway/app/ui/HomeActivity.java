@@ -39,12 +39,12 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
 
-    HomeButton l1,l2,l3,l4;
+    HomeButton l1, l2, l3, l4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home2);
 
         appContext = (AppContext) getApplicationContext();
         PgyUpdateManager.register(this, AppConfig.APP_ID);
@@ -58,6 +58,7 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
         l2.setHomeBtbOnClickListener(this);
         l3.setHomeBtbOnClickListener(this);
         l4.setHomeBtbOnClickListener(this);
+
         //定位
         startLocation();
     }
@@ -159,6 +160,9 @@ public class HomeActivity extends BaseActivity implements HomeButton.HomeBtnOnCl
                 break;
             case R.id.l4:
                 UIHelper.showTeamRedirect(appContext);
+                break;
+            case R.id.l5:
+                UIHelper.callPhone(appContext, "021-58887667");
                 break;
             default:
                 break;

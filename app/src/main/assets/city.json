@@ -1,6 +1,10 @@
 {
   "citylist": [
     {
+      "city_name": "全境",
+      "sun_city": [""]
+    },
+    {
       "city_name": "河北省",
       "sun_city": [
         "石家庄市",

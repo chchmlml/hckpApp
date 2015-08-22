@@ -38,21 +38,6 @@ public class xukeActivity extends BaseActivity {
     @ViewInject(R.id.title_tv)
     private TextView mTitleTv;
 
-    @ViewInject(R.id.btn_email)
-    private TextView textEmail;
-
-    @ViewInject(R.id.btn_pwd)
-    private TextView textPwd;
-
-//    @ViewInject(R.id.btn_login)
-//    private BootstrapButton btnLogin;
-
-    @ViewInject(R.id.btn_register)
-    private Button btnRegister;
-
-//    @ViewInject(R.id.back_img)
-//    private ImageView backBtn;
-
     @ViewInject(R.id.back_img)
     private ImageView backBtn;
     private AppContext appContext;
@@ -63,7 +48,7 @@ public class xukeActivity extends BaseActivity {
         setContentView(R.layout.activity_xuke);
         ViewUtils.inject(this);
         backBtn.setVisibility(View.VISIBLE);
-        mTitleTv.setText(R.string.my_cars_add);
+        mTitleTv.setText("软件服务及许可协议");
 
     }
 

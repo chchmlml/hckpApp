@@ -34,10 +34,10 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#fe864a"
+            android:background="#fa6567"
             android:layout_marginTop="10dip"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
             android:layout_marginBottom="5dip"
             myapp:doAnim="true">
 
@@ -47,15 +47,17 @@
                 android:layout_height="fill_parent"
                 android:paddingLeft="10.0dip"
                 android:paddingTop="8.0dip"
-                android:text="订单" />
+                android:layout_marginBottom="10dip"
+                android:gravity="center_horizontal|bottom"
+                android:text="我的货运单" />
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_dingdan" />
+                android:src="@drawable/index1" />
 
             <TextView
                 style="@style/text_10_ffffff_a65"
@@ -73,31 +75,33 @@
 
         <com.instway.app.widght.HomeButton
             android:id="@+id/l4"
-            android:layout_width="300dip"
+            android:layout_width="260dip"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#9656f3"
-            android:layout_marginTop="5dip"
+            android:background="#feba3f"
+            android:layout_marginTop="10dip"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="10dip"
-            android:layout_marginBottom="10dip"
+            android:layout_marginBottom="5dip"
             myapp:doAnim="true">
 
             <TextView
                 style="@style/text_home_style1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:layout_marginBottom="10dip"
+                android:gravity="center_horizontal|bottom"
                 android:paddingLeft="10.0dip"
                 android:paddingTop="8.0dip"
                 android:text="我的车队" />
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_chedui" />
+                android:src="@drawable/index2" />
         </com.instway.app.widght.HomeButton>
 
     </LinearLayout>
@@ -115,10 +119,10 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#368ff5"
-            android:layout_marginTop="10dip"
+            android:background="#f6774a"
+            android:layout_marginTop="5dip"
             android:layout_marginLeft="10dip"
-            android:layout_marginRight="5dip"
+            android:layout_marginRight="10dip"
             android:layout_marginBottom="5dip"
             myapp:doAnim="true">
 
@@ -126,16 +130,19 @@
                 style="@style/text_home_style1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:gravity="left|center_vertical"
+                android:layout_marginLeft="100dip"
                 android:paddingLeft="10.0dip"
                 android:paddingTop="8.0dip"
-                android:text="货源" />
+                android:text="快跑找货" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="100dip"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_huowu" />
+                android:src="@drawable/index3" />
 
         </com.instway.app.widght.HomeButton>
 
@@ -150,15 +157,15 @@
 
 
         <com.instway.app.widght.HomeButton
-            android:id="@+id/l2"
-            android:layout_width="fill_parent"
+            android:id="@+id/l5"
+            android:layout_width="260dip"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#fe864a"
-            android:layout_marginTop="10dip"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="10dip"
-            android:layout_marginBottom="5dip"
+            android:background="#92cf68"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="10dip"
             myapp:doAnim="true">
 
             <TextView
@@ -166,16 +173,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:paddingLeft="10.0dip"
+                android:layout_marginBottom="10dip"
+                android:gravity="center_horizontal|bottom"
                 android:paddingTop="8.0dip"
-                android:text="订单" />
+                android:text="联系我们" />
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_dingdan" />
+                android:src="@drawable/index4" />
 
             <TextView
                 style="@style/text_10_ffffff_a65"
@@ -195,9 +204,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#0fc4d9"
+            android:background="#58b5e1"
             android:layout_marginTop="5dip"
-            android:layout_marginLeft="10dip"
+            android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
             android:layout_marginBottom="10dip"
             myapp:doAnim="true">
@@ -207,16 +216,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:paddingLeft="10.0dip"
+                android:layout_marginBottom="10dip"
+                android:gravity="center_horizontal|bottom"
                 android:paddingTop="8.0dip"
                 android:text="个人设置" />
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_gerenshiwu" />
+                android:src="@drawable/index5" />
         </com.instway.app.widght.HomeButton>
 
 

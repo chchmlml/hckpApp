@@ -10,10 +10,12 @@ import android.widget.Toast;
 
 import com.instway.app.AppContext;
 import com.instway.app.R;
+import com.instway.app.common.StringUtils;
 import com.instway.app.widght.ChangeAddressDialog;
 import com.instway.app.widght.ChangeBirthDialog;
 import com.instway.app.widght.CustomDialog;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
@@ -35,8 +37,8 @@ public class OrderFilterActivity extends BaseActivity {
     @ViewInject(R.id.end_city)
     private TextView endCity;
 
-    @ViewInject(R.id.start_date)
-    private TextView startDate;
+//    @ViewInject(R.id.start_date)
+//    private TextView startDate;
 
     private String pStartProvince;
     private String pStartCity;
@@ -63,7 +65,7 @@ public class OrderFilterActivity extends BaseActivity {
         pDate = "";
     }
 
-    @OnClick({R.id.back_img, R.id.select_1, R.id.select_2, R.id.select_3, R.id.button})
+    @OnClick({R.id.back_img, R.id.select_1, R.id.select_2, R.id.button})
     public void buttonClick(View v) {
         switch (v.getId()) {
             case R.id.back_img:
@@ -75,9 +77,16 @@ public class OrderFilterActivity extends BaseActivity {
                 address1.setAddresskListener(new ChangeAddressDialog.OnAddressCListener() {
                     @Override
                     public void onClick(String province, String city) {
-                        startCity.setText(province + "-" + city);
-                        pStartProvince = province;
-                        pStartCity = city;
+                        LogUtils.i(province);
+                        if(province == "全境" || StringUtils.isEmpty(city)){
+                            startCity.setText("全境");
+                            pStartProvince = "全境";
+                            pStartCity = "";
+                        }else{
+                            startCity.setText(province + "-" + city);
+                            pStartProvince = province;
+                            pStartCity = city;
+                        }
                     }
                 });
                 break;
@@ -87,26 +96,32 @@ public class OrderFilterActivity extends BaseActivity {
                 address2.setAddresskListener(new ChangeAddressDialog.OnAddressCListener() {
                     @Override
                     public void onClick(String province, String city) {
-                        endCity.setText(province + "-" + city);
-                        pEndProvince = province;
-                        pEndCity = city;
+                        if(province == "全境"|| StringUtils.isEmpty(city)){
+                            endCity.setText("全境");
+                            pEndProvince = "全境";
+                            pEndCity = "";
+                        }else{
+                            endCity.setText(province + "-" + city);
+                            pEndProvince = province;
+                            pEndCity = city;
+                        }
                     }
                 });
                 break;
-            case R.id.select_3:
-                ChangeBirthDialog mChangeBirthDialog = new ChangeBirthDialog(
-                        this);
-                mChangeBirthDialog.setDate(2015, 03, 29);
-                mChangeBirthDialog.show();
-                mChangeBirthDialog.setBirthdayListener(new ChangeBirthDialog.OnBirthListener() {
-
-                    @Override
-                    public void onClick(String year, String month, String day) {
-                        pDate = year + "-" + month + "-" + day;
-                        startDate.setText(pDate);
-                    }
-                });
-                break;
+//            case R.id.select_3:
+//                ChangeBirthDialog mChangeBirthDialog = new ChangeBirthDialog(
+//                        this);
+//                mChangeBirthDialog.setDate(2015, 03, 29);
+//                mChangeBirthDialog.show();
+//                mChangeBirthDialog.setBirthdayListener(new ChangeBirthDialog.OnBirthListener() {
+//
+//                    @Override
+//                    public void onClick(String year, String month, String day) {
+//                        pDate = year + "-" + month + "-" + day;
+//                        startDate.setText(pDate);
+//                    }
+//                });
+//                break;
             case R.id.button:
                 showAlertDialog();
                 break;

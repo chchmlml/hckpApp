@@ -48,8 +48,8 @@ public class ChangeAddressDialog extends Dialog implements View.OnClickListener 
 	private AddressTextAdapter provinceAdapter;
 	private AddressTextAdapter cityAdapter;
 
-	private String strProvince = "北京市";
-	private String strCity = "东城区";
+	private String strProvince = "全境";
+	private String strCity = "";
 	private OnAddressCListener onAddressCListener;
 
 	private int maxsize = 24;
